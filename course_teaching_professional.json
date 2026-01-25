@@ -1,0 +1,455 @@
+{
+  "category": "교직",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "courses": [
+    {
+      "course_code": "911001",
+      "course_name": "교육학개론",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 2,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "월11:30-13:30",
+            "days": [
+              "월"
+            ],
+            "times": [
+              {
+                "day": "월",
+                "start": "11:30",
+                "end": "13:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        },
+        {
+          "section": "02",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "화11:30-13:30",
+            "days": [
+              "화"
+            ],
+            "times": [
+              {
+                "day": "화",
+                "start": "11:30",
+                "end": "13:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911019",
+      "course_name": "교육사회",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 2,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "권양이",
+          "schedule": {
+            "raw": "목15:30-17:30",
+            "days": [
+              "목"
+            ],
+            "times": [
+              {
+                "day": "목",
+                "start": "15:30",
+                "end": "17:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911021",
+      "course_name": "교육심리",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 2,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "권양이",
+          "schedule": {
+            "raw": "목15:30-15:30",
+            "days": [
+              "목"
+            ],
+            "times": [
+              {
+                "day": "목",
+                "start": "13:30",
+                "end": "15:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911025",
+      "course_name": "학교폭력예방및학생의이해",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 2,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "월15:30-17:30",
+            "days": [
+              "월"
+            ],
+            "times": [
+              {
+                "day": "월",
+                "start": "15:30",
+                "end": "17:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911007",
+      "course_name": "교육방법및교육공학",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 2,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "화15:30-17:30",
+            "days": [
+              "화"
+            ],
+            "times": [
+              {
+                "day": "화",
+                "start": "15:30",
+                "end": "17:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911017",
+      "course_name": "교직실무",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "이정",
+          "schedule": {
+            "raw": "화17:30-19:15",
+            "days": [
+              "화"
+            ],
+            "times": [
+              {
+                "day": "화",
+                "start": "17:30",
+                "end": "19:15"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대205 - 강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "205",
+            "room_type": "강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911020",
+      "course_name": "교육과정",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "목11:30-13:30",
+            "days": [
+              "목"
+            ],
+            "times": [
+              {
+                "day": "목",
+                "start": "11:30",
+                "end": "13:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911018",
+      "course_name": "교육봉사활동",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "월17:15-19:15",
+            "days": [
+              "월"
+            ],
+            "times": [
+              {
+                "day": "월",
+                "start": "17:15",
+                "end": "19:15"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911024",
+      "course_name": "학교현장실습",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 4,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "목09:30-11:30",
+            "days": [
+              "목"
+            ],
+            "times": [
+              {
+                "day": "목",
+                "start": "09:30",
+                "end": "11:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        },
+        {
+          "section": "02",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "금09:30-11:30",
+            "days": [
+              "금"
+            ],
+            "times": [
+              {
+                "day": "금",
+                "start": "09:30",
+                "end": "11:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911027",
+      "course_name": "예비교원성인지교육",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 4,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "수11:30-13:30",
+            "days": [
+              "수"
+            ],
+            "times": [
+              {
+                "day": "수",
+                "start": "11:30",
+                "end": "13:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "911028",
+      "course_name": "디지털교육",
+      "credits": 2,
+      "hours": 4,
+      "lab_hours": 0,
+      "target_year": 4,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "김기홍",
+          "schedule": {
+            "raw": "수13:30-15:30",
+            "days": [
+              "수"
+            ],
+            "times": [
+              {
+                "day": "수",
+                "start": "13:30",
+                "end": "15:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "대206 - 스마트강의실",
+            "building": "대",
+            "building_full": "대학본부",
+            "room_number": "206",
+            "room_type": "스마트강의실"
+          },
+          "capacity": 30,
+          "notes": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "category": "군사학(ROTC)",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "courses": [
+    {
+      "course_code": "008005",
+      "course_name": "현장실습III",
+      "credits": 15,
+      "hours": 0,
+      "lab_hours": 60,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "학군장사",
+          "schedule": {
+            "raw": "",
+            "days": [],
+            "times": []
+          },
+          "room": {
+            "raw": "",
+            "building": null,
+            "building_full": null,
+            "room_number": null,
+            "room_type": ""
+          },
+          "capacity": 0,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "951005",
+      "course_name": "안보학(군사학)",
+      "credits": 3,
+      "hours": 12,
+      "lab_hours": 0,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "박종헌",
+          "schedule": {
+            "raw": "월14:00-16:00, 금13:30-17:30",
+            "days": [
+              "월",
+              "금"
+            ],
+            "times": [
+              {
+                "day": "월",
+                "start": "14:00",
+                "end": "16:00"
+              },
+              {
+                "day": "금",
+                "start": "13:30",
+                "end": "17:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "학군102 - 강의실A",
+            "building": "학군",
+            "building_full": "학군단",
+            "room_number": "102",
+            "room_type": "강의실A"
+          },
+          "capacity": 0,
+          "notes": "학군사관후보생 수강가능"
+        }
+      ]
+    },
+    {
+      "course_code": "956004",
+      "course_name": "현장실습V",
+      "credits": 12,
+      "hours": 0,
+      "lab_hours": 48,
+      "target_year": 3,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "학군장사",
+          "schedule": {
+            "raw": "",
+            "days": [],
+            "times": []
+          },
+          "room": {
+            "raw": "",
+            "building": null,
+            "building_full": null,
+            "room_number": null,
+            "room_type": ""
+          },
+          "capacity": 0,
+          "notes": ""
+        }
+      ]
+    },
+    {
+      "course_code": "951007",
+      "course_name": "조직리더십(군사학)",
+      "credits": 3,
+      "hours": 12,
+      "lab_hours": 0,
+      "target_year": 4,
+      "sections": [
+        {
+          "section": "01",
+          "professor": "노보환",
+          "schedule": {
+            "raw": "월14:30-16:30, 목13:30-17:30",
+            "days": [
+              "월",
+              "목"
+            ],
+            "times": [
+              {
+                "day": "월",
+                "start": "14:30",
+                "end": "16:30"
+              },
+              {
+                "day": "목",
+                "start": "13:30",
+                "end": "17:30"
+              }
+            ]
+          },
+          "room": {
+            "raw": "학군101 - 강의실B",
+            "building": "학군",
+            "building_full": "학군단",
+            "room_number": "101",
+            "room_type": "강의실B"
+          },
+          "capacity": 0,
+          "notes": "학군사관후보생 만 수강가능"
+        }
+      ]
+    }
+  ]
+}

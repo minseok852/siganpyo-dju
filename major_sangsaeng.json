@@ -1,0 +1,86 @@
+{
+  "college": "상생교양대학",
+  "college_eng": "sangsaeng_liberal_arts",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "departments": [
+    {
+      "department_id": "FREE_MAJOR",
+      "department_name": "자율전공학부",
+      "courses": [
+        {
+          "course_code": "302500",
+          "course_name": "전공탐색및설계I",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "금11:30-14:30"
+              },
+              "room": {
+                "raw": "사504 - 사회과학관멀티미디어실"
+              },
+              "capacity": 0,
+              "notes": "자율전공학부만 1학년만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "302502",
+          "course_name": "전공설계I",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "목15:30-16:30"
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2"
+              },
+              "capacity": 0,
+              "notes": "자기설계전공 수강방문신청"
+            }
+          ]
+        },
+        {
+          "course_code": "302503",
+          "course_name": "전공설계II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "목16:30-17:30"
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2"
+              },
+              "capacity": 0,
+              "notes": "자기설계전공 배출전공 희망자 방문신청"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

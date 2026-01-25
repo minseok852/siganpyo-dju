@@ -1,0 +1,3170 @@
+{
+  "college": "보건과학대학",
+  "college_eng": "health_science",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "departments": [
+    {
+      "department_id": "BIOMEDICAL",
+      "department_name": "의생명과학과",
+      "courses": [
+        {
+          "course_code": "742500",
+          "course_name": "***의생명과학입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "월15:30-17:00, 목15:30-17:00"
+              },
+              "room": {
+                "raw": "공나A 111 - e-강의실/실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744027",
+          "course_name": "인체조직학및실험",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호",
+              "schedule": {
+                "raw": "화11:30-13:30, 목11:30-13:30"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)/공나B 314"
+              },
+              "capacity": 0,
+              "notes": "의생명과학과 1학년만 수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "김호",
+              "schedule": {
+                "raw": "목11:30-13:30, 금11:30-13:30"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)/공나B 314"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "741104",
+          "course_name": "세포생물학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장종수",
+              "schedule": {
+                "raw": "월13:30-15:00, 목13:30-15:00"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "742087",
+          "course_name": "면역학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호",
+              "schedule": {
+                "raw": "월10:00-11:30, 목14:00-15:30"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "742601",
+          "course_name": "유기화학기초",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "월15:30-17:00, 목15:30-17:00"
+              },
+              "room": {
+                "raw": "공나A 112 - e-강의실/실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "742602",
+          "course_name": "화학분석",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "채원석",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "공나B 402 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744011",
+          "course_name": "동물비교형태학및실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배윤환",
+              "schedule": {
+                "raw": "월13:30-15:30, 금13:30-15:30"
+              },
+              "room": {
+                "raw": "공나B 302 - 강의실(공용)/공나B 314"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744029",
+          "course_name": "보건환경생물학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용재",
+              "schedule": {
+                "raw": "화10:00-11:30, 금10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 302 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "741043",
+          "course_name": "생태학및실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용재",
+              "schedule": {
+                "raw": "화15:30-17:30, 수15:30-17:30"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "742012",
+          "course_name": "발생학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호",
+              "schedule": {
+                "raw": "월11:30-13:00, 목16:00-17:30"
+              },
+              "room": {
+                "raw": "공나B 301 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744032",
+          "course_name": "의학보건독성학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배윤환",
+              "schedule": {
+                "raw": "월14:00-15:30, 화10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 302 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "741046",
+          "course_name": "미생물학및실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장종수",
+              "schedule": {
+                "raw": "화09:30-11:30, 금09:30-11:30"
+              },
+              "room": {
+                "raw": "공나B 213 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744017",
+          "course_name": "조류와자원",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배윤환",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 302 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "744025",
+          "course_name": "종양생물학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호",
+              "schedule": {
+                "raw": "목14:00-15:30, 금14:00-15:30"
+              },
+              "room": {
+                "raw": "공나B 302 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "ECO_CHEMISTRY",
+      "department_name": "에코응용화학전공",
+      "courses": [
+        {
+          "course_code": "732087",
+          "course_name": "생화학",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "화10:00-11:30, 수13:30-15:00"
+              },
+              "room": {
+                "raw": "공나B 402 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "734056",
+          "course_name": "기능성소재학1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박성호",
+              "schedule": {
+                "raw": "월10:00-11:30, 화11:30-13:00"
+              },
+              "room": {
+                "raw": "공나B 401 - 강의실(공용)/공나B 413 - 전자기초실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "731016",
+          "course_name": "유기화학실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "목09:30-13:30"
+              },
+              "room": {
+                "raw": "공나B 401 - 강의실(공용)/공나B 413 - 전자기초실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "732043",
+          "course_name": "유기반응론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "월13:30-15:00, 목14:00-15:30"
+              },
+              "room": {
+                "raw": "공나B 402 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "734061",
+          "course_name": "바이오센서공학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍승택",
+              "schedule": {
+                "raw": "화11:30-13:00, 금11:30-13:00"
+              },
+              "room": {
+                "raw": "공나B 402 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "734063",
+          "course_name": "FL-응용재료학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박성호",
+              "schedule": {
+                "raw": "월15:30-17:30, 목10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 401 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "734067",
+          "course_name": "생활화학제품제조학실습",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "채원석",
+              "schedule": {
+                "raw": "수13:30-17:30"
+              },
+              "room": {
+                "raw": "공나B 401 - 강의실(공용)/공나B 413"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "NURSING",
+      "department_name": "간호학과",
+      "courses": [
+        {
+          "course_code": "771002",
+          "course_name": "간호학개론",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "수11:30-13:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "수13:30-15:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771003",
+          "course_name": "심리학의이해",
+          "classification": "전기",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김수미",
+              "schedule": {
+                "raw": "월11:30-13:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김수미",
+              "schedule": {
+                "raw": "월13:30-15:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771069",
+          "course_name": "다문화의이해",
+          "classification": "전기",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강순남",
+              "schedule": {
+                "raw": "수09:30-11:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "강순남",
+              "schedule": {
+                "raw": "수11:30-13:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771070",
+          "course_name": "비판적사고와간호과정",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오영경",
+              "schedule": {
+                "raw": "금09:30-11:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "오영경",
+              "schedule": {
+                "raw": "금11:30-13:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771084",
+          "course_name": "기본간호학I",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구민경",
+              "schedule": {
+                "raw": "월09:30-11:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "구민경",
+              "schedule": {
+                "raw": "월11:30-13:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771085",
+          "course_name": "기본간호학실습I",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구민경",
+              "schedule": {
+                "raw": "화09:30-11:30"
+              },
+              "room": {
+                "raw": "산학 103 기본간호학 연습실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "오수일",
+              "schedule": {
+                "raw": "수11:30-13:30"
+              },
+              "room": {
+                "raw": "산학 103 기본간호학 연습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "장경민",
+              "schedule": {
+                "raw": "목09:30-11:30"
+              },
+              "room": {
+                "raw": "산학 103 기본간호학 연습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "장경민",
+              "schedule": {
+                "raw": "목11:30-13:30"
+              },
+              "room": {
+                "raw": "산학 103 기본간호학 연습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771015",
+          "course_name": "간호와영양",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구민경",
+              "schedule": {
+                "raw": "목14:30-15:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "771081",
+          "course_name": "보완대체요법",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구민경",
+              "schedule": {
+                "raw": "목13:30-14:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "771009",
+          "course_name": "인간관계와의사소통",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김수미",
+              "schedule": {
+                "raw": "화11:30-13:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김수미",
+              "schedule": {
+                "raw": "화13:30-15:30"
+              },
+              "room": {
+                "raw": "산학316 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771011",
+          "course_name": "병원미생물학",
+          "classification": "전기",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김미리",
+              "schedule": {
+                "raw": "수13:30-15:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김미리",
+              "schedule": {
+                "raw": "수11:30-13:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "772501",
+          "course_name": "해부생리학II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김미리",
+              "schedule": {
+                "raw": "화13:30-15:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김미리",
+              "schedule": {
+                "raw": "화11:30-13:30"
+              },
+              "room": {
+                "raw": "산학307 - 스마트강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771027",
+          "course_name": "성인간호학2",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "월11:30-13:30"
+              },
+              "room": {
+                "raw": "산학411 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "수11:30-13:30"
+              },
+              "room": {
+                "raw": "산학410 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771028",
+          "course_name": "여성건강간호학1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "목09:30-12:30"
+              },
+              "room": {
+                "raw": "산학411 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "화09:30-12:30"
+              },
+              "room": {
+                "raw": "산학410 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771029",
+          "course_name": "아동간호학2",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "금09:30-12:30"
+              },
+              "room": {
+                "raw": "산학411 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "금09:30-12:30"
+              },
+              "room": {
+                "raw": "산학410 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771030",
+          "course_name": "정신간호학1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김재희",
+              "schedule": {
+                "raw": "화09:30-12:30"
+              },
+              "room": {
+                "raw": "산학411 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김재희",
+              "schedule": {
+                "raw": "목09:30-12:30"
+              },
+              "room": {
+                "raw": "산학410 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771032",
+          "course_name": "성인간호학실습1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 12,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "목13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2082 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "월13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2082 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "월11:30-17:30"
+              },
+              "room": {
+                "raw": "산학 2082 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771033",
+          "course_name": "여성건강간호학실습1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 12,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "수11:30-17:30"
+              },
+              "room": {
+                "raw": "산학 2102 모성 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "금11:30-17:30"
+              },
+              "room": {
+                "raw": "산학 2102 모성 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "화13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2102 모성 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771034",
+          "course_name": "아동간호학실습1",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 12,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "화13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2091 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "화13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2091 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "월13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2091 아동 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771031",
+          "course_name": "보건교육",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "수09:30-11:30"
+              },
+              "room": {
+                "raw": "산학410 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "772502",
+          "course_name": "건강증진과정책",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "월09:30-11:30"
+              },
+              "room": {
+                "raw": "산학411 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "771048",
+          "course_name": "지역사회간호학2",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "월11:30-14:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "화09:30-12:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771052",
+          "course_name": "시뮬레이션실습2",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "목11:30-13:30"
+              },
+              "room": {
+                "raw": "산학 210 Debriefing2"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "오영경",
+              "schedule": {
+                "raw": "목11:30-13:30"
+              },
+              "room": {
+                "raw": "산학 208 Debriefing1"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "홍정민",
+              "schedule": {
+                "raw": "목09:30-11:30"
+              },
+              "room": {
+                "raw": "산학 210 Debriefing2"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "목09:30-11:30"
+              },
+              "room": {
+                "raw": "산학 208 Debriefing1"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "05",
+              "professor": "이정실",
+              "schedule": {
+                "raw": "금09:30-11:30"
+              },
+              "room": {
+                "raw": "산학 208 Debriefing1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771053",
+          "course_name": "성인간호학실습3",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 12,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강정희",
+              "schedule": {
+                "raw": "화13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2111 통합역량실습실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "강정희",
+              "schedule": {
+                "raw": "수13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2082 성인 시뮬레이션실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "강정희",
+              "schedule": {
+                "raw": "목13:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2111 통합역량실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771058",
+          "course_name": "지역사회간호학실습1",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 6,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "금14:30-17:30"
+              },
+              "room": {
+                "raw": "지역사회간호학실습실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "화13:30-16:30"
+              },
+              "room": {
+                "raw": "지역사회간호학실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "류현숙",
+              "schedule": {
+                "raw": "수13:30-16:30"
+              },
+              "room": {
+                "raw": "지역사회간호학실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771062",
+          "course_name": "정신간호학실습2",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 6,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김재희",
+              "schedule": {
+                "raw": "수09:30-12:30"
+              },
+              "room": {
+                "raw": "산학 2123 정신간호학실습실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "김재희",
+              "schedule": {
+                "raw": "목13:30-16:30"
+              },
+              "room": {
+                "raw": "산학 2123 정신간호학실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김재희",
+              "schedule": {
+                "raw": "월11:30-14:30"
+              },
+              "room": {
+                "raw": "산학 2123 정신간호학실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771064",
+          "course_name": "노인간호실습",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 6,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "월15:30-18:25"
+              },
+              "room": {
+                "raw": "산학 2111 통합역량실습실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "금14:30-17:30"
+              },
+              "room": {
+                "raw": "산학 2111 통합역량실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "수16:30-19:15"
+              },
+              "room": {
+                "raw": "산학 2111 통합역량실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771065",
+          "course_name": "노인간호학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "화11:30-13:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "월09:30-10:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771077",
+          "course_name": "간호관리학1",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "화09:30-11:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "수09:30-11:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "772601",
+          "course_name": "안전과간호",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "금11:30-12:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "양화미",
+              "schedule": {
+                "raw": "금12:30-13:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771080",
+          "course_name": "호스피스간호",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장경민",
+              "schedule": {
+                "raw": "수12:30-13:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "771082",
+          "course_name": "상담이론과실제",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김수미",
+              "schedule": {
+                "raw": "금13:30-14:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "771024",
+          "course_name": "간호정보학",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장경민",
+              "schedule": {
+                "raw": "금12:30-13:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "장경민",
+              "schedule": {
+                "raw": "금11:30-12:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "771047",
+          "course_name": "성인간호학4",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강정희",
+              "schedule": {
+                "raw": "월09:30-11:30"
+              },
+              "room": {
+                "raw": "산학406 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "간호학과 재학생만"
+            },
+            {
+              "section": "02",
+              "professor": "강정희",
+              "schedule": {
+                "raw": "목11:30-13:30"
+              },
+              "room": {
+                "raw": "산학407 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SPORTS_HEALTH",
+      "department_name": "스포츠건강과학과",
+      "courses": [
+        {
+          "course_code": "761003",
+          "course_name": "체육원리",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "화10:00-11:30, 수13:30-15:00"
+              },
+              "room": {
+                "raw": "제216 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 둘째날 10시 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "762500",
+          "course_name": "***건강과운동의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "화15:30-17:00, 수12:00-13:30"
+              },
+              "room": {
+                "raw": "제216 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "입학신청/정정기간연장"
+            }
+          ]
+        },
+        {
+          "course_code": "762601",
+          "course_name": "플로어볼지도법",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "월11:30-14:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "764025",
+          "course_name": "스포츠생리학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안근희",
+              "schedule": {
+                "raw": "화13:30-15:00, 목13:30-15:00"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 둘째날 10시 전체"
+            },
+            {
+              "section": "02",
+              "professor": "안근희",
+              "schedule": {
+                "raw": "화13:30-15:00, 금13:30-15:00"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "764032",
+          "course_name": "건강생활과구기스포츠",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "금09:30-12:30"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "스포츠건강과학과 3학년생 학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "762005",
+          "course_name": "운동처방론",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안근희",
+              "schedule": {
+                "raw": "화13:30-15:00, 금09:30-11:00"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 둘째날 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "762011",
+          "course_name": "전문실기II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "금11:30-14:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "금14:30-17:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "762501",
+          "course_name": "웨이트트레이닝I",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "수09:30-12:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "목09:30-12:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실및실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "764028",
+          "course_name": "스포츠실기지도법",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "화13:30-16:30"
+              },
+              "room": {
+                "raw": "제216 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 재학생/둘째날 10시 전체"
+            },
+            {
+              "section": "02",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "목13:30-16:30"
+              },
+              "room": {
+                "raw": "제216 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "764037",
+          "course_name": "스포츠건강윤리",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김세아",
+              "schedule": {
+                "raw": "월09:30-11:00, 금09:30-11:00"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "762022",
+          "course_name": "운동역학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤성원",
+              "schedule": {
+                "raw": "수13:30-15:30, 금12:00-13:30"
+              },
+              "room": {
+                "raw": "제216 - 강의실/제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 둘째날 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "762025",
+          "course_name": "스포츠의학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안근희",
+              "schedule": {
+                "raw": "월17:30-18:25"
+              },
+              "room": {
+                "raw": "제213 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 재학생/둘째날 10시 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "762602",
+          "course_name": "AI와스포츠데이터분석실",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤성원",
+              "schedule": {
+                "raw": "금09:30-11:30, 금10:00-11:30"
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F/정보 408"
+              },
+              "capacity": 0,
+              "notes": "재학생/둘째날 10시 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "764036",
+          "course_name": "수영및하계건강스포츠실",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤영선",
+              "schedule": {
+                "raw": "목14:30-16:30, 금10:00-12:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실습실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 스포츠 재학생/둘째날 10시 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "762052",
+          "course_name": "스포츠철학및문화사",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤영선",
+              "schedule": {
+                "raw": "화11:30-13:30, 수10:30-11:30"
+              },
+              "room": {
+                "raw": "제219 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]스포츠 수강가능/둘째날 10시 전체"
+            }
+          ]
+        },
+        {
+          "course_code": "764016",
+          "course_name": "체육정책및행정론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍태",
+              "schedule": {
+                "raw": "금19:15-20:05"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]스포츠 수강가능/첫째날"
+            }
+          ]
+        },
+        {
+          "course_code": "764040",
+          "course_name": "캡스톤디자인(퍼스널트레이닝지도및실습)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안근희",
+              "schedule": {
+                "raw": "수10:00-13:00, 금10:00-11:30"
+              },
+              "room": {
+                "raw": "제237 - 스포츠과학측정실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "FOOD_NUTRITION",
+      "department_name": "식품영양학과",
+      "courses": [
+        {
+          "course_code": "752053",
+          "course_name": "***식품영양학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최진희",
+              "schedule": {
+                "raw": "월13:30-15:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": "식영1학년만신청 가능/식영학과 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "752066",
+          "course_name": "제과제빵실습",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "남서현",
+              "schedule": {
+                "raw": "월10:30-13:30"
+              },
+              "room": {
+                "raw": "공나A 311 - 조리실습실"
+              },
+              "capacity": 0,
+              "notes": "식영보건생만"
+            }
+          ]
+        },
+        {
+          "course_code": "752001",
+          "course_name": "인체생리학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "식영강사1",
+              "schedule": {
+                "raw": "월13:30-15:00, 화10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": "식영보건생만/첫째날 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "752002",
+          "course_name": "식품분석및실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "화11:30-13:30, 목11:30-13:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)/313"
+              },
+              "capacity": 0,
+              "notes": "첫째날 식영/둘째날 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "752020",
+          "course_name": "유기화학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최진희",
+              "schedule": {
+                "raw": "월15:30-17:00, 목14:00-15:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": "수강가능/식영학과 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "752037",
+          "course_name": "지역사회영양학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경숙",
+              "schedule": {
+                "raw": "월12:00-13:30, 목12:00-13:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "754013",
+          "course_name": "외국조리실습",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "수14:30-17:30"
+              },
+              "room": {
+                "raw": "공나A 311 - 조리실습실"
+              },
+              "capacity": 0,
+              "notes": "식영보건생만"
+            }
+          ]
+        },
+        {
+          "course_code": "751006",
+          "course_name": "영양학I",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "식영강사1",
+              "schedule": {
+                "raw": "화13:30-15:00, 금13:30-13:00"
+              },
+              "room": {
+                "raw": "공나B 502 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": "식영보건생만 첫째날 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "751007",
+          "course_name": "식품화학I",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "수10:00-11:30, 금09:30-11:00"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)/공나A 311"
+              },
+              "capacity": 0,
+              "notes": "첫째날 식영/둘째날 10시"
+            }
+          ]
+        },
+        {
+          "course_code": "752016",
+          "course_name": "조리과학및실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "수11:30-13:30, 목13:30-15:30"
+              },
+              "room": {
+                "raw": "공나A 311 - 조리실습실"
+              },
+              "capacity": 0,
+              "notes": "식영3학년신청"
+            },
+            {
+              "section": "02",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "화09:30-11:30, 목11:30-13:30"
+              },
+              "room": {
+                "raw": "공나A 311 - 조리실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "752034",
+          "course_name": "식품가공및저장학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최진희",
+              "schedule": {
+                "raw": "수14:00-15:30, 금10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 502 - 강의실(공용)/공나B 501"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "752038",
+          "course_name": "영양판정및실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경숙",
+              "schedule": {
+                "raw": "화10:00-13:30, 목15:30-17:30"
+              },
+              "room": {
+                "raw": "공나B 313 - 영양학실험실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "752017",
+          "course_name": "영양교육및상담실습",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "화13:30-17:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "752040",
+          "course_name": "임상영양학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "월11:30-13:30, 수10:00-11:30"
+              },
+              "room": {
+                "raw": "공나B 502 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "752051",
+          "course_name": "발효식품학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최진희",
+              "schedule": {
+                "raw": "수09:30-11:30"
+              },
+              "room": {
+                "raw": "공나B 501 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "754014",
+          "course_name": "캡스톤디자인(식품영양)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경숙",
+              "schedule": {
+                "raw": "월13:30-17:30"
+              },
+              "room": {
+                "raw": "공나B 502 - 강의실(공용)"
+              },
+              "capacity": 0,
+              "notes": "정가"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "HEALTH_MANAGEMENT",
+      "department_name": "보건경영학과",
+      "courses": [
+        {
+          "course_code": "755001",
+          "course_name": "의학용어(1)",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이은미",
+              "schedule": {
+                "raw": "화12:00-13:30, 금09:30-11:00"
+              },
+              "room": {
+                "raw": "산학514 - 실무실습실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만 11시간"
+            }
+          ]
+        },
+        {
+          "course_code": "755002",
+          "course_name": "보건학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이윤경",
+              "schedule": {
+                "raw": "수09:30-11:00, 금09:30-11:00"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "755003",
+          "course_name": "***보건행정학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동하",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "입학신청/정정기간연장"
+            }
+          ]
+        },
+        {
+          "course_code": "755008",
+          "course_name": "병원경영학",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동하",
+              "schedule": {
+                "raw": "월09:30-11:00, 수12:00-13:30"
+              },
+              "room": {
+                "raw": "산학503 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만 11시간"
+            }
+          ]
+        },
+        {
+          "course_code": "755007",
+          "course_name": "의료병리학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이은미",
+              "schedule": {
+                "raw": "월12:00-13:30, 수12:00-13:30"
+              },
+              "room": {
+                "raw": "산학514 - 실무실습실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만 11시간"
+            }
+          ]
+        },
+        {
+          "course_code": "755009",
+          "course_name": "보건의료통계",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이윤경",
+              "schedule": {
+                "raw": "화09:30-11:30, 목09:30-11:30"
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만 11시간"
+            }
+          ]
+        },
+        {
+          "course_code": "755010",
+          "course_name": "의료의질관리",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손정연",
+              "schedule": {
+                "raw": "목11:30-13:30"
+              },
+              "room": {
+                "raw": "산학503 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "755011",
+          "course_name": "보건의료커뮤니케이션",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손정연",
+              "schedule": {
+                "raw": "목13:30-15:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755017",
+          "course_name": "병원회계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이윤경",
+              "schedule": {
+                "raw": "화12:00-13:30, 목12:00-13:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755018",
+          "course_name": "병원마케팅",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "보건강사1",
+              "schedule": {
+                "raw": "금09:30-11:30"
+              },
+              "room": {
+                "raw": "산학514 - 실무실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755019",
+          "course_name": "질병및의료행위분류",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 8,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이은미",
+              "schedule": {
+                "raw": "월09:30-11:30, 목09:30-11:30"
+              },
+              "room": {
+                "raw": "산학514 - 실무실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755020",
+          "course_name": "보건의료조직관리",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "보건강사1",
+              "schedule": {
+                "raw": "금09:30-11:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755021",
+          "course_name": "의무기록전사",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양지연",
+              "schedule": {
+                "raw": "금13:30-15:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755022",
+          "course_name": "보건사업관리",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동하",
+              "schedule": {
+                "raw": "월11:30-13:30"
+              },
+              "room": {
+                "raw": "산학503 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755029",
+          "course_name": "보건의료법",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동하",
+              "schedule": {
+                "raw": "월12:00-13:30, 수12:00-13:30"
+              },
+              "room": {
+                "raw": "산학503 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755030",
+          "course_name": "의무기록정보분석실무",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양지연",
+              "schedule": {
+                "raw": "월09:30-11:30, 목09:30-11:30"
+              },
+              "room": {
+                "raw": "산학504 - 실무실습실"
+              },
+              "capacity": 0,
+              "notes": "보건경영재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "755031",
+          "course_name": "보건의료정보관리실무",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양지연",
+              "schedule": {
+                "raw": "금09:30-13:30"
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "755033",
+          "course_name": "역학및건강증진",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이윤경",
+              "schedule": {
+                "raw": "화09:30-11:30"
+              },
+              "room": {
+                "raw": "산학504 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "757500",
+          "course_name": "캡스톤디자인(보건프로그램개발및평가)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동하",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "산학503 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "DATA_SCIENCE",
+      "department_name": "데이터사이언스학과",
+      "courses": [
+        {
+          "course_code": "716027",
+          "course_name": "인공지능을위한수학II",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정례",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30"
+              },
+              "room": {
+                "raw": "공나A 415 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

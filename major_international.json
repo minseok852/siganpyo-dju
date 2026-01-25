@@ -1,0 +1,1784 @@
+{
+  "college": "국제협력대학",
+  "college_eng": "international_cooperation",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "departments": [
+    {
+      "department_id": "KOREAN_STUDIES",
+      "department_name": "한국학과",
+      "courses": [
+        {
+          "course_code": "871001",
+          "course_name": "심화한국어1",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "화16:00-18:50"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "한국학과 및 외국인학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "871002",
+          "course_name": "학업한국어기초듣기",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최재민",
+              "schedule": {
+                "raw": "금10:00-13:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김수종",
+              "schedule": {
+                "raw": "금10:00-13:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "월09:30-12:30"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871003",
+          "course_name": "학업한국어기초말하기",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김효은",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "월13:00-16:00"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871004",
+          "course_name": "학업한국어기초쓰기",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김효은",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871005",
+          "course_name": "학업한국어기초읽기",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최재민",
+              "schedule": {
+                "raw": "금14:00-17:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김수종",
+              "schedule": {
+                "raw": "금14:00-17:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871006",
+          "course_name": "심화한국어2",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "목16:00-18:50"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "871007",
+          "course_name": "학업한국어기초문법",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "목16:00-18:50"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "화09:30-12:30"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871010",
+          "course_name": "한국의생활문화와언어",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "화13:00-16:00"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872601",
+          "course_name": "한국어와한국문화초급1",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "화09:30-12:30"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872602",
+          "course_name": "한국어와한국문화초급2",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "화13:00-16:00"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "월09:30-12:30"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872603",
+          "course_name": "한국어와한국문화초급3",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "월13:00-16:00"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872604",
+          "course_name": "한국어와한국문화초급4",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사17",
+              "schedule": {
+                "raw": "월16:00-18:50"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872605",
+          "course_name": "한국어와한국문화중급1",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사16",
+              "schedule": {
+                "raw": "목09:30-12:30"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872606",
+          "course_name": "한국어와한국문화중급2",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사16",
+              "schedule": {
+                "raw": "목13:00-16:00"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872607",
+          "course_name": "한국어와한국문화중급3",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김연희",
+              "schedule": {
+                "raw": "금09:30-12:30"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872608",
+          "course_name": "한국어와한국문화중급4",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김연희",
+              "schedule": {
+                "raw": "금13:00-16:00"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871008",
+          "course_name": "K-POP한국어",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이선형",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김수종",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871009",
+          "course_name": "드라마.예능한국어",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이선형",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김수종",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871011",
+          "course_name": "학업한국어듣기",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신영선",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김선미",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "최재민",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "주재환",
+              "schedule": {
+                "raw": "수09:30-12:30"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871012",
+          "course_name": "학업한국어말하기",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김선미",
+              "schedule": {
+                "raw": "금10:00-13:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이선형",
+              "schedule": {
+                "raw": "금10:00-13:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "신영선",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "주재환",
+              "schedule": {
+                "raw": "수13:00-16:00"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871013",
+          "course_name": "학업한국어쓰기",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김선미",
+              "schedule": {
+                "raw": "금14:00-17:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이선형",
+              "schedule": {
+                "raw": "금14:00-17:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "신영선",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "목16:00-18:50"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871014",
+          "course_name": "학업한국어읽기",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신영선",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김선미",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "최재민",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교208 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "주재환",
+              "schedule": {
+                "raw": "수16:00-18:50"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872500",
+          "course_name": "비즈니스한국어1",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김효은",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "김연희",
+              "schedule": {
+                "raw": "금16:00-18:50"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872501",
+          "course_name": "비즈니스한국어2",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "화14:00-17:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "화14:00-17:00"
+              },
+              "room": {
+                "raw": "대교206 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김효은",
+              "schedule": {
+                "raw": "화14:00-17:00"
+              },
+              "room": {
+                "raw": "대교207 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "금16:00-18:50"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871015",
+          "course_name": "한국의전통문화",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "금09:30-12:30"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "홍성목",
+              "schedule": {
+                "raw": "목13:00-16:00"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871021",
+          "course_name": "한국의현대문화",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍성목",
+              "schedule": {
+                "raw": "목09:30-12:30"
+              },
+              "room": {
+                "raw": "인305 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871022",
+          "course_name": "외국어로서의한국어이해교육론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "월20:30-21:20"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871023",
+          "course_name": "외국어로서의한국어문법교육론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한국강사18",
+              "schedule": {
+                "raw": "금13:00-16:00"
+              },
+              "room": {
+                "raw": "인308 - 일반A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "871024",
+          "course_name": "외국어로서의한국어표현교육론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "공하림",
+              "schedule": {
+                "raw": "화20:30-21:20"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "INTL_BUSINESS",
+      "department_name": "국제경영학과",
+      "courses": [
+        {
+          "course_code": "872001",
+          "course_name": "경영학의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영진",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": "국제경영학과 외국인유학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "872002",
+          "course_name": "마케팅입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영진",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "홍성일",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대205 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872003",
+          "course_name": "조직행동개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영진",
+              "schedule": {
+                "raw": "목17:00-19:40"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872004",
+          "course_name": "경력관리론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍성일",
+              "schedule": {
+                "raw": "화14:00-17:00"
+              },
+              "room": {
+                "raw": "대205 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872005",
+          "course_name": "국제서비스마케팅",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이재훈",
+              "schedule": {
+                "raw": "금14:00-17:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872006",
+          "course_name": "국제인적자원관리",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "대림이",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "대림이",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872007",
+          "course_name": "비즈니스잉글리쉬",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이재훈",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872008",
+          "course_name": "글로벌마케팅이론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "데니스",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교103 - 대강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "우스만",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872009",
+          "course_name": "국제통상환경론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "데니스",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교103 - 대강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "우스만",
+              "schedule": {
+                "raw": "화14:00-17:00"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872010",
+          "course_name": "비즈니스통계학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "월21:20-22:10"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872011",
+          "course_name": "국제무역실무론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류승무",
+              "schedule": {
+                "raw": "화10:00-13:00"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "국제강사1",
+              "schedule": {
+                "raw": "목10:00-13:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872012",
+          "course_name": "E-Business",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "화21:20-22:10"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872013",
+          "course_name": "비즈니스창업론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "수21:00-22:10"
+              },
+              "room": {
+                "raw": "e-learning(온라인)1"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872014",
+          "course_name": "글로벌기업분석",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "데니스",
+              "schedule": {
+                "raw": "월17:00-19:40"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "국제강사1",
+              "schedule": {
+                "raw": "월17:00-19:40"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872015",
+          "course_name": "국제기업물류",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "데니스",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "국제강사1",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872017",
+          "course_name": "글로벌경영전략",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "국제강사1",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872017",
+          "course_name": "글로벌경영전략",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "02",
+              "professor": "류승무",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "대림이",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872018",
+          "course_name": "글로벌생산및운영관리",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "국제강사1",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "류승무",
+              "schedule": {
+                "raw": "월14:00-17:00"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872019",
+          "course_name": "글로벌CEO사례연구",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "대림이",
+              "schedule": {
+                "raw": "수10:00-13:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "877501",
+          "course_name": "ESG경영학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "데니스",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교311 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "국제강사6",
+              "schedule": {
+                "raw": "월10:00-13:00"
+              },
+              "room": {
+                "raw": "대교308 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "877502",
+          "course_name": "국제통상정책이론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "우스만",
+              "schedule": {
+                "raw": "월17:00-19:40"
+              },
+              "room": {
+                "raw": "대교209 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "류승무",
+              "schedule": {
+                "raw": "월17:00-19:40"
+              },
+              "room": {
+                "raw": "대교307 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872023",
+          "course_name": "국제경영성공사례",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "목17:00-19:40"
+              },
+              "room": {
+                "raw": "사104 - 교양A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "872024",
+          "course_name": "국제협상세미나",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "금10:00-13:00"
+              },
+              "room": {
+                "raw": "사104 - 교양A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "홍성일",
+              "schedule": {
+                "raw": "월17:00-19:40"
+              },
+              "room": {
+                "raw": "대205 - 강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "877503",
+          "course_name": "국제경제법",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "명철규",
+              "schedule": {
+                "raw": "목14:00-17:00"
+              },
+              "room": {
+                "raw": "사104 - 교양A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

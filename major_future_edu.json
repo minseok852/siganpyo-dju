@@ -1,0 +1,578 @@
+{
+  "college": "미래평생교육융합대학",
+  "college_eng": "future_lifelong_education",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-25",
+  "departments": [
+    {
+      "department_id": "HUMANCARE_EDU_NIGHT",
+      "department_name": "휴먼케어평생교육학과(야)",
+      "courses": [
+        {
+          "course_code": "275002",
+          "course_name": "평생교육론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송성숙",
+              "schedule": {
+                "raw": "수18:00-20:30"
+              },
+              "room": {
+                "raw": "국312 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육과학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275038",
+          "course_name": "장애인복지론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "함현진",
+              "schedule": {
+                "raw": "수20:30-23:00"
+              },
+              "room": {
+                "raw": "국311 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육융합대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275039",
+          "course_name": "행정학원론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신미애",
+              "schedule": {
+                "raw": "토16:00-18:50"
+              },
+              "room": {
+                "raw": "국311 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육융합대학 재학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "275047",
+          "course_name": "청소년문화",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김대경",
+              "schedule": {
+                "raw": "화18:00-20:30"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "275008",
+          "course_name": "평생교육프로그램개발론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송성숙",
+              "schedule": {
+                "raw": "토13:00-16:00"
+              },
+              "room": {
+                "raw": "국312 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육과학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275034",
+          "course_name": "공기업론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신미애",
+              "schedule": {
+                "raw": "토13:00-16:00"
+              },
+              "room": {
+                "raw": "국311 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육융합대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275049",
+          "course_name": "청소년복지",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김경식",
+              "schedule": {
+                "raw": "목18:00-20:30"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육과학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275018",
+          "course_name": "평생교육실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송성숙",
+              "schedule": {
+                "raw": "토18:00-21:20"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "275052",
+          "course_name": "청소년심리및상담",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "서향리",
+              "schedule": {
+                "raw": "화20:30-23:00"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육과학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275020",
+          "course_name": "지역사회교육론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송성숙",
+              "schedule": {
+                "raw": "토09:30-12:30"
+              },
+              "room": {
+                "raw": "국312 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "휴먼케어평생교육과학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "275044",
+          "course_name": "자원봉사론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 3,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김후년",
+              "schedule": {
+                "raw": "수18:00-20:30"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합"
+            }
+          ]
+        },
+        {
+          "course_code": "275054",
+          "course_name": "청소년프로그램개발과평가",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김경식",
+              "schedule": {
+                "raw": "목20:30-23:00"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SOCIAL_WELFARE_NIGHT",
+      "department_name": "사회복지상담학과(야)",
+      "courses": [
+        {
+          "course_code": "276001",
+          "course_name": "사회복지학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "함현진",
+              "schedule": {
+                "raw": "토09:30-12:30"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합 양대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "276002",
+          "course_name": "상담심리학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신미애",
+              "schedule": {
+                "raw": "수18:00-20:30"
+              },
+              "room": {
+                "raw": "국311 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합 양대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "276004",
+          "course_name": "사회복지와인권",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김후년",
+              "schedule": {
+                "raw": "토13:00-16:00"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합대학 재학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "276024",
+          "course_name": "뇌와치매",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김후년",
+              "schedule": {
+                "raw": "토16:00-18:50"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "276013",
+          "course_name": "사회복지정책론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신미애",
+              "schedule": {
+                "raw": "토09:30-12:30"
+              },
+              "room": {
+                "raw": "국311 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "276034",
+          "course_name": "건강가정론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김후년",
+              "schedule": {
+                "raw": "수20:30-23:00"
+              },
+              "room": {
+                "raw": "국310 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "미래평생교육융합 양대학 재학생만"
+            }
+          ]
+        },
+        {
+          "course_code": "276021",
+          "course_name": "이상심리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "함현진",
+              "schedule": {
+                "raw": "수18:00-20:30"
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "사회복지상담학과"
+            }
+          ]
+        },
+        {
+          "course_code": "276029",
+          "course_name": "노인요양보호론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유선희",
+              "schedule": {
+                "raw": "토13:00-16:00"
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "수강가능"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "DRONE_INDUSTRY",
+      "department_name": "드론산업학과",
+      "courses": [
+        {
+          "course_code": "272602",
+          "course_name": "회전익UAV초급운용및실",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한규정",
+              "schedule": {
+                "raw": "토13:00-17:00"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "드론산업학과학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "272605",
+          "course_name": "프로그램기초",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한규정",
+              "schedule": {
+                "raw": "토09:30-12:30"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "드론산업학과학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "272606",
+          "course_name": "비가시권계기비행기초",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한규정",
+              "schedule": {
+                "raw": "토17:00-20:30"
+              },
+              "room": {
+                "raw": "국101 - e-강의실"
+              },
+              "capacity": 0,
+              "notes": "드론산업학과학생만 수강가능"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
