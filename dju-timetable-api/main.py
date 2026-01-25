@@ -1,0 +1,84 @@
+# main.py
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
+
+# 환경변수 로드
+load_dotenv()
+
+from models.schemas import EvaluateRequest, EvaluateResponse
+from services.ai_service import evaluate_schedule
+
+app = FastAPI(
+    title="대진대 시간표 AI API",
+    description="시간표 분석 및 평가 API",
+    version="1.0.0"
+)
+
+# CORS 설정 (프론트엔드 연동용)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",  # Vite 개발서버
+        "http://localhost:3000",
+        "https://dju-timetable.vercel.app",  # 배포 도메인 (나중에 수정)
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.get("/")
+async def root():
+    """헬스체크"""
+    return {"status": "ok", "message": "대진대 시간표 AI API"}
+
+
+@app.get("/health")
+async def health_check():
+    """상태 확인"""
+    api_key_exists = bool(os.getenv("ANTHROPIC_API_KEY"))
+    return {
+        "status": "healthy",
+        "api_key_configured": api_key_exists
+    }
+
+
+@app.post("/api/evaluate")
+async def evaluate_schedule_endpoint(request: EvaluateRequest):
+    """
+    시간표 평가 API
+    
+    - 현재 시간표를 분석하여 유형 판정
+    - 각종 지표 평가 (우주공강, 밥시간, 동선 등)
+    - 맞춤 조언 제공
+    """
+    
+    if not request.courses:
+        raise HTTPException(status_code=400, detail="과목이 없습니다")
+    
+    if len(request.courses) > 15:
+        raise HTTPException(status_code=400, detail="과목이 너무 많습니다 (최대 15개)")
+    
+    # 과목 데이터를 dict로 변환
+    courses_data = [course.model_dump() for course in request.courses]
+    user_info_data = request.user_info.model_dump()
+    
+    # AI 평가 실행
+    result = await evaluate_schedule(courses_data, user_info_data)
+    
+    if not result.get("success"):
+        raise HTTPException(
+            status_code=500, 
+            detail=result.get("error", "AI 평가 중 오류가 발생했습니다")
+        )
+    
+    return result
+
+
+# 개발용 실행
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)

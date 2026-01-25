@@ -1,0 +1,9 @@
+# .gitignore
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env.example
+update_target_year.js
+upload_courses.cjs
