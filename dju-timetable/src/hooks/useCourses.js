@@ -1,170 +1,214 @@
 // src/hooks/useCourses.js
-import { useState, useCallback, useRef } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { useState, useCallback } from 'react';
+import { 
+  collection, 
+  query, 
+  where, 
+  orderBy, 
+  limit, 
+  getDocs,
+  startAfter 
+} from 'firebase/firestore';
 import { db } from '../services/firebase';
 
-const PAGE_SIZE = 30; // 한 번에 보여줄 개수
-
 export function useCourses() {
-  const [allCourses, setAllCourses] = useState([]); // 전체 캐시
-  const [filteredCourses, setFilteredCourses] = useState([]); // 필터링된 결과
-  const [courses, setCourses] = useState([]); // 화면에 표시할 과목
+  const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [hasMore, setHasMore] = useState(false);
-  const isLoaded = useRef(false);
-  const currentPage = useRef(0);
+  const [lastDoc, setLastDoc] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
 
-  // 전체 데이터 로드 (최초 1회)
-  const loadAllCourses = useCallback(async () => {
-    if (isLoaded.current) return allCourses;
-    
+  // 과목 검색 - 결과를 직접 반환!
+  const searchCourses = useCallback(async (filters = {}) => {
     setLoading(true);
     setError(null);
 
     try {
-      console.log('📚 전체 과목 데이터 로딩 중...');
       const coursesRef = collection(db, 'courses');
-      const snapshot = await getDocs(coursesRef);
+      let constraints = [];
 
-      const results = snapshot.docs.map(doc => ({
+      // 카테고리 필터
+      if (filters.category && filters.category !== 'all') {
+        constraints.push(where('category', '==', filters.category));
+      }
+
+      // 학년 필터
+      if (filters.targetYear && filters.targetYear > 0) {
+        constraints.push(where('target_year', '==', filters.targetYear));
+      }
+
+      // 단과대학 필터
+      if (filters.college && filters.college !== '전체') {
+        constraints.push(where('college', '==', filters.college));
+      }
+
+      // 학과 필터
+      if (filters.department) {
+        constraints.push(where('department', '==', filters.department));
+      }
+
+      // 이수구분 필터 (전필/전선)
+      if (filters.classification) {
+        constraints.push(where('classification', '==', filters.classification));
+      }
+
+      // 영역 필터 (교양선택)
+      if (filters.area) {
+        constraints.push(where('area', '==', filters.area));
+      }
+
+      // 정렬 및 제한
+      constraints.push(orderBy('course_name'));
+      constraints.push(limit(filters.limit || 50));
+
+      const q = query(coursesRef, ...constraints);
+      const snapshot = await getDocs(q);
+
+      let results = snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
       }));
 
-      console.log(`✅ ${results.length}개 과목 로드 완료`);
-      setAllCourses(results);
-      isLoaded.current = true;
+      // 검색어 필터 (클라이언트 사이드)
+      if (filters.searchTerm) {
+        const term = filters.searchTerm.toLowerCase();
+        results = results.filter(course => 
+          course.course_name?.toLowerCase().includes(term) ||
+          course.professor?.toLowerCase().includes(term) ||
+          course.course_code?.includes(term)
+        );
+      }
+
+      setCourses(results);
+      setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
+      setHasMore(snapshot.docs.length === (filters.limit || 50));
+
+      // ✅ 결과 직접 반환!
       return results;
 
     } catch (err) {
-      console.error('❌ 데이터 로드 오류:', err);
+      console.error('Search error:', err);
+      setError(err.message);
+      return []; // 에러시 빈 배열 반환
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  // 더 불러오기 (페이지네이션)
+  const loadMore = useCallback(async (filters = {}) => {
+    if (!lastDoc || !hasMore || loading) return [];
+
+    setLoading(true);
+    try {
+      const coursesRef = collection(db, 'courses');
+      let constraints = [];
+
+      if (filters.category && filters.category !== 'all') {
+        constraints.push(where('category', '==', filters.category));
+      }
+
+      constraints.push(orderBy('course_name'));
+      constraints.push(startAfter(lastDoc));
+      constraints.push(limit(50));
+
+      const q = query(coursesRef, ...constraints);
+      const snapshot = await getDocs(q);
+
+      const newResults = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      setCourses(prev => [...prev, ...newResults]);
+      setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
+      setHasMore(snapshot.docs.length === 50);
+
+      return newResults;
+
+    } catch (err) {
       setError(err.message);
       return [];
     } finally {
       setLoading(false);
     }
-  }, [allCourses]);
-
-  // 필터링 함수
-  const filterCourses = useCallback((data, filters) => {
-    let results = [...data];
-
-    // 카테고리 필터
-    if (filters.category && filters.category !== 'all') {
-      results = results.filter(c => c.category === filters.category);
-    }
-
-    // 학년 필터 (엄격)
-    if (filters.targetYear && filters.targetYear > 0) {
-      results = results.filter(c => c.target_year === filters.targetYear);
-    }
-
-    // 영역 필터 (교양선택)
-    if (filters.area) {
-      results = results.filter(c => c.area === filters.area);
-    }
-
-    // 이수구분 필터 (전공)
-    if (filters.classification) {
-      results = results.filter(c => c.classification === filters.classification);
-    }
-
-    // 단과대학 필터
-    if (filters.college && filters.college !== '전체') {
-      results = results.filter(c => c.college === filters.college);
-    }
-
-    // 학과 필터
-    if (filters.department) {
-      results = results.filter(c => c.department === filters.department);
-    }
-
-    // 검색어 필터
-    if (filters.searchTerm) {
-      const term = filters.searchTerm.toLowerCase();
-      results = results.filter(c => 
-        c.course_name?.toLowerCase().includes(term) ||
-        c.professor?.toLowerCase().includes(term) ||
-        c.course_code?.includes(term)
-      );
-    }
-
-    // 정렬
-    results.sort((a, b) => {
-      if (a.target_year !== b.target_year) {
-        if (a.target_year === 0) return 1;
-        if (b.target_year === 0) return -1;
-        return a.target_year - b.target_year;
-      }
-      return (a.course_name || '').localeCompare(b.course_name || '');
-    });
-
-    return results;
-  }, []);
-
-  // 과목 검색
-  const searchCourses = useCallback(async (filters = {}) => {
-    setLoading(true);
-    
-    try {
-      // 데이터 로드
-      let data = allCourses;
-      if (!isLoaded.current) {
-        data = await loadAllCourses();
-      }
-
-      // 필터링
-      const filtered = filterCourses(data, filters);
-      setFilteredCourses(filtered);
-
-      // 첫 페이지만 표시
-      currentPage.current = 1;
-      const firstPage = filtered.slice(0, PAGE_SIZE);
-      setCourses(firstPage);
-      setHasMore(filtered.length > PAGE_SIZE);
-
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [allCourses, loadAllCourses, filterCourses]);
-
-  // 더보기
-  const loadMore = useCallback(() => {
-    if (loading || !hasMore) return;
-
-    currentPage.current += 1;
-    const start = 0;
-    const end = currentPage.current * PAGE_SIZE;
-    
-    setCourses(filteredCourses.slice(start, end));
-    setHasMore(end < filteredCourses.length);
-  }, [filteredCourses, loading, hasMore]);
+  }, [lastDoc, hasMore, loading]);
 
   // 학과 목록 가져오기
-  const getDepartments = useCallback((college) => {
+  const getDepartments = useCallback(async (college) => {
     if (!college || college === '전체') return [];
 
-    const departments = new Set();
-    allCourses.forEach(course => {
-      if (course.college === college && course.department) {
-        departments.add(course.department);
-      }
-    });
+    try {
+      const coursesRef = collection(db, 'courses');
+      const q = query(
+        coursesRef,
+        where('college', '==', college),
+        orderBy('department'),
+        limit(200)
+      );
+      
+      const snapshot = await getDocs(q);
+      const departments = new Set();
+      
+      snapshot.docs.forEach(doc => {
+        const dept = doc.data().department;
+        if (dept) departments.add(dept);
+      });
 
-    return Array.from(departments).sort();
-  }, [allCourses]);
+      return Array.from(departments).sort();
+    } catch (err) {
+      console.error('Get departments error:', err);
+      return [];
+    }
+  }, []);
+
+  // 교양필수 목록 가져오기
+  const getGeneralRequired = useCallback(async () => {
+    try {
+      const results = await searchCourses({ 
+        category: 'general_required',
+        limit: 100 
+      });
+      
+      // 중복 제거된 과목명 반환
+      const uniqueNames = [...new Set(results.map(c => c.course_name))];
+      return uniqueNames.sort();
+    } catch (err) {
+      console.error('Get general required error:', err);
+      return [];
+    }
+  }, [searchCourses]);
+
+  // 전공필수 목록 가져오기 (학과별)
+  const getMajorRequired = useCallback(async (department) => {
+    if (!department) return [];
+
+    try {
+      const results = await searchCourses({ 
+        category: 'major',
+        department,
+        classification: '전필',
+        limit: 100 
+      });
+      
+      // 중복 제거된 과목명 반환
+      const uniqueNames = [...new Set(results.map(c => c.course_name))];
+      return uniqueNames.sort();
+    } catch (err) {
+      console.error('Get major required error:', err);
+      return [];
+    }
+  }, [searchCourses]);
 
   return {
     courses,
     loading,
     error,
     hasMore,
-    totalCount: filteredCourses.length,
     searchCourses,
     loadMore,
     getDepartments,
+    getGeneralRequired,
+    getMajorRequired,
   };
 }

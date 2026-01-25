@@ -1,5 +1,6 @@
 // src/pages/HomePage.jsx
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Plus, 
   Trash2, 
@@ -9,7 +10,8 @@ import {
   Copy,
   Check,
   Loader2,
-  X
+  X,
+  Wand2
 } from 'lucide-react';
 import ScheduleGrid from '../components/schedule/ScheduleGrid';
 import CourseSearch from '../components/schedule/CourseSearch';
@@ -18,6 +20,7 @@ import { useSchedule } from '../hooks/useSchedule';
 import { saveScheduleForShare } from '../services/shareService';
 
 export default function HomePage() {
+  const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [copiedCode, setCopiedCode] = useState(null);
@@ -96,7 +99,7 @@ export default function HomePage() {
                 className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"
               >
                 <Sparkles size={14} />
-                AI
+                AI평가
               </a>
               <a 
                 href="/popular" 
@@ -140,6 +143,13 @@ export default function HomePage() {
                 <span className="hidden sm:inline">과목</span>추가
               </button>
               <button
+                onClick={() => navigate('/recommend')}
+                className="px-3 py-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 flex items-center gap-1 text-sm"
+              >
+                <Wand2 size={16} />
+                <span className="hidden sm:inline">AI로</span>만들기
+              </button>
+              <button
                 onClick={handleShare}
                 disabled={courses.length === 0}
                 className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
@@ -179,15 +189,24 @@ export default function HomePage() {
               시간표를 만들어보세요!
             </h2>
             <p className="text-sm text-gray-500 mb-4">
-              과목 추가 버튼을 눌러 시작하세요
+              직접 과목을 추가하거나, AI가 만들어줄 수도 있어요
             </p>
-            <button
-              onClick={() => setIsSearchOpen(true)}
-              className="px-5 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 inline-flex items-center gap-2"
-            >
-              <Plus size={18} />
-              과목 추가
-            </button>
+            <div className="flex items-center justify-center gap-2">
+              <button
+                onClick={() => setIsSearchOpen(true)}
+                className="px-5 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 inline-flex items-center gap-2"
+              >
+                <Plus size={18} />
+                과목 추가
+              </button>
+              <button
+                onClick={() => navigate('/recommend')}
+                className="px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 inline-flex items-center gap-2"
+              >
+                <Wand2 size={18} />
+                AI로 만들기
+              </button>
+            </div>
           </div>
         ) : (
           <ScheduleGrid
@@ -285,7 +304,7 @@ export default function HomePage() {
 
             {/* 수강신청 팁 */}
             <div className="mt-3 p-2 bg-blue-50 rounded text-xs text-blue-700">
-              💡 교과번호 복사 → 수강신청 시 붙여넣기
+              💡 교과번호 알아두기 → 장바구니 잘 안 들어가지면 바로 교과번호 입력하기
             </div>
           </div>
         )}

@@ -1,9 +1,10 @@
 # services/ai_service.py
 import os
 import json
-from anthropic import Anthropic
+import google.generativeai as genai
 
-client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Gemini API 설정
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # 시간표 유형 정의
 SCHEDULE_TYPES = {
@@ -96,21 +97,25 @@ total_score는 0-100 사이 점수입니다.
 
 
 async def evaluate_schedule(courses: list, user_info: dict) -> dict:
-    """Claude API를 사용해 시간표 평가"""
+    """Gemini API를 사용해 시간표 평가"""
     
     prompt = build_prompt(courses, user_info)
     
     try:
-        message = client.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=1500,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
+        # Gemini 모델 설정
+        model = genai.GenerativeModel('gemini-2.0-flash')
+        
+        # API 호출
+        response = model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                temperature=0.7,
+                max_output_tokens=2000,
+            )
         )
         
-        # 응답에서 JSON 파싱
-        response_text = message.content[0].text
+        # 응답 텍스트 추출
+        response_text = response.text
         
         # JSON 부분만 추출 (```json ... ``` 형식일 경우 처리)
         if "```json" in response_text:
