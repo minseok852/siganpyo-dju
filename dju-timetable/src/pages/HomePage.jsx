@@ -83,6 +83,9 @@ export default function HomePage() {
     setTimeout(() => setCopiedCode(null), 2000);
   };
 
+  // 온라인 과목 필터
+  const onlineCourses = courses.filter(c => !c.times || c.times.length === 0);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 헤더 */}
@@ -215,6 +218,71 @@ export default function HomePage() {
             getCourseColor={getCourseColor}
             onCourseClick={setSelectedCourse}
           />
+        )}
+
+        {/* 온라인/시간미정 과목 */}
+        {onlineCourses.length > 0 && (
+          <div className="mt-3 bg-white rounded-lg shadow-sm p-3">
+            <h3 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+              💻 온라인/시간미정 과목 ({onlineCourses.length})
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {onlineCourses.map((course) => {
+                const color = getCourseColor(course.course_code, course.section);
+                const code = `${course.course_code}-${course.section}`;
+                const isCopied = copiedCode === code;
+                
+                return (
+                  <div
+                    key={code}
+                    className={`p-2 rounded-lg border ${color.bg} ${color.border} cursor-pointer hover:shadow transition-shadow`}
+                    onClick={() => setSelectedCourse(course)}
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <div className={`font-medium text-sm truncate ${color.text}`}>
+                          {course.course_name}
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          {course.professor} | {course.credits}학점
+                        </div>
+                        {course.schedule_raw && (
+                          <div className="text-xs text-gray-400 mt-0.5">
+                            📅 {course.schedule_raw}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleCopyCode(course.course_code, course.section);
+                          }}
+                          className={`px-1.5 py-0.5 rounded text-[10px] font-mono flex items-center gap-0.5 ${
+                            isCopied 
+                              ? 'bg-green-100 text-green-700' 
+                              : 'bg-white/70 text-gray-600 hover:bg-white'
+                          }`}
+                        >
+                          {isCopied ? <Check size={10} /> : <Copy size={10} />}
+                          {code}
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            removeCourse(course.course_code, course.section);
+                          }}
+                          className="p-1 hover:bg-white/50 rounded text-gray-500 hover:text-red-500"
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         )}
 
         {/* 추가된 과목 목록 + 교과번호 */}
