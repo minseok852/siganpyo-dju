@@ -1,6 +1,6 @@
 // src/components/schedule/CourseSearch.jsx
 import { useState, useEffect, useCallback } from 'react';
-import { Search, X, Plus, AlertCircle, Filter } from 'lucide-react';
+import { Search, X, Plus, AlertCircle, Filter, Info } from 'lucide-react';
 import { useCourses } from '../../hooks/useCourses';
 import { checkScheduleConflict } from '../../utils/timeUtils';
 import { 
@@ -11,6 +11,7 @@ import {
   COLLEGES,
   CATEGORY_LABELS 
 } from '../../data/constants';
+import CourseDetail from './CourseDetail';
 
 export default function CourseSearch({ 
   isOpen, 
@@ -29,6 +30,7 @@ export default function CourseSearch({
   });
   const [showFilters, setShowFilters] = useState(false);
   const [departments, setDepartments] = useState([]);
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const { 
     courses, 
@@ -259,7 +261,8 @@ export default function CourseSearch({
             return (
               <div
                 key={`${course.course_code}-${course.section}`}
-                className={`p-3 border rounded-lg ${
+                onClick={() => setSelectedCourse(course)}
+                className={`p-3 border rounded-lg cursor-pointer transition-all ${
                   conflict.conflict ? 'border-red-200 bg-red-50' : 
                   isAdded ? 'border-green-200 bg-green-50' : 
                   'hover:border-blue-200 hover:bg-blue-50'
@@ -275,13 +278,24 @@ export default function CourseSearch({
                       <span className="text-xs text-gray-400 shrink-0">
                         {course.course_code}-{course.section}
                       </span>
+                      {course.notes && (
+                        <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-yellow-100 text-yellow-700 rounded text-[10px] shrink-0">
+                          <Info size={10} />
+                          비고
+                        </span>
+                      )}
                     </div>
 
                     {/* 분류 & 학점 */}
                     <div className="flex items-center gap-2 mt-1 text-sm">
                       <span className="px-2 py-0.5 bg-gray-100 rounded text-xs">
-                        {CATEGORY_LABELS[course.category] || course.category}
+                        {course.classification || CATEGORY_LABELS[course.category] || course.category}
                       </span>
+                      {course.area && (
+                        <span className="px-2 py-0.5 bg-blue-50 text-blue-600 rounded text-xs">
+                          {course.area}
+                        </span>
+                      )}
                       {course.department && (
                         <span className="text-gray-500 text-xs truncate">
                           {course.department}
@@ -313,30 +327,36 @@ export default function CourseSearch({
                     )}
                   </div>
 
-                  {/* 추가 버튼 */}
-                  <button
-                    onClick={() => handleAddCourse(course)}
-                    disabled={conflict.conflict || isAdded}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-medium shrink-0 ${
-                      isAdded
-                        ? 'bg-green-100 text-green-700 cursor-default'
-                        : conflict.conflict
-                        ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                        : 'bg-blue-500 text-white hover:bg-blue-600'
-                    }`}
-                  >
-                    {isAdded ? '추가됨' : conflict.conflict ? '불가' : (
-                      <span className="flex items-center gap-1">
-                        <Plus size={14} /> 추가
-                      </span>
-                    )}
-                  </button>
+                  {/* 상태 표시 */}
+                  <div className={`px-2 py-1 rounded text-xs font-medium shrink-0 ${
+                    isAdded
+                      ? 'bg-green-100 text-green-700'
+                      : conflict.conflict
+                      ? 'bg-gray-100 text-gray-400'
+                      : 'bg-blue-100 text-blue-600'
+                  }`}>
+                    {isAdded ? '추가됨' : conflict.conflict ? '불가' : '상세보기'}
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {/* 과목 상세 모달 */}
+      {selectedCourse && (
+        <CourseDetail
+          course={selectedCourse}
+          onClose={() => setSelectedCourse(null)}
+          onAdd={handleAddCourse}
+          isAdded={currentCourses.some(
+            c => c.course_code === selectedCourse.course_code && 
+                 c.section === selectedCourse.section
+          )}
+          conflict={getConflictInfo(selectedCourse)}
+        />
+      )}
     </div>
   );
 }
