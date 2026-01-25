@@ -9,14 +9,13 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { useSchedule } from '../hooks/useSchedule';
-import { useCourses } from '../hooks/useCourses';
 import { evaluateSchedule } from '../services/aiService';
 import { COLLEGES } from '../data/constants';
+import { getDepartmentsByCollege } from '../data/departments';  // ✅ 하드코딩 데이터 사용
 
 export default function AIPage() {
   const navigate = useNavigate();
   const { courses } = useSchedule();
-  const { getDepartments } = useCourses();
   
   // 단계: 'form' | 'loading' | 'result'
   const [step, setStep] = useState('form');
@@ -31,57 +30,33 @@ export default function AIPage() {
     doubleMajor: '',
   });
   
-  // 학과 목록
+  // 학과 목록 - ✅ 하드코딩 데이터에서 가져오기
   const [departments, setDepartments] = useState([]);
   const [doubleMajorDepartments, setDoubleMajorDepartments] = useState([]);
-  const [loadingDepts, setLoadingDepts] = useState(false);
-  const [loadingDoubleDepts, setLoadingDoubleDepts] = useState(false);
   
   // 결과
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
-  // 단과대학 변경시 학과 목록 로드
+  // ✅ 단과대학 변경시 학과 목록 로드 (하드코딩 사용 - 즉시 로드)
   useEffect(() => {
-    async function loadDepartments() {
-      if (userInfo.college && userInfo.college !== '전체') {
-        setLoadingDepts(true);
-        try {
-          const depts = await getDepartments(userInfo.college);
-          setDepartments(depts);
-        } catch (err) {
-          console.error('학과 로드 실패:', err);
-          setDepartments([]);
-        } finally {
-          setLoadingDepts(false);
-        }
-      } else {
-        setDepartments([]);
-      }
+    if (userInfo.college && userInfo.college !== '전체') {
+      const depts = getDepartmentsByCollege(userInfo.college);
+      setDepartments(depts);
+    } else {
+      setDepartments([]);
     }
-    loadDepartments();
-  }, [userInfo.college, getDepartments]);
+  }, [userInfo.college]);
 
-  // 복수전공 단과대학 변경시 학과 목록 로드
+  // ✅ 복수전공 단과대학 변경시 학과 목록 로드 (하드코딩 사용)
   useEffect(() => {
-    async function loadDoubleMajorDepartments() {
-      if (userInfo.doubleMajorCollege && userInfo.doubleMajorCollege !== '전체') {
-        setLoadingDoubleDepts(true);
-        try {
-          const depts = await getDepartments(userInfo.doubleMajorCollege);
-          setDoubleMajorDepartments(depts);
-        } catch (err) {
-          console.error('복수전공 학과 로드 실패:', err);
-          setDoubleMajorDepartments([]);
-        } finally {
-          setLoadingDoubleDepts(false);
-        }
-      } else {
-        setDoubleMajorDepartments([]);
-      }
+    if (userInfo.doubleMajorCollege && userInfo.doubleMajorCollege !== '전체') {
+      const depts = getDepartmentsByCollege(userInfo.doubleMajorCollege);
+      setDoubleMajorDepartments(depts);
+    } else {
+      setDoubleMajorDepartments([]);
     }
-    loadDoubleMajorDepartments();
-  }, [userInfo.doubleMajorCollege, getDepartments]);
+  }, [userInfo.doubleMajorCollege]);
 
   // 평가 시작
   const handleEvaluate = async () => {
@@ -235,19 +210,17 @@ export default function AIPage() {
                     major: e.target.value 
                   }))}
                   className="w-full px-3 py-2 border rounded-lg text-sm"
-                  disabled={!userInfo.college || loadingDepts}
+                  disabled={!userInfo.college}
                 >
-                  <option value="">
-                    {loadingDepts ? '불러오는 중...' : '선택하세요'}
-                  </option>
+                  <option value="">선택하세요</option>
                   {departments.map(dept => (
                     <option key={dept} value={dept}>{dept}</option>
                   ))}
                 </select>
-                {userInfo.college && loadingDepts && (
-                  <p className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                    <Loader2 className="animate-spin" size={12} />
-                    학과 정보를 불러오는 중...
+                {/* ✅ 학과 없음 안내 */}
+                {userInfo.college && departments.length === 0 && (
+                  <p className="text-xs text-orange-500 mt-1">
+                    ⚠️ 해당 단과대학의 학과 정보가 없습니다. 관리자에게 문의하세요.
                   </p>
                 )}
               </div>
@@ -303,11 +276,9 @@ export default function AIPage() {
                         doubleMajor: e.target.value 
                       }))}
                       className="w-full px-3 py-2 border rounded-lg text-sm"
-                      disabled={!userInfo.doubleMajorCollege || loadingDoubleDepts}
+                      disabled={!userInfo.doubleMajorCollege}
                     >
-                      <option value="">
-                        {loadingDoubleDepts ? '불러오는 중...' : '선택하세요'}
-                      </option>
+                      <option value="">선택하세요</option>
                       {doubleMajorDepartments.map(dept => (
                         <option key={dept} value={dept}>{dept}</option>
                       ))}
