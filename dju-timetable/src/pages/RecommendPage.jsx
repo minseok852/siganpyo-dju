@@ -765,8 +765,20 @@ export default function RecommendPage() {
       };
     });
     
-    // localStorage에 직접 저장 (기존 시간표 교체!)
-    localStorage.setItem('dju-timetable-courses', JSON.stringify(newCourses));
+    // colorMap 생성
+    const COLORS_COUNT = 10;  // COURSE_COLORS 개수
+    const newColorMap = {};
+    newCourses.forEach((course, idx) => {
+      const key = `${course.course_code}-${course.section}`;
+      newColorMap[key] = idx % COLORS_COUNT;
+    });
+    
+    // useSchedule.js와 동일한 형식으로 저장!
+    // 키: 'dju_my_schedule' (constants.js의 STORAGE_KEYS.MY_SCHEDULE)
+    localStorage.setItem('dju_my_schedule', JSON.stringify({
+      courses: newCourses,
+      colorMap: newColorMap
+    }));
     
     // 홈으로 이동 (새로고침 효과)
     window.location.href = '/';
@@ -1195,7 +1207,7 @@ export default function RecommendPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">아침 수업 (9시)</label>
+                <label className="block text-sm font-medium mb-2">아침 수업 (9시 30분)</label>
                 <div className="flex gap-2">
                   <button onClick={() => setPreferences(prev => ({ ...prev, noMorning: false }))} className={`flex-1 py-2 rounded-lg text-sm ${!preferences.noMorning ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>괜찮음</button>
                   <button onClick={() => setPreferences(prev => ({ ...prev, noMorning: true }))} className={`flex-1 py-2 rounded-lg text-sm ${preferences.noMorning ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>싫음 😴</button>

@@ -11,8 +11,8 @@ import {
 } from 'lucide-react';
 import { getPopularCourses } from '../services/popularService';
 import { useSchedule } from '../hooks/useSchedule';
-import { useCourses } from '../hooks/useCourses';
 import { CATEGORY_OPTIONS, AREA_OPTIONS, COLLEGES } from '../data/constants';
+import { getDepartmentsByCollege } from '../data/departments';
 
 export default function PopularPage() {
   const navigate = useNavigate();
@@ -27,17 +27,16 @@ export default function PopularPage() {
   const [departments, setDepartments] = useState([]);
 
   const { courses: myCourses, addCourse } = useSchedule();
-  const { getDepartments } = useCourses();
 
-  // 단과대학 변경시 학과 목록 로드
+  // 단과대학 변경시 학과 목록 로드 - ✅ 하드코딩 데이터 사용 (즉시 로드!)
   useEffect(() => {
     if (filters.college && filters.college !== '') {
-      const depts = getDepartments(filters.college);
-      setDepartments(depts);
+      const depts = getDepartmentsByCollege(filters.college);
+      setDepartments(depts || []);
     } else {
       setDepartments([]);
     }
-  }, [filters.college, getDepartments]);
+  }, [filters.college]);
 
   // 인기 과목 로드
   useEffect(() => {

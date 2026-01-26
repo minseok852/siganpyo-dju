@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { checkScheduleConflict, getTotalCredits, getEmptyDays } from '../utils/timeUtils';
 import { STORAGE_KEYS, COURSE_COLORS } from '../data/constants';
-import { incrementCoursePopularity } from '../services/popularService';
+import { incrementCoursePopularity, decrementCoursePopularity } from '../services/popularService';
 
 // localStorage에서 초기값 읽기
 function getInitialState() {
@@ -91,13 +91,21 @@ export function useSchedule() {
       delete newMap[courseKey];
       return newMap;
     });
+    
+    // 🔥 인기도 카운트 감소 (비동기, 실패해도 무시)
+    decrementCoursePopularity(courseCode, section).catch(() => {});
   }, []);
 
   // 전체 삭제
   const clearSchedule = useCallback(() => {
+    // 🔥 모든 과목의 인기도 카운트 감소 (비동기)
+    courses.forEach(course => {
+      decrementCoursePopularity(course.course_code, course.section).catch(() => {});
+    });
+    
     setCourses([]);
     setColorMap({});
-  }, []);
+  }, [courses]);
 
   // 시간표 불러오기 (공유된 시간표)
   const loadSchedule = useCallback((newCourses) => {

@@ -60,6 +60,48 @@ export async function incrementCoursePopularity(course) {
   }
 }
 
+/**
+ * 과목 삭제 시 인기도 카운트 감소
+ */
+export async function decrementCoursePopularity(courseCode, section) {
+  try {
+    // 필수 필드 검증
+    if (!courseCode || !section) {
+      console.warn('⚠️ 인기도 카운트 감소 스킵: course_code 또는 section 누락');
+      return;
+    }
+    
+    const courseId = `${courseCode}-${section}`;
+    const docRef = doc(db, 'popular_courses', courseId);
+    
+    const docSnap = await getDoc(docRef);
+    
+    if (docSnap.exists()) {
+      const currentCount = docSnap.data().count || 0;
+      
+      if (currentCount > 1) {
+        // 1 이상이면 감소
+        await setDoc(docRef, {
+          count: increment(-1),
+          lastRemoved: new Date()
+        }, { merge: true });
+        console.log('📉 인기도 카운트 감소:', courseId, `(${currentCount} → ${currentCount - 1})`);
+      } else {
+        // 0 이하가 되면 그냥 0으로 유지 (문서 삭제 안 함)
+        await setDoc(docRef, {
+          count: 0,
+          lastRemoved: new Date()
+        }, { merge: true });
+        console.log('📉 인기도 카운트 0:', courseId);
+      }
+    } else {
+      console.log('📉 인기도 문서 없음 (스킵):', courseId);
+    }
+  } catch (error) {
+    console.error('인기도 카운트 감소 실패:', error);
+  }
+}
+
 // 캐시
 let allPopularCourses = null;
 let lastFetchTime = null;
@@ -117,6 +159,9 @@ export async function getPopularCourses(filters = {}) {
     if (filters.area) {
       courses = courses.filter(c => c.area === filters.area);
     }
+    
+    // count가 0인 과목은 제외
+    courses = courses.filter(c => (c.count || 0) > 0);
     
     // count 기준 정렬 (내림차순)
     courses.sort((a, b) => (b.count || 0) - (a.count || 0));
