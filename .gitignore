@@ -7,3 +7,6 @@ venv/
 .env.example
 update_target_year.js
 upload_courses.cjs
+node_modules/
+dist/
+.env.local

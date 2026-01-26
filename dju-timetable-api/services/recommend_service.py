@@ -311,7 +311,7 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
         response = model.generate_content(
             prompt,
             generation_config=genai.types.GenerationConfig(
-                temperature=0.5,  # 더 일관된 결과를 위해 낮춤
+                temperature=0.3,  # 더 일관된 결과를 위해 낮춤
                 max_output_tokens=3000,
             )
         )
@@ -326,23 +326,23 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
         
         result = json.loads(response_text.strip())
         
-        # 후처리: 학과 검증
-        major = user_info['major']
-        double_major = user_info.get('double_major')
-        valid_depts = [major]
-        if double_major:
-            valid_depts.append(double_major)
+        # ========== 후처리: 시간 충돌 검사 및 제거 ==========
+        selected_courses = result.get('selected_courses', [])
+        validated_courses, removed_courses = validate_and_remove_conflicts(selected_courses)
         
-        # 전공과목 중 다른 학과 과목이 있으면 경고 추가
+        # 경고 메시지 추가
         warnings = result.get('warnings', [])
-        for course in result.get('selected_courses', []):
-            cat = course.get('category', '')
-            if '전공' in cat:
-                # 프롬프트에서 학과 정보를 전달하지 않았으므로 일단 패스
-                # 추후 프론트에서 검증 가능
-                pass
+        if removed_courses:
+            for removed in removed_courses:
+                warnings.append(f"시간 충돌로 제거됨: {removed['course_name']} ({removed['conflict_with']}과 겹침)")
         
+        # 결과 업데이트
+        result['selected_courses'] = validated_courses
         result['warnings'] = warnings
+        result['total_credits'] = sum(c.get('credits', 0) for c in validated_courses)
+        
+        # 공강일 재계산
+        result['empty_days'] = calculate_empty_days(validated_courses)
         
         return {"success": True, **result}
         
@@ -357,3 +357,113 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
             "success": False, 
             "error": str(e)
         }
+
+
+def parse_schedule_raw(schedule_raw: str) -> list:
+    """schedule_raw를 파싱해서 시간 블록 리스트 반환"""
+    if not schedule_raw:
+        return []
+    
+    times = []
+    
+    # 쉼표로 먼저 분리
+    segments = [s.strip() for s in schedule_raw.split(',')]
+    
+    for segment in segments:
+        # 공백으로 추가 분리
+        parts = [p.strip() for p in segment.split() if p.strip()]
+        
+        for part in parts:
+            # "화10:00-11:30" 형식
+            import re
+            time_match = re.match(r'^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$', part)
+            if time_match:
+                day, start_h, start_m, end_h, end_m = time_match.groups()
+                times.append({
+                    'day': day,
+                    'start_min': int(start_h) * 60 + int(start_m),
+                    'end_min': int(end_h) * 60 + int(end_m),
+                })
+                continue
+            
+            # "월1,2,3" 형식 (교시)
+            period_match = re.match(r'^(월|화|수|목|금)([\d,]+)$', part)
+            if period_match:
+                day, periods_str = period_match.groups()
+                periods = [int(p) for p in periods_str.split(',') if p.isdigit()]
+                if periods:
+                    min_period = min(periods)
+                    max_period = max(periods)
+                    # 1교시 = 9시 시작
+                    times.append({
+                        'day': day,
+                        'start_min': (8 + min_period) * 60,
+                        'end_min': (8 + max_period + 1) * 60,
+                    })
+    
+    return times
+
+
+def is_time_overlap(t1: dict, t2: dict) -> bool:
+    """두 시간 블록이 겹치는지 확인"""
+    if t1['day'] != t2['day']:
+        return False
+    return t1['start_min'] < t2['end_min'] and t1['end_min'] > t2['start_min']
+
+
+def validate_and_remove_conflicts(courses: list) -> tuple:
+    """
+    시간 충돌 검사 및 충돌 과목 제거
+    Returns: (검증된 과목 리스트, 제거된 과목 리스트)
+    """
+    validated = []
+    removed = []
+    
+    for course in courses:
+        course_times = parse_schedule_raw(course.get('schedule_raw', ''))
+        
+        # 온라인/시간미정 과목은 충돌 없음
+        if not course_times:
+            validated.append(course)
+            continue
+        
+        # 기존 검증된 과목들과 충돌 검사
+        has_conflict = False
+        conflict_with = None
+        
+        for existing in validated:
+            existing_times = parse_schedule_raw(existing.get('schedule_raw', ''))
+            
+            for ct in course_times:
+                for et in existing_times:
+                    if is_time_overlap(ct, et):
+                        has_conflict = True
+                        conflict_with = existing.get('course_name', '알 수 없음')
+                        break
+                if has_conflict:
+                    break
+            if has_conflict:
+                break
+        
+        if has_conflict:
+            removed.append({
+                'course_name': course.get('course_name', ''),
+                'conflict_with': conflict_with
+            })
+        else:
+            validated.append(course)
+    
+    return validated, removed
+
+
+def calculate_empty_days(courses: list) -> list:
+    """공강일 계산"""
+    days = ['월', '화', '수', '목', '금']
+    occupied = set()
+    
+    for course in courses:
+        times = parse_schedule_raw(course.get('schedule_raw', ''))
+        for t in times:
+            occupied.add(t['day'])
+    
+    return [d for d in days if d not in occupied]
