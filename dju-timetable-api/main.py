@@ -23,7 +23,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # Vite 개발서버
         "http://localhost:3000",
-        "https://dju-timetable.vercel.app",  # 배포 도메인 (나중에 수정)
+        "https://siganpyo-dju.vercel.app" #배포된 도메인
     ],
     allow_credentials=True,
     allow_methods=["*"],
