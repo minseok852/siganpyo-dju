@@ -13,6 +13,7 @@ class Course(BaseModel):
     course_name: str
     professor: Optional[str] = None
     credits: int
+    target_year: Optional[int] = 0  # 대상학년 추가!
     schedule_raw: Optional[str] = None
     times: Optional[list[TimeSlot]] = None
     room: Optional[str] = None
@@ -61,6 +62,8 @@ class Preferences(BaseModel):
     preferred_areas: Optional[list[str]] = []
     skip_general: Optional[bool] = False  # 교양 안 듣기
     must_take_courses: Optional[list[Course]] = []  # 꼭 듣고 싶은 과목
+    selected_major_courses: Optional[list[Course]] = []  # 직접 선택한 전공과목 (2학년+)
+    major_selection_mode: Optional[str] = "auto"  # "manual" (직접선택) | "auto" (상관없음)
     avoid_courses: Optional[str] = None
 
 class RecommendUserInfo(BaseModel):

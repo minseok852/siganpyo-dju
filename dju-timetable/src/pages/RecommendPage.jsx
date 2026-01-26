@@ -10,7 +10,9 @@ import {
   Plus,
   AlertTriangle,
   X,
-  Search
+  Search,
+  BookOpen,
+  Shuffle
 } from 'lucide-react';
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
@@ -40,7 +42,7 @@ const DEFAULT_GENERAL_REQUIRED = [
 // 시간표 미리보기 컴포넌트
 function SchedulePreview({ courses }) {
   const DAYS = ['월', '화', '수', '목', '금'];
-  const HOURS = Array.from({ length: 12 }, (_, i) => i + 9);
+  const HOURS = Array.from({ length: 13 }, (_, i) => i + 9); // 9시~21시
   
   const COLORS = [
     { bg: 'bg-red-100', border: 'border-red-300', text: 'text-red-800' },
@@ -58,43 +60,63 @@ function SchedulePreview({ courses }) {
     courseColors[course.course_name] = COLORS[idx % COLORS.length];
   });
 
+  // schedule_raw 파싱: "화10:00-11:30, 금10:00-11:30" 또는 "월1,2,3 수1,2,3"
   const parseSchedule = (scheduleRaw) => {
     if (!scheduleRaw) return [];
     const result = [];
-    const parts = scheduleRaw.split(' ');
-    parts.forEach(part => {
-      const dayMatch = part.match(/^(월|화|수|목|금)/);
-      if (dayMatch) {
-        const day = dayMatch[1];
-        const periodsStr = part.slice(1);
-        const periods = periodsStr.split(',').map(p => parseInt(p.trim())).filter(p => !isNaN(p));
-        if (periods.length > 0) {
-          result.push({ day, periods });
+    
+    // 쉼표로 먼저 분리
+    const segments = scheduleRaw.split(',').map(s => s.trim());
+    
+    for (const segment of segments) {
+      // 공백으로 추가 분리
+      const parts = segment.split(/\s+/).filter(p => p.trim());
+      
+      for (const part of parts) {
+        // "화10:00-11:30" 형식
+        const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+        if (timeMatch) {
+          const [, day, startH, startM, endH, endM] = timeMatch;
+          result.push({
+            day,
+            startHour: parseInt(startH) + parseInt(startM) / 60,
+            endHour: parseInt(endH) + parseInt(endM) / 60,
+          });
+          continue;
+        }
+        
+        // "월1,2,3" 형식 (교시)
+        const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
+        if (periodMatch) {
+          const [, day, periodsStr] = periodMatch;
+          const periods = periodsStr.split(',').map(p => parseInt(p)).filter(p => !isNaN(p));
+          if (periods.length > 0) {
+            const minPeriod = Math.min(...periods);
+            const maxPeriod = Math.max(...periods);
+            result.push({
+              day,
+              startHour: 8 + minPeriod,  // 1교시 = 9시
+              endHour: 8 + maxPeriod + 1,
+            });
+          }
+          continue;
         }
       }
-    });
+    }
+    
     return result;
   };
-
-  const periodToTime = (period) => {
-    const hour = 8 + period;
-    return { start: hour, end: hour + 1 };
-  };
-
+      
   const getBlocksForDay = (day) => {
     const blocks = [];
     courses.forEach(course => {
       const schedules = parseSchedule(course.schedule_raw);
       schedules.forEach(schedule => {
-        if (schedule.day === day && schedule.periods.length > 0) {
-          const startPeriod = Math.min(...schedule.periods);
-          const endPeriod = Math.max(...schedule.periods);
-          const startTime = periodToTime(startPeriod);
-          const endTime = periodToTime(endPeriod);
+        if (schedule.day === day) {
           blocks.push({
             course,
-            startHour: startTime.start,
-            endHour: endTime.end,
+            startHour: schedule.startHour,
+            endHour: schedule.endHour,
             color: courseColors[course.course_name],
           });
         }
@@ -107,19 +129,24 @@ function SchedulePreview({ courses }) {
     <div className="bg-white rounded-xl shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
         <div className="min-w-[500px]">
+          {/* 헤더 */}
           <div className="grid grid-cols-6 border-b">
             <div className="p-2 text-center text-xs font-medium text-gray-500 bg-gray-50">시간</div>
             {DAYS.map(day => (
-              <div key={day} className="p-2 text-center text-xs font-medium text-gray-700 bg-gray-50">{day}</div>
+              <div key={day} className="p-2 text-center text-xs font-medium text-gray-700 bg-gray-50 border-l">{day}</div>
             ))}
           </div>
+          
+          {/* 시간 그리드 */}
           <div className="relative">
             {HOURS.map(hour => (
               <div key={hour} className="grid grid-cols-6 border-b" style={{ height: '40px' }}>
                 <div className="p-1 text-[10px] text-gray-400 text-center border-r bg-gray-50">{hour}:00</div>
-                {DAYS.map(day => (<div key={day} className="border-r relative" />))}
+                {DAYS.map(day => (<div key={day} className="border-l relative" />))}
               </div>
             ))}
+            
+            {/* 과목 블록 */}
             {DAYS.map((day, dayIdx) => {
               const blocks = getBlocksForDay(day);
               return blocks.map((block, blockIdx) => {
@@ -127,14 +154,21 @@ function SchedulePreview({ courses }) {
                 const height = (block.endHour - block.startHour) * 40;
                 const left = `calc(${(dayIdx + 1) * (100/6)}% + 2px)`;
                 const width = `calc(${100/6}% - 4px)`;
+                
+                if (height <= 0 || top < 0) return null;
+                
                 return (
                   <div
-                    key={`${day}-${blockIdx}`}
+                    key={`${day}-${blockIdx}-${block.course.course_name}`}
                     className={`absolute rounded p-1 ${block.color.bg} ${block.color.border} border overflow-hidden`}
-                    style={{ top: `${top}px`, height: `${height}px`, left, width }}
+                    style={{ top: `${top}px`, height: `${Math.max(height, 20)}px`, left, width }}
                   >
-                    <div className={`text-[10px] font-medium ${block.color.text} truncate`}>{block.course.course_name}</div>
-                    <div className="text-[9px] text-gray-500 truncate">{block.course.professor}</div>
+                    <div className={`text-[10px] font-medium ${block.color.text} truncate`}>
+                      {block.course.course_name}
+                    </div>
+                    {height > 30 && (
+                      <div className="text-[9px] text-gray-500 truncate">{block.course.professor}</div>
+                    )}
                   </div>
                 );
               });
@@ -146,23 +180,51 @@ function SchedulePreview({ courses }) {
   );
 }
 
-// 과목 검색 모달
-function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
+// 과목 검색 모달 (범용)
+function CourseSearchModal({ 
+  isOpen, 
+  onClose, 
+  onSelect, 
+  currentSelections,
+  title = "과목 검색",
+  filterOptions = {}  // { category, department, classification }
+}) {
   const [searchTerm, setSearchTerm] = useState('');
   const { searchCourses, loading } = useCourses();
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     async function doSearch() {
-      if (isOpen && searchTerm.length >= 2) {
-        const results = await searchCourses({ searchTerm, limit: 50 });
+      if (isOpen) {
+        // 필터 옵션 적용
+        const filters = {
+          ...filterOptions,
+          limit: 50
+        };
+        
+        if (searchTerm.length >= 2) {
+          filters.searchTerm = searchTerm;
+        }
+        
+        const results = await searchCourses(filters);
         setSearchResults(results);
       } else {
         setSearchResults([]);
       }
     }
     doSearch();
-  }, [searchTerm, isOpen, searchCourses]);
+  }, [searchTerm, isOpen, searchCourses, filterOptions]);
+
+  // 모달 열릴 때 초기 로드
+  useEffect(() => {
+    async function initialLoad() {
+      if (isOpen && filterOptions.category) {
+        const results = await searchCourses({ ...filterOptions, limit: 50 });
+        setSearchResults(results);
+      }
+    }
+    initialLoad();
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -176,7 +238,7 @@ function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-xl w-full max-w-lg max-h-[80vh] flex flex-col">
         <div className="p-4 border-b flex items-center justify-between">
-          <h2 className="font-bold">꼭 듣고 싶은 과목 검색</h2>
+          <h2 className="font-bold">{title}</h2>
           <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
             <X size={20} />
           </button>
@@ -189,11 +251,16 @@ function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="과목명, 교수명 검색 (2글자 이상)"
+              placeholder="과목명, 교수명 검색..."
               className="w-full pl-10 pr-4 py-2 border rounded-lg text-sm"
               autoFocus
             />
           </div>
+          {filterOptions.department && (
+            <p className="text-xs text-indigo-600 mt-2">
+              📌 {filterOptions.department} 학과 전공과목만 표시됩니다
+            </p>
+          )}
         </div>
 
         <div className="flex-1 overflow-y-auto p-2">
@@ -203,7 +270,7 @@ function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
             </div>
           ) : searchResults.length === 0 ? (
             <div className="text-center py-8 text-gray-500 text-sm">
-              {searchTerm.length < 2 ? '2글자 이상 입력해주세요' : '검색 결과가 없습니다'}
+              검색 결과가 없습니다
             </div>
           ) : (
             <div className="space-y-1">
@@ -215,18 +282,25 @@ function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
                     onClick={() => !selected && onSelect(course)}
                     className={`p-3 rounded-lg border cursor-pointer ${
                       selected 
-                        ? 'bg-gray-100 border-gray-300 opacity-50' 
+                        ? 'bg-green-50 border-green-300' 
                         : 'hover:bg-blue-50 border-gray-200'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div>
+                      <div className="flex-1 min-w-0">
                         <div className="font-medium text-sm">{course.course_name}</div>
                         <div className="text-xs text-gray-500">
                           {course.professor} | {course.schedule_raw} | {course.credits}학점
+                          {course.target_year > 0 && (
+                            <span className="ml-1 text-indigo-500">({course.target_year}학년 대상)</span>
+                          )}
                         </div>
                       </div>
-                      {selected && <span className="text-xs text-gray-500">선택됨</span>}
+                      {selected ? (
+                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">선택됨</span>
+                      ) : (
+                        <Plus size={18} className="text-blue-500" />
+                      )}
                     </div>
                   </div>
                 );
@@ -242,12 +316,12 @@ function CourseSearchModal({ isOpen, onClose, onSelect, currentSelections }) {
 export default function RecommendPage() {
   const navigate = useNavigate();
   const { getDepartments, searchCourses, getGeneralRequired, getMajorRequired } = useCourses();
-  const { addCourse } = useSchedule();
+  const { addCourse, clearSchedule } = useSchedule();
   
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   
-  // Step 1: 기본 정보
+  // ========== Step 1: 기본 정보 ==========
   const [userInfo, setUserInfo] = useState({
     grade: 1,
     college: '',
@@ -258,7 +332,7 @@ export default function RecommendPage() {
     targetCredits: 18,
   });
   
-  // Step 2: 이수 현황 (2학년+)
+  // ========== Step 2: 이수 현황 (2학년+) ==========
   const [completedCourses, setCompletedCourses] = useState({
     generalRequired: [],
     majorRequired: [],
@@ -266,7 +340,14 @@ export default function RecommendPage() {
     skipMajorRequired: false,
   });
   
-  // Step 3: 선호도
+  // ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ==========
+  const [majorSelection, setMajorSelection] = useState({
+    mode: 'auto',  // 'manual' | 'auto'
+    selectedCourses: [],  // 직접 선택한 전공과목
+  });
+  const [isMajorSearchOpen, setIsMajorSearchOpen] = useState(false);
+  
+  // ========== Step 4: 선호도 ==========
   const [preferences, setPreferences] = useState({
     emptyDays: [],
     noMorning: false,
@@ -276,7 +357,7 @@ export default function RecommendPage() {
     skipGeneral: false,
   });
   
-  // Step 4: 추가
+  // ========== Step 5: 추가 설정 ==========
   const [mustTakeCourses, setMustTakeCourses] = useState([]);
   const [avoidCourses, setAvoidCourses] = useState('');
   const [isCourseSearchOpen, setIsCourseSearchOpen] = useState(false);
@@ -293,6 +374,88 @@ export default function RecommendPage() {
   // 결과
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [timeConflicts, setTimeConflicts] = useState([]);
+
+  // 시간 충돌 검사 함수
+  const checkTimeConflicts = (courses) => {
+    const conflicts = [];
+    
+    // schedule_raw 파싱 함수
+    const parseSchedule = (scheduleRaw) => {
+      if (!scheduleRaw) return [];
+      const times = [];
+      const segments = scheduleRaw.split(',').map(s => s.trim());
+      
+      for (const segment of segments) {
+        const parts = segment.split(/\s+/).filter(p => p.trim());
+        for (const part of parts) {
+          // "화10:00-11:30" 형식
+          const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+          if (timeMatch) {
+            const [, day, startH, startM, endH, endM] = timeMatch;
+            times.push({
+              day,
+              startMin: parseInt(startH) * 60 + parseInt(startM),
+              endMin: parseInt(endH) * 60 + parseInt(endM),
+            });
+          }
+        }
+      }
+      return times;
+    };
+
+    // 시간 겹침 확인 함수
+    const isOverlap = (t1, t2) => {
+      if (t1.day !== t2.day) return false;
+      return t1.startMin < t2.endMin && t1.endMin > t2.startMin;
+    };
+
+    // 모든 과목 쌍 비교
+    for (let i = 0; i < courses.length; i++) {
+      for (let j = i + 1; j < courses.length; j++) {
+        const times1 = parseSchedule(courses[i].schedule_raw);
+        const times2 = parseSchedule(courses[j].schedule_raw);
+        
+        for (const t1 of times1) {
+          for (const t2 of times2) {
+            if (isOverlap(t1, t2)) {
+              conflicts.push({
+                course1: courses[i].course_name,
+                course2: courses[j].course_name,
+                day: t1.day,
+              });
+            }
+          }
+        }
+      }
+    }
+    
+    return conflicts;
+  };
+
+  // ========== Step 계산 ==========
+  // 1학년: 1 → 4 → 5 → 결과 (이수현황, 전공선택 스킵)
+  // 2학년+: 1 → 2 → 3 → 4 → 5 → 결과
+  const getStepConfig = () => {
+    if (userInfo.grade === 1) {
+      return {
+        totalSteps: 3,
+        stepNames: ['기본 정보', '선호도', '추가 설정'],
+        stepMapping: { 1: 1, 2: 4, 3: 5 },  // 실제 step → 표시 step
+        reverseMapping: { 1: 1, 4: 2, 5: 3 }  // 표시 step → 실제 step
+      };
+    } else {
+      return {
+        totalSteps: 5,
+        stepNames: ['기본 정보', '이수 현황', '전공 선택', '선호도', '추가 설정'],
+        stepMapping: { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 },
+        reverseMapping: { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5 }
+      };
+    }
+  };
+
+  const stepConfig = getStepConfig();
+  const displayStep = stepConfig.reverseMapping[step] || step;
 
   // 단과대학 변경시 학과 로드
   useEffect(() => {
@@ -321,7 +484,6 @@ export default function RecommendPage() {
     async function loadGeneralRequired() {
       setLoadingCourses(true);
       const results = await getGeneralRequired();
-      // Firebase에서 못 가져오면 기본값 사용
       if (results.length > 0) {
         setGeneralRequiredList(results);
       } else {
@@ -345,43 +507,67 @@ export default function RecommendPage() {
     loadMajorRequired();
   }, [userInfo.major, getMajorRequired]);
 
+  // 학과 변경시 전공 선택 초기화
+  useEffect(() => {
+    setMajorSelection({ mode: 'auto', selectedCourses: [] });
+  }, [userInfo.major]);
+
   const filteredColleges = COLLEGES.filter(c => 
     c !== '전체' && c !== '융합전공' && c !== '상생교양대학'
   );
 
+  // 다음 버튼
   const handleNext = () => {
     if (step === 1 && !userInfo.major) {
       alert('전공을 선택해주세요!');
       return;
     }
-    if (step < 4) {
-      if (step === 1 && userInfo.grade === 1) {
-        setStep(3);
-      } else {
-        setStep(step + 1);
-      }
+    
+    if (userInfo.grade === 1) {
+      // 1학년: 1 → 4 → 5
+      if (step === 1) setStep(4);
+      else if (step === 4) setStep(5);
+    } else {
+      // 2학년+: 1 → 2 → 3 → 4 → 5
+      if (step < 5) setStep(step + 1);
     }
   };
 
+  // 이전 버튼
   const handlePrev = () => {
-    if (step > 1) {
-      if (step === 3 && userInfo.grade === 1) {
-        setStep(1);
-      } else {
-        setStep(step - 1);
-      }
+    if (userInfo.grade === 1) {
+      // 1학년: 5 → 4 → 1
+      if (step === 5) setStep(4);
+      else if (step === 4) setStep(1);
+    } else {
+      // 2학년+: 5 → 4 → 3 → 2 → 1
+      if (step > 1) setStep(step - 1);
     }
   };
 
+  // 꼭 듣고 싶은 과목 추가
   const handleAddMustTake = (course) => {
     setMustTakeCourses(prev => [...prev, course]);
     setIsCourseSearchOpen(false);
   };
 
-  const handleRemoveMustTake = (course) => {
-    setMustTakeCourses(prev => 
-      prev.filter(c => !(c.course_code === course.course_code && c.section === course.section))
-    );
+  // 전공과목 직접 선택 추가
+  const handleAddMajorCourse = (course) => {
+    setMajorSelection(prev => ({
+      ...prev,
+      selectedCourses: [...prev.selectedCourses, course]
+    }));
+    setIsMajorSearchOpen(false);
+  };
+
+  // 전공과목 제거
+  const handleRemoveMajorCourse = (course) => {
+    setMajorSelection(prev => ({
+      ...prev,
+      selectedCourses: prev.selectedCourses.filter(
+        c => !(c.course_code === course.course_code && c.section === course.section)
+      )
+    }));
   };
 
   // 시간표 생성
@@ -406,6 +592,17 @@ export default function RecommendPage() {
           preferred_time: preferences.preferredTime,
           preferred_areas: preferences.skipGeneral ? [] : preferences.preferredAreas,
           skip_general: preferences.skipGeneral,
+          // 새로 추가된 필드들
+          major_selection_mode: majorSelection.mode,
+          selected_major_courses: majorSelection.selectedCourses.map(c => ({
+            course_name: c.course_name,
+            course_code: c.course_code,
+            section: c.section,
+            professor: c.professor,
+            schedule_raw: c.schedule_raw,
+            credits: c.credits,
+            target_year: c.target_year || 0,
+          })),
           must_take_courses: mustTakeCourses.map(c => ({
             course_name: c.course_name,
             course_code: c.course_code,
@@ -413,6 +610,7 @@ export default function RecommendPage() {
             professor: c.professor,
             schedule_raw: c.schedule_raw,
             credits: c.credits,
+            target_year: c.target_year || 0,
           })),
           avoid_courses: avoidCourses,
         }
@@ -420,7 +618,12 @@ export default function RecommendPage() {
 
       if (response.success) {
         setResult(response);
-        setStep(5);
+        // 시간 충돌 검사
+        if (response.selected_courses) {
+          const conflicts = checkTimeConflicts(response.selected_courses);
+          setTimeConflicts(conflicts);
+        }
+        setStep(6);  // 결과 화면
       } else {
         setError(response.error);
       }
@@ -431,20 +634,19 @@ export default function RecommendPage() {
     }
   };
 
-  // 프론트에서 과목 필터링
+  // 과목 필터링
   const filterAvailableCourses = async () => {
+    const grade = userInfo.grade;
     let generalRequired = [];
     let generalElective = [];
 
     // 교양 안 듣기가 아니면 교양 과목 로드
     if (!preferences.skipGeneral) {
-      // 교양필수
       const grResults = await searchCourses({ category: 'general_required', limit: 100 });
       generalRequired = grResults.filter(c => 
         completedCourses.skipGeneralRequired || !completedCourses.generalRequired.includes(c.course_name)
       );
 
-      // 교양선택
       if (preferences.preferredAreas.length > 0) {
         let tempElective = [];
         for (const area of preferences.preferredAreas) {
@@ -457,24 +659,30 @@ export default function RecommendPage() {
       }
     }
 
-    // 전공필수
+    // 전공필수 (해당 학과만!)
     const mrResults = await searchCourses({ 
       category: 'major', 
       department: userInfo.major, 
       classification: '전필',
       limit: 50 
     });
+    // 학년 필터링: target_year <= grade
     const majorRequired = mrResults.filter(c =>
-      completedCourses.skipMajorRequired || !completedCourses.majorRequired.includes(c.course_name)
+      (completedCourses.skipMajorRequired || !completedCourses.majorRequired.includes(c.course_name)) &&
+      (c.target_year === 0 || c.target_year <= grade)
     );
 
-    // 전공선택
-    const majorElective = await searchCourses({ 
+    // 전공선택 (해당 학과만!)
+    const meResults = await searchCourses({ 
       category: 'major', 
       department: userInfo.major, 
       classification: '전선',
       limit: 50 
     });
+    // 학년 필터링
+    const majorElective = meResults.filter(c =>
+      c.target_year === 0 || c.target_year <= grade
+    );
 
     return {
       general_required: generalRequired.slice(0, 20),
@@ -484,12 +692,90 @@ export default function RecommendPage() {
     };
   };
 
-  const handleAddAll = () => {
+  // schedule_raw를 times 배열로 변환
+  const parseScheduleToTimes = (scheduleRaw) => {
+    if (!scheduleRaw) return [];
+    const times = [];
+    
+    // 다양한 형식 처리: "월10:00-11:30, 수10:00-11:30" 또는 "월1,2,3 수1,2,3"
+    // 쉼표로 먼저 분리, 그 다음 각 부분에서 요일+시간 파싱
+    const segments = scheduleRaw.split(',').map(s => s.trim());
+    
+    for (const segment of segments) {
+      // 공백으로 추가 분리 (여러 요일이 공백으로 구분된 경우)
+      const parts = segment.split(/\s+/).filter(p => p.trim());
+      
+      for (const part of parts) {
+        // "화10:00-11:30" 형식
+        const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+        if (timeMatch) {
+          const [, day, startH, startM, endH, endM] = timeMatch;
+          times.push({
+            day,
+            start: `${startH.padStart(2, '0')}:${startM}`,
+            end: `${endH.padStart(2, '0')}:${endM}`,
+          });
+          continue;
+        }
+        
+        // "월1,2,3" 형식 (교시) - 이 경우는 segment 단위로 처리됨
+        const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
+        if (periodMatch) {
+          const [, day, periodsStr] = periodMatch;
+          const periods = periodsStr.split(',').map(p => parseInt(p)).filter(p => !isNaN(p));
+          if (periods.length > 0) {
+            const minPeriod = Math.min(...periods);
+            const maxPeriod = Math.max(...periods);
+            const startHour = 8 + minPeriod;
+            const endHour = 8 + maxPeriod + 1;
+            times.push({
+              day,
+              start: `${startHour.toString().padStart(2, '0')}:00`,
+              end: `${endHour.toString().padStart(2, '0')}:00`,
+            });
+          }
+        }
+      }
+    }
+    
+    return times;
+  };
+
+  // 시간표 교체 (localStorage 직접 저장 후 이동)
+  const handleReplaceSchedule = () => {
     if (!result) return;
-    result.selected_courses.forEach(course => {
-      addCourse({ ...course, times: [] });
+    
+    // 새 시간표 데이터 준비
+    const newCourses = result.selected_courses.map(course => {
+      const times = parseScheduleToTimes(course.schedule_raw);
+      
+      return {
+        course_code: course.course_code || `AI-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+        section: course.section || '01',
+        course_name: course.course_name || '과목명 없음',
+        professor: course.professor || '미정',
+        credits: course.credits || 3,
+        schedule_raw: course.schedule_raw || '',
+        times: times,
+        room: course.room || '',
+        category: course.category || '전공선택',
+        classification: course.category || '전선',
+        college: course.college || '',
+        department: course.department || '',
+      };
     });
-    navigate('/');
+    
+    // localStorage에 직접 저장 (기존 시간표 교체!)
+    localStorage.setItem('dju-timetable-courses', JSON.stringify(newCourses));
+    
+    // 홈으로 이동 (새로고침 효과)
+    window.location.href = '/';
+  };
+
+  const handleRemoveMustTake = (course) => {
+    setMustTakeCourses(prev => 
+      prev.filter(c => !(c.course_code === course.course_code && c.section === course.section))
+    );
   };
 
   return (
@@ -510,19 +796,22 @@ export default function RecommendPage() {
       <main className="max-w-2xl mx-auto px-3 py-4">
         
         {/* 진행 바 */}
-        {step < 5 && (
+        {step <= 5 && (
           <div className="mb-4">
             <div className="flex justify-between text-xs text-gray-500 mb-1">
-              <span>Step {step}/4</span>
-              <span>{['기본 정보', '이수 현황', '선호도', '추가 설정'][step - 1]}</span>
+              <span>Step {displayStep}/{stepConfig.totalSteps}</span>
+              <span>{stepConfig.stepNames[displayStep - 1]}</span>
             </div>
             <div className="h-2 bg-gray-200 rounded-full">
-              <div className="h-full bg-indigo-500 rounded-full transition-all" style={{ width: `${(step / 4) * 100}%` }} />
+              <div 
+                className="h-full bg-indigo-500 rounded-full transition-all" 
+                style={{ width: `${(displayStep / stepConfig.totalSteps) * 100}%` }} 
+              />
             </div>
           </div>
         )}
 
-        {/* Step 1: 기본 정보 */}
+        {/* ========== Step 1: 기본 정보 ========== */}
         {step === 1 && (
           <div className="bg-white rounded-xl shadow-sm p-4">
             <h2 className="text-lg font-bold mb-4">📋 기본 정보</h2>
@@ -540,6 +829,11 @@ export default function RecommendPage() {
                   <option value={3}>3학년</option>
                   <option value={4}>4학년</option>
                 </select>
+                {userInfo.grade === 1 && (
+                  <p className="text-xs text-indigo-600 mt-1">
+                    💡 1학년은 전공기초 과목이 자동으로 포함됩니다
+                  </p>
+                )}
               </div>
 
               <div>
@@ -602,7 +896,9 @@ export default function RecommendPage() {
               )}
 
               <div>
-                <label className="block text-sm font-medium mb-1">목표 학점: <strong>{userInfo.targetCredits}</strong>학점</label>
+                <label className="block text-sm font-medium mb-1">
+                  목표 학점: <strong className="text-indigo-600">{userInfo.targetCredits}</strong>학점
+                </label>
                 <input
                   type="range"
                   min={12}
@@ -620,7 +916,7 @@ export default function RecommendPage() {
           </div>
         )}
 
-        {/* Step 2: 이수 현황 (2학년+) */}
+        {/* ========== Step 2: 이수 현황 (2학년+) ========== */}
         {step === 2 && (
           <div className="bg-white rounded-xl shadow-sm p-4">
             <h2 className="text-lg font-bold mb-2">📚 이수 현황</h2>
@@ -719,8 +1015,115 @@ export default function RecommendPage() {
           </div>
         )}
 
-        {/* Step 3: 선호도 */}
+        {/* ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ========== */}
         {step === 3 && (
+          <div className="bg-white rounded-xl shadow-sm p-4">
+            <h2 className="text-lg font-bold mb-2">🎯 전공과목 선택</h2>
+            <p className="text-sm text-gray-500 mb-4">
+              전공선택 과목을 어떻게 정할까요?
+            </p>
+
+            {/* 모드 선택 */}
+            <div className="grid grid-cols-2 gap-3 mb-4">
+              <button
+                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'manual' }))}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  majorSelection.mode === 'manual' 
+                    ? 'border-indigo-500 bg-indigo-50' 
+                    : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                <BookOpen className={`mb-2 ${majorSelection.mode === 'manual' ? 'text-indigo-500' : 'text-gray-400'}`} size={24} />
+                <div className="font-medium text-sm">직접 고르기</div>
+                <p className="text-xs text-gray-500 mt-1">
+                  듣고 싶은 전공 선택과목을 직접 골라요
+                </p>
+              </button>
+              
+              <button
+                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'auto', selectedCourses: [] }))}
+                className={`p-4 rounded-xl border-2 text-left transition-all ${
+                  majorSelection.mode === 'auto' 
+                    ? 'border-indigo-500 bg-indigo-50' 
+                    : 'border-gray-200 hover:border-gray-300'
+                }`}
+              >
+                <Shuffle className={`mb-2 ${majorSelection.mode === 'auto' ? 'text-indigo-500' : 'text-gray-400'}`} size={24} />
+                <div className="font-medium text-sm">상관없음</div>
+                <p className="text-xs text-gray-500 mt-1">
+                  AI가 {userInfo.grade}학년에 맞게 알아서 선택해요
+                </p>
+              </button>
+            </div>
+
+            {/* 직접 고르기 모드 */}
+            {majorSelection.mode === 'manual' && (
+              <div className="mt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-sm font-medium">
+                    선택한 전공과목 ({majorSelection.selectedCourses.length})
+                  </h3>
+                  <span className="text-xs text-gray-500">
+                    {userInfo.major} 학과
+                  </span>
+                </div>
+
+                {majorSelection.selectedCourses.length > 0 && (
+                  <div className="space-y-2 mb-3">
+                    {majorSelection.selectedCourses.map(course => (
+                      <div 
+                        key={`${course.course_code}-${course.section}`}
+                        className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
+                      >
+                        <div>
+                          <div className="text-sm font-medium">{course.course_name}</div>
+                          <div className="text-xs text-gray-500">
+                            {course.professor} | {course.schedule_raw} | {course.credits}학점
+                          </div>
+                        </div>
+                        <button 
+                          onClick={() => handleRemoveMajorCourse(course)} 
+                          className="p-1 hover:bg-indigo-100 rounded"
+                        >
+                          <X size={16} className="text-gray-500" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <button
+                  onClick={() => setIsMajorSearchOpen(true)}
+                  className="w-full py-3 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+                >
+                  <Plus size={18} />
+                  {userInfo.major} 전공과목 검색
+                </button>
+
+                <p className="text-xs text-gray-400 mt-2">
+                  💡 여기서 선택한 과목들이 시간표에 우선 배치됩니다
+                </p>
+              </div>
+            )}
+
+            {/* 상관없음 모드 */}
+            {majorSelection.mode === 'auto' && (
+              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">
+                  🤖 AI가 <strong>{userInfo.grade}학년</strong>에 적합한 전공과목을 자동으로 선택합니다.
+                </p>
+                <ul className="mt-2 text-xs text-gray-500 space-y-1">
+                  <li>• 전공필수 과목 우선 배치</li>
+                  <li>• {userInfo.grade}학년 대상 과목 위주 선택</li>
+                  <li>• {userInfo.major} 학과 과목만 선택</li>
+                </ul>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ========== Step 4: 선호도 ========== */}
+        {step === 4 && (
           <div className="bg-white rounded-xl shadow-sm p-4">
             <h2 className="text-lg font-bold mb-4">⭐ 선호도</h2>
             
@@ -820,8 +1223,8 @@ export default function RecommendPage() {
           </div>
         )}
 
-        {/* Step 4: 추가 */}
-        {step === 4 && (
+        {/* ========== Step 5: 추가 설정 ========== */}
+        {step === 5 && (
           <div className="bg-white rounded-xl shadow-sm p-4">
             <h2 className="text-lg font-bold mb-2">➕ 추가 설정</h2>
             <p className="text-sm text-gray-500 mb-4">선택사항이에요</p>
@@ -829,20 +1232,20 @@ export default function RecommendPage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">⭐ 꼭 듣고 싶은 과목</label>
-                <p className="text-xs text-gray-500 mb-2">AI가 이 과목들을 최우선으로 배치해요</p>
+                <p className="text-xs text-gray-500 mb-2">전공/교양 관계없이 꼭 넣고 싶은 과목</p>
                 
                 {mustTakeCourses.length > 0 && (
                   <div className="space-y-2 mb-3">
                     {mustTakeCourses.map(course => (
                       <div 
                         key={`${course.course_code}-${course.section}`}
-                        className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
+                        className="flex items-center justify-between p-2 bg-yellow-50 border border-yellow-200 rounded-lg"
                       >
                         <div>
                           <div className="text-sm font-medium">{course.course_name}</div>
                           <div className="text-xs text-gray-500">{course.professor} | {course.schedule_raw}</div>
                         </div>
-                        <button onClick={() => handleRemoveMustTake(course)} className="p-1 hover:bg-indigo-100 rounded">
+                        <button onClick={() => handleRemoveMustTake(course)} className="p-1 hover:bg-yellow-100 rounded">
                           <X size={16} className="text-gray-500" />
                         </button>
                       </div>
@@ -872,8 +1275,8 @@ export default function RecommendPage() {
           </div>
         )}
 
-        {/* Step 5: 결과 */}
-        {step === 5 && result && (
+        {/* ========== Step 6: 결과 ========== */}
+        {step === 6 && result && (
           <div className="space-y-4">
             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-4 text-white">
               <h2 className="text-lg font-bold mb-2">✨ AI 추천 시간표</h2>
@@ -902,18 +1305,40 @@ export default function RecommendPage() {
               </div>
             )}
 
+            {/* 시간 충돌 경고 (프론트엔드 검사) */}
+            {timeConflicts.length > 0 && (
+              <div className="bg-red-50 border border-red-300 rounded-lg p-3">
+                <div className="flex items-center gap-2 text-red-700 font-bold text-sm mb-2">
+                  <AlertTriangle size={18} />⚠️ 시간 충돌 발견!
+                </div>
+                <p className="text-xs text-red-600 mb-2">
+                  AI가 실수로 시간이 겹치는 과목을 추천했습니다. 다시 만들기를 권장합니다.
+                </p>
+                <ul className="text-sm text-red-600 space-y-1">
+                  {timeConflicts.map((conflict, i) => (
+                    <li key={i}>• {conflict.day}요일: <strong>{conflict.course1}</strong> ↔ <strong>{conflict.course2}</strong> 시간 겹침</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             <div className="bg-white rounded-xl shadow-sm p-4">
               <h3 className="font-bold mb-3">📚 추천 과목</h3>
               <div className="space-y-2">
                 {result.selected_courses?.map((course, idx) => (
                   <div key={idx} className="p-3 border rounded-lg">
                     <div className="flex items-start justify-between">
-                      <div>
+                      <div className="flex-1">
                         <div className="font-medium text-sm">{course.course_name}</div>
                         <div className="text-xs text-gray-500">{course.professor} | {course.schedule_raw} | {course.credits}학점</div>
-                        <div className="text-xs text-indigo-600 mt-1">💡 {course.reason}</div>
                       </div>
-                      <span className="text-xs px-2 py-0.5 bg-gray-100 rounded">{course.category}</span>
+                      <span className={`text-xs px-2 py-1 rounded font-medium shrink-0 ${
+                        course.category?.includes('필수') 
+                          ? 'bg-red-100 text-red-700' 
+                          : 'bg-blue-100 text-blue-700'
+                      }`}>
+                        {course.category}
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -927,8 +1352,8 @@ export default function RecommendPage() {
 
             <div className="flex gap-2">
               <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium">다시 만들기</button>
-              <button onClick={handleAddAll} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-2">
-                <Plus size={18} />전체 추가
+              <button onClick={handleReplaceSchedule} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-2">
+                <Plus size={18} />이 시간표로 교체
               </button>
             </div>
           </div>
@@ -952,14 +1377,14 @@ export default function RecommendPage() {
         )}
 
         {/* 네비게이션 버튼 */}
-        {step < 5 && (
+        {step <= 5 && (
           <div className="flex gap-2 mt-4">
-            {step > 1 && (
+            {displayStep > 1 && (
               <button onClick={handlePrev} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium flex items-center justify-center gap-1">
                 <ChevronLeft size={18} />이전
               </button>
             )}
-            {step < 4 ? (
+            {displayStep < stepConfig.totalSteps ? (
               <button onClick={handleNext} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-1">
                 다음<ChevronRight size={18} />
               </button>
@@ -972,12 +1397,27 @@ export default function RecommendPage() {
         )}
       </main>
 
-      {/* 과목 검색 모달 */}
+      {/* 전공과목 검색 모달 */}
+      <CourseSearchModal
+        isOpen={isMajorSearchOpen}
+        onClose={() => setIsMajorSearchOpen(false)}
+        onSelect={handleAddMajorCourse}
+        currentSelections={majorSelection.selectedCourses}
+        title={`${userInfo.major} 전공과목 검색`}
+        filterOptions={{
+          category: 'major',
+          department: userInfo.major,
+        }}
+      />
+
+      {/* 꼭 듣고 싶은 과목 검색 모달 */}
       <CourseSearchModal
         isOpen={isCourseSearchOpen}
         onClose={() => setIsCourseSearchOpen(false)}
         onSelect={handleAddMustTake}
         currentSelections={mustTakeCourses}
+        title="꼭 듣고 싶은 과목 검색"
+        filterOptions={{}}
       />
     </div>
   );

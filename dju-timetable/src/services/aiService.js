@@ -19,6 +19,7 @@ export async function evaluateSchedule(courses, userInfo) {
           course_name: c.course_name,
           professor: c.professor || null,
           credits: c.credits,
+          target_year: c.target_year || 0,
           schedule_raw: c.schedule_raw || null,
           times: c.times || null,
           room: c.room || null,
@@ -63,6 +64,7 @@ export async function recommendSchedule(userInfo, availableCourses) {
       course_name: c.course_name,
       professor: c.professor || null,
       credits: c.credits,
+      target_year: c.target_year || 0,  // 추가!
       schedule_raw: c.schedule_raw || null,
       times: c.times || null,
       room: c.room || null,
@@ -93,6 +95,9 @@ export async function recommendSchedule(userInfo, availableCourses) {
             preferred_time: userInfo.preferences?.preferred_time || '상관없음',
             preferred_areas: userInfo.preferences?.preferred_areas || [],
             skip_general: userInfo.preferences?.skip_general || false,
+            // 새로 추가된 필드들!
+            major_selection_mode: userInfo.preferences?.major_selection_mode || 'auto',
+            selected_major_courses: (userInfo.preferences?.selected_major_courses || []).map(formatCourse),
             must_take_courses: (userInfo.preferences?.must_take_courses || []).map(formatCourse),
             avoid_courses: userInfo.preferences?.avoid_courses || null,
           },

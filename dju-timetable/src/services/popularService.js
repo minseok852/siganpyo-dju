@@ -14,6 +14,12 @@ import { db } from './firebase';
  */
 export async function incrementCoursePopularity(course) {
   try {
+    // 필수 필드 검증
+    if (!course.course_code || !course.section) {
+      console.warn('⚠️ 인기도 카운트 스킵: course_code 또는 section 누락');
+      return;
+    }
+    
     const courseId = `${course.course_code}-${course.section}`;
     const docRef = doc(db, 'popular_courses', courseId);
     
@@ -26,24 +32,26 @@ export async function incrementCoursePopularity(course) {
         lastAdded: new Date()
       }, { merge: true });
     } else {
-      // 새 문서 생성
-      await setDoc(docRef, {
+      // 새 문서 생성 - undefined 값 필터링!
+      const courseData = {
         course_code: course.course_code,
         section: course.section,
-        course_name: course.course_name,
-        professor: course.professor,
-        credits: course.credits,
-        category: course.category,
-        classification: course.classification,
+        course_name: course.course_name || '과목명 없음',
+        professor: course.professor || '미정',
+        credits: course.credits || 3,
+        category: course.category || '',
+        classification: course.classification || course.category || '',
         college: course.college || '',
         department: course.department || '',
         area: course.area || '',
-        schedule_raw: course.schedule_raw,
-        times: course.times,
-        room: course.room,
+        schedule_raw: course.schedule_raw || '',
+        times: course.times || [],
+        room: course.room || '',
         count: 1,
         lastAdded: new Date()
-      });
+      };
+      
+      await setDoc(docRef, courseData);
     }
     
     console.log('📈 인기도 카운트 증가:', courseId);
