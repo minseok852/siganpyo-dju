@@ -11,7 +11,8 @@ import {
   Check,
   Loader2,
   X,
-  Wand2
+  Wand2,
+  AlertTriangle
 } from 'lucide-react';
 import ScheduleGrid from '../components/schedule/ScheduleGrid';
 import CourseSearch from '../components/schedule/CourseSearch';
@@ -24,6 +25,25 @@ export default function HomePage() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState(null);
   const [copiedCode, setCopiedCode] = useState(null);
+  
+  // 공지 팝업 상태 (localStorage로 "오늘 하루 안보기" 체크)
+  const [showNotice, setShowNotice] = useState(() => {
+    const hideUntil = localStorage.getItem('noticeHideUntil');
+    if (hideUntil && new Date().getTime() < parseInt(hideUntil)) {
+      return false;
+    }
+    return true;
+  });
+
+  // 공지 닫기 (오늘 하루 안보기)
+  const handleCloseNotice = (hideForToday = false) => {
+    if (hideForToday) {
+      const tomorrow = new Date();
+      tomorrow.setHours(24, 0, 0, 0);
+      localStorage.setItem('noticeHideUntil', tomorrow.getTime().toString());
+    }
+    setShowNotice(false);
+  };
   
   // 공유 모달 상태
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -88,6 +108,71 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* 📢 공지 팝업 */}
+      {showNotice && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl w-full max-w-md p-5 shadow-2xl animate-in fade-in zoom-in duration-200">
+            {/* 헤더 */}
+            <div className="flex items-start gap-3 mb-4">
+              <div className="p-2 bg-amber-100 rounded-full">
+                <AlertTriangle className="text-amber-600" size={24} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-lg font-bold text-gray-800">서비스 종료 안내</h2>
+                <p className="text-sm text-gray-500">중요한 공지사항입니다</p>
+              </div>
+              <button 
+                onClick={() => handleCloseNotice(false)}
+                className="p-1 hover:bg-gray-100 rounded-full text-gray-400"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* 공지 내용 */}
+            <div className="bg-gray-50 rounded-lg p-4 mb-4">
+              <p className="text-gray-700 text-sm leading-relaxed">
+                안녕하세요, 대진대 시간표를 이용해주셔서 감사합니다.
+              </p>
+              <p className="text-gray-700 text-sm leading-relaxed mt-2">
+                안타깝게도 과도한 신고로 인해 더 이상 서비스를 유지하기 어렵게 되었습니다.
+                에브리타임 계정도 정지되어 더 이상 소통이 어려운 점 양해 부탁드립니다.
+              </p>
+              <p className="text-gray-700 text-sm leading-relaxed mt-2">
+                업데이트와 오류를 지속적으로 수정하고 있었으나, 에타의 계정 정지로 인하여 더 이상 소통을 할 수가 없어서,
+                서비스를 종료하려고 합니다.
+                그동안 이용해주신 모든 분들께 진심으로 감사드립니다. 🙏
+              </p>
+              <p className="text-gray-700 text-sm leading-relaxed mt-2">
+                마지막으로 오지랖 한번 부리자면 신입생분들은 전공은 웬만해서 다 들으시고, 교양필수 비고란에 본인의 학과가 나온 것을
+                꼭 넣으시고요. 몇몇 교양 영역(특히 3영역)에 비고란에 본인의 학과만 들을 수 있는 게 있습니다. 그런 것 넣으시고 남은 영역 듣고 싶은 교양 들으시면 
+                시간표는 완성됩니다. 최대한 많이 듣는 게 좋습니다!
+              </p>
+              <p className="text-red-600 text-sm font-medium mt-3">
+                여러분의 수강신청을 응원합니다!즐거운 대학생활 되세요!
+                ⚠️ 서버는 1월27일까지만 유지할 예정입니다.  
+              </p>
+            </div>
+
+            {/* 버튼 */}
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => handleCloseNotice(false)}
+                className="w-full py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-colors"
+              >
+                확인했습니다
+              </button>
+              <button
+                onClick={() => handleCloseNotice(true)}
+                className="w-full py-2 text-gray-500 text-sm hover:text-gray-700"
+              >
+                오늘 하루 보지 않기
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* 헤더 */}
       <header className="bg-white shadow-sm sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-3 py-2">
