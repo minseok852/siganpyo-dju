@@ -7,7 +7,8 @@ import {
   orderBy, 
   limit, 
   getDocs,
-  startAfter 
+  startAfter,
+  documentId
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
@@ -57,9 +58,26 @@ export function useCourses() {
         constraints.push(where('area', '==', filters.area));
       }
 
-      // 정렬 및 제한
-      constraints.push(orderBy('course_name'));
-      constraints.push(limit(filters.limit || 50));
+      // 정렬
+      if (constraints.length > 0) {
+        constraints.push(orderBy('course_name'));
+      } else {
+        constraints.push(orderBy(documentId()));
+      }
+      
+      // ✅ 검색어가 있으면 더 많이 가져와서 필터링
+      const searchTerm = filters.searchTerm?.trim();
+      let fetchLimit;
+      
+      if (searchTerm) {
+        // 검색어 있으면 전체에서 찾아야 하니까 많이 가져옴
+        fetchLimit = 2000;  // 전체 1,583개니까 2000이면 충분
+      } else {
+        // 검색어 없으면 기본 100개
+        fetchLimit = filters.limit || 100;
+      }
+      
+      constraints.push(limit(fetchLimit));
 
       const q = query(coursesRef, ...constraints);
       const snapshot = await getDocs(q);
@@ -70,26 +88,28 @@ export function useCourses() {
       }));
 
       // 검색어 필터 (클라이언트 사이드)
-      if (filters.searchTerm) {
-        const term = filters.searchTerm.toLowerCase();
+      if (searchTerm) {
+        const term = searchTerm.toLowerCase();
         results = results.filter(course => 
           course.course_name?.toLowerCase().includes(term) ||
           course.professor?.toLowerCase().includes(term) ||
           course.course_code?.includes(term)
         );
+        
+        // 검색 결과는 100개까지만 표시
+        results = results.slice(0, 100);
       }
 
       setCourses(results);
       setLastDoc(snapshot.docs[snapshot.docs.length - 1]);
-      setHasMore(snapshot.docs.length === (filters.limit || 50));
+      setHasMore(results.length === (filters.limit || 100));
 
-      // ✅ 결과 직접 반환!
       return results;
 
     } catch (err) {
       console.error('Search error:', err);
       setError(err.message);
-      return []; // 에러시 빈 배열 반환
+      return [];
     } finally {
       setLoading(false);
     }
@@ -170,7 +190,6 @@ export function useCourses() {
         limit: 100 
       });
       
-      // 중복 제거된 과목명 반환
       const uniqueNames = [...new Set(results.map(c => c.course_name))];
       return uniqueNames.sort();
     } catch (err) {
@@ -191,7 +210,6 @@ export function useCourses() {
         limit: 100 
       });
       
-      // 중복 제거된 과목명 반환
       const uniqueNames = [...new Set(results.map(c => c.course_name))];
       return uniqueNames.sort();
     } catch (err) {

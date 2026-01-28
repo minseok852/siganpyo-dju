@@ -17,7 +17,7 @@ import {
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
 import { recommendSchedule } from '../services/aiService';
-import { COLLEGES } from '../data/constants';
+import { COLLEGES, COURSE_COLORS } from '../data/constants';
 
 // 교양 영역 옵션
 const AREA_OPTIONS = [
@@ -44,20 +44,11 @@ function SchedulePreview({ courses }) {
   const DAYS = ['월', '화', '수', '목', '금'];
   const HOURS = Array.from({ length: 13 }, (_, i) => i + 9); // 9시~21시
   
-  const COLORS = [
-    { bg: 'bg-red-100', border: 'border-red-300', text: 'text-red-800' },
-    { bg: 'bg-blue-100', border: 'border-blue-300', text: 'text-blue-800' },
-    { bg: 'bg-green-100', border: 'border-green-300', text: 'text-green-800' },
-    { bg: 'bg-yellow-100', border: 'border-yellow-300', text: 'text-yellow-800' },
-    { bg: 'bg-purple-100', border: 'border-purple-300', text: 'text-purple-800' },
-    { bg: 'bg-pink-100', border: 'border-pink-300', text: 'text-pink-800' },
-    { bg: 'bg-indigo-100', border: 'border-indigo-300', text: 'text-indigo-800' },
-    { bg: 'bg-teal-100', border: 'border-teal-300', text: 'text-teal-800' },
-  ];
 
+  // 변경 - COLORS 배열 삭제하고:
   const courseColors = {};
   courses.forEach((course, idx) => {
-    courseColors[course.course_name] = COLORS[idx % COLORS.length];
+    courseColors[course.course_name] = COURSE_COLORS[idx % COURSE_COLORS.length];
   });
 
   // schedule_raw 파싱: "화10:00-11:30, 금10:00-11:30" 또는 "월1,2,3 수1,2,3"
@@ -766,12 +757,13 @@ export default function RecommendPage() {
     });
     
     // colorMap 생성
-    const COLORS_COUNT = 10;  // COURSE_COLORS 개수
     const newColorMap = {};
     newCourses.forEach((course, idx) => {
-      const key = `${course.course_code}-${course.section}`;
-      newColorMap[key] = idx % COLORS_COUNT;
+    const key = `${course.course_code}-${course.section}`;
+    newColorMap[key] = idx % COURSE_COLORS.length;  // ✅ COURSE_COLORS 사용
     });
+
+    console.log('✅ AI 시간표 저장 완료:', newCourses.length, '과목, colorMap:', newColorMap);
     
     // useSchedule.js와 동일한 형식으로 저장!
     // 키: 'dju_my_schedule' (constants.js의 STORAGE_KEYS.MY_SCHEDULE)

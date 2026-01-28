@@ -63,7 +63,7 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     if must_take_courses:
         must_take_text = "\n## ⭐ 꼭 듣고 싶은 과목 (최우선 - 무조건 포함!)\n"
         for c in must_take_courses:
-            must_take_text += f"- {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점\n"
+            must_take_text += f"- [{c.get('course_code', '')}-{c.get('section', '01')}] {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점\n"
 
     # ========== 5. 전공 선택 모드 (2학년+) ==========
     major_mode_text = ""
@@ -73,7 +73,7 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     if grade >= 2 and major_selection_mode == 'manual' and selected_major_courses:
         major_mode_text = "\n## 🎯 직접 선택한 전공과목 (우선 배치)\n"
         for c in selected_major_courses:
-            major_mode_text += f"- {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점\n"
+            major_mode_text += f"- [{c.get('course_code', '')}-{c.get('section', '01')}] {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점\n"
         major_mode_text += "\n→ 위 전공과목들을 우선 배치하고, 나머지 학점은 전공필수/교양으로 채우세요.\n"
 
     # ========== 6. 학년별 우선순위 ==========
@@ -191,7 +191,7 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 - 가능하면 같은 건물 또는 가까운 건물로 배치
 - 점심시간: 11시~14시 사이 1시간 이상 빈 시간 확보 권장"""
 
-    # ========== 9. 과목 목록 ==========
+    # ========== 9. 과목 목록 (course_code, section 포함!) ==========
     def format_courses(courses, label):
         if not courses:
             return f"\n### {label}\n(없음)\n"
@@ -199,10 +199,14 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
         for c in courses[:30]:
             target_yr = c.get('target_year', 0)
             dept = c.get('department', '')
-            text += f"- {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점 | 대상:{target_yr}학년 | {dept}\n"
+            course_code = c.get('course_code', '')
+            section = c.get('section', '01')
+            # ✅ course_code-section을 명확히 표시
+            text += f"- [{course_code}-{section}] {c['course_name']} | {c.get('professor', '미정')} | {c.get('schedule_raw', '시간미정')} | {c['credits']}학점 | 대상:{target_yr}학년 | {dept}\n"
         return text
 
     courses_text = "\n## 📚 사용 가능한 과목 목록"
+    courses_text += "\n⚠️ 반드시 [course_code-section] 형식을 그대로 응답에 포함하세요!"
     
     if not skip_general:
         courses_text += format_courses(available_courses.get('general_required', []), '교양필수')
@@ -222,8 +226,8 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     "selected_courses": [
         {
             "course_name": "과목명",
-            "course_code": "학수번호",
-            "section": "분반",
+            "course_code": "학수번호 (위 목록의 [학수번호-분반]에서 학수번호 부분)",
+            "section": "분반 (위 목록의 [학수번호-분반]에서 분반 부분)",
             "professor": "교수명",
             "schedule_raw": "시간",
             "credits": 3,
@@ -237,6 +241,12 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     "summary": "시간표 총평 (2-3문장)"
 }
 ```
+
+### ⚠️ course_code, section 규칙 (매우 중요!)
+- 위 과목 목록에서 [course_code-section] 형식으로 제공됨
+- 예: [001022-07] → course_code: "001022", section: "07"
+- 예: [125601-01] → course_code: "125601", section: "01"
+- **반드시 목록에 있는 값을 그대로 사용!** 임의로 만들지 마세요!
 
 ### category 규칙 (정확하게!)
 - classification 필드값 그대로 사용
@@ -273,12 +283,17 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 4. 📋 **필수과목 포함 확인**
    - 교양필수, 전공필수가 포함되었는지 확인
 
+5. 🔢 **course_code, section 확인** (새로 추가!)
+   - 모든 과목의 course_code와 section이 목록에 있는 값인지 확인
+   - 임의로 생성한 코드 사용 금지!
+
 시간 충돌이 있는 시간표는 쓸모가 없습니다. 반드시 시간 충돌이 없는지 확인하세요!
 
 ⚠️ 주의사항:
 - JSON만 출력, 다른 텍스트 없이!
 - 학과 제한, 학년 제한 반드시 준수!
 - 시간 겹침 절대 금지!
+- course_code, section은 목록에서 그대로 복사!
 """
 
     # ========== 최종 프롬프트 조합 ==========
@@ -326,8 +341,50 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
         
         result = json.loads(response_text.strip())
         
-        # ========== 후처리: 시간 충돌 검사 및 제거 ==========
+        # ========== 후처리: course_code 검증 ==========
         selected_courses = result.get('selected_courses', [])
+        
+        # 사용 가능한 모든 과목을 하나의 딕셔너리로 만들기 (빠른 조회용)
+        all_courses_map = {}
+        for category_courses in available_courses.values():
+            for c in category_courses:
+                key = f"{c.get('course_code', '')}-{c.get('section', '01')}"
+                all_courses_map[key] = c
+        
+        # course_code가 없거나 잘못된 경우 매칭 시도
+        for course in selected_courses:
+            course_code = course.get('course_code', '')
+            section = course.get('section', '01')
+            key = f"{course_code}-{section}"
+            
+            # 목록에 있는 과목인지 확인
+            if key in all_courses_map:
+                # 매칭되면 추가 정보 보완
+                matched = all_courses_map[key]
+                if not course.get('department'):
+                    course['department'] = matched.get('department', '')
+                if not course.get('college'):
+                    course['college'] = matched.get('college', '')
+                if not course.get('room'):
+                    course['room'] = matched.get('room', '')
+            else:
+                # 매칭 안 되면 과목명으로 찾기 시도
+                course_name = course.get('course_name', '')
+                for cat_courses in available_courses.values():
+                    for c in cat_courses:
+                        if c.get('course_name') == course_name:
+                            # 찾으면 course_code, section 복사
+                            course['course_code'] = c.get('course_code', '')
+                            course['section'] = c.get('section', '01')
+                            course['department'] = c.get('department', '')
+                            course['college'] = c.get('college', '')
+                            course['room'] = c.get('room', '')
+                            break
+                    else:
+                        continue
+                    break
+        
+        # ========== 후처리: 시간 충돌 검사 및 제거 ==========
         validated_courses, removed_courses = validate_and_remove_conflicts(selected_courses)
         
         # 경고 메시지 추가

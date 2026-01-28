@@ -2,7 +2,7 @@
   "college": "글로벌산업통상대학",
   "college_eng": "global_business",
   "semester": "2026학년도 1학기",
-  "updated_at": "2026-01-25",
+  "updated_at": "2026-01-28",
   "departments": [
     {
       "department_id": "GLOBAL_ECONOMICS",
@@ -582,9 +582,9 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김정식",
+              "professor": "경영강사3",
               "schedule": {
-                "raw": "수11:30-13:00, 목14:00-15:30",
+                "raw": "수11:30-13:00, 목11:30-13:00",
                 "days": [
                   "수",
                   "목"
@@ -597,8 +597,8 @@
                   },
                   {
                     "day": "목",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
@@ -610,11 +610,11 @@
                 "room_type": "경영A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "경영학과 1학년만 수강신청 가능"
             },
             {
               "section": "02",
-              "professor": "김정식",
+              "professor": "김신중",
               "schedule": {
                 "raw": "화13:30-16:30",
                 "days": [
@@ -636,7 +636,7 @@
                 "room_type": "경영A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -830,6 +830,70 @@
           "sections": [
             {
               "section": "01",
+              "professor": "경영강사2",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사202 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "202",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영2학년/둘째날 경영/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "경영강사2",
+              "schedule": {
+                "raw": "화15:30-17:00, 목15:30-17:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사202 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "202",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영2학년/둘째날 경영"
+            },
+            {
+              "section": "03",
               "professor": "손준상",
               "schedule": {
                 "raw": "월11:30-13:00, 화11:30-13:00",
@@ -851,46 +915,14 @@
                 ]
               },
               "room": {
-                "raw": "사A312 - 경영A/V강의실",
+                "raw": "사312 - 경영학과 A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A312",
-                "room_type": "경영A/V강의실"
+                "room_number": "312",
+                "room_type": "경영학과 A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "손준상",
-              "schedule": {
-                "raw": "월14:00-15:30, 화14:00-15:30",
-                "days": [
-                  "월",
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "월",
-                    "start": "14:00",
-                    "end": "15:30"
-                  },
-                  {
-                    "day": "화",
-                    "start": "14:00",
-                    "end": "15:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사A312 - 경영A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A312",
-                "room_type": "경영A/V강의실"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -908,10 +940,10 @@
               "section": "01",
               "professor": "김정식",
               "schedule": {
-                "raw": "월14:00-15:30, 화14:00-15:30",
+                "raw": "월14:00-15:30, 수14:00-15:30",
                 "days": [
                   "월",
-                  "화"
+                  "수"
                 ],
                 "times": [
                   {
@@ -920,27 +952,27 @@
                     "end": "15:30"
                   },
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사401 - 경영A/V강의실",
+                "raw": "사206 - e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "401",
-                "room_type": "경영A/V강의실"
+                "room_number": "206",
+                "room_type": "e-강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영2학년/둘째날 경영/셋째날 전체"
             },
             {
               "section": "02",
               "professor": "김정식",
               "schedule": {
-                "raw": "금20:30-21:25",
+                "raw": "금20:30-21:20",
                 "days": [
                   "금"
                 ],
@@ -948,19 +980,19 @@
                   {
                     "day": "금",
                     "start": "20:30",
-                    "end": "21:25"
+                    "end": "21:20"
                   }
                 ]
               },
               "room": {
-                "raw": "e-learning(온라인)",
+                "raw": "e-learning(온라인)2",
                 "building": null,
                 "building_full": "온라인",
                 "room_number": null,
                 "room_type": "e-learning"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "[원격수업]경영학과 수강신청 금지"
             }
           ]
         },
@@ -976,23 +1008,23 @@
           "sections": [
             {
               "section": "01",
-              "professor": "류성열",
+              "professor": "경영강사3",
               "schedule": {
-                "raw": "수10:00-11:30, 목11:30-13:30",
+                "raw": "월10:00-11:30, 수10:00-11:30",
                 "days": [
-                  "수",
-                  "목"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "월",
                     "start": "10:00",
                     "end": "11:30"
                   },
                   {
-                    "day": "목",
-                    "start": "11:30",
-                    "end": "13:30"
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
                   }
                 ]
               },
@@ -1004,7 +1036,7 @@
                 "room_type": "경영A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영2학년/둘째날 경영/셋째날 전체"
             }
           ]
         },
@@ -1022,47 +1054,47 @@
               "section": "01",
               "professor": "류성열",
               "schedule": {
-                "raw": "목11:30-13:00, 금11:30-13:00",
+                "raw": "월11:30-13:00, 수11:30-13:00",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "11:30",
                     "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "수",
                     "start": "11:30",
                     "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A206 - 강의실/사A312 - 경영A/V강의실",
+                "raw": "사206 - e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A206/A312",
-                "room_type": "강의실"
+                "room_number": "206",
+                "room_type": "e-강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영2학년/둘째날 경영/셋째날 전체"
             },
             {
               "section": "02",
               "professor": "류성열",
               "schedule": {
-                "raw": "금17:30-18:25",
+                "raw": "금10:30-13:30",
                 "days": [
                   "금"
                 ],
                 "times": [
                   {
                     "day": "금",
-                    "start": "17:30",
-                    "end": "18:25"
+                    "start": "10:30",
+                    "end": "13:30"
                   }
                 ]
               },
@@ -1074,7 +1106,33 @@
                 "room_type": "e-learning"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영2학년/둘째날 경영/셋째날 전체"
+            },
+            {
+              "section": "03",
+              "professor": "류성열",
+              "schedule": {
+                "raw": "월17:30-18:25",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]경영학과 수강신청 금지"
             }
           ]
         },
@@ -1090,93 +1148,93 @@
           "sections": [
             {
               "section": "01",
-              "professor": "이의경",
+              "professor": "경영강사1",
               "schedule": {
-                "raw": "화15:30-17:00, 금14:00-15:30",
+                "raw": "화11:30-13:00, 목11:30-13:00",
                 "days": [
                   "화",
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "15:30",
-                    "end": "17:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "14:00",
-                    "end": "15:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사A205 - 강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A205",
-                "room_type": "강의실"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "이의경",
-              "schedule": {
-                "raw": "목09:30-12:30",
-                "days": [
                   "목"
                 ],
                 "times": [
                   {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
                     "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사206-e-강의실/사312-경영학과A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "206/312",
+                "room_type": "강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영3학년/둘째날 경영 전체"
+            },
+            {
+              "section": "02",
+              "professor": "경영강사1",
+              "schedule": {
+                "raw": "월15:30-17:00, 수15:30-17:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사205 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "205",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영3학년/둘째날 경영 전체"
+            },
+            {
+              "section": "03",
+              "professor": "이의경",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
                     "start": "09:30",
                     "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A201 - e-강의실",
+                "raw": "사312 - 경영학과 A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A201",
-                "room_type": "e-강의실"
+                "room_number": "312",
+                "room_type": "경영학과 A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "03",
-              "professor": "이의경",
-              "schedule": {
-                "raw": "목11:30-13:00, 금11:30-13:00",
-                "days": [
-                  "목",
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "목",
-                    "start": "11:30",
-                    "end": "13:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "11:30",
-                    "end": "13:00"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사A201 - e-강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A201",
-                "room_type": "e-강의실"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -1306,35 +1364,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "경영강사1",
+              "professor": "경영강사2",
               "schedule": {
-                "raw": "목11:30-13:00, 금11:30-13:00",
+                "raw": "월11:30-13:00, 수11:30-13:00",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "11:30",
                     "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "수",
                     "start": "11:30",
                     "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A206 A/V강의실/사208 - 강의실",
+                "raw": "사401-경영A/V강의실/사208-e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A206/208",
+                "room_number": "401/208",
                 "room_type": "강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영4학년/둘째날 경영 전체"
             },
             {
               "section": "02",
@@ -1382,6 +1440,38 @@
           "sections": [
             {
               "section": "01",
+              "professor": "경영강사1",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사208-e-강의실/사312-경영학과A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "208/312",
+                "room_type": "경영 A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영4학년/둘째날 경영 전체"
+            },
+            {
+              "section": "02",
               "professor": "이의경",
               "schedule": {
                 "raw": "수14:30-17:30",
@@ -1397,14 +1487,14 @@
                 ]
               },
               "room": {
-                "raw": "사A312 - 경영 A/V강의실",
+                "raw": "사312 - 경영학과 A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A312",
-                "room_type": "경영 A/V강의실"
+                "room_number": "312",
+                "room_type": "경영학과 A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -1422,33 +1512,59 @@
               "section": "01",
               "professor": "김정식",
               "schedule": {
-                "raw": "목15:30-17:00, 금15:15-20:05",
+                "raw": "월15:30-17:00, 목15:30-17:00",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "15:30",
                     "end": "17:00"
                   },
                   {
-                    "day": "금",
-                    "start": "15:15",
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사401 - 경영A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "401",
+                "room_type": "경영A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영4학년/둘째날 경영/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "김정식",
+              "schedule": {
+                "raw": "화19:15-20:05",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "19:15",
                     "end": "20:05"
                   }
                 ]
               },
               "room": {
-                "raw": "사A01 - 경영A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "경영A/V강의실"
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
               },
               "capacity": 0,
-              "notes": "e-learning(온라인)"
+              "notes": "[원격수업]경영학과 수강신청 금지"
             }
           ]
         },
@@ -3115,29 +3231,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "조대환",
+              "professor": "조대원",
               "schedule": {
-                "raw": "금20:30-21:20",
+                "raw": "월20:30-21:20",
                 "days": [
-                  "금"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "월",
                     "start": "20:30",
                     "end": "21:20"
                   }
                 ]
               },
               "room": {
-                "raw": "e-learning(온라인)",
+                "raw": "e-learning(온라인)2",
                 "building": null,
-                "building_full": "온라인",
+                "building_full": null,
                 "room_number": null,
-                "room_type": "e-learning"
+                "room_type": "온라인"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "[원격수업]중국학전공 1학년만 수강가능"
             }
           ]
         },
@@ -3847,21 +3963,15 @@
               "section": "01",
               "professor": "장천",
               "schedule": {
-                "raw": "목15:30-18:30, 금14:00-15:30",
+                "raw": "목15:30-18:25",
                 "days": [
-                  "목",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
                     "day": "목",
                     "start": "15:30",
-                    "end": "18:30"
-                  },
-                  {
-                    "day": "금",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "end": "18:25"
                   }
                 ]
               },
@@ -3957,7 +4067,7 @@
           "course_code": "242117",
           "course_name": "미국사상",
           "classification": "전필",
-          "target_year": 2,
+          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -3980,10 +4090,10 @@
                 ]
               },
               "room": {
-                "raw": "사A02 - 어학실습실A",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A02",
+                "raw": "국402 - 어학실습실A",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "402",
                 "room_type": "어학실습실A"
               },
               "capacity": 0,
@@ -4018,10 +4128,10 @@
                 ]
               },
               "room": {
-                "raw": "사A02 - 어학실습실A",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A02",
+                "raw": "국402 - 어학실습실A",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "402",
                 "room_type": "어학실습실A"
               },
               "capacity": 0,
@@ -4056,10 +4166,10 @@
                 ]
               },
               "room": {
-                "raw": "사A01 - 미국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
                 "room_type": "미국A/V강의실"
               },
               "capacity": 0,

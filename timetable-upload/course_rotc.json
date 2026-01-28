@@ -1,7 +1,7 @@
 {
   "category": "군사학(ROTC)",
   "semester": "2026학년도 1학기",
-  "updated_at": "2026-01-25",
+  "updated_at": "2026-01-28",
   "courses": [
     {
       "course_code": "008005",
@@ -9,11 +9,11 @@
       "credits": 15,
       "hours": 0,
       "lab_hours": 60,
-      "target_year": 3,
+      "target_year": null,
       "sections": [
         {
           "section": "01",
-          "professor": "학군장사",
+          "professor": "취업강사1",
           "schedule": {
             "raw": "",
             "days": [],
@@ -44,10 +44,7 @@
           "professor": "박종헌",
           "schedule": {
             "raw": "월14:00-16:00, 금13:30-17:30",
-            "days": [
-              "월",
-              "금"
-            ],
+            "days": ["월", "금"],
             "times": [
               {
                 "day": "월",
@@ -69,7 +66,7 @@
             "room_type": "강의실A"
           },
           "capacity": 0,
-          "notes": "학군사관후보생 수강가능"
+          "notes": "학군단 학군사관후보생 만 수강가능"
         }
       ]
     },
@@ -79,11 +76,11 @@
       "credits": 12,
       "hours": 0,
       "lab_hours": 48,
-      "target_year": 3,
+      "target_year": null,
       "sections": [
         {
           "section": "01",
-          "professor": "학군장사",
+          "professor": "취업강사1",
           "schedule": {
             "raw": "",
             "days": [],
@@ -113,11 +110,8 @@
           "section": "01",
           "professor": "노보환",
           "schedule": {
-            "raw": "월14:30-16:30, 목13:30-17:30",
-            "days": [
-              "월",
-              "목"
-            ],
+            "raw": "월14:30-16:30, 금13:30-17:30",
+            "days": ["월", "금"],
             "times": [
               {
                 "day": "월",
@@ -125,7 +119,7 @@
                 "end": "16:30"
               },
               {
-                "day": "목",
+                "day": "금",
                 "start": "13:30",
                 "end": "17:30"
               }
@@ -139,7 +133,7 @@
             "room_type": "강의실B"
           },
           "capacity": 0,
-          "notes": "학군사관후보생 만 수강가능"
+          "notes": "학군단 학군사관후보생 만 수강가능"
         }
       ]
     }

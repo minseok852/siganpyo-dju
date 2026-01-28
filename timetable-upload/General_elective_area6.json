@@ -1,0 +1,949 @@
+{
+  "category": "교양선택",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-28",
+  "areas": [
+    {
+      "area_id": 6,
+      "area_name": "6영역",
+      "field": "디지털리터러시",
+      "courses": [
+        {
+          "course_code": "004977",
+          "course_name": "OFFICE실무",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김지연",
+              "schedule": {
+                "raw": "수18:25-19:15",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "18:25",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "922532",
+          "course_name": "인공지능과인터넷윤리",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박혜진",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인104 - 통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "104",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "박혜진",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인104 - 통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "104",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922533",
+          "course_name": "문헌정보와리터러시",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나병준",
+              "schedule": {
+                "raw": "목15:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922535",
+          "course_name": "생성형AI기초와활용",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "문수지",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보407 정보실습실G",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "407",
+                "room_type": "정보실습실G"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "문수지",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보207 정보실습실A",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "207",
+                "room_type": "정보실습실A"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922536",
+          "course_name": "웹프로그래밍의기초",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정수경",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 403 정보실습실J",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "403",
+                "room_type": "정보실습실J"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922605",
+          "course_name": "AI기반프로그래밍입문",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김지연",
+              "schedule": {
+                "raw": "목15:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보406 정보실습실H",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "406",
+                "room_type": "정보실습실H"
+              },
+              "capacity": 40,
+              "notes": "AI융합학부 수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "922606",
+          "course_name": "AI스포츠데이터분석",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인119-1 - 교양A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "119-1",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922607",
+          "course_name": "AI와소설감상문쓰기",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정연희",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922609",
+          "course_name": "AI와함께하는건강식생활설계",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주신윤",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 112 - e-강의실(공용)",
+                "building": "공나",
+                "building_full": "이공대 나동",
+                "room_number": "112",
+                "room_type": "e-강의실(공용)"
+              },
+              "capacity": 30,
+              "notes": "식품영양학과 수강제한"
+            }
+          ]
+        },
+        {
+          "course_code": "922610",
+          "course_name": "AI와디지털사회",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남선",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 314 - 캡스톤디자인실",
+                "building": "공다",
+                "building_full": "이공대 다동",
+                "room_number": "314",
+                "room_type": "캡스톤디자인실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922611",
+          "course_name": "인공지능법과미래사회",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922612",
+          "course_name": "인공지능의원리와사고",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손방용",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 415 - 강의실",
+                "building": "공나",
+                "building_full": "이공대 나동",
+                "room_number": "415",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922614",
+          "course_name": "포스트휴먼시대의문학과AI",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장혜련",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인310 - 문창A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "310",
+                "room_type": "문창A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922615",
+          "course_name": "인공지능과함께만드는연구",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안정민",
+              "schedule": {
+                "raw": "금10:00-12:00",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "12:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예315 - VTR-II실",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "315",
+                "room_type": "VTR-II실"
+              },
+              "capacity": 50,
+              "notes": "연기예술학과 수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "922616",
+          "course_name": "AI시대의콘텐츠크리에이션",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김선경",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 202 정보실습실B",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "202",
+                "room_type": "정보실습실B"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김선경",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 202 정보실습실B",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "202",
+                "room_type": "정보실습실B"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922617",
+          "course_name": "비전공자를위한AI앱기획과개발",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김선경",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보202 정보실습실G",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "202",
+                "room_type": "정보실습실G"
+              },
+              "capacity": 30,
+              "notes": "보건과학, AI융합,공과대학 수강불가"
+            },
+            {
+              "section": "02",
+              "professor": "김선경",
+              "schedule": {
+                "raw": "목15:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보202 정보실습실G",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "202",
+                "room_type": "정보실습실G"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922618",
+          "course_name": "생성형AI활용문화콘텐츠제작",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김연희",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인314 - 국문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "314",
+                "room_type": "국문A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927255",
+          "course_name": "알기쉬운빅데이터와시각화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김지연",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보406 정보실습실H",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "406",
+                "room_type": "정보실습실H"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927269",
+          "course_name": "빅데이터분석의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김상오",
+              "schedule": {
+                "raw": "금13:30-15:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 404 정보실습실I",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "404",
+                "room_type": "정보실습실I"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927324",
+          "course_name": "4차산업혁명과미래미디어",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황지원",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사209 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "209",
+                "room_type": "e-강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927384",
+          "course_name": "비전공자를위한인공지능의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김선경",
+              "schedule": {
+                "raw": "화15:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보406 정보실습실H",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "406",
+                "room_type": "정보실습실H"
+              },
+              "capacity": 30,
+              "notes": "보건과학, AI융합,공과대학 수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "927399",
+          "course_name": "미래사회와휴먼테크놀로지",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영주",
+              "schedule": {
+                "raw": "월19:40-20:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "19:40",
+                    "end": "20:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "927446",
+          "course_name": "데이터관리와분석",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김지연",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보207 정보실습실A",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "207",
+                "room_type": "정보실습실A"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

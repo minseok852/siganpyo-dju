@@ -1,7 +1,7 @@
 {
   "college": "대순종학대학",
   "semester": "2026학년도 1학기",
-  "updated_at": "2026-01-25",
+  "updated_at": "2026-01-28",
   "departments": [
     {
       "department_id": "DAESOON",
@@ -21,9 +21,7 @@
               "professor": "나권수",
               "schedule": {
                 "raw": "월09:30-12:30",
-                "days": [
-                  "월"
-                ],
+                "days": ["월"],
                 "times": [
                   {
                     "day": "월",
@@ -58,9 +56,7 @@
               "professor": "차선근",
               "schedule": {
                 "raw": "월18:00-19:40",
-                "days": [
-                  "월"
-                ],
+                "days": ["월"],
                 "times": [
                   {
                     "day": "월",
@@ -95,10 +91,7 @@
               "professor": "이경원",
               "schedule": {
                 "raw": "화13:30-15:00, 수13:30-15:00",
-                "days": [
-                  "화",
-                  "수"
-                ],
+                "days": ["화", "수"],
                 "times": [
                   {
                     "day": "화",
@@ -138,9 +131,7 @@
               "professor": "차선근",
               "schedule": {
                 "raw": "수15:30-17:30",
-                "days": [
-                  "수"
-                ],
+                "days": ["수"],
                 "times": [
                   {
                     "day": "수",
@@ -172,13 +163,10 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최지봉",
+              "professor": "최치봉",
               "schedule": {
                 "raw": "수10:00-11:30, 금10:00-11:30",
-                "days": [
-                  "수",
-                  "금"
-                ],
+                "days": ["수", "금"],
                 "times": [
                   {
                     "day": "수",
@@ -218,9 +206,7 @@
               "professor": "이재호",
               "schedule": {
                 "raw": "수18:00-19:40",
-                "days": [
-                  "수"
-                ],
+                "days": ["수"],
                 "times": [
                   {
                     "day": "수",
@@ -255,9 +241,7 @@
               "professor": "김안주",
               "schedule": {
                 "raw": "화09:30-13:30",
-                "days": [
-                  "화"
-                ],
+                "days": ["화"],
                 "times": [
                   {
                     "day": "화",
@@ -291,14 +275,11 @@
               "section": "01",
               "professor": "이경원",
               "schedule": {
-                "raw": "월15:30-17:00, 수15:30-17:00",
-                "days": [
-                  "월",
-                  "수"
-                ],
+                "raw": "화15:30-17:00, 수15:30-17:00",
+                "days": ["화", "수"],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "화",
                     "start": "15:30",
                     "end": "17:00"
                   },
@@ -335,9 +316,7 @@
               "professor": "차선근",
               "schedule": {
                 "raw": "월13:30-15:30",
-                "days": [
-                  "월"
-                ],
+                "days": ["월"],
                 "times": [
                   {
                     "day": "월",
@@ -362,7 +341,7 @@
           "course_code": "042501",
           "course_name": "대순인문지리학",
           "classification": "전선",
-          "target_year": 3,
+          "target_year": 2,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -371,23 +350,21 @@
               "section": "01",
               "professor": "박상규",
               "schedule": {
-                "raw": "목13:30-15:30",
-                "days": [
-                  "목"
-                ],
+                "raw": "목13:30-16:30",
+                "days": ["목"],
                 "times": [
                   {
                     "day": "목",
                     "start": "13:30",
-                    "end": "15:30"
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "대교301 - 강의실",
+                "raw": "대교310 - 강의실",
                 "building": "대교",
                 "building_full": "대진교육관",
-                "room_number": "301",
+                "room_number": "310",
                 "room_type": "강의실"
               },
               "capacity": 0,
@@ -397,7 +374,7 @@
         },
         {
           "course_code": "042502",
-          "course_name": "대순율질종교학",
+          "course_name": "대순물질종교학",
           "classification": "전선",
           "target_year": 3,
           "credits": 3,
@@ -406,13 +383,10 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최지봉",
+              "professor": "최치봉",
               "schedule": {
                 "raw": "월13:30-15:00, 수13:30-15:00",
-                "days": [
-                  "월",
-                  "수"
-                ],
+                "days": ["월", "수"],
                 "times": [
                   {
                     "day": "월",
@@ -452,9 +426,7 @@
               "professor": "박상규",
               "schedule": {
                 "raw": "목18:00-19:40",
-                "days": [
-                  "목"
-                ],
+                "days": ["목"],
                 "times": [
                   {
                     "day": "목",
@@ -489,9 +461,7 @@
               "professor": "김안주",
               "schedule": {
                 "raw": "화13:30-17:30",
-                "days": [
-                  "화"
-                ],
+                "days": ["화"],
                 "times": [
                   {
                     "day": "화",
@@ -517,8 +487,8 @@
           "course_name": "대순진리회요람강독",
           "classification": "전선",
           "target_year": 3,
-          "credits": 2,
-          "hours": 4,
+          "credits": 3,
+          "hours": 6,
           "lab_hours": 0,
           "sections": [
             {
@@ -526,10 +496,7 @@
               "professor": "이경원",
               "schedule": {
                 "raw": "수10:00-11:30, 목10:00-11:30",
-                "days": [
-                  "수",
-                  "목"
-                ],
+                "days": ["수", "목"],
                 "times": [
                   {
                     "day": "수",
@@ -559,7 +526,7 @@
           "course_code": "044007",
           "course_name": "수도교화실습VII",
           "classification": "전선",
-          "target_year": 4,
+          "target_year": 3,
           "credits": 1,
           "hours": 0,
           "lab_hours": 4,
@@ -569,9 +536,7 @@
               "professor": "이경원",
               "schedule": {
                 "raw": "목18:00-19:40",
-                "days": [
-                  "목"
-                ],
+                "days": ["목"],
                 "times": [
                   {
                     "day": "목",
@@ -603,13 +568,10 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최지봉",
+              "professor": "최치봉",
               "schedule": {
-                "raw": "월10:00-11:30, 목10:00-11:30",
-                "days": [
-                  "월",
-                  "목"
-                ],
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": ["월", "화"],
                 "times": [
                   {
                     "day": "월",
@@ -617,7 +579,7 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "10:00",
                     "end": "11:30"
                   }
@@ -649,10 +611,7 @@
               "professor": "박상규",
               "schedule": {
                 "raw": "목10:00-11:30, 금10:00-11:30",
-                "days": [
-                  "목",
-                  "금"
-                ],
+                "days": ["목", "금"],
                 "times": [
                   {
                     "day": "목",
@@ -667,10 +626,10 @@
                 ]
               },
               "room": {
-                "raw": "대교301 - 강의실",
+                "raw": "대교310 - 강의실",
                 "building": "대교",
                 "building_full": "대진교육관",
-                "room_number": "301",
+                "room_number": "310",
                 "room_type": "강의실"
               },
               "capacity": 0,
@@ -692,9 +651,7 @@
               "professor": "차선근",
               "schedule": {
                 "raw": "목13:30-15:30",
-                "days": [
-                  "목"
-                ],
+                "days": ["목"],
                 "times": [
                   {
                     "day": "목",
@@ -729,9 +686,7 @@
               "professor": "이재호",
               "schedule": {
                 "raw": "수13:30-15:30",
-                "days": [
-                  "수"
-                ],
+                "days": ["수"],
                 "times": [
                   {
                     "day": "수",

@@ -1,0 +1,1760 @@
+{
+  "category": "교양선택",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-28",
+  "areas": [
+    {
+      "area_id": 4,
+      "area_name": "4영역",
+      "field": "예술과문화",
+      "courses": [
+        {
+          "course_code": "004317",
+          "course_name": "영화의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최수지",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 50,
+              "notes": "영화영상학과 수강제한"
+            },
+            {
+              "section": "02",
+              "professor": "최수지",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 50,
+              "notes": "영화영상학과 수강제한"
+            }
+          ]
+        },
+        {
+          "course_code": "004319",
+          "course_name": "연극의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황연희",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 50,
+              "notes": "연기예술학과 수강불가"
+            },
+            {
+              "section": "02",
+              "professor": "장경순",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "004577",
+          "course_name": "문화의수용과창조",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "화21:20-22:10",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "21:20",
+                    "end": "22:10"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 110,
+              "notes": "[원격수업]미래평생융합대학 10명, 총120명"
+            }
+          ]
+        },
+        {
+          "course_code": "004936",
+          "course_name": "미술의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오세권",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 402 - 이론강의실",
+                "building": "공가",
+                "building_full": "이공대 가동",
+                "room_number": "402",
+                "room_type": "이론강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "921114",
+          "course_name": "결혼과가족",
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영희",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사104 - 교양A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "104",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 100,
+              "notes": "[OCU강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "922514",
+          "course_name": "음악치료",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이진이",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사105 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "105",
+                "room_type": "강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이진이",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사105 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "105",
+                "room_type": "강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922515",
+          "course_name": "배드민턴",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고은별",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예110 - 무용실I",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "110",
+                "room_type": "무용실I"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "고은별",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예110 - 무용실I",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "110",
+                "room_type": "무용실I"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922516",
+          "course_name": "일본문화의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922518",
+          "course_name": "미술표현의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오세권",
+              "schedule": {
+                "raw": "금11:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 402 - 이론강의실",
+                "building": "공가",
+                "building_full": "이공대 가동",
+                "room_number": "402",
+                "room_type": "이론강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922519",
+          "course_name": "미술사개론",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황귀영",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 402 - 이론강의실",
+                "building": "공가",
+                "building_full": "이공대 가동",
+                "room_number": "402",
+                "room_type": "이론강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922520",
+          "course_name": "한국문화읽기",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김지원",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사103 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "103",
+                "room_type": "e-강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김지원",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사103 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "103",
+                "room_type": "e-강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "925000",
+          "course_name": "인간과디자인",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤여경",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "105",
+                "room_type": "시각실습실1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927030",
+          "course_name": "동양고대문화의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김형기",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104",
+                "room_type": "국제A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927093",
+          "course_name": "동양문화사의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김용천",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "307",
+                "room_type": "역사A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927099",
+          "course_name": "음식과식량의문화사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정동준",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "307",
+                "room_type": "역사A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927126",
+          "course_name": "영화감상과비평",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "성지영",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예302 - 시사실",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "302",
+                "room_type": "시사실"
+              },
+              "capacity": 50,
+              "notes": "영화영상학과 수강제한"
+            }
+          ]
+        },
+        {
+          "course_code": "927130",
+          "course_name": "공연예술로의초대",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명정",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예310 - 시각실습실 3",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "310",
+                "room_type": "시각실습실 3"
+              },
+              "capacity": 50,
+              "notes": "연기예술학과 수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "927133",
+          "course_name": "종교와예술",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "조용기",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대301 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "조용기",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대301 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927176",
+          "course_name": "문화예술교육개론",
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김기란",
+              "schedule": {
+                "raw": "금13:30-16:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예315 - VTR-II실",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "315",
+                "room_type": "VTR-II실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927177",
+          "course_name": "문화예술교육현장의이해와실습",
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황귀영",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인211 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "211",
+                "room_type": "일반강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927244",
+          "course_name": "대중문화와한국역사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박윤선",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "307",
+                "room_type": "역사A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927248",
+          "course_name": "대중음악과문화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실1"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927249",
+          "course_name": "영화속클래식",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927251",
+          "course_name": "음악과미술의만남",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927280",
+          "course_name": "패션과스타일",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이진이",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사105 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "105",
+                "room_type": "강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이진이",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사105 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "105",
+                "room_type": "강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927282",
+          "course_name": "세계의문화코드이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김성희",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927317",
+          "course_name": "문화와사회현상",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김승남",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인302 - 문화콘텐츠A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "302",
+                "room_type": "문화콘텐츠A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김승남",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927320",
+          "course_name": "커피의세계문화사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정동준",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "307",
+                "room_type": "역사A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927334",
+          "course_name": "KoreanCultureandTradition(E)",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "목20:30-21:20",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "20:30",
+                    "end": "21:20"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]국제경영학과 외국인 전용 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "927336",
+          "course_name": "ContemporaryKoreanSociety(E)",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "수20:30-21:20",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "20:30",
+                    "end": "21:20"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]국제경영학과 외국인 전용 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "927347",
+          "course_name": "스토리텔링과상상의글쓰기",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박동근",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927357",
+          "course_name": "플로어볼",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "체213 - 강의실",
+                "building": "체",
+                "building_full": "체육관",
+                "room_number": "213",
+                "room_type": "강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김세웅",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "체213 - 강의실",
+                "building": "체",
+                "building_full": "체육관",
+                "room_number": "213",
+                "room_type": "강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927371",
+          "course_name": "세계의도시와건축문화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "전병권",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 111 - e-강의실(공용)",
+                "building": "공나",
+                "building_full": "이공대 나동",
+                "room_number": "111",
+                "room_type": "e-강의실(공용)"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927412",
+          "course_name": "음악이있는삶",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손영경",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인110 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "110",
+                "room_type": "일반강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927414",
+          "course_name": "세계의영어와문화의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김한규",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인107 - 통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "107",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927422",
+          "course_name": "건강과생활",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고은별",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예110 - 무용실I",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "110",
+                "room_type": "무용실I"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "고은별",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예110 - 무용실I",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "110",
+                "room_type": "무용실I"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927449",
+          "course_name": "예술로읽는문화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손영경",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인102 - 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "손영경",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인102 - 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927453",
+          "course_name": "인문과예술의만남",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이혜준",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

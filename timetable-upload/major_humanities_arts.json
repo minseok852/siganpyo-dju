@@ -2,7 +2,7 @@
   "college": "인문예술대학",
   "college_eng": "humanities_arts",
   "semester": "2026학년도 1학기",
-  "updated_at": "2026-01-25",
+  "updated_at": "2026-01-28",
   "departments": [
     {
       "department_id": "ENGLISH",
@@ -19,7 +19,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "HILL BRIAN",
+              "professor": "HILL BRIAN D",
               "schedule": {
                 "raw": "수11:30-13:00, 금11:30-13:00",
                 "days": [
@@ -107,7 +107,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "백승보",
+              "professor": "백승봉",
               "schedule": {
                 "raw": "월13:30-15:00, 수15:30-17:00",
                 "days": [
@@ -139,7 +139,7 @@
             },
             {
               "section": "02",
-              "professor": "백승보",
+              "professor": "백승봉",
               "schedule": {
                 "raw": "월15:30-17:00, 수13:30-15:00",
                 "days": [
@@ -271,7 +271,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김희정",
+              "professor": "이희정",
               "schedule": {
                 "raw": "화10:00-11:30, 목10:00-11:30",
                 "days": [
@@ -361,19 +361,19 @@
               "section": "01",
               "professor": "양균원",
               "schedule": {
-                "raw": "월12:00-13:30, 수12:00-13:30",
+                "raw": "화12:00-13:30, 목12:00-13:30",
                 "days": [
-                  "월",
-                  "수"
+                  "화",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "화",
                     "start": "12:00",
                     "end": "13:30"
                   },
                   {
-                    "day": "수",
+                    "day": "목",
                     "start": "12:00",
                     "end": "13:30"
                   }
@@ -424,10 +424,10 @@
                 ]
               },
               "room": {
-                "raw": "인213 - 영문A/V강의실",
+                "raw": "인301 - 영문A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "213",
+                "room_number": "301",
                 "room_type": "영문A/V강의실"
               },
               "capacity": 0,
@@ -449,10 +449,10 @@
               "section": "01",
               "professor": "공명수",
               "schedule": {
-                "raw": "월13:30-15:00, 수13:30-15:00",
+                "raw": "월13:30-15:00, 화13:30-15:00",
                 "days": [
                   "월",
-                  "수"
+                  "화"
                 ],
                 "times": [
                   {
@@ -461,7 +461,7 @@
                     "end": "15:00"
                   },
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "13:30",
                     "end": "15:00"
                   }
@@ -535,7 +535,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "백승보",
+              "professor": "백승봉",
               "schedule": {
                 "raw": "목20:30-21:20",
                 "days": [
@@ -557,7 +557,7 @@
                 "room_type": "온라인"
               },
               "capacity": 0,
-              "notes": "[원격수업]영어영문과"
+              "notes": "[원격수업]영어영문과만 신청가능"
             }
           ],
           "is_micro_major": false
@@ -663,21 +663,21 @@
               "section": "01",
               "professor": "양균원",
               "schedule": {
-                "raw": "월12:00-13:30, 수12:00-13:30",
+                "raw": "화14:00-15:30, 목10:00-11:30",
                 "days": [
-                  "월",
-                  "수"
+                  "화",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
-                    "start": "12:00",
-                    "end": "13:30"
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
                   },
                   {
-                    "day": "수",
-                    "start": "12:00",
-                    "end": "13:30"
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
                   }
                 ]
               },
@@ -707,10 +707,10 @@
               "section": "01",
               "professor": "공명수",
               "schedule": {
-                "raw": "월10:00-11:30, 수10:00-11:30",
+                "raw": "월10:00-11:30, 화10:00-11:30",
                 "days": [
                   "월",
-                  "수"
+                  "화"
                 ],
                 "times": [
                   {
@@ -719,7 +719,7 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "10:00",
                     "end": "11:30"
                   }
@@ -746,7 +746,7 @@
       "courses": [
         {
           "course_code": "052601",
-          "course_name": "AI활용과시윤리",
+          "course_name": "AI활용과AI윤리",
           "classification": "전선",
           "target_year": 1,
           "credits": 3,
@@ -755,7 +755,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "이사강사",
+              "professor": "역사강사1",
               "schedule": {
                 "raw": "목13:30-16:30",
                 "days": [
@@ -777,7 +777,7 @@
                 "room_type": "문화콘텐츠A/V강의실"
               },
               "capacity": 0,
-              "notes": "역문콘1학년우선 신청/정정기간 21일 자10시전체"
+              "notes": "역문콘1학년우선 신청/정정기간 1일자 10시 해제"
             }
           ],
           "is_micro_major": false
@@ -795,10 +795,10 @@
               "section": "01",
               "professor": "박윤선",
               "schedule": {
-                "raw": "월10:00-11:30, 수10:00-11:30",
+                "raw": "월10:00-11:30, 목10:00-11:30",
                 "days": [
                   "월",
-                  "수"
+                  "목"
                 ],
                 "times": [
                   {
@@ -807,7 +807,7 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "수",
+                    "day": "목",
                     "start": "10:00",
                     "end": "11:30"
                   }
@@ -821,7 +821,7 @@
                 "room_type": "역사A/V강의실"
               },
               "capacity": 0,
-              "notes": "역문콘1학년우선 신청자10시전체"
+              "notes": "역문콘1학년만 신청/정정기간 1일 10시 해제"
             }
           ],
           "is_micro_major": false
@@ -859,7 +859,7 @@
                 "room_type": "역사A/V강의실"
               },
               "capacity": 0,
-              "notes": "역문콘1학년우선 신청/정정기간연장"
+              "notes": "역문콘1학년, 자율전공만/정정기간 1일차 10시 해제"
             }
           ],
           "is_micro_major": false
@@ -875,9 +875,9 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김용태",
+              "professor": "김용천",
               "schedule": {
-                "raw": "월10:00-13:30, 화12:00-13:30",
+                "raw": "월12:00-13:30, 화12:00-13:30",
                 "days": [
                   "월",
                   "화"
@@ -885,7 +885,7 @@
                 "times": [
                   {
                     "day": "월",
-                    "start": "10:00",
+                    "start": "12:00",
                     "end": "13:30"
                   },
                   {
@@ -1003,14 +1003,14 @@
               "section": "01",
               "professor": "김승남",
               "schedule": {
-                "raw": "화13:30-15:00, 수13:30-15:00",
+                "raw": "월13:30-15:00, 수13:30-15:00",
                 "days": [
-                  "화",
+                  "월",
                   "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
                     "start": "13:30",
                     "end": "15:00"
                   },
@@ -1083,7 +1083,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김용태",
+              "professor": "김승남",
               "schedule": {
                 "raw": "화13:30-15:00, 목13:30-15:00",
                 "days": [
@@ -1104,11 +1104,11 @@
                 ]
               },
               "room": {
-                "raw": "인311 - 역사A/V강의실",
+                "raw": "인302 - 문화콘텐츠A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "311",
-                "room_type": "역사A/V강의실"
+                "room_number": "302",
+                "room_type": "문화콘텐츠A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -1211,10 +1211,10 @@
               "section": "01",
               "professor": "박윤선",
               "schedule": {
-                "raw": "월16:00-17:30, 수12:00-13:30",
+                "raw": "월16:00-17:30, 금12:00-13:30",
                 "days": [
                   "월",
-                  "수"
+                  "금"
                 ],
                 "times": [
                   {
@@ -1223,17 +1223,17 @@
                     "end": "17:30"
                   },
                   {
-                    "day": "수",
+                    "day": "금",
                     "start": "12:00",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "인307 - 역사A/V강의실",
+                "raw": "인311 - 역사A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "307",
+                "room_number": "311",
                 "room_type": "역사A/V강의실"
               },
               "capacity": 0,
@@ -1248,14 +1248,14 @@
           "classification": "전선",
           "target_year": 3,
           "credits": 3,
-          "hours": 4,
+          "hours": 6,
           "lab_hours": 0,
           "sections": [
             {
               "section": "01",
-              "professor": "박윤선",
+              "professor": "역사강사1",
               "schedule": {
-                "raw": "목09:30-11:30",
+                "raw": "목09:30-12:30",
                 "days": [
                   "목"
                 ],
@@ -1263,40 +1263,40 @@
                   {
                     "day": "목",
                     "start": "09:30",
-                    "end": "11:30"
+                    "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사205 - e-강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "205",
-                "room_type": "e-강의실"
+                "raw": "인302 - 문화콘텐츠A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "302",
+                "room_type": "문화콘텐츠A/V강의실"
               },
               "capacity": 0,
-              "notes": "역문콘전공실습필수"
+              "notes": ""
             }
           ],
           "is_micro_major": false
         },
         {
           "course_code": "052602",
-          "course_name": "캡스톤디자인(졸업작품제작및발표)",
+          "course_name": "캡스톤디자인(졸업작품제작실습)",
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
           "hours": 4,
-          "lab_hours": 0,
+          "lab_hours": 4,
           "sections": [
             {
               "section": "01",
               "professor": "박윤선",
               "schedule": {
-                "raw": "화09:30-11:30, 목09:30-11:30",
+                "raw": "화09:30-11:30, 금09:30-11:30",
                 "days": [
                   "화",
-                  "목"
+                  "금"
                 ],
                 "times": [
                   {
@@ -1305,7 +1305,7 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "목",
+                    "day": "금",
                     "start": "09:30",
                     "end": "11:30"
                   }
@@ -1438,11 +1438,11 @@
                 ]
               },
               "room": {
-                "raw": "인307 - 역사A/V강의실",
+                "raw": "인304 - 문화콘텐츠A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "307",
-                "room_type": "역사A/V강의실"
+                "room_number": "304",
+                "room_type": "문화콘텐츠A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -1467,7 +1467,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "신종근",
+              "professor": "신종곤",
               "schedule": {
                 "raw": "화15:30-17:00, 목15:30-17:00",
                 "days": [
@@ -1495,14 +1495,14 @@
                 "room_type": "문창A/V강의실"
               },
               "capacity": 0,
-              "notes": "문창1학년,자율우선 신청/정정기간연장"
+              "notes": "문창1학년,자율전공만 신청/정정기간연장"
             }
           ],
           "is_micro_major": false
         },
         {
           "course_code": "064050",
-          "course_name": "문화콘텐츠로읽는한국문",
+          "course_name": "문화콘텐츠로읽는한국문학",
           "classification": "전선",
           "target_year": 1,
           "credits": 3,
@@ -1539,7 +1539,7 @@
                 "room_type": "문창A/V강의실"
               },
               "capacity": 0,
-              "notes": "문창 1학년 우선 신청/정정기간연장"
+              "notes": "문창 1학년 우선 신청/정정기간 전체"
             }
           ],
           "is_micro_major": true
@@ -1555,7 +1555,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "신종",
+              "professor": "신종곤",
               "schedule": {
                 "raw": "화10:00-11:30, 목10:00-11:30",
                 "days": [
@@ -1639,19 +1639,19 @@
               "section": "01",
               "professor": "장혜련",
               "schedule": {
-                "raw": "목10:00-11:30, 금10:00-11:30",
+                "raw": "수11:30-13:30, 목10:00-11:30",
                 "days": [
-                  "목",
-                  "금"
+                  "수",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "목",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "10:00",
                     "end": "11:30"
                   }
@@ -1725,7 +1725,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "이예강사",
+              "professor": "문예강사1",
               "schedule": {
                 "raw": "월09:30-12:30",
                 "days": [
@@ -1763,7 +1763,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "이예강사",
+              "professor": "문예강사1",
               "schedule": {
                 "raw": "수13:30-15:00, 목13:30-15:00",
                 "days": [
@@ -1822,10 +1822,10 @@
                 ]
               },
               "room": {
-                "raw": "인313 - 문창A/V강의실",
+                "raw": "인310 - 문창A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "313",
+                "room_number": "310",
                 "room_type": "문창A/V강의실"
               },
               "capacity": 0,
@@ -1845,7 +1845,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "신종근",
+              "professor": "신종곤",
               "schedule": {
                 "raw": "월13:30-16:30",
                 "days": [
@@ -1883,7 +1883,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "신종근",
+              "professor": "신종곤",
               "schedule": {
                 "raw": "화11:30-13:00, 목11:30-13:00",
                 "days": [
@@ -1927,7 +1927,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "강은진",
+              "professor": "문예강사1",
               "schedule": {
                 "raw": "화11:30-13:00, 수10:00-11:30",
                 "days": [
@@ -1971,23 +1971,17 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최영동",
+              "professor": "박성효",
               "schedule": {
-                "raw": "수10:00-11:30, 금10:00-11:30",
+                "raw": "화13:30-16:30",
                 "days": [
-                  "수",
-                  "금"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "10:00",
-                    "end": "11:30"
-                  },
-                  {
-                    "day": "금",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "16:30"
                   }
                 ]
               },
@@ -2017,21 +2011,15 @@
               "section": "01",
               "professor": "최영동",
               "schedule": {
-                "raw": "화13:30-15:00, 금13:30-15:00",
+                "raw": "월10:00-13:00",
                 "days": [
-                  "화",
-                  "금"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "13:30",
-                    "end": "15:00"
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "13:00"
                   }
                 ]
               },
@@ -2055,7 +2043,7 @@
           "target_year": 4,
           "credits": 3,
           "hours": 4,
-          "lab_hours": 0,
+          "lab_hours": 4,
           "sections": [
             {
               "section": "01",
@@ -2266,13 +2254,13 @@
               "section": "02",
               "professor": "노승복",
               "schedule": {
-                "raw": "목09:30-13:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "09:30",
                     "end": "13:30"
                   }
@@ -3226,7 +3214,7 @@
                 "room_type": "정보실습실E"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "만화게임 3학년 우선 신청/3일차 제한 해제"
             }
           ]
         },
@@ -3264,7 +3252,7 @@
                 "room_type": "정보실습실E"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "만화게임 3학년 우선 신청/3일차 제한 해제"
             }
           ]
         },
@@ -3358,13 +3346,13 @@
               "section": "01",
               "professor": "미술강사2",
               "schedule": {
-                "raw": "목09:30-13:30",
+                "raw": "금09:30-13:30",
                 "days": [
-                  "목"
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "금",
                     "start": "09:30",
                     "end": "13:30"
                   }
@@ -3409,11 +3397,11 @@
                 ]
               },
               "room": {
-                "raw": "공가A 207 - PC실습실2",
-                "building": "공가",
+                "raw": "공가B 212 - PC실습실1",
+                "building": "공가B",
                 "building_full": "이공대 가동",
-                "room_number": "207",
-                "room_type": "PC실습실2"
+                "room_number": "212",
+                "room_type": "PC실습실1"
               },
               "capacity": 0,
               "notes": ""
@@ -3426,7 +3414,7 @@
           "classification": "전선",
           "target_year": 4,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -3434,13 +3422,13 @@
               "section": "01",
               "professor": "김진훈",
               "schedule": {
-                "raw": "월13:30-16:30",
+                "raw": "목13:30-16:30",
                 "days": [
-                  "월"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "목",
                     "start": "13:30",
                     "end": "16:30"
                   }
@@ -3454,7 +3442,7 @@
                 "room_type": "PC실습실2"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "만화게임 4학년 우선 신청/3일차 제한 해제"
             }
           ]
         }
@@ -3491,14 +3479,14 @@
                 ]
               },
               "room": {
-                "raw": "미105 - 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예105 - 시각실습실3",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "105",
-                "room_type": "시각실습실1"
+                "room_type": "시각실습실3"
               },
               "capacity": 0,
-              "notes": "시각디자인학과 입학신청/정정기간연장"
+              "notes": "시각디자인학과 우선신청/3일차 제한 해제"
             }
           ]
         },
@@ -3514,24 +3502,24 @@
           "sections": [
             {
               "section": "01",
-              "professor": "윤여경",
+              "professor": "시각강사1",
               "schedule": {
-                "raw": "수09:30-13:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "수"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "09:30",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각정보실습실",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예105-1 시각정보실습실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "105-1",
                 "room_type": "시각정보실습실"
               },
@@ -3567,10 +3555,10 @@
                 ]
               },
               "room": {
-                "raw": "미105-1 시각정보실습실",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
+                "raw": "예1051- 시각정보실습실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
                 "room_type": "시각정보실습실"
               },
               "capacity": 0,
@@ -3590,7 +3578,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "이혜원",
+              "professor": "시각강사4",
               "schedule": {
                 "raw": "목13:30-16:30",
                 "days": [
@@ -3605,10 +3593,10 @@
                 ]
               },
               "room": {
-                "raw": "미105-1 시각실습실2",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
+                "raw": "예1051 -시각실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
                 "room_type": "시각실습실2"
               },
               "capacity": 0,
@@ -3628,29 +3616,55 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김현",
+              "professor": "시각강사3",
               "schedule": {
-                "raw": "수13:30-16:30",
+                "raw": "화13:30-16:30",
                 "days": [
-                  "수"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "13:30",
                     "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B1 - 시각실습실6",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B1",
-                "room_type": "시각실습실6"
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "312",
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
               "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김현",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예310- 시각실습실3",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "310",
+                "room_type": "시각실습실3"
+              },
+              "capacity": 0,
+              "notes": "중국인 유학생 전용 분반/내국인 수강 금지"
             }
           ]
         },
@@ -3668,39 +3682,59 @@
               "section": "01",
               "professor": "윤여경",
               "schedule": {
-                "raw": "화13:30-16:30, 목13:30-16:30",
+                "raw": "수13:30-16:30",
                 "days": [
-                  "화",
-                  "목"
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "16:30"
-                  },
-                  {
-                    "day": "목",
+                    "day": "수",
                     "start": "13:30",
                     "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B1 - 시각실습실6",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B1",
-                "room_type": "시각실습실6"
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "312",
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
               "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "윤여경",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "105",
+                "room_type": "시각실습실1"
+              },
+              "capacity": 0,
+              "notes": "중국인 유학생 전용 분반/내국인 수강 금지"
             }
           ]
         },
         {
           "course_code": "812608",
-          "course_name": "시프롬프트디자인I",
+          "course_name": "AI프롬프트디자인I",
           "classification": "전선",
           "target_year": 2,
           "credits": 3,
@@ -3710,29 +3744,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김현",
+              "professor": "시각강사4",
               "schedule": {
-                "raw": "월09:30-13:30",
+                "raw": "목09:30-12:30",
                 "days": [
-                  "월"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "목",
                     "start": "09:30",
-                    "end": "13:30"
+                    "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B2 - 시각실습실5",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B2",
-                "room_type": "시각실습실5"
+                "raw": "예1051 - 시각실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
+                "room_type": "시각실습실2"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "시각디자인학과 우선신청/3일차 제한 해제"
             }
           ]
         },
@@ -3748,29 +3782,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "윤여경",
+              "professor": "최윤의",
               "schedule": {
-                "raw": "수09:30-12:30",
+                "raw": "월13:30-16:30",
                 "days": [
-                  "수"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "09:30",
-                    "end": "12:30"
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B1 - 시각실습실6",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B1",
-                "room_type": "시각실습실6"
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "312",
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "시각디자인학과 우선신청/3일차 제한 해제"
             }
           ]
         },
@@ -3786,29 +3820,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김현",
+              "professor": "시각강사2",
               "schedule": {
-                "raw": "수09:30-13:30",
+                "raw": "수13:30-17:30",
                 "days": [
                   "수"
                 ],
                 "times": [
                   {
                     "day": "수",
-                    "start": "09:30",
-                    "end": "13:30"
+                    "start": "13:30",
+                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B2 - 시각실습실5",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B2",
-                "room_type": "시각실습실5"
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "105",
+                "room_type": "시각실습실1"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "시각디자인학과 우선신청/3일차 제한 해제"
             }
           ]
         },
@@ -3826,24 +3860,24 @@
               "section": "01",
               "professor": "윤여경",
               "schedule": {
-                "raw": "화09:30-13:30",
+                "raw": "수09:30-13:30",
                 "days": [
-                  "화"
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "09:30",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각정보실습실",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "105-1",
-                "room_type": "시각정보실습실"
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -3852,7 +3886,7 @@
         },
         {
           "course_code": "815019",
-          "course_name": "타이포그래피디자인",
+          "course_name": "타이포그래피디자인I",
           "classification": "전선",
           "target_year": 3,
           "credits": 3,
@@ -3862,7 +3896,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박상희",
+              "professor": "시각강사1",
               "schedule": {
                 "raw": "월09:30-13:30",
                 "days": [
@@ -3877,11 +3911,11 @@
                 ]
               },
               "room": {
-                "raw": "미105-1 시각정보실습실",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
-                "room_type": "시각정보실습실"
+                "raw": "예1131 - 시각컴퓨터실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1131",
+                "room_type": "시각컴퓨터실1"
               },
               "capacity": 0,
               "notes": ""
@@ -3902,30 +3936,24 @@
               "section": "01",
               "professor": "이혜준",
               "schedule": {
-                "raw": "화09:30-12:30, 목13:30-17:30",
+                "raw": "화09:30-12:30",
                 "days": [
-                  "화",
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
                     "day": "화",
                     "start": "09:30",
                     "end": "12:30"
-                  },
-                  {
-                    "day": "목",
-                    "start": "13:30",
-                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B1 - 시각실습실6",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B1",
-                "room_type": "시각실습실6"
+                "raw": "예310- 시각실습실3",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "310",
+                "room_type": "시각실습실3"
               },
               "capacity": 0,
               "notes": ""
@@ -3944,33 +3972,33 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박상희",
+              "professor": "시각강사1",
               "schedule": {
-                "raw": "화09:30-13:30",
+                "raw": "월13:30-17:30",
                 "days": [
-                  "화"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "09:30",
-                    "end": "13:30"
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미B32 - 시각실습실4",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B32",
-                "room_type": "시각실습실4"
+                "raw": "예1131 - 시각컴퓨터실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1131",
+                "room_type": "시각컴퓨터실1"
               },
               "capacity": 0,
               "notes": ""
             },
             {
               "section": "02",
-              "professor": "박상희",
+              "professor": "시각강사3",
               "schedule": {
                 "raw": "화09:30-13:30",
                 "days": [
@@ -3985,11 +4013,11 @@
                 ]
               },
               "room": {
-                "raw": "미B1 - 시각실습실6",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "B1",
-                "room_type": "시각실습실6"
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "312",
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -4008,55 +4036,81 @@
           "sections": [
             {
               "section": "01",
-              "professor": "윤여경",
+              "professor": "시각강사5",
               "schedule": {
-                "raw": "목09:30-13:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "09:30",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
-                "room_type": "시각실습실1"
+                "raw": "예1051 - 시각실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
+                "room_type": "시각실습실2"
               },
               "capacity": 0,
               "notes": ""
             },
             {
               "section": "02",
-              "professor": "윤여경",
+              "professor": "시각강사5",
               "schedule": {
-                "raw": "목13:30-17:30",
+                "raw": "화13:30-17:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "13:30",
                     "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
-                "room_type": "시각실습실1"
+                "raw": "예1051 - 시각실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
+                "room_type": "시각실습실2"
               },
               "capacity": 0,
               "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "시각강사5",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예310- 시각실습실3",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "310",
+                "room_type": "시각실습실3"
+              },
+              "capacity": 0,
+              "notes": "중국인 유학생 전용 분반/내국인 수강 금지"
             }
           ]
         },
@@ -4066,31 +4120,31 @@
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
+          "hours": 6,
+          "lab_hours": 0,
           "is_micro_major": false,
           "sections": [
             {
               "section": "01",
               "professor": "윤여경",
               "schedule": {
-                "raw": "월09:30-13:30",
+                "raw": "목13:30-16:30",
                 "days": [
-                  "월"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
-                    "start": "09:30",
-                    "end": "13:30"
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "105",
                 "room_type": "시각실습실1"
               },
               "capacity": 0,
@@ -4110,26 +4164,26 @@
           "sections": [
             {
               "section": "01",
-              "professor": "윤여경",
+              "professor": "최윤의",
               "schedule": {
-                "raw": "화13:30-16:30",
+                "raw": "월09:30-12:30",
                 "days": [
-                  "화"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "16:30"
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미105-1 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
-                "room_type": "시각실습실1"
+                "raw": "예312 - 시각실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "312",
+                "room_type": "시각실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -4138,7 +4192,7 @@
         },
         {
           "course_code": "814057",
-          "course_name": "패키지디자인",
+          "course_name": "패키지디자인I",
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
@@ -4148,6 +4202,32 @@
           "sections": [
             {
               "section": "01",
+              "professor": "시각강사2",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예310- 시각실습실3",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "310",
+                "room_type": "시각실습실3"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
               "professor": "시각강사2",
               "schedule": {
                 "raw": "수09:30-13:30",
@@ -4163,36 +4243,10 @@
                 ]
               },
               "room": {
-                "raw": "미105 - 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "105",
-                "room_type": "시각실습실1"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "박상희",
-              "schedule": {
-                "raw": "수13:30-17:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "13:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "미105-1 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105-1",
                 "room_type": "시각실습실1"
               },
               "capacity": 0,
@@ -4214,6 +4268,32 @@
               "section": "01",
               "professor": "윤여경",
               "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "105",
+                "room_type": "시각실습실1"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "윤여경",
+              "schedule": {
                 "raw": "화09:30-13:30",
                 "days": [
                   "화"
@@ -4227,35 +4307,9 @@
                 ]
               },
               "room": {
-                "raw": "미105 - 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "105",
-                "room_type": "시각실습실1"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "윤여경",
-              "schedule": {
-                "raw": "월09:30-13:30",
-                "days": [
-                  "월"
-                ],
-                "times": [
-                  {
-                    "day": "월",
-                    "start": "09:30",
-                    "end": "13:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "미105 - 시각실습실1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예105 - 시각실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "105",
                 "room_type": "시각실습실1"
               },
@@ -4277,34 +4331,34 @@
           "target_year": 1,
           "credits": 3,
           "hours": 4,
-          "lab_hours": 6,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
               "section": "01",
               "professor": "홍경민",
               "schedule": {
-                "raw": "목09:30-13:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "09:30",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미113 - 제품컴퓨터1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예113 - 제품컴퓨터실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "113",
-                "room_type": "제품컴퓨터1"
+                "room_type": "제품컴퓨터실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업 우선신청/3일차 수강해제"
             }
           ]
         },
@@ -4314,35 +4368,35 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
               "section": "01",
               "professor": "최성운",
               "schedule": {
-                "raw": "화13:30-15:30",
+                "raw": "월09:30-12:30",
                 "days": [
-                  "화"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:30"
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예219 - 제품실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "219",
-                "room_type": "제품실습실3"
+                "room_type": "제품실습실1"
               },
               "capacity": 0,
-              "notes": "산업디자인학과 입학신청/정정기간연장"
+              "notes": ""
             }
           ]
         },
@@ -4352,13 +4406,13 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
               "section": "01",
-              "professor": "박찬욱",
+              "professor": "박찬훈",
               "schedule": {
                 "raw": "수13:30-16:30",
                 "days": [
@@ -4380,14 +4434,14 @@
                 "room_type": "정보실습실A"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업 우선신청/3일차 수강해제"
             }
           ]
         },
         {
           "course_code": "817500",
           "course_name": "기초조형디자인",
-          "classification": "전필",
+          "classification": "전선",
           "target_year": 1,
           "credits": 3,
           "hours": 6,
@@ -4398,24 +4452,24 @@
               "section": "01",
               "professor": "장소연",
               "schedule": {
-                "raw": "금13:30-13:30",
+                "raw": "목13:30-16:30",
                 "days": [
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "13:30",
                     "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예219 - 제품실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "219",
-                "room_type": "제품실습실3"
+                "room_type": "제품실습실1"
               },
               "capacity": 0,
               "notes": ""
@@ -4426,7 +4480,7 @@
           "course_code": "811501",
           "course_name": "기초제품디자인",
           "classification": "전필",
-          "target_year": 1,
+          "target_year": 2,
           "credits": 3,
           "hours": 4,
           "lab_hours": 4,
@@ -4436,107 +4490,31 @@
               "section": "01",
               "professor": "최성운",
               "schedule": {
-                "raw": "목09:30-13:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "09:30",
                     "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미220 - 제품실습실2",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예220 - 제품실습실2",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "220",
                 "room_type": "제품실습실2"
               },
               "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "811511",
-          "course_name": "기초공간디자인",
-          "classification": "전필",
-          "target_year": 1,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": true,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "송규호",
-              "schedule": {
-                "raw": "금13:30-13:30",
-                "days": [
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "금",
-                    "start": "13:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "219",
-                "room_type": "제품실습실3"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "산업(홀수학번)우선신청/3일차 수강해제"
             },
             {
               "section": "02",
-              "professor": "송규호",
-              "schedule": {
-                "raw": "수09:30-13:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "09:30",
-                    "end": "13:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "219",
-                "room_type": "제품실습실3"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "814070",
-          "course_name": "제품컴퓨터모델링",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": true,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "홍경민",
+              "professor": "최성운",
               "schedule": {
                 "raw": "화13:30-17:30",
                 "days": [
@@ -4551,14 +4529,90 @@
                 ]
               },
               "room": {
-                "raw": "미113 - 제품컴퓨터1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "113",
-                "room_type": "제품컴퓨터1"
+                "raw": "예220 - 제품실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "220",
+                "room_type": "제품실습실2"
+              },
+              "capacity": 0,
+              "notes": "산업(짝수학번)우선신청/3일차 수강해제"
+            }
+          ]
+        },
+        {
+          "course_code": "811511",
+          "course_name": "기초공간디자인",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송규호",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예220 - 제품실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "220 ",
+                "room_type": "제품실습실2"
               },
               "capacity": 0,
               "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "814070",
+          "course_name": "제품컴퓨터모델링I",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍경민",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예113 - 제품컴퓨터실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "113",
+                "room_type": "제품컴퓨터실"
+              },
+              "capacity": 0,
+              "notes": "산업(홀수학번)우선신청/3일차 수강해제"
             },
             {
               "section": "02",
@@ -4577,14 +4631,14 @@
                 ]
               },
               "room": {
-                "raw": "미113 - 제품컴퓨터1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예113 - 제품컴퓨터실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "113",
-                "room_type": "제품컴퓨터1"
+                "room_type": "제품컴퓨터실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업(짝수학번)우선신청/3일차 수강해제"
             }
           ]
         },
@@ -4594,8 +4648,8 @@
           "classification": "전선",
           "target_year": 2,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
@@ -4615,11 +4669,11 @@
                 ]
               },
               "room": {
-                "raw": "미제실습실2",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": null,
-                "room_type": "제실습실2"
+                "raw": "예220 - 제품실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "220",
+                "room_type": "제품실습실2"
               },
               "capacity": 0,
               "notes": ""
@@ -4653,14 +4707,14 @@
                 ]
               },
               "room": {
-                "raw": "미제실습실4 1층",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": null,
-                "room_type": "제실습실4 1층"
+                "raw": "예221-제품실습실3",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "221",
+                "room_type": "제품실습실3"
               },
               "capacity": 0,
-              "notes": "3일차"
+              "notes": "산업 우선신청/3일차 수강해제"
             }
           ]
         },
@@ -4668,7 +4722,7 @@
           "course_code": "814138",
           "course_name": "UX전시디자인",
           "classification": "전선",
-          "target_year": 2,
+          "target_year": 3,
           "credits": 3,
           "hours": 4,
           "lab_hours": 4,
@@ -4691,37 +4745,37 @@
                 ]
               },
               "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예219 - 제품실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "219",
-                "room_type": "제품실습실3"
+                "room_type": "제품실습실1"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업(홀수학번)우선신청/3일차 수강해제"
             },
             {
               "section": "02",
               "professor": "송규호",
               "schedule": {
-                "raw": "목13:30-17:30",
+                "raw": "화09:30-13:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
-                    "start": "13:30",
-                    "end": "17:30"
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예219 - 제품실습실1",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "219",
-                "room_type": "제품실습실3"
+                "room_type": "제품실습실1"
               },
               "capacity": 0,
               "notes": ""
@@ -4742,53 +4796,53 @@
               "section": "01",
               "professor": "김미숙",
               "schedule": {
-                "raw": "화11:30-17:30",
+                "raw": "화09:30-13:30",
                 "days": [
                   "화"
                 ],
                 "times": [
                   {
                     "day": "화",
-                    "start": "11:30",
-                    "end": "17:30"
+                    "start": "09:30",
+                    "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미221 - 제품실습실1",
+                "raw": "예221 - 제품실습실3",
                 "building": "미",
                 "building_full": "미술학관",
                 "room_number": "221",
                 "room_type": "제품실습실1"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업(홀수학번)우선신청/3일차 수강해제"
             },
             {
               "section": "02",
               "professor": "김미숙",
               "schedule": {
-                "raw": "목13:30-17:30",
+                "raw": "화13:30-17:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "13:30",
                     "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미221 - 제품실습실1",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예221 - 제품실습실3",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "221",
-                "room_type": "제품실습실1"
+                "room_type": "제품실습실3"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업(짝수학번)우선신청/3일차 수강해제"
             }
           ]
         },
@@ -4819,14 +4873,14 @@
                 ]
               },
               "room": {
-                "raw": "미113 - 제품컴퓨터1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "113",
-                "room_type": "제품컴퓨터1"
+                "raw": "예222 - 제품실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "222",
+                "room_type": "제품컴퓨터4"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "산업 우선신청/3일차 수강해제"
             }
           ]
         },
@@ -4844,22 +4898,22 @@
               "section": "01",
               "professor": "최성운",
               "schedule": {
-                "raw": "화13:30-17:30",
+                "raw": "수13:30-17:30",
                 "days": [
-                  "화"
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "13:30",
                     "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미222 - 제품실습실4",
-                "building": "미",
-                "building_full": "미술학관",
+                "raw": "예222 - 제품실습실4",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "222",
                 "room_type": "제품실습실4"
               },
@@ -4882,24 +4936,24 @@
               "section": "01",
               "professor": "김미숙",
               "schedule": {
-                "raw": "월13:30-17:30",
+                "raw": "월09:30-13:30",
                 "days": [
                   "월"
                 ],
                 "times": [
                   {
                     "day": "월",
-                    "start": "13:30",
-                    "end": "17:30"
+                    "start": "09:30",
+                    "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "미221 - 제품실습실1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "221",
-                "room_type": "제품실습실1"
+                "raw": "예222 - 제품실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "222",
+                "room_type": "제품실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -4933,11 +4987,11 @@
                 ]
               },
               "room": {
-                "raw": "미219 - 제품실습실3",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "219",
-                "room_type": "제품실습실3"
+                "raw": "예222 - 제품실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "222",
+                "room_type": "제품실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -4971,11 +5025,11 @@
                 ]
               },
               "room": {
-                "raw": "미113 - 제품컴퓨터1",
-                "building": "미",
-                "building_full": "미술학관",
-                "room_number": "113",
-                "room_type": "제품컴퓨터1"
+                "raw": "예222 - 제품실습실4",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "222",
+                "room_type": "제품실습실4"
               },
               "capacity": 0,
               "notes": ""
@@ -5002,33 +5056,33 @@
               "section": "01",
               "professor": "최수지",
               "schedule": {
-                "raw": "화09:30-11:00, 목09:30-11:00",
+                "raw": "월09:30-11:00, 화09:30-11:00",
                 "days": [
-                  "화",
-                  "목"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
                     "start": "09:30",
                     "end": "11:00"
                   },
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "09:30",
                     "end": "11:00"
                   }
                 ]
               },
               "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "314",
                 "room_type": "VTR-I실"
               },
               "capacity": 0,
-              "notes": "우선강좌제 3일차"
+              "notes": "수강해제 3일차 12시 해체"
             }
           ]
         },
@@ -5038,8 +5092,8 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -5066,7 +5120,7 @@
                 "room_type": "일반A/V강의실"
               },
               "capacity": 0,
-              "notes": "영화영상학과 입학신청/정정기간연장"
+              "notes": ""
             }
           ]
         },
@@ -5076,8 +5130,8 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -5097,14 +5151,14 @@
                 ]
               },
               "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "314",
                 "room_type": "VTR-I실"
               },
               "capacity": 0,
-              "notes": "영화전공 우선신청/3일차"
+              "notes": "영화1학년 우선신청/타과생전화상담"
             }
           ]
         },
@@ -5114,8 +5168,8 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -5135,18 +5189,30 @@
                 ]
               },
               "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "314",
                 "room_type": "VTR-I실"
               },
               "capacity": 0,
-              "notes": ""
-            },
+              "notes": "영화1학년 우선신청/타과생전화상담"
+            }
+          ]
+        },
+        {
+          "course_code": "855121",
+          "course_name": "1인미디어제작실습",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
             {
-              "section": "02",
-              "professor": "문정미",
+              "section": "01",
+              "professor": "윤장호",
               "schedule": {
                 "raw": "목11:30-14:30",
                 "days": [
@@ -5161,49 +5227,11 @@
                 ]
               },
               "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "314",
                 "room_type": "VTR-I실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "855121",
-          "course_name": "1인미디어제작실습",
-          "classification": "전선",
-          "target_year": 1,
-          "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "윤장호",
-              "schedule": {
-                "raw": "월14:30-17:30",
-                "days": [
-                  "월"
-                ],
-                "times": [
-                  {
-                    "day": "월",
-                    "start": "14:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대314 - 시사실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "314",
-                "room_type": "시사실"
               },
               "capacity": 0,
               "notes": ""
@@ -5212,24 +5240,24 @@
               "section": "02",
               "professor": "윤장호",
               "schedule": {
-                "raw": "수11:30-14:30",
+                "raw": "목14:30-17:30",
                 "days": [
-                  "수"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "11:30",
-                    "end": "14:30"
+                    "day": "목",
+                    "start": "14:30",
+                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "대302 - 시사1",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예302-시사실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "302",
-                "room_type": "시사1"
+                "room_type": "시사실"
               },
               "capacity": 0,
               "notes": ""
@@ -5241,350 +5269,6 @@
           "course_name": "한국영화사",
           "classification": "전선",
           "target_year": 2,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
-          "is_micro_major": true,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "최수지",
-              "schedule": {
-                "raw": "화14:30-17:30",
-                "days": [
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "14:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대B34 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "B34",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": "영화전공우선신청/3일차 제한해제"
-            }
-          ]
-        },
-        {
-          "course_code": "852504",
-          "course_name": "디지털편집",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "신재준",
-              "schedule": {
-                "raw": "월13:30-17:30",
-                "days": [
-                  "월"
-                ],
-                "times": [
-                  {
-                    "day": "월",
-                    "start": "13:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": "12/2 제한해제"
-            }
-          ]
-        },
-        {
-          "course_code": "852505",
-          "course_name": "영화미술의이해",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "윤장호",
-              "schedule": {
-                "raw": "금14:30-17:30",
-                "days": [
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "금",
-                    "start": "14:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "314",
-                "room_type": "VTR-I실"
-              },
-              "capacity": 0,
-              "notes": "영화전공우선신청/3일차"
-            }
-          ]
-        },
-        {
-          "course_code": "852506",
-          "course_name": "영상촬영실무",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "윤장호",
-              "schedule": {
-                "raw": "목09:30-13:30",
-                "days": [
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "목",
-                    "start": "09:30",
-                    "end": "13:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대302 - 시사1",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "302",
-                "room_type": "시사1"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "854004",
-          "course_name": "포스트프로덕션제작실습",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "성지영",
-              "schedule": {
-                "raw": "월09:30-13:30",
-                "days": [
-                  "월"
-                ],
-                "times": [
-                  {
-                    "day": "월",
-                    "start": "09:30",
-                    "end": "13:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "성지영",
-              "schedule": {
-                "raw": "수09:30-12:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "09:30",
-                    "end": "12:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "855104",
-          "course_name": "디지털영상제작실습I",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "김준",
-              "schedule": {
-                "raw": "화09:30-12:30",
-                "days": [
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "09:30",
-                    "end": "12:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "김준",
-              "schedule": {
-                "raw": "수13:30-16:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "13:30",
-                    "end": "16:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대304 - 종합편집실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "304",
-                "room_type": "종합편집실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "855125",
-          "course_name": "캡스톤디자인(영화제작실습I)",
-          "classification": "전필",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "윤장호",
-              "schedule": {
-                "raw": "화13:30-17:30",
-                "days": [
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대302 - 시사1",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "302",
-                "room_type": "시사1"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "윤장호",
-              "schedule": {
-                "raw": "수09:30-13:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "09:30",
-                    "end": "13:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대302 - 시사1",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "302",
-                "room_type": "시사1"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "852510",
-          "course_name": "영화작가의이해",
-          "classification": "전선",
-          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -5607,9 +5291,9 @@
                 ]
               },
               "room": {
-                "raw": "대314 - VTR-I실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "314",
                 "room_type": "VTR-I실"
               },
@@ -5619,48 +5303,10 @@
           ]
         },
         {
-          "course_code": "852601",
-          "course_name": "캡스톤디자인(영상콘텐츠)",
+          "course_code": "852504",
+          "course_name": "디지털편집",
           "classification": "전선",
-          "target_year": 3,
-          "credits": 3,
-          "hours": 4,
-          "lab_hours": 4,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "최수지",
-              "schedule": {
-                "raw": "화14:30-17:30",
-                "days": [
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "14:30",
-                    "end": "17:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "855123",
-          "course_name": "컬러그레이딩제작실습",
-          "classification": "전선",
-          "target_year": 3,
+          "target_year": 2,
           "credits": 3,
           "hours": 4,
           "lab_hours": 4,
@@ -5669,6 +5315,248 @@
             {
               "section": "01",
               "professor": "신재준",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예307 - 영화제작실습실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "307",
+                "room_type": "영화제작실습실"
+              },
+              "capacity": 0,
+              "notes": "영화우선수강/3일차"
+            }
+          ]
+        },
+        {
+          "course_code": "852505",
+          "course_name": "영화미술의이해",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤장호",
+              "schedule": {
+                "raw": "월14:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "314",
+                "room_type": "VTR-I실"
+              },
+              "capacity": 0,
+              "notes": "영화전공우선신청/타과생전화상담"
+            }
+          ]
+        },
+        {
+          "course_code": "852506",
+          "course_name": "영상촬영실무",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤장호",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예302 - 시사실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "302",
+                "room_type": "시사실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "854004",
+          "course_name": "포스트프로덕션제작실습",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "성지영",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예307 - 영화제작실습실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "307",
+                "room_type": "영화제작실습실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "성지영",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "304",
+                "room_type": "종합편집실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "855104",
+          "course_name": "디지털영상제작실습I",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김은주",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "314",
+                "room_type": "VTR-I실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김은주",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "304",
+                "room_type": "종합편집실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "855125",
+          "course_name": "캡스톤디자인(영화제작실습I)",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "성지영",
               "schedule": {
                 "raw": "수09:30-13:30",
                 "days": [
@@ -5683,9 +5571,155 @@
                 ]
               },
               "room": {
-                "raw": "대307 - 영화제작실습실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "304",
+                "room_type": "종합편집실"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "윤장호",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예302 - 시사실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "302",
+                "room_type": "시사실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "852510",
+          "course_name": "영화작가의이해",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최수지",
+              "schedule": {
+                "raw": "월11:30-13:30, 화12:30-13:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예314 - VTR-I실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "314",
+                "room_type": "VTR-I실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "852601",
+          "course_name": "캡스톤디자인(영상콘텐츠)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최수지",
+              "schedule": {
+                "raw": "월14:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예315 - VTR-II실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "315",
+                "room_type": "VTR-II실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "855123",
+          "course_name": "컬러그레이딩제작실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신재준",
+              "schedule": {
+                "raw": "화09:30-12:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예307 - 영화제작실습실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "307",
                 "room_type": "영화제작실습실"
               },
@@ -5698,32 +5732,32 @@
           "course_code": "852066",
           "course_name": "장르와스타일분석",
           "classification": "전선",
-          "target_year": 3,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
+          "target_year": 4,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
               "section": "01",
-              "professor": "김영준",
+              "professor": "김수열",
               "schedule": {
-                "raw": "금09:30-15:30",
+                "raw": "목09:30-12:30",
                 "days": [
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "09:30",
-                    "end": "15:30"
+                    "end": "12:30"
                   }
                 ]
               },
               "room": {
-                "raw": "대315 - VTR-II실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예315 - VTR-II실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "315",
                 "room_type": "VTR-II실"
               },
@@ -5746,24 +5780,24 @@
               "section": "01",
               "professor": "한우정",
               "schedule": {
-                "raw": "화14:30-17:30",
+                "raw": "목13:30-17:30",
                 "days": [
-                  "화"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "14:30",
+                    "day": "목",
+                    "start": "13:30",
                     "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "대315 - VTR-II실",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "315",
-                "room_type": "VTR-II실"
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "304",
+                "room_type": "종합편집실"
               },
               "capacity": 0,
               "notes": ""
@@ -5772,7 +5806,7 @@
         },
         {
           "course_code": "852602",
-          "course_name": "캡스톤디자인(영화제작실습)",
+          "course_name": "캡스톤디자인(영화제작실습III)",
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
@@ -5784,27 +5818,27 @@
               "section": "01",
               "professor": "한우정",
               "schedule": {
-                "raw": "금14:30-17:30",
+                "raw": "화13:30-17:30",
                 "days": [
-                  "금"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "금",
-                    "start": "14:30",
+                    "day": "화",
+                    "start": "13:30",
                     "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "대307 - 영화제작실습실/타",
-                "building": "대",
-                "building_full": "대학원관",
-                "room_number": "307",
-                "room_type": "영화제작실습실/타"
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "304",
+                "room_type": "종합편집실"
               },
               "capacity": 0,
-              "notes": "영화우선수강/3일차"
+              "notes": ""
             },
             {
               "section": "02",
@@ -5823,14 +5857,14 @@
                 ]
               },
               "room": {
-                "raw": "대307 - 영화제작실습실/타",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예307 - 영화제작실습실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "307",
-                "room_type": "영화제작실습실/타"
+                "room_type": "영화제작실습실"
               },
               "capacity": 0,
-              "notes": "영화우선수강/3일차"
+              "notes": "영화우선수강/타과생전화상담"
             }
           ]
         },
@@ -5840,8 +5874,8 @@
           "classification": "전선",
           "target_year": 4,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -5861,9 +5895,9 @@
                 ]
               },
               "room": {
-                "raw": "대304 - 종합편집실",
-                "building": "대",
-                "building_full": "대학원관",
+                "raw": "예304 - 종합편집실",
+                "building": "예",
+                "building_full": "예술학관",
                 "room_number": "304",
                 "room_type": "종합편집실"
               },
@@ -5892,13 +5926,13 @@
               "section": "01",
               "professor": "황연희",
               "schedule": {
-                "raw": "화13:30-16:30",
+                "raw": "목13:30-16:30",
                 "days": [
-                  "화"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "목",
                     "start": "13:30",
                     "end": "16:30"
                   }
@@ -6024,7 +6058,7 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -6032,13 +6066,13 @@
               "section": "01",
               "professor": "안대천",
               "schedule": {
-                "raw": "목12:30-15:30",
+                "raw": "화12:30-15:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "12:30",
                     "end": "15:30"
                   }
@@ -6052,7 +6086,7 @@
                 "room_type": "연기연습실2"
               },
               "capacity": 0,
-              "notes": "1학년만 수강가능"
+              "notes": "연기예술학과 1학년만 수강가능"
             }
           ]
         },
@@ -6062,13 +6096,13 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
               "section": "01",
-              "professor": "오관욱",
+              "professor": "오광욱",
               "schedule": {
                 "raw": "월13:30-16:30",
                 "days": [
@@ -6134,7 +6168,7 @@
                 "room_type": "VTR-II실"
               },
               "capacity": 0,
-              "notes": "재학생수강신청 수강신청제한없음"
+              "notes": "재학생수강신청 기간 3일차에 수강신청제한없음"
             }
           ]
         },
@@ -6272,8 +6306,8 @@
           "classification": "전선",
           "target_year": 2,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -6318,15 +6352,15 @@
               "section": "01",
               "professor": "송욱경",
               "schedule": {
-                "raw": "월13:30-16:30",
+                "raw": "목09:30-13:30",
                 "days": [
-                  "월"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
-                    "start": "13:30",
-                    "end": "16:30"
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
                   }
                 ]
               },
@@ -6509,14 +6543,14 @@
                 ]
               },
               "room": {
-                "raw": "예B12 - 시각실습실4",
+                "raw": "예312 - 시각실습실4",
                 "building": "예",
                 "building_full": "예술관",
-                "room_number": "B12",
+                "room_number": "312",
                 "room_type": "시각실습실4"
               },
               "capacity": 0,
-              "notes": "연기예술학과만 수강가능"
+              "notes": ""
             }
           ]
         },
@@ -6524,7 +6558,7 @@
           "course_code": "852093",
           "course_name": "연극영화교과교육론",
           "classification": "전선",
-          "target_year": 2,
+          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -6592,7 +6626,7 @@
                 "room_type": "소극장무대"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "연기예술학과만 수강가능"
             }
           ]
         },
@@ -6610,13 +6644,13 @@
               "section": "01",
               "professor": "안정민",
               "schedule": {
-                "raw": "목14:30-18:25",
+                "raw": "화14:30-18:25",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "14:30",
                     "end": "18:25"
                   }
@@ -6666,8 +6700,8 @@
           "classification": "전선",
           "target_year": 3,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
@@ -6704,7 +6738,7 @@
           "classification": "전필",
           "target_year": 3,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
@@ -6788,13 +6822,13 @@
               "section": "01",
               "professor": "장경순",
               "schedule": {
-                "raw": "목10:30-14:30",
+                "raw": "월10:30-14:30",
                 "days": [
-                  "목"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "10:30",
                     "end": "14:30"
                   }
@@ -6829,21 +6863,260 @@
           "is_micro_major": false,
           "sections": [
             {
-              "section": "01-22",
-              "professor": "실용강사1-3",
+              "section": "01",
+              "professor": "실용강사1",
               "schedule": {
-                "raw": "금/목 개인레슨",
+                "raw": "금09:30-10:30",
                 "days": [
-                  "금",
-                  "목"
+                  "금"
                 ],
-                "times": []
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
               },
               "room": {
-                "raw": "음314-1,음314-2,음312 - 레슨실",
+                "raw": "음314-1 - 레슨실",
                 "building": "음",
                 "building_full": "음악관",
                 "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "02",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "금10:30-11:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1-레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "03",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "금11:30-12:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "04",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "금12:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "05",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "금13:30-14:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "06",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "금14:30-15:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "07",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "목09:30-10:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "08",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "목10:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "09",
+              "professor": "실용강사1",
+              "schedule": {
+                "raw": "목11:30-12:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 1학년 학생만 수강가능, 22개 분반"
+            },
+            {
+              "section": "10",
+              "professor": "실용강사2",
+              "schedule": {
+                "raw": "금09:30-10:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
                 "room_type": "레슨실"
               },
               "capacity": 0,
@@ -7043,14 +7316,14 @@
               "section": "01",
               "professor": "박봉",
               "schedule": {
-                "raw": "목09:30-14:30",
+                "raw": "목12:30-14:30",
                 "days": [
                   "목"
                 ],
                 "times": [
                   {
                     "day": "목",
-                    "start": "09:30",
+                    "start": "12:30",
                     "end": "14:30"
                   }
                 ]
@@ -7116,22 +7389,628 @@
           "is_micro_major": false,
           "sections": [
             {
-              "section": "01-24",
-              "professor": "다수",
+              "section": "01",
+              "professor": "권상희",
               "schedule": {
-                "raw": "개인레슨",
-                "days": [],
-                "times": []
+                "raw": "수11:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
               },
               "room": {
-                "raw": "음 레슨실",
+                "raw": "음207 - 레슨실",
                 "building": "음",
                 "building_full": "음악관",
-                "room_number": null,
+                "room_number": "207",
                 "room_type": "레슨실"
               },
               "capacity": 0,
-              "notes": "실용음악학과 2학년 학생만 수강가능, 24개 분반"
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "권상희",
+              "schedule": {
+                "raw": "수12:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음207 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "207",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "03",
+              "professor": "권상희",
+              "schedule": {
+                "raw": "수13:30-14:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음207 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "207",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "04",
+              "professor": "권상희",
+              "schedule": {
+                "raw": "수14:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음207 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "207",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "05",
+              "professor": "박민주",
+              "schedule": {
+                "raw": "수11:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "06",
+              "professor": "박민주",
+              "schedule": {
+                "raw": "수12:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "07",
+              "professor": "박민주",
+              "schedule": {
+                "raw": "수13:30-14:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "08",
+              "professor": "실용강사3",
+              "schedule": {
+                "raw": "월13:30-14:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "09",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화12:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "10",
+              "professor": "김여진",
+              "schedule": {
+                "raw": "월11:30-12:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "11",
+              "professor": "김여진",
+              "schedule": {
+                "raw": "월14:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "12",
+              "professor": "전시언",
+              "schedule": {
+                "raw": "목14:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음203 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "203",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "13",
+              "professor": "박봄",
+              "schedule": {
+                "raw": "목14:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "14",
+              "professor": "이길상",
+              "schedule": {
+                "raw": "목10:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음203 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "203",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "15",
+              "professor": "이길상",
+              "schedule": {
+                "raw": "목11:30-12:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음203 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "203",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "16",
+              "professor": "이길상",
+              "schedule": {
+                "raw": "목16:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "16:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음312 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "312",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "17",
+              "professor": "김찬오",
+              "schedule": {
+                "raw": "금11:30-12:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "18",
+              "professor": "김찬오",
+              "schedule": {
+                "raw": "금13:30-14:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "19",
+              "professor": "김찬오",
+              "schedule": {
+                "raw": "금14:30-15:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "20",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화18:25-19:15",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "18:25",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "21",
+              "professor": "실용강사3",
+              "schedule": {
+                "raw": "월09:30-10:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "22",
+              "professor": "실용강사3",
+              "schedule": {
+                "raw": "월10:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "23",
+              "professor": "실용강사3",
+              "schedule": {
+                "raw": "월11:30-12:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
+            },
+            {
+              "section": "24",
+              "professor": "실용강사3",
+              "schedule": {
+                "raw": "월12:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 2학년 학생만 수강가능"
             }
           ]
         },
@@ -7225,13 +8104,13 @@
               "section": "01",
               "professor": "권상희",
               "schedule": {
-                "raw": "월10:30-12:30",
+                "raw": "화10:30-12:30",
                 "days": [
-                  "월"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "화",
                     "start": "10:30",
                     "end": "12:30"
                   }
@@ -7365,13 +8244,13 @@
               "section": "01",
               "professor": "유영하",
               "schedule": {
-                "raw": "목13:30-15:30",
+                "raw": "화13:30-15:30",
                 "days": [
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "13:30",
                     "end": "15:30"
                   }
@@ -7400,22 +8279,446 @@
           "is_micro_major": false,
           "sections": [
             {
-              "section": "01-17",
-              "professor": "다수",
+              "section": "01",
+              "professor": "주형우",
               "schedule": {
-                "raw": "개인레슨",
-                "days": [],
-                "times": []
+                "raw": "화15:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
               },
               "room": {
-                "raw": "음 레슨실",
+                "raw": "음202-1 - 레슨실",
                 "building": "음",
                 "building_full": "음악관",
-                "room_number": null,
+                "room_number": "202-1",
                 "room_type": "레슨실"
               },
               "capacity": 0,
-              "notes": "실용음악학과 3학년 학생만 수강가능, 17개 분반"
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화16:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "16:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "03",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화17:30-18:25",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "04",
+              "professor": "박민주",
+              "schedule": {
+                "raw": "수14:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "05",
+              "professor": "박봄",
+              "schedule": {
+                "raw": "목10:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "06",
+              "professor": "박봄",
+              "schedule": {
+                "raw": "목11:30-12:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "07",
+              "professor": "조경란",
+              "schedule": {
+                "raw": "목12:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음312 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "312",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "08",
+              "professor": "조경란",
+              "schedule": {
+                "raw": "목13:30-14:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음312 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "312",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "09",
+              "professor": "김찬오",
+              "schedule": {
+                "raw": "금10:30-11:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "10",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월09:30-10:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "11",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월10:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "12",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월11:30-12:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "13",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월12:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "14",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월13:30-14:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "15",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월14:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "16",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월15:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
+            },
+            {
+              "section": "17",
+              "professor": "실용강사4",
+              "schedule": {
+                "raw": "월16:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "16:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-2 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-2",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 3학년 학생만 수강가능"
             }
           ]
         },
@@ -7651,7 +8954,7 @@
           "course_code": "860043",
           "course_name": "스튜디오프로듀싱응용1",
           "classification": "전선",
-          "target_year": 3,
+          "target_year": 4,
           "credits": 2,
           "hours": 0,
           "lab_hours": 4,
@@ -7696,22 +8999,446 @@
           "is_micro_major": false,
           "sections": [
             {
-              "section": "01-16",
-              "professor": "다수",
+              "section": "01",
+              "professor": "김여진",
               "schedule": {
-                "raw": "개인레슨",
-                "days": [],
-                "times": []
+                "raw": "월12:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
               },
               "room": {
-                "raw": "음 레슨실",
+                "raw": "음202-1 - 레슨실",
                 "building": "음",
                 "building_full": "음악관",
-                "room_number": null,
+                "room_number": "202-1",
                 "room_type": "레슨실"
               },
               "capacity": 0,
-              "notes": "실용음악학과 4학년 학생만 수강가능, 16개 분반"
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "김여진",
+              "schedule": {
+                "raw": "월15:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "03",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화13:30-14:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "04",
+              "professor": "주형우",
+              "schedule": {
+                "raw": "화14:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "05",
+              "professor": "박민주",
+              "schedule": {
+                "raw": "수15:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "06",
+              "professor": "전시언",
+              "schedule": {
+                "raw": "목15:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음203 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "203",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "07",
+              "professor": "전시언",
+              "schedule": {
+                "raw": "목16:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "16:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음203 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "203",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "08",
+              "professor": "박봄",
+              "schedule": {
+                "raw": "목15:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음202-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "202-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "09",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화09:30-10:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "10",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화10:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "11",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화11:30-12:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "12",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화12:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "12:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "13",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화13:30-14:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "14",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화14:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "15",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화15:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "16",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화16:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "16:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
+            },
+            {
+              "section": "17",
+              "professor": "실용강사5",
+              "schedule": {
+                "raw": "화17:30-18:25",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "음314-1 - 레슨실",
+                "building": "음",
+                "building_full": "음악관",
+                "room_number": "314-1",
+                "room_type": "레슨실"
+              },
+              "capacity": 0,
+              "notes": "실용음악학과 4학년 학생만 수강가능"
             }
           ]
         },
@@ -7794,6 +9521,601 @@
       ]
     },
     {
+      "department_id": "FASHION_DESIGN",
+      "department_name": "패션디자인학과",
+      "courses": [
+        {
+          "course_code": "841011",
+          "course_name": "패션일러스트레이션I(기초,응용,실기)",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01-18",
+              "professor": "패션디자인강사1",
+              "schedule": {
+                "raw": "금09:00-21:00, 월09:00-15:00 (분반별 상이)",
+                "days": [
+                  "금",
+                  "월"
+                ],
+                "times": []
+              },
+              "room": {
+                "raw": "실기실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "실기실"
+              },
+              "capacity": 0,
+              "notes": "패션디자인학과, 18개 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "841101",
+          "course_name": "SU1기초",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김진솔",
+              "schedule": {
+                "raw": "수11:00-13:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보세미나실 - DP P.Lab",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "세미나실",
+                "room_type": "DP P.Lab"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841104",
+          "course_name": "의상영어",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한슬기",
+              "schedule": {
+                "raw": "수09:00-10:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:00",
+                    "end": "10:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841105",
+          "course_name": "기초의복구성",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한수연",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인실기실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인실기실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841102",
+          "course_name": "***디자인론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김현",
+              "schedule": {
+                "raw": "수14:00-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841121",
+          "course_name": "패션일러스트레이션II(기초,응용,실기)",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01-14",
+              "professor": "패션디자인강사1 외",
+              "schedule": {
+                "raw": "수09:00-17:00 (분반별 상이)",
+                "days": [
+                  "수"
+                ],
+                "times": []
+              },
+              "room": {
+                "raw": "실기실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "실기실"
+              },
+              "capacity": 0,
+              "notes": "14개 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "843024",
+          "course_name": "패션소재기획",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장정임",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "의상201 - 학과A/V강의실",
+                "building": "의상",
+                "building_full": "의상관",
+                "room_number": "201",
+                "room_type": "학과A/V강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841110",
+          "course_name": "SU1응용",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김현",
+              "schedule": {
+                "raw": "목09:00-11:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:00",
+                    "end": "11:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보세미나실",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "세미나실",
+                "room_type": "세미나실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "843033",
+          "course_name": "융합컬렉션프로젝트I",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장정임",
+              "schedule": {
+                "raw": "목10:00-11:30, 금10:00-11:30",
+                "days": [
+                  "목",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841115",
+          "course_name": "패션스타일링",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장정임",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "의상202",
+                "building": "의상",
+                "building_full": "의상관",
+                "room_number": "202",
+                "room_type": ""
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841601",
+          "course_name": "캡스톤디자인(패션컬렉션프로젝트III)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김진솔",
+              "schedule": {
+                "raw": "수09:00-12:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:00",
+                    "end": "12:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "의상202",
+                "building": "의상",
+                "building_full": "의상관",
+                "room_number": "202",
+                "room_type": ""
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841127",
+          "course_name": "패션마케팅프로젝트II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한수연",
+              "schedule": {
+                "raw": "수14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "843031",
+          "course_name": "패션리테일실무I",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한수연",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841131",
+          "course_name": "캡스톤디자인(패션포트폴리오워크샵)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김진솔",
+              "schedule": {
+                "raw": "수13:00-16:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:00",
+                    "end": "16:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "841602",
+          "course_name": "캡스톤디자인(졸업작품제작및발표)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김진솔",
+              "schedule": {
+                "raw": "목13:00-16:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:00",
+                    "end": "16:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "패션디자인강의실",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "패션디자인강의실"
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
       "department_id": "KOREAN_LIT",
       "department_name": "한국어문학과",
       "courses": [
@@ -7839,7 +10161,7 @@
           "course_code": "012118",
           "course_name": "현대시의이론과실제",
           "classification": "전선",
-          "target_year": 2,
+          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -7887,14 +10209,14 @@
               "section": "01",
               "professor": "김연희",
               "schedule": {
-                "raw": "금15:00-16:30, 목11:00-12:30",
+                "raw": "화15:00-16:30, 목11:00-12:30",
                 "days": [
-                  "금",
+                  "화",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "화",
                     "start": "15:00",
                     "end": "16:30"
                   },

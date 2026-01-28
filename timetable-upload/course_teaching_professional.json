@@ -1,7 +1,7 @@
 {
   "category": "교직",
   "semester": "2026학년도 1학기",
-  "updated_at": "2026-01-25",
+  "updated_at": "2026-01-28",
   "courses": [
     {
       "course_code": "911001",
@@ -16,9 +16,7 @@
           "professor": "김기홍",
           "schedule": {
             "raw": "월11:30-13:30",
-            "days": [
-              "월"
-            ],
+            "days": ["월"],
             "times": [
               {
                 "day": "월",
@@ -30,7 +28,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -42,9 +40,7 @@
           "professor": "김기홍",
           "schedule": {
             "raw": "화11:30-13:30",
-            "days": [
-              "화"
-            ],
+            "days": ["화"],
             "times": [
               {
                 "day": "화",
@@ -56,7 +52,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -78,9 +74,7 @@
           "professor": "권양이",
           "schedule": {
             "raw": "목15:30-17:30",
-            "days": [
-              "목"
-            ],
+            "days": ["목"],
             "times": [
               {
                 "day": "목",
@@ -92,7 +86,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -113,10 +107,8 @@
           "section": "01",
           "professor": "권양이",
           "schedule": {
-            "raw": "목15:30-15:30",
-            "days": [
-              "목"
-            ],
+            "raw": "목13:30-15:30",
+            "days": ["목"],
             "times": [
               {
                 "day": "목",
@@ -128,7 +120,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -149,13 +141,11 @@
           "section": "01",
           "professor": "김기홍",
           "schedule": {
-            "raw": "월15:30-17:30",
-            "days": [
-              "월"
-            ],
+            "raw": "수15:30-17:30",
+            "days": ["수"],
             "times": [
               {
-                "day": "월",
+                "day": "수",
                 "start": "15:30",
                 "end": "17:30"
               }
@@ -164,7 +154,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -186,9 +176,7 @@
           "professor": "김기홍",
           "schedule": {
             "raw": "화15:30-17:30",
-            "days": [
-              "화"
-            ],
+            "days": ["화"],
             "times": [
               {
                 "day": "화",
@@ -200,7 +188,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -222,9 +210,7 @@
           "professor": "이정",
           "schedule": {
             "raw": "화17:30-19:15",
-            "days": [
-              "화"
-            ],
+            "days": ["화"],
             "times": [
               {
                 "day": "화",
@@ -236,7 +222,7 @@
           "room": {
             "raw": "대205 - 강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "205",
             "room_type": "강의실"
           },
@@ -258,9 +244,7 @@
           "professor": "김기홍",
           "schedule": {
             "raw": "목11:30-13:30",
-            "days": [
-              "목"
-            ],
+            "days": ["목"],
             "times": [
               {
                 "day": "목",
@@ -272,7 +256,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -285,22 +269,20 @@
       "course_code": "911018",
       "course_name": "교육봉사활동",
       "credits": 2,
-      "hours": 4,
-      "lab_hours": 0,
+      "hours": 0,
+      "lab_hours": 4,
       "target_year": 3,
       "sections": [
         {
           "section": "01",
           "professor": "김기홍",
           "schedule": {
-            "raw": "월17:15-19:15",
-            "days": [
-              "월"
-            ],
+            "raw": "월17:30-19:15",
+            "days": ["월"],
             "times": [
               {
                 "day": "월",
-                "start": "17:15",
+                "start": "17:30",
                 "end": "19:15"
               }
             ]
@@ -308,7 +290,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -321,30 +303,28 @@
       "course_code": "911024",
       "course_name": "학교현장실습",
       "credits": 2,
-      "hours": 4,
-      "lab_hours": 0,
+      "hours": 0,
+      "lab_hours": 4,
       "target_year": 4,
       "sections": [
         {
           "section": "01",
           "professor": "김기홍",
           "schedule": {
-            "raw": "목09:30-11:30",
-            "days": [
-              "목"
-            ],
+            "raw": "월13:30-15:30",
+            "days": ["월"],
             "times": [
               {
-                "day": "목",
-                "start": "09:30",
-                "end": "11:30"
+                "day": "월",
+                "start": "13:30",
+                "end": "15:30"
               }
             ]
           },
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -355,22 +335,20 @@
           "section": "02",
           "professor": "김기홍",
           "schedule": {
-            "raw": "금09:30-11:30",
-            "days": [
-              "금"
-            ],
+            "raw": "화13:30-15:30",
+            "days": ["화"],
             "times": [
               {
-                "day": "금",
-                "start": "09:30",
-                "end": "11:30"
+                "day": "화",
+                "start": "13:30",
+                "end": "15:30"
               }
             ]
           },
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -382,8 +360,8 @@
     {
       "course_code": "911027",
       "course_name": "예비교원성인지교육",
-      "credits": 2,
-      "hours": 4,
+      "credits": 1,
+      "hours": 2,
       "lab_hours": 0,
       "target_year": 4,
       "sections": [
@@ -391,22 +369,20 @@
           "section": "01",
           "professor": "김기홍",
           "schedule": {
-            "raw": "수11:30-13:30",
-            "days": [
-              "수"
-            ],
+            "raw": "수11:30-12:30",
+            "days": ["수"],
             "times": [
               {
                 "day": "수",
                 "start": "11:30",
-                "end": "13:30"
+                "end": "12:30"
               }
             ]
           },
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },
@@ -428,9 +404,7 @@
           "professor": "김기홍",
           "schedule": {
             "raw": "수13:30-15:30",
-            "days": [
-              "수"
-            ],
+            "days": ["수"],
             "times": [
               {
                 "day": "수",
@@ -442,7 +416,7 @@
           "room": {
             "raw": "대206 - 스마트강의실",
             "building": "대",
-            "building_full": "대학본부",
+            "building_full": "대학원관",
             "room_number": "206",
             "room_type": "스마트강의실"
           },

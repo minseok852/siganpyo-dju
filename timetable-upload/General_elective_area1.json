@@ -1,0 +1,2776 @@
+{
+  "category": "교양선택",
+  "semester": "2026학년도 1학기",
+  "updated_at": "2026-01-28",
+  "areas": [
+    {
+      "area_id": 1,
+      "area_name": "1영역",
+      "field": "인간과소통",
+      "courses": [
+        {
+          "course_code": "001022",
+          "course_name": "일본어회화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "05",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "06",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "07",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "08",
+              "professor": "김창남",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "09",
+              "professor": "김창남",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "10",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "11",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "12",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "13",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "14",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-3 - 교양 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-3",
+                "room_type": "교양 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "004127",
+          "course_name": "인간과언어",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김연희",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인314 - 국문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "314",
+                "room_type": "국문A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "004402",
+          "course_name": "응급처치법",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사101 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": 40,
+              "notes": "간호학과 수강불가"
+            },
+            {
+              "section": "02",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사101 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": 40,
+              "notes": "간호학과 수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "004416",
+          "course_name": "인간과신화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영주",
+              "schedule": {
+                "raw": "금21:20-22:10",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "21:20",
+                    "end": "22:10"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "004421",
+          "course_name": "인간과종교",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이현",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이현",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "005086",
+          "course_name": "인문학과자기경영의만남",
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영미",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인206 - 계단식강의실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "206",
+                "room_type": "계단식강의실 1"
+              },
+              "capacity": 100,
+              "notes": "[OCU강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "921019",
+          "course_name": "동시대의문학체험",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신종곤",
+              "schedule": {
+                "raw": "금09:30-11:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인313 - 문창A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "313",
+                "room_type": "문창A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "921022",
+          "course_name": "초급영어청취",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인301 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "301",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922502",
+          "course_name": "고전인문학산책",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임보연",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인119-1 - 교양A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "119-1",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "922503",
+          "course_name": "세계전쟁사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최한진",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인105 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "105",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": "학군단 지원시 가산점 부여"
+            },
+            {
+              "section": "02",
+              "professor": "최한진",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인105 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "105",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": "학군단 지원시 가산점 부여"
+            }
+          ]
+        },
+        {
+          "course_code": "922504",
+          "course_name": "한국전쟁사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최한진",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인105 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "105",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": "학군단 지원시 가산점 부여"
+            },
+            {
+              "section": "02",
+              "professor": "최한진",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인105 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "105",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": "학군단 지원시 가산점 부여"
+            },
+            {
+              "section": "03",
+              "professor": "최한진",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인105 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "105",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": "학군단 지원시 가산점 부여"
+            }
+          ]
+        },
+        {
+          "course_code": "922505",
+          "course_name": "타로와심리학",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영환",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대308 - 스마트강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "308",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김영환",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대308 - 스마트강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "308",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927001",
+          "course_name": "토익입문",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "이희정",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927006",
+          "course_name": "중국어입문",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임지강",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인302 - 문화콘텐츠A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "302",
+                "room_type": "문화콘텐츠A/V강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927009",
+          "course_name": "중국어회화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임지강",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "임지강",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927011",
+          "course_name": "일본어입문",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창남",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김창남",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인212 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "212",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927034",
+          "course_name": "초급영어독해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백승봉",
+              "schedule": {
+                "raw": "수19:15-20:05",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "19:15",
+                    "end": "20:05"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "927042",
+          "course_name": "토익RC",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이창원",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이창원",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "이창원",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927043",
+          "course_name": "토익LC",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호정",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김호정",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "김호정",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사108 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927089",
+          "course_name": "영미명작과영화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양균원",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인212 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "212",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927092",
+          "course_name": "한국사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김형기",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104",
+                "room_type": "국제A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927094",
+          "course_name": "동양철학의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이현",
+              "schedule": {
+                "raw": "월09:30-11:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인1041-통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "1041",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "이현",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인1041-통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "1041",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927100",
+          "course_name": "인물로풀어본중국역사",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "화15:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927104",
+          "course_name": "노자와공자의사상",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "목19:40-20:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "19:40",
+                    "end": "20:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 110,
+              "notes": "[원격수업]미래평생융합대학 10명, 총120명"
+            }
+          ]
+        },
+        {
+          "course_code": "927143",
+          "course_name": "영어쓰기",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임도현",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인104 - 통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "104",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 20,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927146",
+          "course_name": "실용일본어",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 30,
+              "notes": "[B/L수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "927147",
+          "course_name": "영상일본어",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인210 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "210",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "노은미",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927210",
+          "course_name": "예비부모교육",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손영경",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인213 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "213",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "손영경",
+              "schedule": {
+                "raw": "목09:30-11:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인213 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "213",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927238",
+          "course_name": "한국문화로배우는영어",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "목21:20-22:10",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "21:20",
+                    "end": "22:10"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]국제경영학과 외국인 전용 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "927290",
+          "course_name": "토익어휘",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "변효정",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인1041-통합 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "1041",
+                "room_type": "통합 강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927299",
+          "course_name": "JLPT중급(N4/N3)",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창남",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927300",
+          "course_name": "JLPT고급(N2/N1)",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박선옥",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 30,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927314",
+          "course_name": "21세기한국소설의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정연희",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "정연희",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927330",
+          "course_name": "초급생활영어회화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어회화실-2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-1",
+                "room_type": "영어회화실-2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어회화실-2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-1",
+                "room_type": "영어회화실-2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "수11:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어회화실-2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-1",
+                "room_type": "영어회화실-2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "04",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어회화실-2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-1",
+                "room_type": "영어회화실-2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "05",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어회화실-1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-1",
+                "room_type": "영어회화실-1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "06",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "화13:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202 - 영어회화실-1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202",
+                "room_type": "영어회화실-1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "07",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202 - 영어회화실-2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202",
+                "room_type": "영어회화실-2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "08",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "목11:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202 - 영어회화실-1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202",
+                "room_type": "영어회화실-1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "09",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202 - 영어회화실-1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202",
+                "room_type": "영어회화실-1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "10",
+              "professor": "HILL BRIAN D",
+              "schedule": {
+                "raw": "금13:30-15:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202 - 영어회화실-1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202",
+                "room_type": "영어회화실-1"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "11",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927332",
+          "course_name": "OPIc",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김호정",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인212 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "212",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 20,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927333",
+          "course_name": "KoreanLanguage(E)",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "금21:20-22:10",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "21:20",
+                    "end": "22:10"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
+              },
+              "capacity": 120,
+              "notes": "[원격수업]국제경영학과 외국인 전용 분반"
+            }
+          ]
+        },
+        {
+          "course_code": "927370",
+          "course_name": "역사에서미래를읽다",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박윤선",
+              "schedule": {
+                "raw": "화15:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "307",
+                "room_type": "역사A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927385",
+          "course_name": "문학치유",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나병준",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인301 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "301",
+                "room_type": "스마트강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927404",
+          "course_name": "언어의이해",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나병모",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인301 - 교양A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "301",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김헌규",
+              "schedule": {
+                "raw": "월15:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인107 - 통합A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "107",
+                "room_type": "통합A/V강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927413",
+          "course_name": "다이나믹생활영어회화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-2 - 영어회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "202-2",
+                "room_type": "영어회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "Mark Burman",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인202-1 - 영어 회화실 2",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "영어 회화실 2"
+              },
+              "capacity": 15,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "Sarah Choi",
+              "schedule": {
+                "raw": "목13:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": 15,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927431",
+          "course_name": "한글과문자론",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박동근",
+              "schedule": {
+                "raw": "수09:30-11:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인103 - 토론형 강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "103",
+                "room_type": "토론형 강의실"
+              },
+              "capacity": 50,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927432",
+          "course_name": "생활한자",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임보연",
+              "schedule": {
+                "raw": "월11:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인119-1 - 교양A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "119-1",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "임보연",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인119-1 - 교양A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "119-1",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927433",
+          "course_name": "한국소설과영화",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장혜련",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인209 - 일반A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "209",
+                "room_type": "일반A/V강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "927435",
+          "course_name": "일상문화와철학",
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "화09:30-11:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인211 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "211",
+                "room_type": "일반강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김덕삼",
+              "schedule": {
+                "raw": "화11:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인211 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "211",
+                "room_type": "일반강의실"
+              },
+              "capacity": 40,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

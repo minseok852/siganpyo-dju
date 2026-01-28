@@ -6,7 +6,7 @@ __pycache__/
 venv/
 .env.example
 update_target_year.js
-upload_courses.cjs
+upload_all_courses.cjs
 node_modules/
 dist/
 .env.local

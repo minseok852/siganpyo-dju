@@ -5,6 +5,7 @@ import SharedPage from './pages/SharedPage';
 import PopularPage from './pages/PopularPage';
 import AIPage from './pages/AIPage';
 import RecommendPage from './pages/RecommendPage';
+import FAQPage from './pages/FAQPage';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/popular" element={<PopularPage />} />
         <Route path="/ai" element={<AIPage />} />
         <Route path="/recommend" element={<RecommendPage />} />
+        <Route path="/faq" element={<FAQPage />} />
         
       </Routes>
     </BrowserRouter>
