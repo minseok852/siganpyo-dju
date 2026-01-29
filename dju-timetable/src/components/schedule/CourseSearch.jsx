@@ -44,7 +44,8 @@ const TIME_OPTIONS = [
 export default function CourseSearch({ 
   isOpen, 
   onClose, 
-  onAddCourse, 
+  onAddCourse,
+  onRemoveCourse,  // ✅ 삭제 함수 추가
   currentCourses 
 }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -207,6 +208,13 @@ export default function CourseSearch({
     }
   };
 
+  // ✅ 과목 삭제 핸들러
+  const handleRemoveCourse = (courseCode, section) => {
+    if (onRemoveCourse) {
+      onRemoveCourse(courseCode, section);
+    }
+  };
+
   // 시간대 필터 초기화
   const resetTimeFilter = () => {
     setFilters(f => ({ ...f, day: '', startTime: '' }));
@@ -217,6 +225,11 @@ export default function CourseSearch({
 
   // 최종 표시할 과목 (시간대 필터 적용)
   const filteredCourses = filterByTime(courses);
+
+  // ✅ 선택된 과목이 이미 추가되었는지 확인
+  const isSelectedCourseAdded = selectedCourse 
+    ? currentCourses.some(c => c.course_code === selectedCourse.course_code && c.section === selectedCourse.section)
+    : false;
 
   if (!isOpen) return null;
 
@@ -567,16 +580,14 @@ export default function CourseSearch({
         </div>
       </div>
 
-      {/* 과목 상세 모달 */}
+      {/* ✅ 과목 상세 모달 - onRemove 추가! */}
       {selectedCourse && (
         <CourseDetail
           course={selectedCourse}
           onClose={() => setSelectedCourse(null)}
           onAdd={handleAddCourse}
-          isAdded={currentCourses.some(
-            c => c.course_code === selectedCourse.course_code && 
-                 c.section === selectedCourse.section
-          )}
+          onRemove={handleRemoveCourse}
+          isAdded={isSelectedCourseAdded}
           conflict={getConflictInfo(selectedCourse)}
         />
       )}

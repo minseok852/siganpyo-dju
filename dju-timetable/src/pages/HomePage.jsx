@@ -90,6 +90,11 @@ export default function HomePage() {
   // ✅ 오프라인 과목 (시간표에 표시되는 과목)
   const offlineCourses = courses.filter(c => c.times && c.times.length > 0);
 
+  // ✅ 선택된 과목이 이미 추가되었는지 확인
+  const isSelectedCourseAdded = selectedCourse 
+    ? courses.some(c => c.course_code === selectedCourse.course_code && c.section === selectedCourse.section)
+    : false;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 헤더 */}
@@ -394,16 +399,18 @@ export default function HomePage() {
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onAddCourse={addCourse}
+        onRemoveCourse={removeCourse}
         currentCourses={courses}
       />
 
-      {/* 과목 상세 모달 */}
+      {/* ✅ 과목 상세 모달 - onRemove 추가! */}
       {selectedCourse && (
         <CourseDetail
           course={selectedCourse}
           onClose={() => setSelectedCourse(null)}
           onAdd={addCourse}
-          isAdded={true}
+          onRemove={removeCourse}
+          isAdded={isSelectedCourseAdded}
           conflict={null}
         />
       )}
