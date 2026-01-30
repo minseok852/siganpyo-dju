@@ -590,7 +590,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김지환",
+              "professor": "김정민",
               "schedule": {
                 "raw": "수09:30-11:00, 목09:30-11:00"
               },
@@ -602,7 +602,7 @@
             },
             {
               "section": "02",
-              "professor": "김지환",
+              "professor": "김정민",
               "schedule": {
                 "raw": "수15:30-17:00, 목15:30-17:00"
               },

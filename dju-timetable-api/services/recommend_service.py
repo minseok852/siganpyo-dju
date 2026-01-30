@@ -53,9 +53,29 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 - 선호 시간대: {time_description}
 - 교양: {'안 듣기 (전공만)' if skip_general else f"영역 선호: {', '.join(preferences.get('preferred_areas', [])) or '상관없음'}"}"""
 
-    # 피하고 싶은 과목
-    if preferences.get('avoid_courses'):
-        pref_text += f"\n- 피하고 싶은 과목/교수: {preferences.get('avoid_courses')}"
+    # 이수 완료 교양 영역
+    completed_areas = preferences.get('completed_areas', [])
+    if completed_areas:
+        pref_text += f"\n- 이수 완료 교양 영역 (제외): {', '.join(completed_areas)}"
+    
+    # 이수 완료 전공선택
+    completed_major_elective = preferences.get('completed_major_elective', [])
+    if completed_major_elective:
+        pref_text += f"\n- 이수 완료 전공선택 (제외): {', '.join(completed_major_elective)}"
+
+    # 피하고 싶은 과목 (문자열 배열 또는 단일 문자열)
+    avoid_courses = preferences.get('avoid_courses', [])
+    if avoid_courses:
+        if isinstance(avoid_courses, list) and len(avoid_courses) > 0:
+            # 문자열 배열인 경우
+            if isinstance(avoid_courses[0], str):
+                pref_text += f"\n- 🚫 듣기 싫은 과목: {', '.join(avoid_courses)}"
+            # 객체 배열인 경우 (이전 버전 호환)
+            elif isinstance(avoid_courses[0], dict):
+                avoid_text = ", ".join([c.get('course_name', '') for c in avoid_courses])
+                pref_text += f"\n- 🚫 듣기 싫은 과목: {avoid_text}"
+        elif isinstance(avoid_courses, str) and avoid_courses.strip():
+            pref_text += f"\n- 🚫 피하고 싶은 과목/교수: {avoid_courses}"
 
     # ========== 4. 꼭 듣고 싶은 과목 ==========
     must_take_text = ""

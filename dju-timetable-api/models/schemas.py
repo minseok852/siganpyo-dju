@@ -64,7 +64,10 @@ class Preferences(BaseModel):
     must_take_courses: Optional[list[Course]] = []  # 꼭 듣고 싶은 과목
     selected_major_courses: Optional[list[Course]] = []  # 직접 선택한 전공과목 (2학년+)
     major_selection_mode: Optional[str] = "auto"  # "manual" (직접선택) | "auto" (상관없음)
-    avoid_courses: Optional[str] = None
+    avoid_courses: Optional[str] = None  # 피하고 싶은 과목 (문자열)
+    # ===== 새로 추가된 필드들 =====
+    completed_areas: Optional[list[str]] = []  # 이수 완료 교양 영역
+    completed_major_elective: Optional[list[str]] = []  # 이수 완료 전공선택 과목명
 
 class RecommendUserInfo(BaseModel):
     grade: int

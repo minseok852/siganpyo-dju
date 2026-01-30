@@ -19,6 +19,61 @@ import { useSchedule } from '../hooks/useSchedule';
 import { recommendSchedule } from '../services/aiService';
 import { COLLEGES, COURSE_COLORS } from '../data/constants';
 
+// 시간표 선택 모달 컴포넌트
+function ScheduleSelectModal({ isOpen, onClose, schedules, onSelect, onAddNew, maxSchedules }) {
+  if (!isOpen) return null;
+  
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-xl w-full max-w-sm p-4">
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold">저장할 시간표 선택</h2>
+          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
+            <X size={20} />
+          </button>
+        </div>
+        
+        <p className="text-sm text-gray-600 mb-4">
+          AI 추천 시간표를 어디에 저장할까요?
+        </p>
+        
+        <div className="space-y-2">
+          {schedules.map(schedule => (
+            <button
+              key={schedule.id}
+              onClick={() => onSelect(schedule.id)}
+              className="w-full p-3 border rounded-lg hover:bg-indigo-50 hover:border-indigo-300 text-left transition-colors"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-medium">{schedule.name}</span>
+                <span className="text-xs text-gray-500">
+                  {schedule.courses.length > 0 
+                    ? `${schedule.courses.length}과목 (교체됨)` 
+                    : '비어있음'}
+                </span>
+              </div>
+            </button>
+          ))}
+          
+          {schedules.length < maxSchedules && (
+            <button
+              onClick={onAddNew}
+              className="w-full p-3 border-2 border-dashed border-indigo-300 rounded-lg text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+            >
+              <Plus size={18} />
+              새 시간표로 저장
+            </button>
+          )}
+        </div>
+        
+        <p className="text-xs text-gray-400 mt-4">
+          ⚠️ 기존 과목이 있는 시간표는 교체됩니다
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // 교양 영역 옵션
 const AREA_OPTIONS = [
   { value: '1영역', label: '1영역' },
@@ -178,7 +233,8 @@ function CourseSearchModal({
   onSelect, 
   currentSelections,
   title = "과목 검색",
-  filterOptions = {}  // { category, department, classification }
+  filterOptions = {},  // { category, department, classification }
+  matchByName = false  // true면 과목명 기준 체크, false면 분반까지 정확히 체크
 }) {
   const [searchTerm, setSearchTerm] = useState('');
   const { searchCourses, loading } = useCourses();
@@ -219,7 +275,11 @@ function CourseSearchModal({
 
   if (!isOpen) return null;
 
+  // matchByName이면 과목명 기준, 아니면 분반까지 정확히 체크
   const isSelected = (course) => {
+    if (matchByName) {
+      return currentSelections.some(c => c.course_name === course.course_name);
+    }
     return currentSelections.some(c => 
       c.course_code === course.course_code && c.section === course.section
     );
@@ -307,10 +367,11 @@ function CourseSearchModal({
 export default function RecommendPage() {
   const navigate = useNavigate();
   const { getDepartments, searchCourses, getGeneralRequired, getMajorRequired } = useCourses();
-  const { addCourse, clearSchedule } = useSchedule();
+  const { addCourse, clearSchedule, schedules, addSchedule, saveToSchedule, maxSchedules } = useSchedule();
   
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isScheduleSelectOpen, setIsScheduleSelectOpen] = useState(false);  // 시간표 선택 모달
   
   // ========== Step 1: 기본 정보 ==========
   const [userInfo, setUserInfo] = useState({
@@ -329,7 +390,10 @@ export default function RecommendPage() {
     majorRequired: [],
     skipGeneralRequired: false,
     skipMajorRequired: false,
+    completedAreas: [],          // 이수한 교양선택 영역
+    completedMajorElective: [],  // 이수한 전공선택 과목들
   });
+  const [isCompletedMajorSearchOpen, setIsCompletedMajorSearchOpen] = useState(false);  // 전공선택 이수과목 검색 모달
   
   // ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ==========
   const [majorSelection, setMajorSelection] = useState({
@@ -350,8 +414,9 @@ export default function RecommendPage() {
   
   // ========== Step 5: 추가 설정 ==========
   const [mustTakeCourses, setMustTakeCourses] = useState([]);
-  const [avoidCourses, setAvoidCourses] = useState('');
+  const [avoidCourses, setAvoidCourses] = useState([]);  // 배열로 변경
   const [isCourseSearchOpen, setIsCourseSearchOpen] = useState(false);
+  const [isAvoidSearchOpen, setIsAvoidSearchOpen] = useState(false);  // 듣기 싫은 과목 검색 모달
   
   // 학과 목록
   const [departments, setDepartments] = useState([]);
@@ -603,7 +668,12 @@ export default function RecommendPage() {
             credits: c.credits,
             target_year: c.target_year || 0,
           })),
-          avoid_courses: avoidCourses,
+          // 듣기 싫은 과목 (문자열로 전달 - 백엔드 호환성)
+          avoid_courses: avoidCourses.length > 0 ? avoidCourses.map(c => c.course_name).join(', ') : '',
+          // 이수 완료 교양 영역
+          completed_areas: completedCourses.completedAreas,
+          // 이수 완료 전공선택 (과목명 배열)
+          completed_major_elective: completedCourses.completedMajorElective.map(c => c.course_name),
         }
       }, availableCourses);
 
@@ -638,15 +708,23 @@ export default function RecommendPage() {
         completedCourses.skipGeneralRequired || !completedCourses.generalRequired.includes(c.course_name)
       );
 
-      if (preferences.preferredAreas.length > 0) {
+      // 교양선택: 선호 영역 + 이수 완료 영역 제외
+      const areasToSearch = preferences.preferredAreas.length > 0 
+        ? preferences.preferredAreas 
+        : AREA_OPTIONS.map(a => a.value);
+      
+      // 이수 완료 영역 제외
+      const areasFiltered = areasToSearch.filter(
+        area => !completedCourses.completedAreas.includes(area)
+      );
+      
+      if (areasFiltered.length > 0) {
         let tempElective = [];
-        for (const area of preferences.preferredAreas) {
+        for (const area of areasFiltered) {
           const areaResults = await searchCourses({ category: 'general_elective', area, limit: 50 });
           tempElective = [...tempElective, ...areaResults];
         }
         generalElective = tempElective;
-      } else {
-        generalElective = await searchCourses({ category: 'general_elective', limit: 50 });
       }
     }
 
@@ -670,16 +748,25 @@ export default function RecommendPage() {
       classification: '전선',
       limit: 50 
     });
-    // 학년 필터링
+    
+    // 학년 필터링 + 이수 완료 과목 제외
+    const completedMajorNames = completedCourses.completedMajorElective.map(c => c.course_name);
     const majorElective = meResults.filter(c =>
-      c.target_year === 0 || c.target_year <= grade
+      (c.target_year === 0 || c.target_year <= grade) &&
+      !completedMajorNames.includes(c.course_name)
     );
 
+    // 듣기 싫은 과목명 목록
+    const avoidCourseNames = avoidCourses.map(c => c.course_name);
+
+    // 모든 결과에서 듣기 싫은 과목 제외
+    const filterAvoid = (courses) => courses.filter(c => !avoidCourseNames.includes(c.course_name));
+
     return {
-      general_required: generalRequired.slice(0, 20),
-      major_required: majorRequired.slice(0, 20),
-      major_elective: majorElective.slice(0, 30),
-      general_elective: generalElective.slice(0, 30),
+      general_required: filterAvoid(generalRequired).slice(0, 20),
+      major_required: filterAvoid(majorRequired).slice(0, 20),
+      major_elective: filterAvoid(majorElective).slice(0, 30),
+      general_elective: filterAvoid(generalElective).slice(0, 30),
     };
   };
 
@@ -732,8 +819,14 @@ export default function RecommendPage() {
     return times;
   };
 
-  // 시간표 교체 (localStorage 직접 저장 후 이동)
+  // 시간표 선택 모달 열기
   const handleReplaceSchedule = () => {
+    if (!result) return;
+    setIsScheduleSelectOpen(true);
+  };
+
+  // 실제로 특정 시간표에 저장
+  const handleSaveToSchedule = (scheduleId) => {
     if (!result) return;
     
     // 새 시간표 데이터 준비
@@ -759,27 +852,166 @@ export default function RecommendPage() {
     // colorMap 생성
     const newColorMap = {};
     newCourses.forEach((course, idx) => {
-    const key = `${course.course_code}-${course.section}`;
-    newColorMap[key] = idx % COURSE_COLORS.length;  // ✅ COURSE_COLORS 사용
+      const key = `${course.course_code}-${course.section}`;
+      newColorMap[key] = idx % COURSE_COLORS.length;
     });
-
-    console.log('✅ AI 시간표 저장 완료:', newCourses.length, '과목, colorMap:', newColorMap);
     
-    // useSchedule.js와 동일한 형식으로 저장!
-    // 키: 'dju_my_schedule' (constants.js의 STORAGE_KEYS.MY_SCHEDULE)
-    localStorage.setItem('dju_my_schedule', JSON.stringify({
-      courses: newCourses,
-      colorMap: newColorMap
-    }));
+    // 기존 시간표 데이터 로드
+    let savedData = { schedules: [], activeId: 1 };
+    try {
+      const existing = localStorage.getItem('dju_my_schedules');
+      if (existing) {
+        savedData = JSON.parse(existing);
+      } else {
+        // 기존 단일 시간표 마이그레이션
+        const oldData = localStorage.getItem('dju_my_schedule');
+        if (oldData) {
+          const parsed = JSON.parse(oldData);
+          savedData = {
+            schedules: [{
+              id: 1,
+              name: '시간표 1',
+              courses: parsed.courses || [],
+              colorMap: parsed.colorMap || {},
+            }],
+            activeId: 1,
+          };
+        } else {
+          // 완전 새로 시작
+          savedData = {
+            schedules: [{
+              id: 1,
+              name: '시간표 1',
+              courses: [],
+              colorMap: {},
+            }],
+            activeId: 1,
+          };
+        }
+      }
+    } catch (e) {
+      console.error('localStorage 로드 실패:', e);
+    }
     
-    // 홈으로 이동 (새로고침 효과)
+    // 해당 시간표에 저장
+    const updatedSchedules = savedData.schedules.map(s => {
+      if (s.id === scheduleId) {
+        return {
+          ...s,
+          courses: newCourses,
+          colorMap: newColorMap,
+        };
+      }
+      return s;
+    });
+    
+    // localStorage에 직접 저장
+    const dataToSave = {
+      schedules: updatedSchedules,
+      activeId: scheduleId,
+    };
+    
+    console.log('🔥 저장할 데이터:', JSON.stringify(dataToSave, null, 2));
+    localStorage.setItem('dju_my_schedules', JSON.stringify(dataToSave));
+    
+    // 저장 확인
+    const saved = localStorage.getItem('dju_my_schedules');
+    console.log('✅ 저장된 데이터:', saved);
+    
+    console.log('✅ AI 시간표 저장 완료:', newCourses.length, '과목 → 시간표 ID:', scheduleId);
+    
+    // 홈으로 이동 (새로고침으로 localStorage 반영)
     window.location.href = '/';
+  };
+
+  // 새 시간표 생성 후 저장
+  const handleSaveToNewSchedule = () => {
+    if (!result) return;
+    
+    // 기존 데이터 로드
+    let savedData = { schedules: [], activeId: 1 };
+    try {
+      const existing = localStorage.getItem('dju_my_schedules');
+      if (existing) {
+        savedData = JSON.parse(existing);
+      } else {
+        savedData = {
+          schedules: [{
+            id: 1,
+            name: '시간표 1',
+            courses: [],
+            colorMap: {},
+          }],
+          activeId: 1,
+        };
+      }
+    } catch (e) {
+      console.error('localStorage 로드 실패:', e);
+    }
+    
+    // 최대 3개 체크
+    if (savedData.schedules.length >= 3) {
+      alert('최대 3개까지만 만들 수 있어요');
+      return;
+    }
+    
+    // 새 시간표 ID 생성
+    const newId = Math.max(...savedData.schedules.map(s => s.id), 0) + 1;
+    const defaultNames = ['시간표 1', '시간표 2', '시간표 3'];
+    const newName = defaultNames[savedData.schedules.length] || `시간표 ${newId}`;
+    
+    // 새 빈 시간표 추가
+    savedData.schedules.push({
+      id: newId,
+      name: newName,
+      courses: [],
+      colorMap: {},
+    });
+    
+    // localStorage 저장 (새 시간표 생성)
+    localStorage.setItem('dju_my_schedules', JSON.stringify(savedData));
+    
+    // 새 시간표에 AI 결과 저장
+    handleSaveToSchedule(newId);
   };
 
   const handleRemoveMustTake = (course) => {
     setMustTakeCourses(prev => 
       prev.filter(c => !(c.course_code === course.course_code && c.section === course.section))
     );
+  };
+
+  // 이수한 전공선택 추가 (과목명만 저장 - 분반 무관)
+  const handleAddCompletedMajor = (course) => {
+    // 이미 같은 과목명이 있는지 확인 (분반 무관)
+    const exists = completedCourses.completedMajorElective.some(
+      c => c.course_name === course.course_name
+    );
+    if (!exists) {
+      setCompletedCourses(prev => ({
+        ...prev,
+        completedMajorElective: [...prev.completedMajorElective, {
+          course_name: course.course_name,
+          credits: course.credits,
+        }]
+      }));
+    }
+    setIsCompletedMajorSearchOpen(false);
+  };
+
+  // 듣기 싫은 과목 추가 (과목명 기준 - 분반 무관)
+  const handleAddAvoidCourse = (course) => {
+    // 이미 같은 과목명이 있는지 확인 (분반 무관)
+    const exists = avoidCourses.some(
+      c => c.course_name === course.course_name
+    );
+    if (!exists) {
+      setAvoidCourses(prev => [...prev, {
+        course_name: course.course_name,
+        professor: course.professor,
+      }]);
+    }
+    setIsAvoidSearchOpen(false);
   };
 
   return (
@@ -976,7 +1208,7 @@ export default function RecommendPage() {
             </div>
 
             {/* 전공필수 */}
-            <div>
+            <div className="mb-6">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-sm font-medium">전공필수 ({userInfo.major})</h3>
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -1015,6 +1247,80 @@ export default function RecommendPage() {
                   )}
                 </div>
               )}
+            </div>
+
+            {/* 교양선택 이수 영역 */}
+            <div className="mb-6">
+              <h3 className="text-sm font-medium mb-2">교양선택 이수 영역</h3>
+              <p className="text-xs text-gray-500 mb-2">이미 들은 영역을 체크하면 해당 영역 과목은 추천에서 제외돼요</p>
+              <div className="grid grid-cols-3 gap-2">
+                {AREA_OPTIONS.map(area => (
+                  <button
+                    key={area.value}
+                    onClick={() => {
+                      if (completedCourses.completedAreas.includes(area.value)) {
+                        setCompletedCourses(prev => ({ 
+                          ...prev, 
+                          completedAreas: prev.completedAreas.filter(a => a !== area.value) 
+                        }));
+                      } else {
+                        setCompletedCourses(prev => ({ 
+                          ...prev, 
+                          completedAreas: [...prev.completedAreas, area.value] 
+                        }));
+                      }
+                    }}
+                    className={`py-2 rounded-lg text-xs font-medium transition-colors ${
+                      completedCourses.completedAreas.includes(area.value) 
+                        ? 'bg-green-500 text-white' 
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    {completedCourses.completedAreas.includes(area.value) ? '✓ ' : ''}{area.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 전공선택 이수 과목 */}
+            <div>
+              <h3 className="text-sm font-medium mb-2">전공선택 이수 과목</h3>
+              <p className="text-xs text-gray-500 mb-2">이미 들은 전공선택은 모든 분반이 추천에서 제외돼요</p>
+              
+              {completedCourses.completedMajorElective.length > 0 && (
+                <div className="space-y-2 mb-3">
+                  {completedCourses.completedMajorElective.map((course, idx) => (
+                    <div 
+                      key={`completed-${course.course_name}-${idx}`}
+                      className="flex items-center justify-between p-2 bg-green-50 border border-green-200 rounded-lg"
+                    >
+                      <div>
+                        <div className="text-sm font-medium">{course.course_name}</div>
+                        <div className="text-xs text-gray-500">{course.credits}학점</div>
+                      </div>
+                      <button 
+                        onClick={() => setCompletedCourses(prev => ({
+                          ...prev,
+                          completedMajorElective: prev.completedMajorElective.filter(
+                            c => c.course_name !== course.course_name
+                          )
+                        }))} 
+                        className="p-1 hover:bg-green-100 rounded"
+                      >
+                        <X size={16} className="text-gray-500" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              <button
+                onClick={() => setIsCompletedMajorSearchOpen(true)}
+                className="w-full py-2 border-2 border-dashed border-green-300 rounded-lg text-sm text-green-600 hover:bg-green-50 flex items-center justify-center gap-2"
+              >
+                <Plus size={16} />
+                이수한 전공선택 추가
+              </button>
             </div>
           </div>
         )}
@@ -1267,13 +1573,42 @@ export default function RecommendPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">피하고 싶은 과목/교수</label>
-                <textarea
-                  value={avoidCourses}
-                  onChange={(e) => setAvoidCourses(e.target.value)}
-                  placeholder="예: 홍길동 교수, 미적분학"
-                  className="w-full px-3 py-2 border rounded-lg text-sm h-20 resize-none"
-                />
+                <label className="block text-sm font-medium mb-2">🚫 듣기 싫은 과목</label>
+                <p className="text-xs text-gray-500 mb-2">이 과목은 모든 분반이 추천에서 제외돼요</p>
+                
+                {avoidCourses.length > 0 && (
+                  <div className="space-y-2 mb-3">
+                    {avoidCourses.map((course, idx) => (
+                      <div 
+                        key={`avoid-${course.course_name}-${idx}`}
+                        className="flex items-center justify-between p-2 bg-red-50 border border-red-200 rounded-lg"
+                      >
+                        <div>
+                          <div className="text-sm font-medium">{course.course_name}</div>
+                          {course.professor && (
+                            <div className="text-xs text-gray-500">{course.professor}</div>
+                          )}
+                        </div>
+                        <button 
+                          onClick={() => setAvoidCourses(prev => prev.filter(
+                            c => c.course_name !== course.course_name
+                          ))} 
+                          className="p-1 hover:bg-red-100 rounded"
+                        >
+                          <X size={16} className="text-gray-500" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                <button
+                  onClick={() => setIsAvoidSearchOpen(true)}
+                  className="w-full py-2 border-2 border-dashed border-red-300 rounded-lg text-sm text-red-500 hover:bg-red-50 flex items-center justify-center gap-2"
+                >
+                  <Plus size={16} />
+                  듣기 싫은 과목 추가
+                </button>
               </div>
             </div>
           </div>
@@ -1422,6 +1757,42 @@ export default function RecommendPage() {
         currentSelections={mustTakeCourses}
         title="꼭 듣고 싶은 과목 검색"
         filterOptions={{}}
+      />
+
+      {/* 이수한 전공선택 검색 모달 */}
+      <CourseSearchModal
+        isOpen={isCompletedMajorSearchOpen}
+        onClose={() => setIsCompletedMajorSearchOpen(false)}
+        onSelect={handleAddCompletedMajor}
+        currentSelections={completedCourses.completedMajorElective}
+        title={`${userInfo.major} 이수한 전공선택`}
+        filterOptions={{
+          category: 'major',
+          department: userInfo.major,
+          classification: '전선',
+        }}
+        matchByName={true}
+      />
+
+      {/* 듣기 싫은 과목 검색 모달 */}
+      <CourseSearchModal
+        isOpen={isAvoidSearchOpen}
+        onClose={() => setIsAvoidSearchOpen(false)}
+        onSelect={handleAddAvoidCourse}
+        currentSelections={avoidCourses}
+        title="듣기 싫은 과목 검색"
+        filterOptions={{}}
+        matchByName={true}
+      />
+
+      {/* 시간표 선택 모달 */}
+      <ScheduleSelectModal
+        isOpen={isScheduleSelectOpen}
+        onClose={() => setIsScheduleSelectOpen(false)}
+        schedules={schedules}
+        onSelect={handleSaveToSchedule}
+        onAddNew={handleSaveToNewSchedule}
+        maxSchedules={maxSchedules}
       />
     </div>
   );

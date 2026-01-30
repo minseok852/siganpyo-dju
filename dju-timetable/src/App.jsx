@@ -6,6 +6,8 @@ import PopularPage from './pages/PopularPage';
 import AIPage from './pages/AIPage';
 import RecommendPage from './pages/RecommendPage';
 import FAQPage from './pages/FAQPage';
+import FeedbackPage from './pages/FeedbackPage';
+import FeedbackAdminPage from './pages/FeedbackAdminPage';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path="/ai" element={<AIPage />} />
         <Route path="/recommend" element={<RecommendPage />} />
         <Route path="/faq" element={<FAQPage />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
+        <Route path="/feedback/admin" element={<FeedbackAdminPage />} />
         
       </Routes>
     </BrowserRouter>

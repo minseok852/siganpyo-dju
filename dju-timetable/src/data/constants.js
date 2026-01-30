@@ -89,7 +89,8 @@ export const COLLEGES = [
 
 // LocalStorage 키
 export const STORAGE_KEYS = {
-  MY_SCHEDULE: 'dju_my_schedule',
+  MY_SCHEDULE: 'dju_my_schedule',           // 기존 (마이그레이션용)
+  MY_SCHEDULES: 'dju_my_schedules',         // 새로운 복수 시간표
   BOOKMARKED: 'dju_bookmarked_schedules',
   RECENT_SEARCHES: 'dju_recent_searches',
 };
