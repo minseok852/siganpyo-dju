@@ -58,11 +58,11 @@
                 ]
               },
               "room": {
-                "raw": "인210 - 일반A/V강의실",
+                "raw": "인201 - 스마트강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "210",
-                "room_type": "일반A/V강의실"
+                "room_number": "201",
+                "room_type": "스마트강의실"
               },
               "capacity": 50,
               "notes": "영화영상학과 수강제한"
@@ -126,7 +126,7 @@
                 "room_type": "강의실"
               },
               "capacity": 50,
-              "notes": ""
+              "notes": "연기예술학과 수강불가"
             }
           ]
         },
@@ -211,24 +211,16 @@
               "section": "01",
               "professor": "김영희",
               "schedule": {
-                "raw": "수13:30-15:30",
-                "days": [
-                  "수"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "13:30",
-                    "end": "15:30"
-                  }
-                ]
+                "raw": "",
+                "days": [],
+                "times": []
               },
               "room": {
-                "raw": "사104 - 교양A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "104",
-                "room_type": "교양A/V강의실"
+                "raw": "",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": "온라인"
               },
               "capacity": 100,
               "notes": "[OCU강좌]"
@@ -918,15 +910,15 @@
               "section": "01",
               "professor": "황귀영",
               "schedule": {
-                "raw": "목13:30-15:30",
+                "raw": "월13:30-16:30",
                 "days": [
-                  "목"
+                  "월"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "13:30",
-                    "end": "15:30"
+                    "end": "16:30"
                   }
                 ]
               },

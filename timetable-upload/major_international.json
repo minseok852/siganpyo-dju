@@ -824,7 +824,7 @@
             },
             {
               "section": "02",
-              "professor": "한국강사18",
+              "professor": "한국강사16",
               "schedule": {
                 "raw": "화10:00-13:00"
               },
@@ -884,7 +884,7 @@
             },
             {
               "section": "02",
-              "professor": "한국강사18",
+              "professor": "한국강사16",
               "schedule": {
                 "raw": "화14:00-17:00"
               },
@@ -908,7 +908,7 @@
             },
             {
               "section": "04",
-              "professor": "한국강사18",
+              "professor": "한국강사16",
               "schedule": {
                 "raw": "금16:00-18:50"
               },
@@ -932,7 +932,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "한국강사18",
+              "professor": "한국강사16",
               "schedule": {
                 "raw": "금09:30-12:30"
               },
@@ -1016,7 +1016,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "한국강사18",
+              "professor": "한국강사16",
               "schedule": {
                 "raw": "금13:00-16:00"
               },
@@ -1070,7 +1070,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김영진",
+              "professor": "김명진",
               "schedule": {
                 "raw": "목10:00-13:00"
               },
@@ -1094,7 +1094,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김영진",
+              "professor": "김명진",
               "schedule": {
                 "raw": "목14:00-17:00"
               },
@@ -1130,7 +1130,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "김영진",
+              "professor": "김명진",
               "schedule": {
                 "raw": "목17:00-19:40"
               },

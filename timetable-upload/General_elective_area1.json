@@ -584,24 +584,16 @@
               "section": "01",
               "professor": "김영미",
               "schedule": {
-                "raw": "화13:30-15:30",
-                "days": [
-                  "화"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:30"
-                  }
-                ]
+                "raw": "",
+                "days": [],
+                "times": []
               },
               "room": {
-                "raw": "인206 - 계단식강의실 1",
-                "building": "인",
-                "building_full": "인문학관",
-                "room_number": "206",
-                "room_type": "계단식강의실 1"
+                "raw": "",
+                "building": null,
+                "building_full": null,
+                "room_number": null,
+                "room_type": ""
               },
               "capacity": 100,
               "notes": "[OCU강좌]"
@@ -2123,10 +2115,10 @@
                 ]
               },
               "room": {
-                "raw": "인202-1 - 영어회화실-1",
+                "raw": "인202 - 영어회화실-1",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "202-1",
+                "room_number": "202",
                 "room_type": "영어회화실-1"
               },
               "capacity": 15,
@@ -2179,7 +2171,7 @@
                 "building": "인",
                 "building_full": "인문학관",
                 "room_number": "202",
-                "room_type": "영어회화실-2"
+                "room_type": "영어회화실-1"
               },
               "capacity": 15,
               "notes": ""
@@ -2322,6 +2314,32 @@
               },
               "capacity": 20,
               "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "김호정",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인212 - 영문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "212",
+                "room_type": "영문A/V강의실"
+              },
+              "capacity": 20,
+              "notes": ""
             }
           ]
         },
@@ -2419,11 +2437,11 @@
                 ]
               },
               "room": {
-                "raw": "인301 - 스마트강의실",
+                "raw": "인301 - 영문A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
                 "room_number": "301",
-                "room_type": "스마트강의실"
+                "room_type": "영문A/V강의실"
               },
               "capacity": 50,
               "notes": ""
@@ -2454,18 +2472,18 @@
                 ]
               },
               "room": {
-                "raw": "인301 - 교양A/V강의실",
+                "raw": "인301 - 영문A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
                 "room_number": "301",
-                "room_type": "교양A/V강의실"
+                "room_type": "영문A/V강의실"
               },
               "capacity": 50,
               "notes": ""
             },
             {
               "section": "02",
-              "professor": "김헌규",
+              "professor": "김한규",
               "schedule": {
                 "raw": "월15:30-17:30",
                 "days": [
@@ -2480,11 +2498,11 @@
                 ]
               },
               "room": {
-                "raw": "인107 - 통합A/V강의실",
+                "raw": "인107 - 통합 강의실",
                 "building": "인",
                 "building_full": "인문학관",
                 "room_number": "107",
-                "room_type": "통합A/V강의실"
+                "room_type": "통합 강의실"
               },
               "capacity": 50,
               "notes": ""
@@ -2515,11 +2533,11 @@
                 ]
               },
               "room": {
-                "raw": "인202-2 - 영어회화실 2",
+                "raw": "인202-1 - 영어회화실-2",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "202-2",
-                "room_type": "영어회화실 2"
+                "room_number": "202-1",
+                "room_type": "영어회화실-2"
               },
               "capacity": 15,
               "notes": ""
@@ -2544,7 +2562,7 @@
                 "raw": "인202-1 - 영어 회화실 2",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "122-2",
+                "room_number": "202-1",
                 "room_type": "영어 회화실 2"
               },
               "capacity": 15,

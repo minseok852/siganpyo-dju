@@ -12,6 +12,21 @@ import {
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
 
+// ✅ 2026학번 기준 교양필수 (학년별)
+const GENERAL_REQUIRED_BY_YEAR = {
+  1: [
+    '대학생활과진로',      // 1학점, 1학년 1학기
+    '사고와표현',          // 2학점
+    '영어읽기와토론',      // 2학점  
+    'AI시대의컴퓨팅사고',  // 2학점
+    '대순사상과상생윤리',  // 2학점
+  ],
+  2: [
+    'LCT',                // 2학점, 2학년 (LCT(Learning by Communication & Teamwork))
+  ],
+  // 3, 4학년은 교양필수 없음
+};
+
 export function useCourses() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,10 +48,11 @@ export function useCourses() {
         constraints.push(where('category', '==', filters.category));
       }
 
-      // 학년 필터
-      if (filters.targetYear && filters.targetYear > 0) {
-        constraints.push(where('target_year', '==', filters.targetYear));
-      }
+      // ✅ 학년 필터는 클라이언트 사이드에서 처리 (Firestore 복합 인덱스 문제 우회)
+      // Firestore에서는 category만 필터링하고, target_year는 나중에 필터링
+      const targetYearFilter = filters.targetYear && filters.targetYear > 0 
+        ? filters.targetYear 
+        : null;
 
       // 단과대학 필터
       if (filters.college && filters.college !== '전체') {
@@ -65,15 +81,14 @@ export function useCourses() {
         constraints.push(orderBy(documentId()));
       }
       
-      // ✅ 검색어가 있으면 더 많이 가져와서 필터링
+      // ✅ 검색어가 있거나 학년 필터가 있으면 더 많이 가져와서 필터링
       const searchTerm = filters.searchTerm?.trim();
       let fetchLimit;
       
-      if (searchTerm) {
-        // 검색어 있으면 전체에서 찾아야 하니까 많이 가져옴
-        fetchLimit = 2000;  // 전체 1,583개니까 2000이면 충분
+      if (searchTerm || targetYearFilter) {
+        // 클라이언트 필터링 필요 시 많이 가져옴
+        fetchLimit = 2000;
       } else {
-        // 검색어 없으면 기본 100개
         fetchLimit = filters.limit || 100;
       }
       
@@ -87,6 +102,29 @@ export function useCourses() {
         ...doc.data()
       }));
 
+      // ✅ 학년 필터 (클라이언트 사이드)
+      if (targetYearFilter) {
+        // 교양필수는 하드코딩된 목록으로 필터링
+        if (filters.category === 'general_required') {
+          const allowedNames = GENERAL_REQUIRED_BY_YEAR[targetYearFilter] || [];
+          if (allowedNames.length > 0) {
+            results = results.filter(course => 
+              allowedNames.some(name => course.course_name?.includes(name))
+            );
+          } else {
+            // 해당 학년에 교양필수 없으면 빈 배열
+            results = [];
+          }
+        } else {
+          // 전공/교양선택은 target_year로 필터링
+          results = results.filter(course => {
+            const courseYear = course.target_year || 0;
+            // target_year가 0이면 전체 학년, 아니면 해당 학년만
+            return courseYear === 0 || courseYear === targetYearFilter;
+          });
+        }
+      }
+
       // 검색어 필터 (클라이언트 사이드)
       if (searchTerm) {
         const term = searchTerm.toLowerCase();
@@ -95,10 +133,10 @@ export function useCourses() {
           course.professor?.toLowerCase().includes(term) ||
           course.course_code?.includes(term)
         );
-        
-        // 검색 결과는 100개까지만 표시
-        results = results.slice(0, 100);
       }
+      
+      // 검색 결과는 100개까지만 표시
+      results = results.slice(0, 100);
 
       setCourses(results);
       setLastDoc(snapshot.docs[snapshot.docs.length - 1]);

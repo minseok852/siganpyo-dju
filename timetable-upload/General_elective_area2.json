@@ -307,15 +307,15 @@
               "section": "02",
               "professor": "권신일",
               "schedule": {
-                "raw": "화15:30-17:30",
+                "raw": "화13:30-15:30",
                 "days": [
                   "화"
                 ],
                 "times": [
                   {
                     "day": "화",
-                    "start": "15:30",
-                    "end": "17:30"
+                    "start": "13:30",
+                    "end": "15:30"
                   }
                 ]
               },
@@ -333,15 +333,15 @@
               "section": "03",
               "professor": "권신일",
               "schedule": {
-                "raw": "화13:30-15:30",
+                "raw": "화15:30-17:30",
                 "days": [
                   "화"
                 ],
                 "times": [
                   {
                     "day": "화",
-                    "start": "13:30",
-                    "end": "15:30"
+                    "start": "15:30",
+                    "end": "17:30"
                   }
                 ]
               },
@@ -641,7 +641,7 @@
                 "room_type": "e-강의실"
               },
               "capacity": 50,
-              "notes": ""
+              "notes": "학군단 지원시 가산점 부여"
             }
           ]
         },
@@ -772,7 +772,7 @@
                 "room_type": "온라인"
               },
               "capacity": 120,
-              "notes": ""
+              "notes": "[원격수업]"
             }
           ]
         },
@@ -807,7 +807,7 @@
                 "room_type": "교양A/V강의실"
               },
               "capacity": 50,
-              "notes": ""
+              "notes": "학군단 지원시 가산점 부여"
             }
           ]
         },
@@ -1252,7 +1252,7 @@
                 "room_type": "경제A/V강의실"
               },
               "capacity": 50,
-              "notes": ""
+              "notes": "글로벌경제학과 수강 금지"
             }
           ]
         },
@@ -1352,7 +1352,7 @@
             },
             {
               "section": "02",
-              "professor": "정형화",
+              "professor": "정병화",
               "schedule": {
                 "raw": "월13:30-15:30",
                 "days": [
@@ -1380,7 +1380,7 @@
         },
         {
           "course_code": "927263",
-          "course_name": "변화와창의탐구",
+          "course_name": "변화와장의탐구",
           "credits": 2,
           "hours": 4,
           "lab_hours": 0,
@@ -1409,7 +1409,7 @@
                 "room_type": "온라인"
               },
               "capacity": 120,
-              "notes": ""
+              "notes": "[원격수업]미래평생융합대학 10명, 총120명"
             }
           ]
         },
@@ -1546,19 +1546,19 @@
               "section": "01",
               "professor": "김민철",
               "schedule": {
-                "raw": "온라인",
+                "raw": "",
                 "days": [],
                 "times": []
               },
               "room": {
-                "raw": "e-learning(온라인)",
+                "raw": "",
                 "building": null,
                 "building_full": null,
                 "room_number": null,
-                "room_type": "온라인"
+                "room_type": ""
               },
               "capacity": 100,
-              "notes": ""
+              "notes": "[OCU강좌]"
             }
           ]
         },
@@ -1586,11 +1586,11 @@
                 ]
               },
               "room": {
-                "raw": "사103 - 강의실",
+                "raw": "사103 - e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
                 "room_number": "103",
-                "room_type": "강의실"
+                "room_type": "e-강의실"
               },
               "capacity": 50,
               "notes": ""
@@ -1654,7 +1654,7 @@
                 "room_type": "온라인"
               },
               "capacity": 120,
-              "notes": ""
+              "notes": "[원격수업]국제경영학과 외국인 전용 분반"
             }
           ]
         },
@@ -1848,9 +1848,9 @@
                 ]
               },
               "room": {
-                "raw": "사307 - 역사A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "인307 - 역사A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
                 "room_number": "307",
                 "room_type": "역사A/V강의실"
               },

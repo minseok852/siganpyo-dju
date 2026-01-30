@@ -91,7 +91,7 @@
                 "room_type": "영문A/V강의실"
               },
               "capacity": 0,
-              "notes": "영문과1학년(졸수강필수)/신청정정기간연장"
+              "notes": "영문과1학년(홀수),자율전공학부만가능"
             }
           ],
           "is_micro_major": false
@@ -1319,7 +1319,7 @@
                 "room_type": "e-강의실"
               },
               "capacity": 0,
-              "notes": "역문콘전공실습필수"
+              "notes": "역문콘전공생,복전생만신청가능"
             }
           ],
           "is_micro_major": false
@@ -1639,7 +1639,7 @@
               "section": "01",
               "professor": "장혜련",
               "schedule": {
-                "raw": "수11:30-13:30, 목10:00-11:30",
+                "raw": "수11:30-13:00, 목10:00-11:30",
                 "days": [
                   "수",
                   "목"
@@ -1784,10 +1784,10 @@
                 ]
               },
               "room": {
-                "raw": "인313 - 문창A/V강의실",
+                "raw": "인310 - 문창A/V강의실",
                 "building": "인",
                 "building_full": "인문학관",
-                "room_number": "313",
+                "room_number": "310",
                 "room_type": "문창A/V강의실"
               },
               "capacity": 0,
@@ -1929,7 +1929,7 @@
               "section": "01",
               "professor": "문예강사1",
               "schedule": {
-                "raw": "화11:30-13:00, 수10:00-11:30",
+                "raw": "화10:00-11:30, 수10:00-11:30",
                 "days": [
                   "화",
                   "수"
@@ -1937,8 +1937,8 @@
                 "times": [
                   {
                     "day": "화",
-                    "start": "11:30",
-                    "end": "13:00"
+                    "start": "10:00",
+                    "end": "11:30"
                   },
                   {
                     "day": "수",
@@ -2153,7 +2153,7 @@
         {
           "course_code": "825502",
           "course_name": "***드로잉의기초",
-          "classification": "전선",
+          "classification": "전기",
           "target_year": 1,
           "credits": 3,
           "hours": 4,
@@ -2177,18 +2177,18 @@
                 ]
               },
               "room": {
-                "raw": "공가A 210 - 현대미술실습실1",
+                "raw": "공가A 210 - 평면실습실1",
                 "building": "공가",
                 "building_full": "이공대 가동",
                 "room_number": "210",
-                "room_type": "현대미술실습실1"
+                "room_type": "평면실습실1"
               },
               "capacity": 0,
-              "notes": "미술만화게임학부 입학신청/정정기간연장"
+              "notes": "미술만화게임학부 1학년만 수강 가능"
             },
             {
               "section": "02",
-              "professor": "전미혜",
+              "professor": "정미혜",
               "schedule": {
                 "raw": "월13:30-17:30",
                 "days": [
@@ -2203,14 +2203,14 @@
                 ]
               },
               "room": {
-                "raw": "공가A 210 - 현대미술실습실1",
+                "raw": "공가A 210 - 평면실습실1",
                 "building": "공가",
                 "building_full": "이공대 가동",
                 "room_number": "210",
-                "room_type": "현대미술실습실1"
+                "room_type": "평면실습실1"
               },
               "capacity": 0,
-              "notes": "미술만화게임학부 입학신청/정정기간연장"
+              "notes": "미술만화게임학부 1학년만 수강 가능"
             }
           ]
         },
@@ -3479,10 +3479,10 @@
                 ]
               },
               "room": {
-                "raw": "예105 - 시각실습실3",
+                "raw": "예310 - 시각실습실3",
                 "building": "예",
                 "building_full": "예술학관",
-                "room_number": "105",
+                "room_number": "310",
                 "room_type": "시각실습실3"
               },
               "capacity": 0,
@@ -3517,11 +3517,11 @@
                 ]
               },
               "room": {
-                "raw": "예105-1 시각정보실습실",
+                "raw": "예1131 - 시각컴퓨터실1",
                 "building": "예",
                 "building_full": "예술학관",
-                "room_number": "105-1",
-                "room_type": "시각정보실습실"
+                "room_number": "1131",
+                "room_type": "시각컴퓨터실1"
               },
               "capacity": 0,
               "notes": ""
@@ -3534,7 +3534,7 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
@@ -3555,11 +3555,11 @@
                 ]
               },
               "room": {
-                "raw": "예1051- 시각정보실습실",
+                "raw": "예1051 - 시각실습실2",
                 "building": "예",
                 "building_full": "예술학관",
                 "room_number": "1051",
-                "room_type": "시각정보실습실"
+                "room_type": "시각실습실2"
               },
               "capacity": 0,
               "notes": ""
@@ -3572,7 +3572,7 @@
           "classification": "전선",
           "target_year": 1,
           "credits": 2,
-          "hours": 4,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -3609,8 +3609,8 @@
           "course_name": "디지털일러스트레이션",
           "classification": "전선",
           "target_year": 2,
-          "credits": 3,
-          "hours": 4,
+          "credits": 2,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -3673,8 +3673,8 @@
           "course_name": "비주얼인포메이션디자인",
           "classification": "전선",
           "target_year": 2,
-          "credits": 3,
-          "hours": 4,
+          "credits": 2,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -3737,8 +3737,8 @@
           "course_name": "AI프롬프트디자인I",
           "classification": "전선",
           "target_year": 2,
-          "credits": 3,
-          "hours": 4,
+          "credits": 2,
+          "hours": 2,
           "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
@@ -3928,8 +3928,8 @@
           "classification": "전선",
           "target_year": 3,
           "credits": 2,
-          "hours": 4,
-          "lab_hours": 0,
+          "hours": 2,
+          "lab_hours": 4,
           "is_micro_major": true,
           "sections": [
             {
@@ -4251,6 +4251,32 @@
               },
               "capacity": 0,
               "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "박상희",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예1051 - 시각실습실2",
+                "building": "예",
+                "building_full": "예술학관",
+                "room_number": "1051",
+                "room_type": "시각실습실2"
+              },
+              "capacity": 0,
+              "notes": ""
             }
           ]
         },
@@ -4312,6 +4338,32 @@
                 "building_full": "예술학관",
                 "room_number": "105",
                 "room_type": "시각실습실1"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "03",
+              "professor": "",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": ""
               },
               "capacity": 0,
               "notes": ""

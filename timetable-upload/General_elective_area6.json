@@ -52,7 +52,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박혜진",
+              "professor": "박효진",
               "schedule": {
                 "raw": "월13:30-15:30",
                 "days": [
@@ -78,7 +78,7 @@
             },
             {
               "section": "02",
-              "professor": "박혜진",
+              "professor": "박효진",
               "schedule": {
                 "raw": "화13:30-15:30",
                 "days": [
@@ -661,11 +661,11 @@
                 ]
               },
               "room": {
-                "raw": "정보202 정보실습실G",
+                "raw": "정보 202 정보실습실B",
                 "building": "정보",
                 "building_full": "정보전산원",
                 "room_number": "202",
-                "room_type": "정보실습실G"
+                "room_type": "정보실습실B"
               },
               "capacity": 30,
               "notes": "보건과학, AI융합,공과대학 수강불가"
@@ -687,20 +687,20 @@
                 ]
               },
               "room": {
-                "raw": "정보202 정보실습실G",
+                "raw": "정보 202 정보실습실B",
                 "building": "정보",
                 "building_full": "정보전산원",
                 "room_number": "202",
-                "room_type": "정보실습실G"
+                "room_type": "정보실습실B"
               },
               "capacity": 30,
-              "notes": ""
+              "notes": "보건과학, AI융합,공과대학 수강불가"
             }
           ]
         },
         {
           "course_code": "922618",
-          "course_name": "생성형AI활용문화콘텐츠제작",
+          "course_name": "생성형AI를활용한문화콘텐츠제작",
           "credits": 2,
           "hours": 4,
           "lab_hours": 0,
@@ -798,7 +798,7 @@
                 "room_number": "404",
                 "room_type": "정보실습실I"
               },
-              "capacity": 50,
+              "capacity": 40,
               "notes": ""
             }
           ]

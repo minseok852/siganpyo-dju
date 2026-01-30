@@ -534,10 +534,10 @@
               "section": "01",
               "professor": "권선희",
               "schedule": {
-                "raw": "월10:00-11:30, 목10:00-11:30",
+                "raw": "월10:00-11:30, 수10:00-11:30",
                 "days": [
                   "월",
-                  "목"
+                  "수"
                 ],
                 "times": [
                   {
@@ -546,7 +546,7 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "목",
+                    "day": "수",
                     "start": "10:00",
                     "end": "11:30"
                   }
@@ -673,11 +673,11 @@
                 ]
               },
               "room": {
-                "raw": "사A206 - 강의실",
+                "raw": "사206 - e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A206",
-                "room_type": "강의실"
+                "room_number": "206",
+                "room_type": "e-강의실"
               },
               "capacity": 0,
               "notes": "경영학과 1학년만"
@@ -696,7 +696,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "장시진",
+              "professor": "장석진",
               "schedule": {
                 "raw": "화10:00-11:30, 목10:00-11:30",
                 "days": [
@@ -728,21 +728,21 @@
             },
             {
               "section": "02",
-              "professor": "장시진",
+              "professor": "장석진",
               "schedule": {
-                "raw": "월11:30-13:00, 화11:30-13:00",
+                "raw": "화11:30-13:00, 목11:30-13:00",
                 "days": [
-                  "월",
-                  "화"
+                  "화",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "월",
+                    "day": "화",
                     "start": "11:30",
                     "end": "13:00"
                   },
                   {
-                    "day": "화",
+                    "day": "목",
                     "start": "11:30",
                     "end": "13:00"
                   }
@@ -760,7 +760,7 @@
             },
             {
               "section": "03",
-              "professor": "장시진",
+              "professor": "장석진",
               "schedule": {
                 "raw": "화14:40-17:30",
                 "days": [
@@ -1250,29 +1250,61 @@
           "sections": [
             {
               "section": "01",
-              "professor": "장시진",
+              "professor": "장석진",
               "schedule": {
-                "raw": "화17:30-18:25",
+                "raw": "월11:30-13:00, 수11:30-13:00",
                 "days": [
-                  "화"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영3학년/둘째날 경영/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "장석진",
+              "schedule": {
+                "raw": "금17:30-18:25",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
                     "start": "17:30",
                     "end": "18:25"
                   }
                 ]
               },
               "room": {
-                "raw": "e-learning(온라인)",
+                "raw": "e-learning(온라인)1",
                 "building": null,
                 "building_full": "온라인",
                 "room_number": null,
                 "room_type": "e-learning"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "[원격수업]경영학과 수강신청 금지"
             }
           ]
         },
@@ -1288,6 +1320,38 @@
           "sections": [
             {
               "section": "01",
+              "professor": "경영강사3",
+              "schedule": {
+                "raw": "월14:00-15:30, 화14:00-15:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 경영3학년/둘째날 경영 전체"
+            },
+            {
+              "section": "02",
               "professor": "김신중",
               "schedule": {
                 "raw": "화09:30-12:30",
@@ -1303,14 +1367,14 @@
                 ]
               },
               "room": {
-                "raw": "사A313 - e-강의실",
+                "raw": "사401 - 경영A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A313",
-                "room_type": "e-강의실"
+                "room_number": "401",
+                "room_type": "경영A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -1328,13 +1392,19 @@
               "section": "01",
               "professor": "류성열",
               "schedule": {
-                "raw": "수14:00-15:30",
+                "raw": "수14:00-15:30, 목14:00-15:30",
                 "days": [
-                  "수"
+                  "수",
+                  "목"
                 ],
                 "times": [
                   {
                     "day": "수",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
                     "start": "14:00",
                     "end": "15:30"
                   }
@@ -1348,7 +1418,7 @@
                 "room_type": "경영A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영3학년/둘째날 경영/셋째날 전체"
             }
           ]
         },
@@ -1398,33 +1468,33 @@
               "section": "02",
               "professor": "손준상",
               "schedule": {
-                "raw": "목14:00-15:30, 금14:00-15:30",
+                "raw": "월14:00-15:30, 화14:00-15:30",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "14:00",
                     "end": "15:30"
                   },
                   {
-                    "day": "금",
+                    "day": "화",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A312 경영 A/V강의실",
+                "raw": "사312 - 경영학과 A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A312",
-                "room_type": "경영 A/V강의실"
+                "room_number": "312",
+                "room_type": "경영학과 A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "타학과만 수강신청 가능"
             }
           ]
         },
@@ -1582,27 +1652,27 @@
               "section": "01",
               "professor": "김정식",
               "schedule": {
-                "raw": "화13:30-15:30",
+                "raw": "금13:30-16:30",
                 "days": [
-                  "화"
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "금",
                     "start": "13:30",
-                    "end": "15:30"
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A313 - e-강의실",
+                "raw": "사206 - e-강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A313",
+                "room_number": "206",
                 "room_type": "e-강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영4학년/둘째날 경영/셋째날 전체"
             }
           ]
         },
@@ -1620,33 +1690,33 @@
               "section": "01",
               "professor": "류성열",
               "schedule": {
-                "raw": "수10:00-11:30, 금10:00-11:30",
+                "raw": "월14:00-15:30, 목11:30-13:00",
                 "days": [
-                  "수",
-                  "금"
+                  "월",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
                   },
                   {
-                    "day": "금",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사401 - 경영A/V강의실",
+                "raw": "사302 - 디지털정보처리실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "401",
-                "room_type": "경영A/V강의실"
+                "room_number": "302",
+                "room_type": "디지털정보처리실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 경영4학년/둘째날 경영/셋째날 전체"
             }
           ]
         }
@@ -1668,7 +1738,191 @@
           "sections": [
             {
               "section": "01",
-              "professor": "마재정",
+              "professor": "맹철규",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사311 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "311",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날,둘째날 국통 1학년/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "맹철규",
+              "schedule": {
+                "raw": "목19:40-20:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "19:40",
+                    "end": "20:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": "온라인",
+                "room_number": null,
+                "room_type": "e-learning"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]국제통상학과 수강신청 금지"
+            }
+          ]
+        },
+        {
+          "course_code": "135021",
+          "course_name": "***국제통상학의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고재길",
+              "schedule": {
+                "raw": "월11:30-13:00, 수11:30-13:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사202 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "202",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "국제통상학과 1학년만 수강신청 가능"
+            }
+          ]
+        },
+        {
+          "course_code": "131011",
+          "course_name": "국제통상실무I",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손상기",
+              "schedule": {
+                "raw": "화11:30-13:00, 수11:30-13:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사306 - 국제통상A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "306",
+                "room_type": "국제통상A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "국제통상학과 2학년만 수강신청 가능"
+            },
+            {
+              "section": "02",
+              "professor": "손상기",
+              "schedule": {
+                "raw": "월19:40-20:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "19:40",
+                    "end": "20:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": "온라인",
+                "room_number": null,
+                "room_type": "e-learning"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]국제통상학과 수강신청 금지"
+            }
+          ]
+        },
+        {
+          "course_code": "132034",
+          "course_name": "국제금융론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고재길",
               "schedule": {
                 "raw": "월10:00-11:30, 화10:00-11:30",
                 "days": [
@@ -1689,158 +1943,18 @@
                 ]
               },
               "room": {
-                "raw": "사311 - e-강의실",
+                "raw": "사307 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "311",
-                "room_type": "e-강의실"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "마재정",
-              "schedule": {
-                "raw": "목19:40-20:30",
-                "days": [
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "목",
-                    "start": "19:40",
-                    "end": "20:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "e-learning(온라인)",
-                "building": null,
-                "building_full": "온라인",
-                "room_number": null,
-                "room_type": "e-learning"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "135021",
-          "course_name": "***국제통상학의이해",
-          "classification": "전선",
-          "target_year": 1,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "마재정",
-              "schedule": {
-                "raw": "수11:30-13:00, 목11:30-13:00",
-                "days": [
-                  "수",
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "11:30",
-                    "end": "13:00"
-                  },
-                  {
-                    "day": "목",
-                    "start": "11:30",
-                    "end": "13:00"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사A202 - e-강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A202",
-                "room_type": "e-강의실"
-              },
-              "capacity": 0,
-              "notes": "국제통상학과 입학신청/정정기간연장"
-            }
-          ]
-        },
-        {
-          "course_code": "131011",
-          "course_name": "국제통상실무",
-          "classification": "전필",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
-          "is_micro_major": true,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "손상기",
-              "schedule": {
-                "raw": "화13:30-15:00, 금10:00-11:30",
-                "days": [
-                  "화",
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "10:00",
-                    "end": "11:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사A307 - 국제통상A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A307",
+                "room_number": "307",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             },
             {
               "section": "02",
-              "professor": "손상기",
-              "schedule": {
-                "raw": "목19:40-20:30",
-                "days": [
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "목",
-                    "start": "19:40",
-                    "end": "20:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "e-learning(온라인)",
-                "building": null,
-                "building_full": "온라인",
-                "room_number": null,
-                "room_type": "e-learning"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "03",
-              "professor": "손상기",
+              "professor": "고재길",
               "schedule": {
                 "raw": "목18:25-19:15",
                 "days": [
@@ -1855,58 +1969,14 @@
                 ]
               },
               "room": {
-                "raw": "사A307 - 국제통상A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A307",
-                "room_type": "국제통상A/V강의실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "132034",
-          "course_name": "국제금융론",
-          "classification": "전선",
-          "target_year": 2,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
-          "is_micro_major": true,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "고형일",
-              "schedule": {
-                "raw": "화13:30-15:00, 금13:30-15:00",
-                "days": [
-                  "화",
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "13:30",
-                    "end": "15:00"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "국제통상A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": "온라인",
                 "room_number": null,
-                "room_type": "국제통상A/V강의실"
+                "room_type": "e-learning"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "[원격수업]국제통상학과 수강신청 금지"
             }
           ]
         },
@@ -1922,35 +1992,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "오진숙",
+              "professor": "오진호",
               "schedule": {
-                "raw": "화14:00-15:30, 목14:00-15:30",
+                "raw": "월14:00-15:30, 화13:30-15:00",
                 "days": [
-                  "화",
-                  "목"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
                     "start": "14:00",
                     "end": "15:30"
                   },
                   {
-                    "day": "목",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A04 A/V강의실",
+                "raw": "사308 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A04",
-                "room_type": "A/V강의실"
+                "room_number": "308",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
@@ -1981,20 +2051,20 @@
                 ]
               },
               "room": {
-                "raw": "국제통상A/V강의실",
+                "raw": "사308 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": null,
+                "room_number": "308",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
         {
           "course_code": "132031",
-          "course_name": "다국경제론",
+          "course_name": "대금결제론",
           "classification": "전선",
           "target_year": 2,
           "credits": 3,
@@ -2006,14 +2076,14 @@
               "section": "01",
               "professor": "손상기",
               "schedule": {
-                "raw": "수11:30-13:00, 목11:30-13:00",
+                "raw": "월11:30-13:00, 목11:30-13:00",
                 "days": [
-                  "수",
+                  "월",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "월",
                     "start": "11:30",
                     "end": "13:00"
                   },
@@ -2025,14 +2095,14 @@
                 ]
               },
               "room": {
-                "raw": "사A307 - 국제통상A/V강의실",
+                "raw": "사306 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A307",
+                "room_number": "306",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통3,4학년만/셋째날 전체"
             }
           ]
         },
@@ -2048,35 +2118,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "마재정",
+              "professor": "오진호",
               "schedule": {
-                "raw": "수14:00-15:30, 금14:00-15:30",
+                "raw": "수11:30-13:00, 목14:00-15:30",
                 "days": [
                   "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
                     "day": "수",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사311 - e-강의실",
+                "raw": "사308 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "311",
-                "room_type": "e-강의실"
+                "room_number": "308",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
@@ -2084,7 +2154,7 @@
           "course_code": "132601",
           "course_name": "디지털무역론",
           "classification": "전선",
-          "target_year": 2,
+          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,
@@ -2092,35 +2162,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "오진숙",
+              "professor": "오진호",
               "schedule": {
-                "raw": "수15:30-17:00, 금14:00-15:30",
+                "raw": "화15:30-17:00, 수14:00-15:30",
                 "days": [
-                  "수",
-                  "금"
+                  "화",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "15:30",
                     "end": "17:00"
                   },
                   {
-                    "day": "금",
+                    "day": "수",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A04 A/V강의실",
+                "raw": "사306 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A04",
-                "room_type": "A/V강의실"
+                "room_number": "306",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
@@ -2136,12 +2206,12 @@
           "sections": [
             {
               "section": "01",
-              "professor": "오진숙",
+              "professor": "고재길",
               "schedule": {
-                "raw": "수10:00-11:30, 금10:00-11:30",
+                "raw": "수10:00-11:30, 목10:00-11:30",
                 "days": [
                   "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
@@ -2150,21 +2220,21 @@
                     "end": "11:30"
                   },
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "10:00",
                     "end": "11:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A04 A/V강의실",
+                "raw": "사307 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A04",
-                "room_type": "A/V강의실"
+                "room_number": "307",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
@@ -2180,35 +2250,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "고형일",
+              "professor": "손상기",
               "schedule": {
-                "raw": "화11:30-13:00, 금11:30-13:00",
+                "raw": "월10:00-11:30, 화10:00-11:30",
                 "days": [
-                  "화",
-                  "금"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "11:30",
-                    "end": "13:00"
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
                   },
                   {
-                    "day": "금",
-                    "start": "11:30",
-                    "end": "13:00"
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
                   }
                 ]
               },
               "room": {
-                "raw": "국제통상A/V강의실",
+                "raw": "사306 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": null,
+                "room_number": "306",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "국제통상학과 3,4학년만 수강신청 가능"
             }
           ]
         },
@@ -2224,35 +2294,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "오진숙",
+              "professor": "고재길",
               "schedule": {
-                "raw": "목10:00-11:30, 금10:00-11:30",
+                "raw": "월14:00-15:30, 화11:30-13:00",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
                   },
                   {
-                    "day": "금",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A306 - e-강의실",
+                "raw": "사307 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A306",
-                "room_type": "e-강의실"
+                "room_number": "307",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날,둘째날 국통/셋째날 전체"
             }
           ]
         },
@@ -2270,14 +2340,14 @@
               "section": "01",
               "professor": "손상기",
               "schedule": {
-                "raw": "화10:00-11:30, 목10:00-11:30",
+                "raw": "수10:00-11:30, 목10:00-11:30",
                 "days": [
-                  "화",
+                  "수",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "10:00",
                     "end": "11:30"
                   },
@@ -2289,14 +2359,14 @@
                 ]
               },
               "room": {
-                "raw": "사A307 - 국제통상A/V강의실",
+                "raw": "사306 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A307",
+                "room_number": "306",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "국제통상학과 4학년만 수강신청 가능"
             }
           ]
         },
@@ -2306,41 +2376,35 @@
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
+          "hours": 4,
+          "lab_hours": 4,
           "is_micro_major": false,
           "sections": [
             {
               "section": "01",
-              "professor": "오진숙",
+              "professor": "정필성",
               "schedule": {
-                "raw": "월13:30-15:00, 화13:30-15:00",
+                "raw": "화13:30-17:30",
                 "days": [
-                  "월",
                   "화"
                 ],
                 "times": [
                   {
-                    "day": "월",
-                    "start": "13:30",
-                    "end": "15:00"
-                  },
-                  {
                     "day": "화",
                     "start": "13:30",
-                    "end": "15:00"
+                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A04 A/V강의실",
+                "raw": "사307 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "A04",
-                "room_type": "A/V강의실"
+                "room_number": "307",
+                "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "국제통상학과 4학년만 수강신청 가능"
             }
           ]
         },
@@ -2356,73 +2420,73 @@
           "sections": [
             {
               "section": "01",
-              "professor": "마재정",
+              "professor": "오진호",
               "schedule": {
-                "raw": "수10:00-13:00",
+                "raw": "월11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사308 - 국제통상A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "308",
+                "room_type": "국제통상A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "3,4학년만 수강신청 가능"
+            }
+          ]
+        },
+        {
+          "course_code": "135025",
+          "course_name": "캡스톤디자인(무역,e-Business)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고재길",
+              "schedule": {
+                "raw": "수13:30-17:30",
                 "days": [
                   "수"
                 ],
                 "times": [
                   {
                     "day": "수",
-                    "start": "10:00",
-                    "end": "13:00"
+                    "start": "13:30",
+                    "end": "17:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사311 - e-강의실",
+                "raw": "사307 - 국제통상A/V강의실",
                 "building": "사",
                 "building_full": "사회과학관",
-                "room_number": "311",
-                "room_type": "e-강의실"
-              },
-              "capacity": 0,
-              "notes": ""
-            }
-          ]
-        },
-        {
-          "course_code": "135025",
-          "course_name": "캡스톤디자인(무역e-Business)",
-          "classification": "전선",
-          "target_year": 4,
-          "credits": 3,
-          "hours": 6,
-          "lab_hours": 0,
-          "is_micro_major": false,
-          "sections": [
-            {
-              "section": "01",
-              "professor": "고형일",
-              "schedule": {
-                "raw": "화10:00-11:30, 목10:00-11:30",
-                "days": [
-                  "화",
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "10:00",
-                    "end": "11:30"
-                  },
-                  {
-                    "day": "목",
-                    "start": "10:00",
-                    "end": "11:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "국제통상A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": null,
+                "room_number": "307",
                 "room_type": "국제통상A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "국제통상학과 3,4학년만 수강신청 가능"
             }
           ]
         }
@@ -2444,35 +2508,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최윤실",
+              "professor": "최윤상",
               "schedule": {
-                "raw": "수14:00-15:30, 목15:30-17:00",
+                "raw": "화14:00-15:30, 목14:00-15:30",
                 "days": [
-                  "수",
+                  "화",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "화",
                     "start": "14:00",
                     "end": "15:30"
                   },
                   {
                     "day": "목",
-                    "start": "15:30",
-                    "end": "17:00"
+                    "start": "14:00",
+                    "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": "국제지역학전공 3/10일"
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             }
           ]
         },
@@ -2490,33 +2554,33 @@
               "section": "01",
               "professor": "노병렬",
               "schedule": {
-                "raw": "화13:30-15:00, 목14:00-15:30",
+                "raw": "월13:30-15:00, 수13:30-15:00",
                 "days": [
-                  "화",
-                  "목"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
                     "start": "13:30",
                     "end": "15:00"
                   },
                   {
-                    "day": "목",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A202 - e-강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A202",
-                "room_type": "e-강의실"
+                "raw": "국405 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             }
           ]
         },
@@ -2534,33 +2598,33 @@
               "section": "01",
               "professor": "노병렬",
               "schedule": {
-                "raw": "화15:30-17:00, 목15:30-17:00",
+                "raw": "월15:30-17:00, 수15:30-17:00",
                 "days": [
-                  "화",
-                  "목"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "월",
                     "start": "15:30",
                     "end": "17:00"
                   },
                   {
-                    "day": "목",
+                    "day": "수",
                     "start": "15:30",
                     "end": "17:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A202 - e-강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A202",
-                "room_type": "e-강의실"
+                "raw": "국405 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": "국제지역학전공 입학신청/정정기간연장"
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             }
           ]
         },
@@ -2578,16 +2642,16 @@
               "section": "01",
               "professor": "Sarah Choi",
               "schedule": {
-                "raw": "화12:30-13:30, 목10:00-11:30",
+                "raw": "수10:00-11:30, 목10:00-11:30",
                 "days": [
-                  "화",
+                  "수",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "12:30",
-                    "end": "13:30"
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
                   },
                   {
                     "day": "목",
@@ -2597,27 +2661,27 @@
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": "국제지역학전공 학과제한해제 3/10일"
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             },
             {
               "section": "02",
               "professor": "Sarah Choi",
               "schedule": {
-                "raw": "화11:30-13:00, 목11:30-13:00",
+                "raw": "수11:30-13:00, 목11:30-13:00",
                 "days": [
-                  "화",
+                  "수",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "11:30",
                     "end": "13:00"
                   },
@@ -2629,14 +2693,14 @@
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": "국제지역학전공 학과제한해제 3/10일"
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             }
           ]
         },
@@ -2652,41 +2716,41 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "최석완",
               "schedule": {
-                "raw": "목15:30-17:00, 금15:30-17:00",
+                "raw": "월11:30-13:00, 화11:30-13:00",
                 "days": [
-                  "목",
-                  "금"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
-                    "start": "15:30",
-                    "end": "17:00"
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
-                    "day": "금",
-                    "start": "15:30",
-                    "end": "17:00"
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A03 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A03",
-                "room_type": "국제A/V강의실"
+                "raw": "국406 - 국제지역학A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "406",
+                "room_type": "국제지역학A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "본학과1학년만수강가능, 3/3 10시 제한해제"
             }
           ]
         },
         {
           "course_code": "252505",
-          "course_name": "글로벌정책",
+          "course_name": "글로벌경제",
           "classification": "전필",
           "target_year": 2,
           "credits": 3,
@@ -2696,41 +2760,41 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최윤실",
+              "professor": "최윤상",
               "schedule": {
-                "raw": "수10:00-11:30, 금10:00-11:30",
+                "raw": "수15:30-17:00, 목15:30-17:00",
                 "days": [
                   "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
                     "day": "수",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "start": "15:30",
+                    "end": "17:00"
                   },
                   {
-                    "day": "금",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
-              "notes": "국제지역학전공 3/10일"
+              "notes": ""
             }
           ]
         },
         {
           "course_code": "252506",
-          "course_name": "세계화와이슈와쟁점",
+          "course_name": "세계화의이슈와쟁점",
           "classification": "전선",
           "target_year": 2,
           "credits": 3,
@@ -2755,11 +2819,11 @@
                 ]
               },
               "room": {
-                "raw": "국제지역학A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": null,
-                "room_type": "국제지역학A/V강의실"
+                "raw": "국405 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -2768,7 +2832,7 @@
         },
         {
           "course_code": "252507",
-          "course_name": "동아시아비교문화",
+          "course_name": "동아시아비교문화론",
           "classification": "전선",
           "target_year": 2,
           "credits": 3,
@@ -2778,31 +2842,31 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "최석완",
               "schedule": {
-                "raw": "화13:30-15:00, 목13:30-15:00",
+                "raw": "월15:30-17:00, 화15:30-17:00",
                 "days": [
-                  "화",
-                  "목"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "13:30",
-                    "end": "15:00"
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:00"
                   },
                   {
-                    "day": "목",
-                    "start": "13:30",
-                    "end": "15:00"
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
                   }
                 ]
               },
               "room": {
-                "raw": "국제지역학A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": null,
+                "raw": "국406 - 국제지역학A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "406",
                 "room_type": "국제지역학A/V강의실"
               },
               "capacity": 0,
@@ -2822,32 +2886,64 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "타카쿠사키 미나",
               "schedule": {
-                "raw": "화10:00-11:30, 목10:00-11:30",
+                "raw": "목13:30-15:00, 금13:30-15:00",
                 "days": [
-                  "화",
-                  "목"
+                  "목",
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국403 - 어학실습실B",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "403",
+                "room_type": "어학실습실B"
+              },
+              "capacity": 0,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최석완",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
                     "start": "10:00",
                     "end": "11:30"
                   },
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "10:00",
                     "end": "11:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A06 - 어학실습실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A06",
-                "room_type": "어학실습실"
+                "raw": "국406 - 국제지역학A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "406",
+                "room_type": "국제지역학A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -2866,32 +2962,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "타카쿠사키 미나",
               "schedule": {
-                "raw": "화15:30-17:00, 목15:30-17:00",
+                "raw": "목11:30-13:00, 금11:30-13:00",
                 "days": [
-                  "화",
-                  "목"
+                  "목",
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "15:30",
-                    "end": "17:00"
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
-                    "day": "목",
-                    "start": "15:30",
-                    "end": "17:00"
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A06 - 어학실습실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A06",
-                "room_type": "어학실습실"
+                "raw": "국403 - 어학실습실B",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "403",
+                "room_type": "어학실습실B"
               },
               "capacity": 0,
               "notes": ""
@@ -2910,32 +3006,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최윤실",
+              "professor": "노병렬",
               "schedule": {
-                "raw": "수11:30-13:00, 금11:30-13:00",
+                "raw": "월11:30-13:00, 수11:30-13:00",
                 "days": [
-                  "수",
-                  "금"
+                  "월",
+                  "수"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "월",
                     "start": "11:30",
                     "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "수",
                     "start": "11:30",
                     "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국405 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -2944,7 +3040,7 @@
         },
         {
           "course_code": "252604",
-          "course_name": "글로벌산업구조및무역정",
+          "course_name": "글로벌산업구조및무역정책",
           "classification": "전선",
           "target_year": 3,
           "credits": 3,
@@ -2954,32 +3050,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최윤실",
+              "professor": "최윤상",
               "schedule": {
-                "raw": "화14:00-15:30, 목14:00-15:30",
+                "raw": "수14:00-15:30, 금14:00-15:30",
                 "days": [
-                  "화",
-                  "목"
+                  "수",
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "수",
                     "start": "14:00",
                     "end": "15:30"
                   },
                   {
-                    "day": "목",
+                    "day": "금",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A01 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A01",
-                "room_type": "국제A/V강의실"
+                "raw": "국401 - 미국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "401",
+                "room_type": "미국A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -2998,26 +3094,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "타카쿠사키 미나",
               "schedule": {
-                "raw": "월11:30-14:30",
+                "raw": "월13:30-15:00, 화13:30-15:00",
                 "days": [
-                  "월"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
                     "day": "월",
-                    "start": "11:30",
-                    "end": "14:30"
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A03 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A03",
-                "room_type": "국제A/V강의실"
+                "raw": "국403 - 어학실습실B",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "403",
+                "room_type": "어학실습실B"
               },
               "capacity": 0,
               "notes": ""
@@ -3026,7 +3128,7 @@
         },
         {
           "course_code": "255008",
-          "course_name": "비즈니스일본어",
+          "course_name": "비즈니스일본어I",
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
@@ -3036,26 +3138,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "타카쿠사키 미나",
               "schedule": {
-                "raw": "목11:30-14:30",
+                "raw": "월11:30-13:00, 화11:30-13:00",
                 "days": [
-                  "목"
+                  "월",
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "목",
+                    "day": "월",
                     "start": "11:30",
-                    "end": "14:30"
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사A03 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A03",
-                "room_type": "국제A/V강의실"
+                "raw": "국403 - 어학실습실B",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "403",
+                "room_type": "어학실습실B"
               },
               "capacity": 0,
               "notes": ""
@@ -3074,31 +3182,32 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최석현",
+              "professor": "최석완",
               "schedule": {
-                "raw": "금10:00-11:30, 금14:30-16:00",
+                "raw": "수10:00-11:30, 목10:00-11:30",
                 "days": [
-                  "금"
+                  "수",
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "수",
                     "start": "10:00",
                     "end": "11:30"
                   },
                   {
-                    "day": "금",
-                    "start": "14:30",
-                    "end": "16:00"
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사A03 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "A03",
-                "room_type": "국제A/V강의실"
+                "raw": "국406 - 국제지역학A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "406",
+                "room_type": "국제지역학A/V강의실"
               },
               "capacity": 0,
               "notes": ""
@@ -3125,7 +3234,39 @@
               "section": "01",
               "professor": "최금단",
               "schedule": {
-                "raw": "수14:00-15:30, 목14:00-15:30",
+                "raw": "화14:00-15:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실/연306 - 국문A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104/306",
+                "room_type": "국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "중국학전공 1학년만 수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "최금단",
+              "schedule": {
+                "raw": "수11:30-13:00, 목10:00-11:30",
                 "days": [
                   "수",
                   "목"
@@ -3133,40 +3274,8 @@
                 "times": [
                   {
                     "day": "수",
-                    "start": "14:00",
-                    "end": "15:30"
-                  },
-                  {
-                    "day": "목",
-                    "start": "14:00",
-                    "end": "15:30"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "국제A/V강의실/연306 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "306",
-                "room_type": "국제A/V강의실"
-              },
-              "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "최금단",
-              "schedule": {
-                "raw": "화10:00-11:30, 목10:00-11:30",
-                "days": [
-                  "화",
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
                     "day": "목",
@@ -3176,46 +3285,40 @@
                 ]
               },
               "room": {
-                "raw": "사312 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국312 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "312",
                 "room_type": "국제A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             },
             {
               "section": "03",
               "professor": "최금단",
               "schedule": {
-                "raw": "화11:30-13:00, 목11:30-13:00",
+                "raw": "화15:30-18:25",
                 "days": [
-                  "화",
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
                     "day": "화",
-                    "start": "11:30",
-                    "end": "13:00"
-                  },
-                  {
-                    "day": "목",
-                    "start": "11:30",
-                    "end": "13:00"
+                    "start": "15:30",
+                    "end": "18:25"
                   }
                 ]
               },
               "room": {
-                "raw": "사312 - 국제A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "312",
+                "raw": "국104 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104",
                 "room_type": "국제A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "[원격수업]중국학전공 1학년만 수강가능"
             }
           ]
         },
@@ -3248,9 +3351,9 @@
               "room": {
                 "raw": "e-learning(온라인)2",
                 "building": null,
-                "building_full": null,
+                "building_full": "온라인",
                 "room_number": null,
-                "room_type": "온라인"
+                "room_type": "e-learning"
               },
               "capacity": 0,
               "notes": "[원격수업]중국학전공 1학년만 수강가능"
@@ -3269,39 +3372,33 @@
           "sections": [
             {
               "section": "01",
-              "professor": "여은리",
+              "professor": "여문리",
               "schedule": {
-                "raw": "화14:00-15:30, 목15:30-18:25",
+                "raw": "목11:30-14:30",
                 "days": [
-                  "화",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "14:00",
-                    "end": "15:30"
-                  },
-                  {
                     "day": "목",
-                    "start": "15:30",
-                    "end": "18:25"
+                    "start": "11:30",
+                    "end": "14:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "407",
-                "room_type": "중국A/V강의실"
+                "raw": "국312 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "312",
+                "room_type": "국제A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공 1학년만 수강가능"
             },
             {
               "section": "02",
-              "professor": "여은리",
+              "professor": "여문리",
               "schedule": {
                 "raw": "목15:30-18:25",
                 "days": [
@@ -3316,14 +3413,14 @@
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국2학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
@@ -3339,7 +3436,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박상필",
+              "professor": "박상림",
               "schedule": {
                 "raw": "수10:00-11:30, 목10:00-11:30",
                 "days": [
@@ -3360,72 +3457,46 @@
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국2학년/둘째날 중국/셋째날 전체"
             },
             {
               "section": "02",
-              "professor": "박상필",
+              "professor": "박상림",
               "schedule": {
-                "raw": "화14:00-15:30, 목14:00-15:30",
+                "raw": "수11:30-13:00, 목11:30-13:00",
                 "days": [
-                  "화",
+                  "수",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
                   },
                   {
                     "day": "목",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "start": "11:30",
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "03",
-              "professor": "조대환",
-              "schedule": {
-                "raw": "목20:30-21:20",
-                "days": [
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "목",
-                    "start": "20:30",
-                    "end": "21:20"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "e-learning(온라인)",
-                "building": null,
-                "building_full": "온라인",
-                "room_number": null,
-                "room_type": "e-learning"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         },
@@ -3441,29 +3512,55 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박정수",
+              "professor": "조대원",
               "schedule": {
-                "raw": "수10:00-13:00",
+                "raw": "화20:30-21:20",
                 "days": [
-                  "수"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "화",
+                    "start": "20:30",
+                    "end": "21:20"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": null,
+                "building_full": "온라인",
+                "room_number": null,
+                "room_type": "e-learning"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]중국학전공만 수강/그외학과문의"
+            },
+            {
+              "section": "02",
+              "professor": "박정수",
+              "schedule": {
+                "raw": "금10:00-13:00",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
                     "start": "10:00",
                     "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "404",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         },
@@ -3479,67 +3576,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "최금단",
+              "professor": "권인영",
               "schedule": {
-                "raw": "화13:30-15:00, 목10:00-11:30",
+                "raw": "목13:30-16:30",
                 "days": [
-                  "화",
                   "목"
                 ],
                 "times": [
                   {
-                    "day": "화",
+                    "day": "목",
                     "start": "13:30",
-                    "end": "15:00"
-                  },
-                  {
-                    "day": "목",
-                    "start": "10:00",
-                    "end": "11:30"
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사104 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "104",
-                "room_type": "중국A/V강의실"
+                "raw": "국310 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "310",
+                "room_type": "국제A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "최금단",
-              "schedule": {
-                "raw": "화11:30-13:00, 목11:30-13:00",
-                "days": [
-                  "화",
-                  "목"
-                ],
-                "times": [
-                  {
-                    "day": "화",
-                    "start": "11:30",
-                    "end": "13:00"
-                  },
-                  {
-                    "day": "목",
-                    "start": "11:30",
-                    "end": "13:00"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사104 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "104",
-                "room_type": "중국A/V강의실"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국2학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
@@ -3557,33 +3616,91 @@
               "section": "01",
               "professor": "최금단",
               "schedule": {
-                "raw": "수11:30-13:30, 금11:30-13:30",
+                "raw": "목11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "목",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국104 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104",
+                "room_type": "국제A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 중국2학년/둘째날 중국/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "박상림",
+              "schedule": {
+                "raw": "수11:30-13:00, 목11:30-13:00",
                 "days": [
                   "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
                     "day": "수",
                     "start": "11:30",
-                    "end": "13:30"
+                    "end": "13:00"
                   },
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "11:30",
-                    "end": "13:30"
+                    "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실 / 연213 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "407/213",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국2학년/둘째날 중국/셋째날 전체"
+            },
+            {
+              "section": "03",
+              "professor": "최금단",
+              "schedule": {
+                "raw": "수13:00-16:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:00",
+                    "end": "16:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "407",
+                "room_type": "중국A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         },
@@ -3599,29 +3716,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "조대환",
+              "professor": "조미영",
               "schedule": {
-                "raw": "수14:30-17:30",
+                "raw": "수15:30-18:25",
                 "days": [
                   "수"
                 ],
                 "times": [
                   {
                     "day": "수",
-                    "start": "14:30",
-                    "end": "17:30"
+                    "start": "15:30",
+                    "end": "18:25"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "교직이수 학생만 수강가능"
             }
           ]
         },
@@ -3637,29 +3754,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "조미경",
+              "professor": "조미영",
               "schedule": {
-                "raw": "수15:30-18:25",
+                "raw": "목15:30-18:25",
                 "days": [
-                  "수"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
+                    "day": "목",
                     "start": "15:30",
                     "end": "18:25"
                   }
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "404",
-                "room_type": "중국A/V강의실"
+                "raw": "국104 - 국제A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "104",
+                "room_type": "국제A/V강의실"
               },
               "capacity": 0,
-              "notes": "중국학전공 학생한정"
+              "notes": "교직이수 학생만 수강가능"
             }
           ]
         },
@@ -3675,67 +3792,29 @@
           "sections": [
             {
               "section": "01",
-              "professor": "권인경",
+              "professor": "권인영",
               "schedule": {
-                "raw": "수14:00-15:30, 금14:00-15:30",
+                "raw": "목10:30-13:30",
                 "days": [
-                  "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "14:00",
-                    "end": "15:30"
-                  },
-                  {
-                    "day": "금",
-                    "start": "14:00",
-                    "end": "15:30"
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "13:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "404",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
-            },
-            {
-              "section": "02",
-              "professor": "권인경",
-              "schedule": {
-                "raw": "수15:30-17:00, 금15:30-17:00",
-                "days": [
-                  "수",
-                  "금"
-                ],
-                "times": [
-                  {
-                    "day": "수",
-                    "start": "15:30",
-                    "end": "17:00"
-                  },
-                  {
-                    "day": "금",
-                    "start": "15:30",
-                    "end": "17:00"
-                  }
-                ]
-              },
-              "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "404",
-                "room_type": "중국A/V강의실"
-              },
-              "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국3학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
@@ -3751,12 +3830,12 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박정수",
+              "professor": "조대원",
               "schedule": {
-                "raw": "수14:00-15:30, 금14:00-15:30",
+                "raw": "수14:00-15:30, 목14:00-15:30",
                 "days": [
                   "수",
-                  "금"
+                  "목"
                 ],
                 "times": [
                   {
@@ -3765,47 +3844,47 @@
                     "end": "15:30"
                   },
                   {
-                    "day": "금",
+                    "day": "목",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "404",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국3학년/둘째날,셋째날 중국 전체"
             },
             {
               "section": "02",
               "professor": "박정수",
               "schedule": {
-                "raw": "수10:30-13:30",
+                "raw": "금13:30-16:30",
                 "days": [
-                  "수"
+                  "금"
                 ],
                 "times": [
                   {
-                    "day": "수",
-                    "start": "10:30",
-                    "end": "13:30"
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "16:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사405 - 중국의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "405",
-                "room_type": "중국의실"
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "404",
+                "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         },
@@ -3821,9 +3900,35 @@
           "sections": [
             {
               "section": "01",
-              "professor": "박상필",
+              "professor": "동충",
               "schedule": {
-                "raw": "수15:30-18:30",
+                "raw": "수10:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "국405-1 - 강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405-1",
+                "room_type": "강의실"
+              },
+              "capacity": 0,
+              "notes": "첫째날 중국3학년/둘째날 중국/셋째날 전체"
+            },
+            {
+              "section": "02",
+              "professor": "동충",
+              "schedule": {
+                "raw": "수15:30-18:25",
                 "days": [
                   "수"
                 ],
@@ -3831,45 +3936,45 @@
                   {
                     "day": "수",
                     "start": "15:30",
-                    "end": "18:30"
+                    "end": "18:25"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "407",
-                "room_type": "중국A/V강의실"
+                "raw": "국405-1 - 강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405-1",
+                "room_type": "강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국3학년/둘째날 중국/셋째날 전체"
             },
             {
-              "section": "02",
-              "professor": "박상필",
+              "section": "03",
+              "professor": "박상림",
               "schedule": {
-                "raw": "금10:00-13:00",
+                "raw": "화10:00-13:00",
                 "days": [
-                  "금"
+                  "화"
                 ],
                 "times": [
                   {
-                    "day": "금",
+                    "day": "화",
                     "start": "10:00",
                     "end": "13:00"
                   }
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         },
@@ -3900,14 +4005,14 @@
                 ]
               },
               "room": {
-                "raw": "사405-1 - 강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국405-1 - 강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "405-1",
                 "room_type": "강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국4학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
@@ -3923,7 +4028,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "조대환",
+              "professor": "조대원",
               "schedule": {
                 "raw": "수15:30-18:25",
                 "days": [
@@ -3938,20 +4043,20 @@
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "404",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국4학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
         {
           "course_code": "264023",
-          "course_name": "고급중국어1",
+          "course_name": "고급중국어",
           "classification": "전선",
           "target_year": 4,
           "credits": 3,
@@ -3976,14 +4081,14 @@
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
-                "room_number": "404",
-                "room_type": "중국A/V강의실"
+                "raw": "국405-1 - 강의실",
+                "building": "국",
+                "building_full": "국제학관",
+                "room_number": "405-1",
+                "room_type": "강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국4학년/둘째날 중국/셋째날 전체"
             }
           ]
         },
@@ -3999,12 +4104,12 @@
           "sections": [
             {
               "section": "01",
-              "professor": "조대환",
+              "professor": "조대원",
               "schedule": {
-                "raw": "월14:00-15:30, 목14:00-15:30",
+                "raw": "월14:00-15:30, 화14:00-15:30",
                 "days": [
                   "월",
-                  "목"
+                  "화"
                 ],
                 "times": [
                   {
@@ -4013,25 +4118,25 @@
                     "end": "15:30"
                   },
                   {
-                    "day": "목",
+                    "day": "화",
                     "start": "14:00",
                     "end": "15:30"
                   }
                 ]
               },
               "room": {
-                "raw": "사404 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국404 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "404",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "첫째날 중국4학년/둘째날 중국/셋째날 전체"
             },
             {
               "section": "02",
-              "professor": "박상필",
+              "professor": "박상림",
               "schedule": {
                 "raw": "월10:00-13:00",
                 "days": [
@@ -4046,14 +4151,14 @@
                 ]
               },
               "room": {
-                "raw": "사407 - 중국A/V강의실",
-                "building": "사",
-                "building_full": "사회과학관",
+                "raw": "국407 - 중국A/V강의실",
+                "building": "국",
+                "building_full": "국제학관",
                 "room_number": "407",
                 "room_type": "중국A/V강의실"
               },
               "capacity": 0,
-              "notes": ""
+              "notes": "중국학전공(중국어트랙) 4학년만 수강가능"
             }
           ]
         }
@@ -4075,7 +4180,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "정영재",
+              "professor": "정임재",
               "schedule": {
                 "raw": "수15:30-18:25",
                 "days": [
@@ -4113,7 +4218,7 @@
           "sections": [
             {
               "section": "01",
-              "professor": "정영재",
+              "professor": "정임재",
               "schedule": {
                 "raw": "수11:30-14:30",
                 "days": [
@@ -4143,7 +4248,7 @@
           "course_code": "242104",
           "course_name": "미국산업구조",
           "classification": "전선",
-          "target_year": 4,
+          "target_year": 3,
           "credits": 3,
           "hours": 6,
           "lab_hours": 0,

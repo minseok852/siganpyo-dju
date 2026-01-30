@@ -45,12 +45,12 @@ export const YEAR_OPTIONS = [
 // 교양선택 영역 옵션
 export const AREA_OPTIONS = [
   { value: '', label: '전체 영역' },
-  { value: '1영역', label: '1영역 (인간과소통)' },
-  { value: '2영역', label: '2영역 (자연과기술)' },
-  { value: '3영역', label: '3영역 (문화와예술)' },
-  { value: '4영역', label: '4영역 (사회와경제)' },
-  { value: '5영역', label: '5영역 (세계와역사)' },
-  { value: '6영역', label: '6영역 (자기개발)' },
+  { value: '1영역', label: '1영역 (인간과 소통)' },
+  { value: '2영역', label: '2영역 (사회와 경제)' },
+  { value: '3영역', label: '3영역 (과학과 기술)' },
+  { value: '4영역', label: '4영역 (예술과 문화)' },
+  { value: '5영역', label: '5영역 (융합과 혁신)' },
+  { value: '6영역', label: '6영역 (디지털리터러시)' },
 ];
 
 // 전공 이수구분 옵션

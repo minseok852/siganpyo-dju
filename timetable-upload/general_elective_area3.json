@@ -19,15 +19,15 @@
               "section": "01",
               "professor": "김종호",
               "schedule": {
-                "raw": "목11:30-13:30",
-                "days": ["목"],
-                "times": [{"day": "목", "start": "11:30", "end": "13:30"}]
+                "raw": "수09:30-11:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "09:30", "end": "11:30"}]
               },
               "room": {
-                "raw": "공다A 214 - 강의실(공용)",
+                "raw": "공다A 210 - 강의실(공용)",
                 "building": "공다",
                 "building_full": "이공대 다동",
-                "room_number": "214",
+                "room_number": "210",
                 "room_type": "강의실(공용)"
               },
               "capacity": 50,
@@ -37,9 +37,9 @@
               "section": "02",
               "professor": "김종호",
               "schedule": {
-                "raw": "목13:30-15:30",
-                "days": ["목"],
-                "times": [{"day": "목", "start": "13:30", "end": "15:30"}]
+                "raw": "수11:30-13:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "11:30", "end": "13:30"}]
               },
               "room": {
                 "raw": "공다A 214 - 강의실(공용)",
