@@ -8,23 +8,27 @@ import RecommendPage from './pages/RecommendPage';
 import FAQPage from './pages/FAQPage';
 import FeedbackPage from './pages/FeedbackPage';
 import FeedbackAdminPage from './pages/FeedbackAdminPage';
-
+//조회수 알고 싶어서 추가
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/share/:shareId" element={<SharedPage />} />
-        <Route path="/popular" element={<PopularPage />} />
-        <Route path="/ai" element={<AIPage />} />
-        <Route path="/recommend" element={<RecommendPage />} />
-        <Route path="/faq" element={<FAQPage />} />
-        <Route path="/feedback" element={<FeedbackPage />} />
-        <Route path="/feedback/admin" element={<FeedbackAdminPage />} />
-        
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/share/:shareId" element={<SharedPage />} />
+          <Route path="/popular" element={<PopularPage />} />
+          <Route path="/ai" element={<AIPage />} />
+          <Route path="/recommend" element={<RecommendPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="/feedback/admin" element={<FeedbackAdminPage />} />
+          
+        </Routes>
+      </BrowserRouter>
+      <Analytics />
+    </>
   );
 }
 

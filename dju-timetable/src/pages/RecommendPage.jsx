@@ -695,6 +695,14 @@ export default function RecommendPage() {
     }
   };
 
+  // ✅ 부분 일치 헬퍼 함수 (띄어쓰기/오타 문제 방지)
+  const isNameMatched = (courseName, completedList) => {
+    if (!courseName || !completedList || completedList.length === 0) return false;
+    return completedList.some(completed => 
+      courseName.includes(completed) || completed.includes(courseName)
+    );
+  };
+
   // 과목 필터링
   const filterAvailableCourses = async () => {
     const grade = userInfo.grade;
@@ -704,8 +712,9 @@ export default function RecommendPage() {
     // 교양 안 듣기가 아니면 교양 과목 로드
     if (!preferences.skipGeneral) {
       const grResults = await searchCourses({ category: 'general_required', limit: 100 });
+      // ✅ 부분 일치로 변경 (띄어쓰기/오타 문제 방지)
       generalRequired = grResults.filter(c => 
-        completedCourses.skipGeneralRequired || !completedCourses.generalRequired.includes(c.course_name)
+        completedCourses.skipGeneralRequired || !isNameMatched(c.course_name, completedCourses.generalRequired)
       );
 
       // 교양선택: 선호 영역 + 이수 완료 영역 제외
@@ -735,9 +744,9 @@ export default function RecommendPage() {
       classification: '전필',
       limit: 50 
     });
-    // 학년 필터링: target_year <= grade
+    // ✅ 부분 일치로 변경 + 학년 필터링: target_year <= grade
     const majorRequired = mrResults.filter(c =>
-      (completedCourses.skipMajorRequired || !completedCourses.majorRequired.includes(c.course_name)) &&
+      (completedCourses.skipMajorRequired || !isNameMatched(c.course_name, completedCourses.majorRequired)) &&
       (c.target_year === 0 || c.target_year <= grade)
     );
 
@@ -753,14 +762,14 @@ export default function RecommendPage() {
     const completedMajorNames = completedCourses.completedMajorElective.map(c => c.course_name);
     const majorElective = meResults.filter(c =>
       (c.target_year === 0 || c.target_year <= grade) &&
-      !completedMajorNames.includes(c.course_name)
+      !isNameMatched(c.course_name, completedMajorNames)
     );
 
     // 듣기 싫은 과목명 목록
     const avoidCourseNames = avoidCourses.map(c => c.course_name);
 
-    // 모든 결과에서 듣기 싫은 과목 제외
-    const filterAvoid = (courses) => courses.filter(c => !avoidCourseNames.includes(c.course_name));
+    // 모든 결과에서 듣기 싫은 과목 제외 (부분 일치)
+    const filterAvoid = (courses) => courses.filter(c => !isNameMatched(c.course_name, avoidCourseNames));
 
     return {
       general_required: filterAvoid(generalRequired).slice(0, 20),

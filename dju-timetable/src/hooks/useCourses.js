@@ -81,11 +81,12 @@ export function useCourses() {
         constraints.push(orderBy(documentId()));
       }
       
-      // ✅ 검색어가 있거나 학년 필터가 있으면 더 많이 가져와서 필터링
+      // ✅ 검색어가 있거나 학년 필터가 있거나 이수구분 필터가 있으면 더 많이 가져와서 필터링
+      // 🔧 수정: classification 필터 추가 (전선 필터 시 100개 제한 버그 수정)
       const searchTerm = filters.searchTerm?.trim();
       let fetchLimit;
       
-      if (searchTerm || targetYearFilter) {
+      if (searchTerm || targetYearFilter || filters.classification) {
         // 클라이언트 필터링 필요 시 많이 가져옴
         fetchLimit = 2000;
       } else {
