@@ -6,7 +6,7 @@ export default function CourseDetail({
   course, 
   onClose, 
   onAdd, 
-  onRemove,  // ✅ 삭제 함수 추가
+  onRemove,
   isAdded, 
   conflict 
 }) {
@@ -21,12 +21,24 @@ export default function CourseDetail({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4">
-      <div className="bg-white rounded-xl w-full max-w-md max-h-[80vh] overflow-y-auto">
+    <div 
+      className="fixed inset-0 bg-black/50 z-[60] flex flex-col justify-end"
+      onClick={onClose}
+    >
+      {/* 하단 슬라이드업 패널 */}
+      <div 
+        className="bg-white rounded-t-2xl w-full max-h-[75vh] overflow-hidden animate-slide-up"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* 핸들 바 */}
+        <div className="flex justify-center pt-3 pb-2">
+          <div className="w-10 h-1 bg-gray-300 rounded-full" />
+        </div>
+
         {/* 헤더 */}
-        <div className="sticky top-0 bg-white p-4 border-b flex items-start justify-between gap-3">
-          <div>
-            <h2 className="text-lg font-bold">{course.course_name}</h2>
+        <div className="px-4 pb-3 border-b flex items-start justify-between gap-3">
+          <div className="flex-1 min-w-0">
+            <h2 className="text-lg font-bold truncate">{course.course_name}</h2>
             <p className="text-sm text-gray-500">{course.course_code}-{course.section}</p>
           </div>
           <button 
@@ -37,81 +49,70 @@ export default function CourseDetail({
           </button>
         </div>
 
-        {/* 내용 */}
-        <div className="p-4 space-y-4">
+        {/* 내용 - 스크롤 가능 */}
+        <div className="overflow-y-auto px-4 py-3" style={{ maxHeight: 'calc(75vh - 180px)' }}>
           {/* 기본 정보 */}
-          <div className="grid grid-cols-2 gap-3">
-            <div className="bg-gray-50 rounded-lg p-3">
-              <div className="text-xs text-gray-500 mb-1">분류</div>
-              <div className="font-medium">
+          <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="bg-gray-50 rounded-lg p-2.5">
+              <div className="text-xs text-gray-500 mb-0.5">분류</div>
+              <div className="font-medium text-sm">
                 {course.classification || CATEGORY_LABELS[course.category]}
               </div>
             </div>
-            <div className="bg-gray-50 rounded-lg p-3">
-              <div className="text-xs text-gray-500 mb-1">학점</div>
-              <div className="font-medium">{course.credits}학점</div>
+            <div className="bg-gray-50 rounded-lg p-2.5">
+              <div className="text-xs text-gray-500 mb-0.5">학점</div>
+              <div className="font-medium text-sm">{course.credits}학점</div>
             </div>
             {course.target_year > 0 && (
-              <div className="bg-gray-50 rounded-lg p-3">
-                <div className="text-xs text-gray-500 mb-1">대상학년</div>
-                <div className="font-medium">{course.target_year}학년</div>
+              <div className="bg-gray-50 rounded-lg p-2.5">
+                <div className="text-xs text-gray-500 mb-0.5">대상학년</div>
+                <div className="font-medium text-sm">{course.target_year}학년</div>
               </div>
             )}
             {course.area && (
-              <div className="bg-gray-50 rounded-lg p-3">
-                <div className="text-xs text-gray-500 mb-1">영역</div>
-                <div className="font-medium">{course.area}</div>
+              <div className="bg-gray-50 rounded-lg p-2.5">
+                <div className="text-xs text-gray-500 mb-0.5">영역</div>
+                <div className="font-medium text-sm">{course.area}</div>
               </div>
             )}
           </div>
 
           {/* 상세 정보 */}
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {/* 교수 */}
             <div className="flex items-center gap-3">
-              <User size={18} className="text-gray-400 shrink-0" />
-              <div>
-                <div className="text-xs text-gray-500">담당교수</div>
-                <div>{course.professor || '미정'}</div>
+              <User size={16} className="text-gray-400 shrink-0" />
+              <div className="text-sm">
+                <span className="text-gray-500 mr-2">담당교수</span>
+                <span>{course.professor || '미정'}</span>
               </div>
             </div>
 
             {/* 시간 */}
             <div className="flex items-center gap-3">
-              <Clock size={18} className="text-gray-400 shrink-0" />
-              <div>
-                <div className="text-xs text-gray-500">수업시간</div>
-                <div>{course.schedule_raw || '시간 미정'}</div>
+              <Clock size={16} className="text-gray-400 shrink-0" />
+              <div className="text-sm">
+                <span className="text-gray-500 mr-2">수업시간</span>
+                <span>{course.schedule_raw || '시간 미정'}</span>
               </div>
             </div>
 
             {/* 강의실 */}
             <div className="flex items-center gap-3">
-              <MapPin size={18} className="text-gray-400 shrink-0" />
-              <div>
-                <div className="text-xs text-gray-500">강의실</div>
-                <div>{course.room || '미정'}</div>
+              <MapPin size={16} className="text-gray-400 shrink-0" />
+              <div className="text-sm">
+                <span className="text-gray-500 mr-2">강의실</span>
+                <span>{course.room || '미정'}</span>
               </div>
             </div>
 
             {/* 학과 */}
             {course.department && (
               <div className="flex items-center gap-3">
-                <BookOpen size={18} className="text-gray-400 shrink-0" />
-                <div>
-                  <div className="text-xs text-gray-500">개설학과</div>
-                  <div>{course.college} {course.department}</div>
-                </div>
-              </div>
-            )}
-
-            {/* 정원 */}
-            {course.capacity > 0 && (
-              <div className="flex items-center gap-3">
-                <User size={18} className="text-gray-400 shrink-0" />
-                <div>
-                  <div className="text-xs text-gray-500">수강정원</div>
-                  <div>{course.capacity}명</div>
+                <BookOpen size={16} className="text-gray-400 shrink-0" />
+                <div className="text-sm">
+                  <span className="text-gray-500 mr-2">개설학과</span>
+                  <span>{course.college} {course.department}</span>
                 </div>
               </div>
             )}
@@ -119,9 +120,9 @@ export default function CourseDetail({
 
           {/* 비고 (중요!) */}
           {course.notes && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-              <div className="flex items-center gap-2 text-yellow-700 font-medium mb-1">
-                <Info size={16} />
+            <div className="mt-3 bg-yellow-50 border border-yellow-200 rounded-lg p-2.5">
+              <div className="flex items-center gap-1.5 text-yellow-700 font-medium text-sm mb-1">
+                <Info size={14} />
                 비고
               </div>
               <div className="text-yellow-800 text-sm">
@@ -132,9 +133,9 @@ export default function CourseDetail({
 
           {/* 시간 겹침 경고 */}
           {conflict?.conflict && (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-              <div className="flex items-center gap-2 text-red-700 font-medium mb-1">
-                <AlertCircle size={16} />
+            <div className="mt-3 bg-red-50 border border-red-200 rounded-lg p-2.5">
+              <div className="flex items-center gap-1.5 text-red-700 font-medium text-sm mb-1">
+                <AlertCircle size={14} />
                 시간 겹침
               </div>
               <div className="text-red-600 text-sm">
@@ -144,19 +145,17 @@ export default function CourseDetail({
           )}
         </div>
 
-        {/* 하단 버튼 */}
-        <div className="sticky bottom-0 bg-white p-4 border-t space-y-2">
-          {/* ✅ 이미 추가된 경우: 삭제 버튼 표시 */}
+        {/* 하단 버튼 - 고정 */}
+        <div className="px-4 py-3 border-t bg-white">
           {isAdded ? (
             <button
               onClick={handleRemove}
-              className="w-full py-3 rounded-lg font-medium flex items-center justify-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
+              className="w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
             >
               <Trash2 size={18} />
               시간표에서 삭제
             </button>
           ) : (
-            /* 추가 안 된 경우: 추가 버튼 표시 */
             <button
               onClick={() => {
                 onAdd(course);
@@ -165,7 +164,7 @@ export default function CourseDetail({
                 }
               }}
               disabled={conflict?.conflict}
-              className={`w-full py-3 rounded-lg font-medium flex items-center justify-center gap-2 ${
+              className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 ${
                 conflict?.conflict
                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   : 'bg-blue-500 text-white hover:bg-blue-600'
@@ -183,6 +182,21 @@ export default function CourseDetail({
           )}
         </div>
       </div>
+
+      {/* 애니메이션 스타일 */}
+      <style>{`
+        @keyframes slide-up {
+          from {
+            transform: translateY(100%);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+        .animate-slide-up {
+          animation: slide-up 0.25s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
