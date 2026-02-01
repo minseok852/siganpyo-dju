@@ -10,3 +10,4 @@ upload_all_courses.cjs
 node_modules/
 dist/
 .env.local
+add_single_course.cjs

@@ -2367,6 +2367,32 @@
               },
               "capacity": 0,
               "notes": "국제통상학과 4학년만 수강신청 가능"
+            },
+            {
+              "section": "02",
+              "professor": "손상기",
+              "schedule": {
+                "raw": "금19:40-20:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "19:40",
+                    "end": "20:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": null,
+                "building_full": "온라인",
+                "room_number": null,
+                "room_type": "e-learning"
+              },
+              "capacity": 0,
+              "notes": "[원격수업]국제통상학과 수강신청 금지"
             }
           ]
         },
