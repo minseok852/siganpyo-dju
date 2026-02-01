@@ -11,6 +11,7 @@ import {
   documentId
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import { COLLEGE_DEPARTMENTS } from '../data/departments';
 
 // ✅ 2026학번 기준 교양필수 (학년별)
 const GENERAL_REQUIRED_BY_YEAR = {
@@ -193,32 +194,12 @@ export function useCourses() {
     }
   }, [lastDoc, hasMore, loading]);
 
-  // 학과 목록 가져오기
+  // 학과 목록 가져오기 (departments.js에서 가져옴)
   const getDepartments = useCallback(async (college) => {
     if (!college || college === '전체') return [];
-
-    try {
-      const coursesRef = collection(db, 'courses');
-      const q = query(
-        coursesRef,
-        where('college', '==', college),
-        orderBy('department'),
-        limit(200)
-      );
-      
-      const snapshot = await getDocs(q);
-      const departments = new Set();
-      
-      snapshot.docs.forEach(doc => {
-        const dept = doc.data().department;
-        if (dept) departments.add(dept);
-      });
-
-      return Array.from(departments).sort();
-    } catch (err) {
-      console.error('Get departments error:', err);
-      return [];
-    }
+    
+    // departments.js의 COLLEGE_DEPARTMENTS에서 직접 가져옴
+    return COLLEGE_DEPARTMENTS[college] || [];
   }, []);
 
   // 교양필수 목록 가져오기
