@@ -124,6 +124,42 @@ function FeedbackCard({ feedback }) {
               </p>
             </div>
           )}
+
+          {/* 관리자 댓글 */}
+          {feedback.adminComments && feedback.adminComments.length > 0 && (
+            <div className="mt-3 space-y-2">
+              <div className="flex items-center gap-1.5 mb-1">
+                <div className="w-1 h-4 bg-blue-500 rounded-full" />
+                <span className="text-xs font-semibold text-gray-600">
+                  관리자 답변 ({feedback.adminComments.length})
+                </span>
+              </div>
+              {feedback.adminComments.map((comment) => (
+                <div
+                  key={comment.id}
+                  className="bg-blue-50 border border-blue-100 rounded-lg p-2.5"
+                >
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <span className="text-[10px] bg-blue-500 text-white px-1.5 py-0.5 rounded-full font-medium">
+                      관리자
+                    </span>
+                    <span className="text-[10px] text-gray-400">
+                      {new Date(comment.createdAt).toLocaleDateString('ko-KR', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                      {comment.editedAt && ' (수정됨)'}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-700 whitespace-pre-wrap">
+                    {comment.content}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

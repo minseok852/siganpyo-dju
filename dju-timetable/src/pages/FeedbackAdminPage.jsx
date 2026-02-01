@@ -12,12 +12,19 @@ import {
   Trash2,
   Lock,
   Eye,
-  EyeOff
+  EyeOff,
+  MessageCircle,
+  Send,
+  Pencil,
+  X
 } from 'lucide-react';
 import { 
   getFeedbacks,
   updateFeedbackStatus,
   deleteFeedback,
+  addAdminComment,
+  editAdminComment,
+  deleteAdminComment,
   verifyAdminPassword,
   FEEDBACK_STATUS,
   FEEDBACK_CATEGORY 
@@ -48,12 +55,16 @@ const STATUS_STYLES = {
 };
 
 // 관리자 피드백 카드
-function AdminFeedbackCard({ feedback, onStatusChange, onDelete }) {
+function AdminFeedbackCard({ feedback, onStatusChange, onDelete, onAddComment, onEditComment, onDeleteComment }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showStatusDropdown, setShowStatusDropdown] = useState(false);
   const [rejectionReason, setRejectionReason] = useState('');
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [isSubmittingComment, setIsSubmittingComment] = useState(false);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editText, setEditText] = useState('');
   
   const statusStyle = STATUS_STYLES[feedback.status] || STATUS_STYLES[FEEDBACK_STATUS.RECEIVED];
   const StatusIcon = statusStyle.icon;
@@ -99,6 +110,14 @@ function AdminFeedbackCard({ feedback, onStatusChange, onDelete }) {
     if (confirm('정말 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
       await onDelete(feedback.id);
     }
+  };
+
+  const handleAddComment = async () => {
+    if (!commentText.trim() || isSubmittingComment) return;
+    setIsSubmittingComment(true);
+    await onAddComment(feedback.id, commentText.trim());
+    setCommentText('');
+    setIsSubmittingComment(false);
   };
 
   return (
@@ -191,6 +210,136 @@ function AdminFeedbackCard({ feedback, onStatusChange, onDelete }) {
           {feedback.updatedAt && feedback.updatedAt.getTime() !== feedback.createdAt?.getTime() && (
             <span className="ml-2">| 수정: {formatDate(feedback.updatedAt)}</span>
           )}
+        </div>
+
+        {/* 관리자 댓글 섹션 */}
+        <div className="mt-3 border-t border-gray-100 pt-3">
+          {/* 기존 댓글 목록 */}
+          {feedback.adminComments && feedback.adminComments.length > 0 && (
+            <div className="space-y-2 mb-3">
+              <div className="flex items-center gap-1.5">
+                <MessageCircle size={14} className="text-blue-500" />
+                <span className="text-xs font-semibold text-gray-600">
+                  관리자 답변 ({feedback.adminComments.length})
+                </span>
+              </div>
+              {feedback.adminComments.map((comment) => (
+                <div
+                  key={comment.id}
+                  className="bg-blue-50 border border-blue-100 rounded-lg p-2.5"
+                >
+                  {editingCommentId === comment.id ? (
+                    /* 댓글 수정 모드 */
+                    <div>
+                      <textarea
+                        value={editText}
+                        onChange={(e) => setEditText(e.target.value)}
+                        className="w-full px-2 py-1.5 border rounded-lg text-sm h-20 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        autoFocus
+                      />
+                      <div className="flex gap-1.5 mt-1.5 justify-end">
+                        <button
+                          onClick={() => {
+                            setEditingCommentId(null);
+                            setEditText('');
+                          }}
+                          className="px-2.5 py-1 text-xs text-gray-500 hover:bg-gray-100 rounded"
+                        >
+                          취소
+                        </button>
+                        <button
+                          onClick={async () => {
+                            if (!editText.trim()) return;
+                            await onEditComment(feedback.id, comment.id, editText.trim());
+                            setEditingCommentId(null);
+                            setEditText('');
+                          }}
+                          className="px-2.5 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          수정 완료
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    /* 댓글 보기 모드 */
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-[10px] bg-blue-500 text-white px-1.5 py-0.5 rounded-full font-medium">
+                            관리자
+                          </span>
+                          <span className="text-[10px] text-gray-400">
+                            {new Date(comment.createdAt).toLocaleDateString('ko-KR', {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit',
+                            })}
+                            {comment.editedAt && ' (수정됨)'}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-0.5">
+                          <button
+                            onClick={() => {
+                              setEditingCommentId(comment.id);
+                              setEditText(comment.content);
+                            }}
+                            className="p-1 text-gray-400 hover:text-blue-500 hover:bg-blue-100 rounded"
+                            title="수정"
+                          >
+                            <Pencil size={12} />
+                          </button>
+                          <button
+                            onClick={async () => {
+                              if (confirm('댓글을 삭제하시겠습니까?')) {
+                                await onDeleteComment(feedback.id, comment.id);
+                              }
+                            }}
+                            className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded"
+                            title="삭제"
+                          >
+                            <Trash2 size={12} />
+                          </button>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-700 whitespace-pre-wrap">
+                        {comment.content}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* 댓글 작성 */}
+          <div className="flex gap-2">
+            <textarea
+              value={commentText}
+              onChange={(e) => setCommentText(e.target.value)}
+              placeholder="답변을 입력하세요..."
+              className="flex-1 px-2.5 py-2 border border-gray-200 rounded-lg text-sm h-10 min-h-[40px] max-h-24 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  if (commentText.trim() && !isSubmittingComment) {
+                    handleAddComment();
+                  }
+                }
+              }}
+            />
+            <button
+              onClick={handleAddComment}
+              disabled={!commentText.trim() || isSubmittingComment}
+              className="px-3 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1 self-end"
+            >
+              {isSubmittingComment ? (
+                <Loader2 className="animate-spin" size={14} />
+              ) : (
+                <Send size={14} />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -349,6 +498,36 @@ export default function FeedbackAdminPage() {
     }
   };
 
+  // 관리자 댓글 추가
+  const handleAddComment = async (feedbackId, content) => {
+    const result = await addAdminComment(feedbackId, content);
+    if (result.success) {
+      loadFeedbacks();
+    } else {
+      alert('댓글 작성에 실패했습니다: ' + result.error);
+    }
+  };
+
+  // 관리자 댓글 수정
+  const handleEditComment = async (feedbackId, commentId, newContent) => {
+    const result = await editAdminComment(feedbackId, commentId, newContent);
+    if (result.success) {
+      loadFeedbacks();
+    } else {
+      alert('댓글 수정에 실패했습니다: ' + result.error);
+    }
+  };
+
+  // 관리자 댓글 삭제
+  const handleDeleteComment = async (feedbackId, commentId) => {
+    const result = await deleteAdminComment(feedbackId, commentId);
+    if (result.success) {
+      loadFeedbacks();
+    } else {
+      alert('댓글 삭제에 실패했습니다: ' + result.error);
+    }
+  };
+
   // 로그아웃
   const handleLogout = () => {
     localStorage.removeItem('feedback_admin_auth');
@@ -463,6 +642,9 @@ export default function FeedbackAdminPage() {
                 feedback={feedback}
                 onStatusChange={handleStatusChange}
                 onDelete={handleDelete}
+                onAddComment={handleAddComment}
+                onEditComment={handleEditComment}
+                onDeleteComment={handleDeleteComment}
               />
             ))}
           </div>

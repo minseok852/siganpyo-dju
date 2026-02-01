@@ -115,6 +115,109 @@ export async function deleteFeedback(feedbackId) {
   }
 }
 
+/**
+ * 관리자 댓글 추가
+ */
+export async function addAdminComment(feedbackId, content) {
+  try {
+    const docRef = doc(db, 'feedbacks', feedbackId);
+    const commentData = {
+      content,
+      createdAt: new Date().toISOString(),
+    };
+    
+    // 기존 댓글 배열에 추가 (arrayUnion 대신 직접 관리)
+    const feedbacksRef = collection(db, 'feedbacks');
+    const snapshot = await getDocs(query(feedbacksRef));
+    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
+    
+    if (!feedbackDoc) {
+      return { success: false, error: '피드백을 찾을 수 없습니다.' };
+    }
+    
+    const existingComments = feedbackDoc.data().adminComments || [];
+    const newComment = {
+      id: Date.now().toString(),
+      ...commentData,
+    };
+    
+    await updateDoc(docRef, {
+      adminComments: [...existingComments, newComment],
+      updatedAt: serverTimestamp(),
+    });
+    
+    console.log('✅ 관리자 댓글 추가:', feedbackId);
+    return { success: true, comment: newComment };
+  } catch (error) {
+    console.error('❌ 관리자 댓글 추가 실패:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * 관리자 댓글 수정
+ */
+export async function editAdminComment(feedbackId, commentId, newContent) {
+  try {
+    const docRef = doc(db, 'feedbacks', feedbackId);
+    const feedbacksRef = collection(db, 'feedbacks');
+    const snapshot = await getDocs(query(feedbacksRef));
+    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
+    
+    if (!feedbackDoc) {
+      return { success: false, error: '피드백을 찾을 수 없습니다.' };
+    }
+    
+    const comments = feedbackDoc.data().adminComments || [];
+    const updatedComments = comments.map(c => 
+      c.id === commentId 
+        ? { ...c, content: newContent, editedAt: new Date().toISOString() }
+        : c
+    );
+    
+    await updateDoc(docRef, {
+      adminComments: updatedComments,
+      updatedAt: serverTimestamp(),
+    });
+    
+    console.log('✅ 관리자 댓글 수정:', commentId);
+    return { success: true };
+  } catch (error) {
+    console.error('❌ 관리자 댓글 수정 실패:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * 관리자 댓글 삭제
+ */
+export async function deleteAdminComment(feedbackId, commentId) {
+  try {
+    const docRef = doc(db, 'feedbacks', feedbackId);
+    const feedbacksRef = collection(db, 'feedbacks');
+    const snapshot = await getDocs(query(feedbacksRef));
+    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
+    
+    if (!feedbackDoc) {
+      return { success: false, error: '피드백을 찾을 수 없습니다.' };
+    }
+    
+    const comments = feedbackDoc.data().adminComments || [];
+    const filteredComments = comments.filter(c => c.id !== commentId);
+    
+    await updateDoc(docRef, {
+      adminComments: filteredComments,
+      updatedAt: serverTimestamp(),
+    });
+    
+    console.log('✅ 관리자 댓글 삭제:', commentId);
+    return { success: true };
+  } catch (error) {
+    console.error('❌ 관리자 댓글 삭제 실패:', error);
+    return { success: false, error: error.message };
+  }
+}
+
 // 관리자 비밀번호 검증 (실제로는 환경변수나 Firebase Auth 사용 권장)
 const ADMIN_PASSWORD = 'minseock852';
 
