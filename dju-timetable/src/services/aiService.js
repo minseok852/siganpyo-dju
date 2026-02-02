@@ -64,7 +64,7 @@ export async function recommendSchedule(userInfo, availableCourses) {
       course_name: c.course_name,
       professor: c.professor || null,
       credits: c.credits,
-      target_year: c.target_year || 0,  // 추가!
+      target_year: c.target_year || 0,
       schedule_raw: c.schedule_raw || null,
       times: c.times || null,
       room: c.room || null,
@@ -88,6 +88,9 @@ export async function recommendSchedule(userInfo, availableCourses) {
           target_credits: userInfo.target_credits,
           completed_general_required: userInfo.completed_general_required || [],
           completed_major_required: userInfo.completed_major_required || [],
+          // ✅ 복수전공 이수 현황
+          completed_double_major_required: userInfo.completed_double_major_required || [],
+          completed_double_major_elective: userInfo.completed_double_major_elective || [],
           preferences: {
             empty_days: userInfo.preferences?.empty_days || [],
             no_morning: userInfo.preferences?.no_morning || false,
@@ -95,11 +98,18 @@ export async function recommendSchedule(userInfo, availableCourses) {
             preferred_time: userInfo.preferences?.preferred_time || '상관없음',
             preferred_areas: userInfo.preferences?.preferred_areas || [],
             skip_general: userInfo.preferences?.skip_general || false,
-            // 새로 추가된 필드들!
+            // 전공 선택 관련
             major_selection_mode: userInfo.preferences?.major_selection_mode || 'auto',
             selected_major_courses: (userInfo.preferences?.selected_major_courses || []).map(formatCourse),
             must_take_courses: (userInfo.preferences?.must_take_courses || []).map(formatCourse),
             avoid_courses: userInfo.preferences?.avoid_courses || null,
+            // ✅ 복수전공 관련 필드
+            selected_double_major_courses: (userInfo.preferences?.selected_double_major_courses || []).map(formatCourse),
+            credit_allocation: userInfo.preferences?.credit_allocation || null,
+            // ✅ 이수 완료 영역/과목
+            completed_areas: userInfo.preferences?.completed_areas || [],
+            completed_major_elective: userInfo.preferences?.completed_major_elective || [],
+            completed_double_major_elective: userInfo.preferences?.completed_double_major_elective || [],
           },
         },
         available_courses: {
@@ -107,6 +117,9 @@ export async function recommendSchedule(userInfo, availableCourses) {
           major_required: (availableCourses.major_required || []).map(formatCourse),
           major_elective: (availableCourses.major_elective || []).map(formatCourse),
           general_elective: (availableCourses.general_elective || []).map(formatCourse),
+          // ✅ 복수전공 과목
+          double_major_required: (availableCourses.double_major_required || []).map(formatCourse),
+          double_major_elective: (availableCourses.double_major_elective || []).map(formatCourse),
         }
       }),
     });

@@ -21,58 +21,30 @@ const firebaseConfig = {
   appId: "1:248759627681:web:e925f126ba81ecff41e5e0"
 };
 
-// 추가할 과목 데이터 (01분반, 02분반)
+// 추가할 과목 데이터 (01분반)
 const newCourses = [
-  // 01분반
   {
-    _docId: '132048_01',
-    course_code: '132048',
-    course_name: '국제경영전략',
+    _docId: '927320_01',
+    course_code: '927320',
+    course_name: '커피의세계문화사',
     section: '01',
-    credits: 3,
-    hours: 6,
+    credits: 2,
+    hours: 4,
     lab_hours: 0,
-    target_year: 4,
-    category: 'major',
-    classification: '전선',
-    is_micro_major: true,
-    college: '글로벌산업통상대학',
-    department: '국제통상학과',
-    professor: '손상기',
-    schedule_raw: '수10:00-11:30, 목10:00-11:30',
+    target_year: 0,
+    category: 'general_elective',
+    classification: '교선',
+    is_micro_major: false,
+    college: '상생교양대학',
+    department: '교양교육원',
+    professor: '정동준',
+    schedule_raw: '화13:30-15:30',
     times: [
-      { day: '수', start: '10:00', end: '11:30' },
-      { day: '목', start: '10:00', end: '11:30' }
+      { day: '화', start: '13:30', end: '15:30' }
     ],
-    room: '사306 - 국제통상A/V강의실',
-    capacity: 0,
-    notes: '국제통상학과 4학년만 수강신청 가능',
-    semester: '2025학년도 1학기',
-    updated_at: new Date().toISOString().split('T')[0],
-  },
-  // 02분반
-  {
-    _docId: '132048_02',
-    course_code: '132048',
-    course_name: '국제경영전략',
-    section: '02',
-    credits: 3,
-    hours: 6,
-    lab_hours: 0,
-    target_year: 4,
-    category: 'major',
-    classification: '전선',
-    is_micro_major: true,
-    college: '글로벌산업통상대학',
-    department: '국제통상학과',
-    professor: '손상기',
-    schedule_raw: '금19:40-20:30',
-    times: [
-      { day: '금', start: '19:40', end: '20:30' }
-    ],
-    room: 'e-learning(온라인)1',
-    capacity: 0,
-    notes: '[원격수업]국제통상학과 수강신청 금지',
+    room: '인307 - 역사A/V강의실',
+    capacity: 50,
+    notes: '',
     semester: '2025학년도 1학기',
     updated_at: new Date().toISOString().split('T')[0],
   }

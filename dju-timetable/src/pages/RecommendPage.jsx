@@ -392,15 +392,29 @@ export default function RecommendPage() {
     skipMajorRequired: false,
     completedAreas: [],          // 이수한 교양선택 영역
     completedMajorElective: [],  // 이수한 전공선택 과목들
+    // 복수전공
+    doubleMajorRequired: [],
+    skipDoubleMajorRequired: false,
+    completedDoubleMajorElective: [],
   });
   const [isCompletedMajorSearchOpen, setIsCompletedMajorSearchOpen] = useState(false);  // 전공선택 이수과목 검색 모달
+  const [isCompletedDoubleMajorSearchOpen, setIsCompletedDoubleMajorSearchOpen] = useState(false);  // 복전 전선 이수과목 검색 모달
   
   // ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ==========
   const [majorSelection, setMajorSelection] = useState({
     mode: 'auto',  // 'manual' | 'auto'
-    selectedCourses: [],  // 직접 선택한 전공과목
+    selectedCourses: [],  // 직접 선택한 주전공 과목
+    selectedDoubleMajorCourses: [],  // 직접 선택한 복전 과목
   });
   const [isMajorSearchOpen, setIsMajorSearchOpen] = useState(false);
+  const [isDoubleMajorSearchOpen, setIsDoubleMajorSearchOpen] = useState(false);  // 복전 과목 검색 모달
+  
+  // 학점 배분 (복수전공 전용)
+  const [creditAllocation, setCreditAllocation] = useState({
+    major: 9,
+    doubleMajor: 6,
+    general: 3,
+  });
   
   // ========== Step 4: 선호도 ==========
   const [preferences, setPreferences] = useState({
@@ -425,6 +439,7 @@ export default function RecommendPage() {
   // 필수과목 목록
   const [generalRequiredList, setGeneralRequiredList] = useState([]);
   const [majorRequiredList, setMajorRequiredList] = useState([]);
+  const [doubleMajorRequiredList, setDoubleMajorRequiredList] = useState([]);
   const [loadingCourses, setLoadingCourses] = useState(false);
   
   // 결과
@@ -563,10 +578,41 @@ export default function RecommendPage() {
     loadMajorRequired();
   }, [userInfo.major, getMajorRequired]);
 
+  // 복수전공 전필 목록 로드
+  useEffect(() => {
+    async function loadDoubleMajorRequired() {
+      if (userInfo.hasDoubleMajor && userInfo.doubleMajor) {
+        setLoadingCourses(true);
+        const results = await getMajorRequired(userInfo.doubleMajor);
+        setDoubleMajorRequiredList(results);
+        setLoadingCourses(false);
+      } else {
+        setDoubleMajorRequiredList([]);
+      }
+    }
+    loadDoubleMajorRequired();
+  }, [userInfo.doubleMajor, userInfo.hasDoubleMajor, getMajorRequired]);
+
   // 학과 변경시 전공 선택 초기화
   useEffect(() => {
-    setMajorSelection({ mode: 'auto', selectedCourses: [] });
+    setMajorSelection({ mode: 'auto', selectedCourses: [], selectedDoubleMajorCourses: [] });
   }, [userInfo.major]);
+
+  // 목표학점 변경 시 학점 배분 자동 조정
+  useEffect(() => {
+    if (userInfo.hasDoubleMajor) {
+      const tc = userInfo.targetCredits;
+      // 기본 비율: 주전공 50%, 복전 33%, 교양 17% (3의 배수로 반올림)
+      const majorCredits = Math.round(tc * 0.5 / 3) * 3;
+      const dmCredits = Math.round(tc * 0.33 / 3) * 3;
+      const genCredits = tc - majorCredits - dmCredits;
+      setCreditAllocation({
+        major: Math.max(0, majorCredits),
+        doubleMajor: Math.max(0, dmCredits),
+        general: Math.max(0, genCredits),
+      });
+    }
+  }, [userInfo.targetCredits, userInfo.hasDoubleMajor]);
 
   const filteredColleges = COLLEGES.filter(c => 
     c !== '전체' && c !== '융합전공' && c !== '상생교양대학'
@@ -577,6 +623,15 @@ export default function RecommendPage() {
     if (step === 1 && !userInfo.major) {
       alert('전공을 선택해주세요!');
       return;
+    }
+    
+    // Step 3 → 4로 넘어갈 때 학점 배분 검증 (복수전공)
+    if (step === 3 && userInfo.hasDoubleMajor && userInfo.doubleMajor) {
+      const total = creditAllocation.major + creditAllocation.doubleMajor + creditAllocation.general;
+      if (total !== userInfo.targetCredits) {
+        alert(`학점 배분 합계가 ${total}학점이에요. 목표 학점 ${userInfo.targetCredits}학점에 맞춰주세요!`);
+        return;
+      }
     }
     
     if (userInfo.grade === 1) {
@@ -626,6 +681,25 @@ export default function RecommendPage() {
     }));
   };
 
+  // 복전 과목 직접 선택 추가
+  const handleAddDoubleMajorCourse = (course) => {
+    setMajorSelection(prev => ({
+      ...prev,
+      selectedDoubleMajorCourses: [...prev.selectedDoubleMajorCourses, course]
+    }));
+    setIsDoubleMajorSearchOpen(false);
+  };
+
+  // 복전 과목 제거
+  const handleRemoveDoubleMajorCourse = (course) => {
+    setMajorSelection(prev => ({
+      ...prev,
+      selectedDoubleMajorCourses: prev.selectedDoubleMajorCourses.filter(
+        c => !(c.course_code === course.course_code && c.section === course.section)
+      )
+    }));
+  };
+
   // 시간표 생성
   const handleGenerate = async () => {
     setIsLoading(true);
@@ -641,6 +715,8 @@ export default function RecommendPage() {
         target_credits: userInfo.targetCredits,
         completed_general_required: completedCourses.skipGeneralRequired ? [] : completedCourses.generalRequired,
         completed_major_required: completedCourses.skipMajorRequired ? [] : completedCourses.majorRequired,
+        completed_double_major_required: completedCourses.skipDoubleMajorRequired ? [] : completedCourses.doubleMajorRequired,
+        completed_double_major_elective: completedCourses.completedDoubleMajorElective.map(c => c.course_name),
         preferences: {
           empty_days: preferences.emptyDays,
           no_morning: preferences.noMorning,
@@ -659,6 +735,21 @@ export default function RecommendPage() {
             credits: c.credits,
             target_year: c.target_year || 0,
           })),
+          selected_double_major_courses: majorSelection.selectedDoubleMajorCourses.map(c => ({
+            course_name: c.course_name,
+            course_code: c.course_code,
+            section: c.section,
+            professor: c.professor,
+            schedule_raw: c.schedule_raw,
+            credits: c.credits,
+            target_year: c.target_year || 0,
+          })),
+          // 학점 배분 (복수전공)
+          credit_allocation: userInfo.hasDoubleMajor ? {
+            major: creditAllocation.major,
+            double_major: creditAllocation.doubleMajor,
+            general: creditAllocation.general,
+          } : null,
           must_take_courses: mustTakeCourses.map(c => ({
             course_name: c.course_name,
             course_code: c.course_code,
@@ -765,6 +856,37 @@ export default function RecommendPage() {
       !isNameMatched(c.course_name, completedMajorNames)
     );
 
+    // ========== 복수전공 과목 ==========
+    let doubleMajorRequired = [];
+    let doubleMajorElective = [];
+    
+    if (userInfo.hasDoubleMajor && userInfo.doubleMajor) {
+      // 복전 전필
+      const dmrResults = await searchCourses({ 
+        category: 'major', 
+        department: userInfo.doubleMajor, 
+        classification: '전필',
+        limit: 50 
+      });
+      doubleMajorRequired = dmrResults.filter(c =>
+        (completedCourses.skipDoubleMajorRequired || !isNameMatched(c.course_name, completedCourses.doubleMajorRequired)) &&
+        (c.target_year === 0 || c.target_year <= grade)
+      );
+
+      // 복전 전선
+      const dmeResults = await searchCourses({ 
+        category: 'major', 
+        department: userInfo.doubleMajor, 
+        classification: '전선',
+        limit: 50 
+      });
+      const completedDoubleMajorNames = completedCourses.completedDoubleMajorElective.map(c => c.course_name);
+      doubleMajorElective = dmeResults.filter(c =>
+        (c.target_year === 0 || c.target_year <= grade) &&
+        !isNameMatched(c.course_name, completedDoubleMajorNames)
+      );
+    }
+
     // 듣기 싫은 과목명 목록
     const avoidCourseNames = avoidCourses.map(c => c.course_name);
 
@@ -776,6 +898,9 @@ export default function RecommendPage() {
       major_required: filterAvoid(majorRequired).slice(0, 20),
       major_elective: filterAvoid(majorElective).slice(0, 30),
       general_elective: filterAvoid(generalElective).slice(0, 30),
+      // 복수전공
+      double_major_required: filterAvoid(doubleMajorRequired).slice(0, 20),
+      double_major_elective: filterAvoid(doubleMajorElective).slice(0, 30),
     };
   };
 
@@ -1006,6 +1131,23 @@ export default function RecommendPage() {
       }));
     }
     setIsCompletedMajorSearchOpen(false);
+  };
+
+  // 이수한 복전 전공선택 추가
+  const handleAddCompletedDoubleMajor = (course) => {
+    const exists = completedCourses.completedDoubleMajorElective.some(
+      c => c.course_name === course.course_name
+    );
+    if (!exists) {
+      setCompletedCourses(prev => ({
+        ...prev,
+        completedDoubleMajorElective: [...prev.completedDoubleMajorElective, {
+          course_name: course.course_name,
+          credits: course.credits,
+        }]
+      }));
+    }
+    setIsCompletedDoubleMajorSearchOpen(false);
   };
 
   // 듣기 싫은 과목 추가 (과목명 기준 - 분반 무관)
@@ -1331,6 +1473,105 @@ export default function RecommendPage() {
                 이수한 전공선택 추가
               </button>
             </div>
+
+            {/* ========== 복수전공 이수 현황 ========== */}
+            {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
+              <>
+                {/* 구분선 */}
+                <div className="mt-6 mb-4 flex items-center gap-3">
+                  <div className="flex-1 h-px bg-indigo-200" />
+                  <span className="text-xs font-semibold text-indigo-500 px-2">복수전공 ({userInfo.doubleMajor})</span>
+                  <div className="flex-1 h-px bg-indigo-200" />
+                </div>
+
+                {/* 복수전공 전필 */}
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-sm font-medium">
+                      <span className="text-indigo-500">복전</span> 전공필수 ({userInfo.doubleMajor})
+                    </h3>
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={completedCourses.skipDoubleMajorRequired}
+                        onChange={(e) => setCompletedCourses(prev => ({ ...prev, skipDoubleMajorRequired: e.target.checked }))}
+                        className="w-4 h-4"
+                      />
+                      <span className="text-xs text-gray-500">다 들었어요</span>
+                    </label>
+                  </div>
+                  
+                  {!completedCourses.skipDoubleMajorRequired && (
+                    <div className="space-y-2 pl-2">
+                      {doubleMajorRequiredList.length > 0 ? (
+                        doubleMajorRequiredList.map(course => (
+                          <label key={`dm-${course}`} className="flex items-center gap-2 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={completedCourses.doubleMajorRequired.includes(course)}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setCompletedCourses(prev => ({ ...prev, doubleMajorRequired: [...prev.doubleMajorRequired, course] }));
+                                } else {
+                                  setCompletedCourses(prev => ({ ...prev, doubleMajorRequired: prev.doubleMajorRequired.filter(c => c !== course) }));
+                                }
+                              }}
+                              className="w-4 h-4 accent-indigo-500"
+                            />
+                            <span className="text-sm">{course}</span>
+                          </label>
+                        ))
+                      ) : (
+                        <p className="text-sm text-gray-400">복수전공 전공필수 과목이 없습니다</p>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* 복수전공 전선 이수 과목 */}
+                <div>
+                  <h3 className="text-sm font-medium mb-2">
+                    <span className="text-indigo-500">복전</span> 전공선택 이수 과목
+                  </h3>
+                  <p className="text-xs text-gray-500 mb-2">이미 들은 복전 전공선택은 추천에서 제외돼요</p>
+                  
+                  {completedCourses.completedDoubleMajorElective.length > 0 && (
+                    <div className="space-y-2 mb-3">
+                      {completedCourses.completedDoubleMajorElective.map((course, idx) => (
+                        <div 
+                          key={`dm-completed-${course.course_name}-${idx}`}
+                          className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
+                        >
+                          <div>
+                            <div className="text-sm font-medium">{course.course_name}</div>
+                            <div className="text-xs text-gray-500">{course.credits}학점</div>
+                          </div>
+                          <button 
+                            onClick={() => setCompletedCourses(prev => ({
+                              ...prev,
+                              completedDoubleMajorElective: prev.completedDoubleMajorElective.filter(
+                                c => c.course_name !== course.course_name
+                              )
+                            }))} 
+                            className="p-1 hover:bg-indigo-100 rounded"
+                          >
+                            <X size={16} className="text-gray-500" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <button
+                    onClick={() => setIsCompletedDoubleMajorSearchOpen(true)}
+                    className="w-full py-2 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+                  >
+                    <Plus size={16} />
+                    이수한 복전 전공선택 추가
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         )}
 
@@ -1338,11 +1579,99 @@ export default function RecommendPage() {
         {step === 3 && (
           <div className="bg-white rounded-xl shadow-sm p-4">
             <h2 className="text-lg font-bold mb-2">🎯 전공과목 선택</h2>
-            <p className="text-sm text-gray-500 mb-4">
+
+            {/* ===== 학점 배분 (복수전공 전용) ===== */}
+            {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
+              <div className="mb-5">
+                <h3 className="text-sm font-medium mb-2">📊 학점 배분</h3>
+                <p className="text-xs text-gray-500 mb-3">
+                  총 {userInfo.targetCredits}학점을 주전공 / 복수전공 / 교양으로 나눠주세요
+                </p>
+                
+                <div className="space-y-3">
+                  {/* 주전공 */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-indigo-700">🔵 주전공 ({userInfo.major})</span>
+                    <select
+                      value={creditAllocation.major}
+                      onChange={(e) => {
+                        const val = Number(e.target.value);
+                        setCreditAllocation(prev => ({ ...prev, major: val }));
+                      }}
+                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
+                    >
+                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
+                        <option key={i} value={i}>{i}학점</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* 복수전공 */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-emerald-700">🟢 복수전공 ({userInfo.doubleMajor})</span>
+                    <select
+                      value={creditAllocation.doubleMajor}
+                      onChange={(e) => {
+                        const val = Number(e.target.value);
+                        setCreditAllocation(prev => ({ ...prev, doubleMajor: val }));
+                      }}
+                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
+                    >
+                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
+                        <option key={i} value={i}>{i}학점</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* 교양 */}
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium text-amber-700">🟡 교양</span>
+                    <select
+                      value={creditAllocation.general}
+                      onChange={(e) => {
+                        const val = Number(e.target.value);
+                        setCreditAllocation(prev => ({ ...prev, general: val }));
+                      }}
+                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
+                    >
+                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
+                        <option key={i} value={i}>{i}학점</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* 합계 표시 */}
+                {(() => {
+                  const total = creditAllocation.major + creditAllocation.doubleMajor + creditAllocation.general;
+                  const isMatch = total === userInfo.targetCredits;
+                  return (
+                    <div className={`mt-3 p-2.5 rounded-lg flex items-center justify-between ${isMatch ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                      <span className="text-sm font-medium">
+                        합계: {total} / {userInfo.targetCredits}학점
+                      </span>
+                      {isMatch ? (
+                        <span className="text-xs text-green-600 font-medium">✅ 딱 맞아요!</span>
+                      ) : total > userInfo.targetCredits ? (
+                        <span className="text-xs text-red-600 font-medium">❌ {total - userInfo.targetCredits}학점 초과</span>
+                      ) : (
+                        <span className="text-xs text-red-600 font-medium">⚠️ {userInfo.targetCredits - total}학점 부족</span>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                <p className="text-xs text-gray-400 mt-2">
+                  💡 전필 + 전선 합산 학점이에요. AI가 전필 먼저 배치 후 남은 학점을 전선으로 채워요.
+                </p>
+              </div>
+            )}
+
+            {/* ===== 모드 선택 ===== */}
+            <p className="text-sm text-gray-500 mb-3">
               전공선택 과목을 어떻게 정할까요?
             </p>
 
-            {/* 모드 선택 */}
             <div className="grid grid-cols-2 gap-3 mb-4">
               <button
                 onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'manual' }))}
@@ -1360,7 +1689,7 @@ export default function RecommendPage() {
               </button>
               
               <button
-                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'auto', selectedCourses: [] }))}
+                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'auto', selectedCourses: [], selectedDoubleMajorCourses: [] }))}
                 className={`p-4 rounded-xl border-2 text-left transition-all ${
                   majorSelection.mode === 'auto' 
                     ? 'border-indigo-500 bg-indigo-50' 
@@ -1375,57 +1704,106 @@ export default function RecommendPage() {
               </button>
             </div>
 
-            {/* 직접 고르기 모드 */}
+            {/* ===== 직접 고르기 모드 ===== */}
             {majorSelection.mode === 'manual' && (
-              <div className="mt-4">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-sm font-medium">
-                    선택한 전공과목 ({majorSelection.selectedCourses.length})
-                  </h3>
-                  <span className="text-xs text-gray-500">
-                    {userInfo.major} 학과
-                  </span>
+              <div className="mt-4 space-y-5">
+                {/* --- 주전공 전공과목 --- */}
+                <div>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-sm font-medium">
+                      🔵 주전공 과목 ({majorSelection.selectedCourses.length})
+                    </h3>
+                    <span className="text-xs text-gray-500">
+                      {userInfo.major}
+                    </span>
+                  </div>
+
+                  {majorSelection.selectedCourses.length > 0 && (
+                    <div className="space-y-2 mb-3">
+                      {majorSelection.selectedCourses.map(course => (
+                        <div 
+                          key={`${course.course_code}-${course.section}`}
+                          className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
+                        >
+                          <div>
+                            <div className="text-sm font-medium">{course.course_name}</div>
+                            <div className="text-xs text-gray-500">
+                              {course.professor} | {course.schedule_raw} | {course.credits}학점
+                            </div>
+                          </div>
+                          <button 
+                            onClick={() => handleRemoveMajorCourse(course)} 
+                            className="p-1 hover:bg-indigo-100 rounded"
+                          >
+                            <X size={16} className="text-gray-500" />
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <button
+                    onClick={() => setIsMajorSearchOpen(true)}
+                    className="w-full py-3 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+                  >
+                    <Plus size={18} />
+                    {userInfo.major} 전공과목 검색
+                  </button>
                 </div>
 
-                {majorSelection.selectedCourses.length > 0 && (
-                  <div className="space-y-2 mb-3">
-                    {majorSelection.selectedCourses.map(course => (
-                      <div 
-                        key={`${course.course_code}-${course.section}`}
-                        className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
-                      >
-                        <div>
-                          <div className="text-sm font-medium">{course.course_name}</div>
-                          <div className="text-xs text-gray-500">
-                            {course.professor} | {course.schedule_raw} | {course.credits}학점
+                {/* --- 복전 전공과목 (복수전공일 때만) --- */}
+                {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="text-sm font-medium">
+                        🟢 복전 과목 ({majorSelection.selectedDoubleMajorCourses.length})
+                      </h3>
+                      <span className="text-xs text-gray-500">
+                        {userInfo.doubleMajor}
+                      </span>
+                    </div>
+
+                    {majorSelection.selectedDoubleMajorCourses.length > 0 && (
+                      <div className="space-y-2 mb-3">
+                        {majorSelection.selectedDoubleMajorCourses.map(course => (
+                          <div 
+                            key={`dm-${course.course_code}-${course.section}`}
+                            className="flex items-center justify-between p-2 bg-emerald-50 border border-emerald-200 rounded-lg"
+                          >
+                            <div>
+                              <div className="text-sm font-medium">{course.course_name}</div>
+                              <div className="text-xs text-gray-500">
+                                {course.professor} | {course.schedule_raw} | {course.credits}학점
+                              </div>
+                            </div>
+                            <button 
+                              onClick={() => handleRemoveDoubleMajorCourse(course)} 
+                              className="p-1 hover:bg-emerald-100 rounded"
+                            >
+                              <X size={16} className="text-gray-500" />
+                            </button>
                           </div>
-                        </div>
-                        <button 
-                          onClick={() => handleRemoveMajorCourse(course)} 
-                          className="p-1 hover:bg-indigo-100 rounded"
-                        >
-                          <X size={16} className="text-gray-500" />
-                        </button>
+                        ))}
                       </div>
-                    ))}
+                    )}
+
+                    <button
+                      onClick={() => setIsDoubleMajorSearchOpen(true)}
+                      className="w-full py-3 border-2 border-dashed border-emerald-300 rounded-lg text-sm text-emerald-600 hover:bg-emerald-50 flex items-center justify-center gap-2"
+                    >
+                      <Plus size={18} />
+                      {userInfo.doubleMajor} 복전 과목 검색
+                    </button>
                   </div>
                 )}
 
-                <button
-                  onClick={() => setIsMajorSearchOpen(true)}
-                  className="w-full py-3 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
-                >
-                  <Plus size={18} />
-                  {userInfo.major} 전공과목 검색
-                </button>
-
-                <p className="text-xs text-gray-400 mt-2">
+                <p className="text-xs text-gray-400">
                   💡 여기서 선택한 과목들이 시간표에 우선 배치됩니다
                 </p>
               </div>
             )}
 
-            {/* 상관없음 모드 */}
+            {/* ===== 상관없음 모드 ===== */}
             {majorSelection.mode === 'auto' && (
               <div className="mt-4 p-4 bg-gray-50 rounded-lg">
                 <p className="text-sm text-gray-600">
@@ -1434,7 +1812,7 @@ export default function RecommendPage() {
                 <ul className="mt-2 text-xs text-gray-500 space-y-1">
                   <li>• 전공필수 과목 우선 배치</li>
                   <li>• {userInfo.grade}학년 대상 과목 위주 선택</li>
-                  <li>• {userInfo.major} 학과 과목만 선택</li>
+                  <li>• {userInfo.major} 학과 과목{userInfo.hasDoubleMajor ? ` + ${userInfo.doubleMajor} 복전 과목` : '만'} 선택</li>
                 </ul>
               </div>
             )}
@@ -1758,6 +2136,21 @@ export default function RecommendPage() {
         }}
       />
 
+      {/* 복전 전공과목 검색 모달 */}
+      {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
+        <CourseSearchModal
+          isOpen={isDoubleMajorSearchOpen}
+          onClose={() => setIsDoubleMajorSearchOpen(false)}
+          onSelect={handleAddDoubleMajorCourse}
+          currentSelections={majorSelection.selectedDoubleMajorCourses}
+          title={`${userInfo.doubleMajor} 복전 과목 검색`}
+          filterOptions={{
+            category: 'major',
+            department: userInfo.doubleMajor,
+          }}
+        />
+      )}
+
       {/* 꼭 듣고 싶은 과목 검색 모달 */}
       <CourseSearchModal
         isOpen={isCourseSearchOpen}
@@ -1782,6 +2175,23 @@ export default function RecommendPage() {
         }}
         matchByName={true}
       />
+
+      {/* 이수한 복전 전공선택 검색 모달 */}
+      {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
+        <CourseSearchModal
+          isOpen={isCompletedDoubleMajorSearchOpen}
+          onClose={() => setIsCompletedDoubleMajorSearchOpen(false)}
+          onSelect={handleAddCompletedDoubleMajor}
+          currentSelections={completedCourses.completedDoubleMajorElective}
+          title={`${userInfo.doubleMajor} 이수한 복전 전공선택`}
+          filterOptions={{
+            category: 'major',
+            department: userInfo.doubleMajor,
+            classification: '전선',
+          }}
+          matchByName={true}
+        />
+      )}
 
       {/* 듣기 싫은 과목 검색 모달 */}
       <CourseSearchModal

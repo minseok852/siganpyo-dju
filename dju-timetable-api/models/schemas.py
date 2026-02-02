@@ -54,6 +54,11 @@ class EvaluateResponse(BaseModel):
 
 # ===== 추천 관련 스키마 =====
 
+class CreditAllocation(BaseModel):
+    major: Optional[int] = 0
+    double_major: Optional[int] = 0
+    general: Optional[int] = 0
+
 class Preferences(BaseModel):
     empty_days: Optional[list[str]] = []
     no_morning: Optional[bool] = False
@@ -62,12 +67,16 @@ class Preferences(BaseModel):
     preferred_areas: Optional[list[str]] = []
     skip_general: Optional[bool] = False  # 교양 안 듣기
     must_take_courses: Optional[list[Course]] = []  # 꼭 듣고 싶은 과목
-    selected_major_courses: Optional[list[Course]] = []  # 직접 선택한 전공과목 (2학년+)
+    selected_major_courses: Optional[list[Course]] = []  # 직접 선택한 주전공 과목 (2학년+)
+    selected_double_major_courses: Optional[list[Course]] = []  # 직접 선택한 복전 과목
     major_selection_mode: Optional[str] = "auto"  # "manual" (직접선택) | "auto" (상관없음)
     avoid_courses: Optional[str] = None  # 피하고 싶은 과목 (문자열)
-    # ===== 새로 추가된 필드들 =====
+    credit_allocation: Optional[CreditAllocation] = None  # 학점 배분 (복수전공)
+    # ===== 기존 필드들 =====
     completed_areas: Optional[list[str]] = []  # 이수 완료 교양 영역
     completed_major_elective: Optional[list[str]] = []  # 이수 완료 전공선택 과목명
+    # ===== 복수전공 추가 필드들 =====
+    completed_double_major_elective: Optional[list[str]] = []  # 이수 완료 복전 전공선택 과목명
 
 class RecommendUserInfo(BaseModel):
     grade: int
@@ -76,6 +85,9 @@ class RecommendUserInfo(BaseModel):
     target_credits: int
     completed_general_required: Optional[list[str]] = []
     completed_major_required: Optional[list[str]] = []
+    # ===== 복수전공 이수 현황 추가 =====
+    completed_double_major_required: Optional[list[str]] = []  # 이수 완료 복전 전필
+    completed_double_major_elective: Optional[list[str]] = []  # 이수 완료 복전 전선
     preferences: Optional[Preferences] = None
 
 class RecommendRequest(BaseModel):

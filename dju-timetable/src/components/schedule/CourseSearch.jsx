@@ -21,6 +21,7 @@ const DAY_OPTIONS = [
   { value: '수', label: '수요일' },
   { value: '목', label: '목요일' },
   { value: '금', label: '금요일' },
+  { value: 'online', label: '🖥️ 온라인' },
 ];
 
 // 시작 시간 옵션 (30분 단위)
@@ -118,9 +119,19 @@ export default function CourseSearch({
     return result;
   };
 
-  // 시간대 필터 적용
+  // 시간대 + 온라인 필터 적용
   const filterByTime = useCallback((courseList) => {
     const { day, startTime } = filters;
+    
+    // 온라인만 보기
+    if (day === 'online') {
+      return courseList.filter(course => {
+        const room = (course.room || '').toLowerCase();
+        const notes = (course.notes || '');
+        return room.includes('e-learning') || room.includes('온라인') || 
+               notes.includes('[원격수업]') || notes.includes('[OCU');
+      });
+    }
     
     if (!day && !startTime) return courseList;
     
@@ -162,12 +173,13 @@ export default function CourseSearch({
           department: filters.department,
           area: filters.area,
           classification: filters.classification,
+          onlineOnly: filters.day === 'online',
           searchTerm 
         });
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, filters.category, filters.targetYear, filters.college, filters.department, filters.area, filters.classification, searchTerm, searchCourses]);
+  }, [isOpen, filters.category, filters.targetYear, filters.college, filters.department, filters.area, filters.classification, filters.day, searchTerm, searchCourses]);
 
   // 단과대학 변경시 학과 목록 불러오기
   useEffect(() => {
@@ -246,7 +258,7 @@ export default function CourseSearch({
     >
       {/* 하단 슬라이드업 패널 */}
       <div 
-        className="bg-white rounded-t-2xl w-full max-h-[70vh] flex flex-col animate-slide-up"
+        className="bg-white rounded-t-2xl w-full max-h-[85vh] flex flex-col animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* 핸들 바 */}
@@ -438,8 +450,14 @@ export default function CourseSearch({
                 <div className="grid grid-cols-2 gap-2">
                   <select
                     value={filters.day}
-                    onChange={(e) => setFilters(f => ({ ...f, day: e.target.value }))}
+                    onChange={(e) => setFilters(f => ({ 
+                      ...f, 
+                      day: e.target.value,
+                      // 온라인 선택 시 시간 초기화
+                      ...(e.target.value === 'online' ? { startTime: '' } : {})
+                    }))}
                     className={`px-3 py-2 border rounded-lg text-sm ${
+                      filters.day === 'online' ? 'border-purple-300 bg-purple-50' :
                       filters.day ? 'border-blue-300 bg-blue-50' : ''
                     }`}
                   >
@@ -451,7 +469,9 @@ export default function CourseSearch({
                   <select
                     value={filters.startTime}
                     onChange={(e) => setFilters(f => ({ ...f, startTime: e.target.value }))}
+                    disabled={filters.day === 'online'}
                     className={`px-3 py-2 border rounded-lg text-sm ${
+                      filters.day === 'online' ? 'opacity-50 cursor-not-allowed' :
                       filters.startTime ? 'border-blue-300 bg-blue-50' : ''
                     }`}
                   >
@@ -463,7 +483,10 @@ export default function CourseSearch({
 
                 {isTimeFilterActive && (
                   <p className="text-xs text-blue-600 mt-1.5">
-                    💡 {filters.day || '전체 요일'} {filters.startTime ? `${filters.startTime}에 수업 중인` : ''} 과목만 표시
+                    💡 {filters.day === 'online'
+                      ? '온라인(원격) 수업만 표시' 
+                      : `${filters.day || '전체 요일'} ${filters.startTime ? `${filters.startTime}에 수업 중인` : ''} 과목만 표시`
+                    }
                   </p>
                 )}
               </div>
