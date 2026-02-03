@@ -11,6 +11,7 @@ import {
   documentId
 } from 'firebase/firestore';
 import { db } from '../services/firebase';
+import { COLLEGE_DEPARTMENTS } from '../data/departments';  // ✅ 추가!
 
 // ✅ 2026학번 기준 교양필수 (학년별)
 const GENERAL_REQUIRED_BY_YEAR = {
@@ -203,10 +204,18 @@ export function useCourses() {
     }
   }, [lastDoc, hasMore, loading]);
 
-  // 학과 목록 가져오기
+  // ✅ 학과 목록 가져오기 - 하드코딩 데이터 사용! (Firebase 의존성 제거)
   const getDepartments = useCallback(async (college) => {
     if (!college || college === '전체') return [];
 
+    // ✅ departments.js의 하드코딩된 데이터 사용
+    const departments = COLLEGE_DEPARTMENTS[college];
+    
+    if (departments && departments.length > 0) {
+      return departments.sort();
+    }
+
+    // 하드코딩에 없는 단과대학이면 Firebase에서 가져오기 (fallback)
     try {
       const coursesRef = collection(db, 'courses');
       const q = query(
@@ -217,14 +226,14 @@ export function useCourses() {
       );
       
       const snapshot = await getDocs(q);
-      const departments = new Set();
+      const deptSet = new Set();
       
       snapshot.docs.forEach(doc => {
         const dept = doc.data().department;
-        if (dept) departments.add(dept);
+        if (dept) deptSet.add(dept);
       });
 
-      return Array.from(departments).sort();
+      return Array.from(deptSet).sort();
     } catch (err) {
       console.error('Get departments error:', err);
       return [];
