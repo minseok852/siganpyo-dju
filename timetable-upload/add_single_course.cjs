@@ -21,29 +21,30 @@ const firebaseConfig = {
   appId: "1:248759627681:web:e925f126ba81ecff41e5e0"
 };
 
-// 추가할 과목 데이터 (01분반)
+// ✅ 추가할 과목 데이터 (Firebase 형식으로 변환 완료)
 const newCourses = [
   {
-    _docId: '927320_01',
-    course_code: '927320',
-    course_name: '커피의세계문화사',
+    _docId: '741104_01',
+    course_code: '741104',
+    course_name: '세포생물학',
     section: '01',
-    credits: 2,
-    hours: 4,
+    classification: '전선',
+    target_year: 2,
+    credits: 3,
+    hours: 6,
     lab_hours: 0,
-    target_year: 0,
-    category: 'general_elective',
-    classification: '교선',
     is_micro_major: false,
-    college: '상생교양대학',
-    department: '교양교육원',
-    professor: '정동준',
-    schedule_raw: '화13:30-15:30',
+    category: 'major',
+    college: '보건과학대학',  // ✅ 단과대학
+    department: '의생명과학과',  // ✅ 학과
+    professor: '장종수',
+    schedule_raw: '월13:30-15:00, 목13:30-15:00',
     times: [
-      { day: '화', start: '13:30', end: '15:30' }
+      { day: '월', start: '13:30', end: '15:00' },
+      { day: '목', start: '13:30', end: '15:00' }
     ],
-    room: '인307 - 역사A/V강의실',
-    capacity: 50,
+    room: '공나B 301 - 강의실(공용)',
+    capacity: 0,
     notes: '',
     semester: '2025학년도 1학기',
     updated_at: new Date().toISOString().split('T')[0],
@@ -68,10 +69,11 @@ async function main() {
     console.log(`   과목명: ${course.course_name}`);
     console.log(`   교수: ${course.professor}`);
     console.log(`   시간: ${course.schedule_raw}`);
+    console.log(`   학과: ${course.department}`);
     
     try {
       const docId = course._docId;
-      delete course._docId;
+      delete course._docId;  // Firestore에 저장할 때는 제거
       
       const docRef = doc(db, 'courses', docId);
       await setDoc(docRef, course);

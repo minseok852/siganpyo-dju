@@ -63,11 +63,11 @@ export const CLASSIFICATION_OPTIONS = [
 // 요일
 export const DAYS = ['월', '화', '수', '목', '금'];
 
-// 시간표 그리드 설정
+// 시간표 그리드 설정 - ✅ 컴팩트 모드 (에타 스타일)
 export const GRID_CONFIG = {
   startHour: 9,
   endHour: 21,
-  slotHeight: 50, // 30분당 픽셀
+  slotHeight: 25, // 30분당 픽셀 (변경: 50→25, 시간당 100px→50px)
   dayWidth: 120,  // 요일당 픽셀
 };
 

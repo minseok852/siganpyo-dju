@@ -647,18 +647,6 @@
               },
               "capacity": 0,
               "notes": ""
-            },
-            {
-              "section": "03",
-              "professor": "이시진",
-              "schedule": {
-                "raw": "화11:30-13:00, 목11:30-13:00"
-              },
-              "room": {
-                "raw": "공다A 411 - 강의실(공용)"
-              },
-              "capacity": 0,
-              "notes": ""
             }
           ]
         },

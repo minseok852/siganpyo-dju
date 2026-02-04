@@ -97,6 +97,28 @@ function ScheduleTabMenu({ schedule, isActive, onSwitch, onRename, onDuplicate, 
   );
 }
 
+// ✅ 온라인 과목인지 판별하는 헬퍼 함수
+function isOnlineCourse(course) {
+  // 1. times 배열이 없거나 비어있으면 온라인/시간미정
+  if (!course.times || course.times.length === 0) {
+    return true;
+  }
+  
+  // 2. room이 e-learning 관련이면 온라인
+  const room = (course.room || '').toLowerCase();
+  if (room.includes('e-learning') || room.includes('온라인')) {
+    return true;
+  }
+  
+  // 3. notes에 원격수업 표시가 있으면 온라인
+  const notes = (course.notes || '');
+  if (notes.includes('[원격수업]') || notes.includes('[OCU')) {
+    return true;
+  }
+  
+  return false;
+}
+
 export default function HomePage() {
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -127,8 +149,10 @@ export default function HomePage() {
   const handleCopyAllCodes = () => { const allCodes = courses.map(c => `${c.course_code}-${c.section}`).join('\n'); navigator.clipboard.writeText(allCodes); setCopiedCode('all'); setTimeout(() => setCopiedCode(null), 2000); };
   const handleAddSchedule = () => { const result = addSchedule(); if (!result.success) alert(result.error); };
 
-  const onlineCourses = courses.filter(c => !c.times || c.times.length === 0);
-  const offlineCourses = courses.filter(c => c.times && c.times.length > 0);
+  // ✅ 개선된 온라인/오프라인 분류
+  const onlineCourses = courses.filter(c => isOnlineCourse(c));
+  const offlineCourses = courses.filter(c => !isOnlineCourse(c));
+  
   const isSelectedCourseAdded = selectedCourse ? courses.some(c => c.course_code === selectedCourse.course_code && c.section === selectedCourse.section) : false;
 
   return (
@@ -203,41 +227,13 @@ export default function HomePage() {
             </div>
           </div>
         ) : (
-          <ScheduleGrid courses={offlineCourses} onRemoveCourse={removeCourse} getCourseColor={getCourseColor} onCourseClick={setSelectedCourse} />
-        )}
-
-        {/* 온라인/시간미정 과목 */}
-        {onlineCourses.length > 0 && (
-          <div className="mt-3 bg-white rounded-lg shadow-sm p-3">
-            <h3 className="text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">💻 온라인/시간미정 과목 ({onlineCourses.length})</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-              {onlineCourses.map((course, index) => {
-                const color = getCourseColor(course.course_code, course.section);
-                const code = `${course.course_code || 'unknown'}-${course.section || index}`;
-                const isCopied = copiedCode === code;
-                return (
-                  <div key={`online-${course.course_code || index}-${course.section || index}-${index}`}
-                    className={`p-2 rounded-lg border ${color.bg} ${color.border} cursor-pointer hover:shadow transition-shadow`}
-                    onClick={() => setSelectedCourse(course)}>
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="min-w-0 flex-1">
-                        <div className={`font-medium text-sm truncate ${color.text}`}>{course.course_name}</div>
-                        <div className="text-xs text-gray-500">{course.professor} | {course.credits}학점</div>
-                        {course.schedule_raw && <div className="text-xs text-gray-400 mt-0.5">📅 {course.schedule_raw}</div>}
-                      </div>
-                      <div className="flex items-center gap-1 shrink-0">
-                        <button onClick={(e) => { e.stopPropagation(); handleCopyCode(course.course_code, course.section); }}
-                          className={`px-1.5 py-0.5 rounded text-[10px] font-mono flex items-center gap-0.5 ${isCopied ? 'bg-green-100 text-green-700' : 'bg-white/70 text-gray-600 hover:bg-white'}`}>
-                          {isCopied ? <Check size={10} /> : <Copy size={10} />}{code}
-                        </button>
-                        <button onClick={(e) => { e.stopPropagation(); removeCourse(course.course_code, course.section); }} className="p-1 hover:bg-white/50 rounded text-gray-500 hover:text-red-500"><Trash2 size={14} /></button>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          <ScheduleGrid 
+            courses={offlineCourses} 
+            onlineCourses={onlineCourses}
+            onRemoveCourse={removeCourse} 
+            getCourseColor={getCourseColor} 
+            onCourseClick={setSelectedCourse} 
+          />
         )}
 
         {/* 추가된 과목 목록 */}
@@ -254,6 +250,7 @@ export default function HomePage() {
                 const color = getCourseColor(course.course_code, course.section);
                 const code = `${course.course_code || 'unknown'}-${course.section || index}`;
                 const isCopied = copiedCode === code;
+                const isOnline = isOnlineCourse(course);
                 return (
                   <div key={`list-${course.course_code || index}-${course.section || index}-${index}`}
                     className={`p-2 rounded-lg border ${color.bg} ${color.border} cursor-pointer hover:shadow transition-shadow`}
@@ -263,8 +260,9 @@ export default function HomePage() {
                         <div className="flex items-center gap-1.5">
                           <span className={`text-sm font-medium ${color.text} truncate`}>{course.course_name}</span>
                           <span className="text-xs text-gray-500 shrink-0">{course.credits}학점</span>
+                          {isOnline && <span className="text-[10px] px-1.5 py-0.5 bg-purple-100 text-purple-600 rounded shrink-0">온라인</span>}
                         </div>
-                        <div className="text-xs text-gray-600 truncate">{course.professor} | {course.schedule_raw}</div>
+                        <div className="text-xs text-gray-600 truncate">{course.professor} | {course.schedule_raw || '시간 미정'}</div>
                       </div>
                       <div className="flex items-center gap-1 shrink-0">
                         <button onClick={(e) => { e.stopPropagation(); handleCopyCode(course.course_code, course.section); }}
