@@ -24,26 +24,26 @@ const firebaseConfig = {
 // ✅ 추가할 과목 데이터 (Firebase 형식으로 변환 완료)
 const newCourses = [
   {
-    _docId: '741104_01',
-    course_code: '741104',
-    course_name: '세포생물학',
+    _docId: '222503_01',
+    course_code: '222503',
+    course_name: '데이터베이스운영론',
     section: '01',
     classification: '전선',
-    target_year: 2,
+    target_year: 4,
     credits: 3,
     hours: 6,
     lab_hours: 0,
     is_micro_major: false,
     category: 'major',
-    college: '보건과학대학',  // ✅ 단과대학
-    department: '의생명과학과',  // ✅ 학과
-    professor: '장종수',
-    schedule_raw: '월13:30-15:00, 목13:30-15:00',
+    college: '공공인재대학',  // ✅ 단과대학
+    department: '문헌정보학과',  // ✅ 학과
+    professor: '송민선',
+    schedule_raw: '화11:30-13:00, 목11:30-13:00',
     times: [
-      { day: '월', start: '13:30', end: '15:00' },
-      { day: '목', start: '13:30', end: '15:00' }
+      { day: '화', start: '11:30', end: '13:00' },
+      { day: '목', start: '11:30', end: '13:00' }
     ],
-    room: '공나B 301 - 강의실(공용)',
+    room: '문헌정보학과실습실',
     capacity: 0,
     notes: '',
     semester: '2025학년도 1학기',
