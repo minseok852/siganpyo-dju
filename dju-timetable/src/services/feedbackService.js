@@ -219,7 +219,7 @@ export async function deleteAdminComment(feedbackId, commentId) {
 }
 
 // 관리자 비밀번호 검증 (실제로는 환경변수나 Firebase Auth 사용 권장)
-const ADMIN_PASSWORD = 'minseock852';
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 export function verifyAdminPassword(password) {
   return password === ADMIN_PASSWORD;
