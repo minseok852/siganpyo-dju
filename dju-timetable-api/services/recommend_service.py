@@ -593,12 +593,6 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
     double_major = user_info.get('double_major')
     credit_allocation = user_info.get('preferences', {}).get('credit_allocation')
     
-    # 디버깅 로그
-    print(f"[DEBUG] double_major={double_major}")
-    print(f"[DEBUG] credit_allocation={credit_allocation}")
-    print(f"[DEBUG] available_courses keys={list(available_courses.keys())}")
-    print(f"[DEBUG] double_major_required count={len(available_courses.get('double_major_required', []))}")
-    print(f"[DEBUG] double_major_elective count={len(available_courses.get('double_major_elective', []))}")
     
     if double_major and credit_allocation:
         print(f"[DEBUG] ✅ 분할 호출 방식 사용!")

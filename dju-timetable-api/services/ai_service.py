@@ -797,7 +797,8 @@ async def evaluate_schedule(courses: list, user_info: dict) -> dict:
             "summary": f"{SCHEDULE_TYPES[schedule_type]['name']} 유형의 시간표입니다. 총 {analysis['total_credits']}학점, {analysis['course_count']}과목으로 구성되어 있습니다."
         }
     except Exception as e:
+        print(f"[ERROR] {str(e)}") #서버 로그에만 기록
         return {
             "success": False, 
-            "error": str(e)
+            "error": "AI 서비스 오류가 발생했습니다" #사용자에게는 일반 메시지만
         }

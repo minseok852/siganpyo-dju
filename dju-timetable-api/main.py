@@ -6,7 +6,8 @@ import os
 
 # 환경변수 로드
 load_dotenv()
-
+if not os.getenv("GEMINI_API_KEY"):
+    print("⚠️ WARNING: GEMINI_API_KEY가 설정되지 않았습니다!")
 from models.schemas import EvaluateRequest, RecommendRequest
 from services.ai_service import evaluate_schedule
 from services.recommend_service import recommend_schedule

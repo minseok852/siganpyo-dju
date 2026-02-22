@@ -28,50 +28,6 @@ export default function PopularPage() {
 
   const { courses: myCourses, addCourse } = useSchedule();
 
-  // ===== 임시 테스트: Firebase 실제 단과대학 목록 확인 =====
-  useEffect(() => {
-    async function checkColleges() {
-      const { collection, getDocs } = await import('firebase/firestore');
-      const { db } = await import('../services/firebase');
-      
-      const coursesRef = collection(db, 'courses');
-      const snapshot = await getDocs(coursesRef);
-      
-      const colleges = new Set();
-      const collegeDepts = {};
-      
-      snapshot.docs.forEach(doc => {
-        const data = doc.data();
-        if (data.college) {
-          colleges.add(data.college);
-          
-          // 단과대학별 학과 수집
-          if (!collegeDepts[data.college]) {
-            collegeDepts[data.college] = new Set();
-          }
-          if (data.department) {
-            collegeDepts[data.college].add(data.department);
-          }
-        }
-      });
-      
-      console.log('=== Firebase 실제 단과대학 목록 ===');
-      const sortedColleges = [...colleges].sort();
-      sortedColleges.forEach(c => console.log(`  '${c}',`));
-      console.log('총', sortedColleges.length, '개 단과대학');
-      
-      console.log('\n=== 단과대학별 학과 목록 (departments.js에 복사용) ===');
-      sortedColleges.forEach(college => {
-        const depts = [...collegeDepts[college]].sort();
-        console.log(`  '${college}': [`);
-        depts.forEach(d => console.log(`    '${d}',`));
-        console.log(`  ],`);
-      });
-    }
-    checkColleges();
-  }, []);
-  // ===== 임시 테스트 끝 =====
-
   // 단과대학 변경시 학과 목록 로드 - ✅ 하드코딩 데이터 사용 (즉시 로드!)
   useEffect(() => {
     if (filters.college && filters.college !== '') {
