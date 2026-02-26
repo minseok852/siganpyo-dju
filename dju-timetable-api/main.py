@@ -99,6 +99,17 @@ async def recommend_schedule_endpoint(request: RecommendRequest):
     
     return result
 
+from models.graduation_schemas import GraduationRequest, GraduationResponse
+from services.graduation_service import GraduationService
+
+graduation_service = GraduationService()
+
+@app.post("/api/graduation/calculate")
+async def calculate_graduation(request: GraduationRequest):
+    result = graduation_service.calculate(request.model_dump())
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error"))
+    return result
 
 # 개발용 실행
 if __name__ == "__main__":

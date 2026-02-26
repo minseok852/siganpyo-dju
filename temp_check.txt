@@ -1,0 +1,1 @@
+how 05638db:dju-timetable/upload_courses.cjs

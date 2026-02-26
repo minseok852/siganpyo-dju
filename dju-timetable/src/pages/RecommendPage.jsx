@@ -1045,14 +1045,14 @@ export default function RecommendPage() {
       activeId: scheduleId,
     };
     
-    console.log('🔥 저장할 데이터:', JSON.stringify(dataToSave, null, 2));
+    
     localStorage.setItem('dju_my_schedules', JSON.stringify(dataToSave));
     
     // 저장 확인
     const saved = localStorage.getItem('dju_my_schedules');
-    console.log('✅ 저장된 데이터:', saved);
     
-    console.log('✅ AI 시간표 저장 완료:', newCourses.length, '과목 → 시간표 ID:', scheduleId);
+    
+    
     
     // 홈으로 이동 (새로고침으로 localStorage 반영)
     window.location.href = '/';
