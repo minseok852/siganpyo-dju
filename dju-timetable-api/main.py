@@ -99,14 +99,22 @@ async def recommend_schedule_endpoint(request: RecommendRequest):
     
     return result
 
-from models.graduation_schemas import GraduationRequest, GraduationResponse
-from services.graduation_service import GraduationService
+from models.graduation_schemas import GraduationRequest
+from services.graduation_service import validate, plan
 
-graduation_service = GraduationService()
+@app.post("/api/graduation/validate")
+async def graduation_validate(request: GraduationRequest):
+    result = validate(request.model_dump())
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error"))
+    return result
 
-@app.post("/api/graduation/calculate")
-async def calculate_graduation(request: GraduationRequest):
-    result = graduation_service.calculate(request.model_dump())
+@app.post("/api/graduation/plan")
+async def graduation_plan(request: GraduationRequest):
+    v = validate(request.model_dump())
+    if not v.get("success"):
+        raise HTTPException(status_code=400, detail=v.get("error"))
+    result = plan(request.model_dump(), v)
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error"))
     return result

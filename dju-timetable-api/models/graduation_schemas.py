@@ -36,6 +36,7 @@ class AcquiredAreas(BaseModel):
 class GraduationRequest(BaseModel):
     admission_year: int           # 입학년도 (예: 2022)
     major_type: str               # 단일전공 | 복수전공 | 부전공 | 소전공
+    is_major_started: bool = True # 복수/부/소전공 이미 시작 여부 (단일전공이면 무시됨)
     is_humanities: bool           # 인문사회·예술계열 여부 (6영역 추가 이수 조건)
     current_grade: int            # 현재 학년 (1~4)
     current_semester: int         # 현재 학기 (1~2)
