@@ -169,6 +169,7 @@ export default function HomePage() {
               <a href="/updates" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1">📋업데이트</a>
               <a href="/faq" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"><HelpCircle size={14} />FAQ</a>
               <a href="/ai" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"><Sparkles size={14} />AI평가</a>
+              <a href="/graduation" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600">졸업계산기</a>
               <a href="/popular" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600">인기</a>
             </nav>
           </div>

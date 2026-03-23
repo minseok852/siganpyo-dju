@@ -14,11 +14,11 @@ REQUIREMENTS = {
     range(2018, 2020): {
         "gyopil_min": 6,
         "gyoseon_min": 30,
+        "gyoseon_max": 46,
         "total_min": 130,
         "major": {
+            "주전공":   {"major_min": 42},
             "복수전공": {"major_min": 42},
-            "부전공":   {"major_min": 42},
-            "소전공":   {"major_min": 42},
         },
         "area_required": {
             "area_1": 1, "area_2": 1, "area_3": 1,
@@ -30,11 +30,11 @@ REQUIREMENTS = {
     range(2020, 2021): {
         "gyopil_min": 11,
         "gyoseon_min": 25,
+        "gyoseon_max": 46,
         "total_min": 130,
         "major": {
+            "주전공":   {"major_min": 42},
             "복수전공": {"major_min": 36},
-            "부전공":   {"major_min": 36},
-            "소전공":   {"major_min": 36},
         },
         "area_required": {
             "area_1": 1, "area_2": 1, "area_3": 1,
@@ -46,11 +46,11 @@ REQUIREMENTS = {
     range(2021, 2025): {
         "gyopil_min": 12,
         "gyoseon_min": 24,
+        "gyoseon_max": 46,
         "total_min": 126,
         "major": {
+            "주전공":   {"major_min": 42},
             "복수전공": {"major_min": 36},
-            "부전공":   {"major_min": 36},
-            "소전공":   {"major_min": 36},
         },
         "area_required": {
             "area_1": 1, "area_2": 1, "area_3": 1,
@@ -62,11 +62,11 @@ REQUIREMENTS = {
     range(2025, 2100): {
         "gyopil_min": 11,
         "gyoseon_min": 21,
+        "gyoseon_max": 42,
         "total_min": 126,
         "major": {
+            "주전공":   {"major_min": 42},
             "복수전공": {"major_min": 36},
-            "부전공":   {"major_min": 36},
-            "소전공":   {"major_min": 36},
         },
         "area_required": {
             "area_1": 1, "area_2": 1, "area_3": 1,
@@ -89,20 +89,14 @@ def _get_requirement(admission_year: int) -> dict | None:
     return None
 
 
-def _calc_total_acquired(acquired: dict) -> int:
-    """총 취득학점 계산 - 성적표 상단 표 전체 합산"""
-    return sum(acquired.values())
-
-
-def _calc_major_acquired(acquired: dict, major_type: str, is_major_started: bool) -> int:
+def _calc_major_acquired(acquired: dict, major_type: str) -> int:
     """
     전공 취득학점 계산
-    - 단일전공: 전기 + 전필 + 전선
-    - 복수/부/소전공이고 이미 시작했으면: 전기 + 전필 + 전선 + 복전
-    - 복수/부/소전공인데 이번학기 시작: 전기 + 전필 + 전선 (bokjeon 무시)
+    - 주전공: 전기 + 전필 + 전선
+    - 복수전공: 전기 + 전필 + 전선 + 복전
     """
     base = acquired["jeongi"] + acquired["jeonpil"] + acquired["jeonseon"]
-    if major_type != "단일전공" and is_major_started:
+    if major_type == "복수전공":
         base += acquired["bokjeon"]
     return base
 
@@ -110,10 +104,10 @@ def _calc_major_acquired(acquired: dict, major_type: str, is_major_started: bool
 def _calc_major_required(base_major_min: int, major_type: str, admission_year: int) -> int:
     """
     전공 필요학점 계산
-    - 단일전공: 복수전공 기준 + 추가학점 (2018~2024: +21, 2025~: +30)
-    - 나머지: base_major_min 그대로
+    - 주전공: 주전공 기준학점 + 추가학점 (2016~2024: +21, 2025~: +30)
+    - 복수전공: base_major_min 그대로
     """
-    if major_type == "단일전공":
+    if major_type == "주전공":
         extra = 30 if admission_year >= 2025 else 21
         return base_major_min + extra
     return base_major_min
@@ -180,7 +174,6 @@ def validate(request_data: dict) -> dict:
     admission_year = request_data["admission_year"]
     major_type = request_data["major_type"]
     is_humanities = request_data["is_humanities"]
-    is_major_started = request_data.get("is_major_started", True)  # 기본값: 이미 시작
     acquired = request_data["acquired"]
     acquired_areas = request_data["acquired_areas"]
 
@@ -193,32 +186,30 @@ def validate(request_data: dict) -> dict:
         }
 
     # 2. 전공 기준값 결정
-    # 단일전공은 REQUIREMENTS에 없으므로 복수전공 기준값 사용 후 함수에서 추가학점 계산
-    if major_type == "단일전공":
-        base_major_min = list(req["major"].values())[0]["major_min"]
-    else:
-        major_req = req["major"].get(major_type)
-        if not major_req:
-            return {
-                "success": False,
-                "error": f"전공유형 '{major_type}'을 찾을 수 없습니다."
-            }
-        base_major_min = major_req["major_min"]
+    major_req = req["major"].get(major_type)
+    if not major_req:
+        return {
+            "success": False,
+            "error": f"전공유형 '{major_type}'을 찾을 수 없습니다. (주전공 또는 복수전공만 지원)"
+        }
+    base_major_min = major_req["major_min"]
 
     # 3. 학점 계산
-    total_acquired = _calc_total_acquired(acquired)
-    major_acquired = _calc_major_acquired(acquired, major_type, is_major_started)
+    total_acquired = request_data["total_acquired"]  # 성적표 졸업학점 칸 직접 입력값 (일선 포함)
+    major_acquired = _calc_major_acquired(acquired, major_type)
     major_required = _calc_major_required(base_major_min, major_type, admission_year)
 
     total_required = req["total_min"]
     gyopil_required = req["gyopil_min"]
     gyoseon_required = req["gyoseon_min"]
+    gyoseon_max = req["gyoseon_max"]
 
     # 4. 학점 충족 여부
     total_satisfied = total_acquired >= total_required
     major_satisfied = major_acquired >= major_required
     gyopil_satisfied = acquired["gyopil"] >= gyopil_required
     gyoseon_satisfied = acquired["gyoseon"] >= gyoseon_required
+    gyoseon_over = acquired["gyoseon"] > gyoseon_max
 
     # 5. 교양영역 검증
     area_validations, area_all_satisfied = _check_area_requirements(
@@ -238,6 +229,8 @@ def validate(request_data: dict) -> dict:
         warnings.append(f"교필 미충족 ({acquired['gyopil']}/{gyopil_required}학점)")
     if not gyoseon_satisfied:
         warnings.append(f"교선 미충족 ({acquired['gyoseon']}/{gyoseon_required}학점)")
+    if gyoseon_over:
+        warnings.append(f"교선 초과 이수 ({acquired['gyoseon']}/{gyoseon_max}학점 이내) - 초과분은 졸업학점에 미반영될 수 있습니다.")
     if not area_all_satisfied:
         warnings.append("미충족 교양영역이 있습니다. 영역별 결과를 확인하세요.")
 
@@ -257,6 +250,8 @@ def validate(request_data: dict) -> dict:
             "gyopil_acquired": acquired["gyopil"],
             "gyoseon_required": gyoseon_required,
             "gyoseon_acquired": acquired["gyoseon"],
+            "gyoseon_max": gyoseon_max,
+            "gyoseon_over": gyoseon_over,
 
             "area_validations": area_validations,
             "area_all_satisfied": area_all_satisfied,
@@ -306,13 +301,6 @@ def plan(request_data: dict, validation_result: dict) -> dict:
     admission_year = request_data["admission_year"]
     gpa_range = request_data["gpa_range"]
 
-    # 1. 마지막 학기 목표학점 최소값 검증
-    if last_semester_target is None or last_semester_target < 5:
-        return {
-            "success": False,
-            "error": "마지막 학기 목표학점은 5학점 이상이어야 합니다."
-        }
-
     # 2. 남은 총학점 계산
     v = validation_result["validation"]
     remaining = v["total_required"] - v["total_acquired"]
@@ -356,32 +344,50 @@ def plan(request_data: dict, validation_result: dict) -> dict:
             "warnings": warnings
         }
 
-    # 마지막 학기 목표가 남은 총학점보다 크면 에러
-    if last_semester_target >= remaining:
-        return {
-            "success": False,
-            "error": f"마지막 학기 목표({last_semester_target}학점)가 남은 총학점({remaining}학점) 이상입니다."
-        }
-
     # 5. 학기 리스트 생성
     semester_list = _generate_semester_list(current_grade, current_semester, remaining_semesters)
 
-    # 6. 역방향 배분
-    distributable = remaining - last_semester_target
-    middle_count = remaining_semesters - 1
-    base_credits = distributable // middle_count
-    remainder = distributable % middle_count
+    # 6. 앞에서부터 18학점으로 채우고 마지막 학기에 남은 학점 배정
+    MAX_NORMAL = 18
+    MIN_LAST = 5
+
+    # 앞 학기들에 18학점씩 채움
+    credits_list = []
+    left = remaining
+    for i in range(remaining_semesters - 1):
+        if left <= MIN_LAST:
+            break  # 마지막 학기에 최소학점 남기고 더 이상 앞에 배분 안 함
+        take = min(MAX_NORMAL, left - MIN_LAST)
+        credits_list.append(take)
+        left -= take
+
+    # 마지막 학기 = 남은 학점
+    last_credits = left
+
+    # 마지막 학기가 5학점 미만이면 앞 학기에서 1학점씩 줄여서 확보
+    if last_credits < MIN_LAST:
+        for i in range(len(credits_list) - 1, -1, -1):
+            need = MIN_LAST - last_credits
+            give = min(credits_list[i], need)
+            credits_list[i] -= give
+            last_credits += give
+            if last_credits >= MIN_LAST:
+                break
+
+    credits_list.append(last_credits)
+
+    # 실제 사용할 학기 리스트 (0학점 학기 제거 후 마지막 학기 포함)
+    actual_semesters = len(credits_list)
+    semester_list = _generate_semester_list(current_grade, current_semester, remaining_semesters)
+    # 앞에서 actual_semesters - 1개 + 마지막 학기(4-2)
+    used_semesters = semester_list[:actual_semesters - 1] + [semester_list[-1]]
 
     warnings = []
     semester_plan = []
 
-    for i, sem in enumerate(semester_list):
-        is_last = (i == remaining_semesters - 1)
-
-        if is_last:
-            credits = last_semester_target
-        else:
-            credits = base_credits + (1 if i < remainder else 0)
+    for i, sem in enumerate(used_semesters):
+        is_last = (i == len(used_semesters) - 1)
+        credits = credits_list[i]
 
         # 7. 수강신청 학점 상한선 체크
         # 현재 학기만 gpa_range 적용, 미래 학기는 일반 범위로 가정

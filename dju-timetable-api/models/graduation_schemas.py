@@ -35,13 +35,12 @@ class AcquiredAreas(BaseModel):
 
 class GraduationRequest(BaseModel):
     admission_year: int           # 입학년도 (예: 2022)
-    major_type: str               # 단일전공 | 복수전공 | 부전공 | 소전공
-    is_major_started: bool = True # 복수/부/소전공 이미 시작 여부 (단일전공이면 무시됨)
+    major_type: str               # 주전공 | 복수전공
     is_humanities: bool           # 인문사회·예술계열 여부 (6영역 추가 이수 조건)
     current_grade: int            # 현재 학년 (1~4)
     current_semester: int         # 현재 학기 (1~2)
     gpa_range: str                # "1.5미만" | "1.5이상~4.0미만" | "4.0이상"
-    last_semester_target: Optional[int] = None  # 마지막 학기 목표 학점
+    total_acquired: int                          # 성적표 졸업학점 칸 값 (일선 포함 실제 총합)
     acquired: AcquiredCredits
     acquired_areas: AcquiredAreas
 
@@ -72,6 +71,8 @@ class ValidationResult(BaseModel):
     gyopil_acquired: int
     gyoseon_required: int
     gyoseon_acquired: int
+    gyoseon_max: int
+    gyoseon_over: bool
 
     # 교양영역별 검증
     area_validations: list[AreaValidation]

@@ -10,6 +10,7 @@ import FeedbackPage from './pages/FeedbackPage';
 import FeedbackAdminPage from './pages/FeedbackAdminPage';
 import UpdateLogPage from './pages/UpdateLogPage';
 import UpdateAdminPage from './pages/UpdateAdminPage';
+import GraduationCalculator from './pages/Graduationcalculator';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
         <Route path="/feedback/admin" element={<FeedbackAdminPage />} />
         <Route path="/updates" element={<UpdateLogPage />} />
         <Route path="/updates/admin" element={<UpdateAdminPage />} />
-        
+        <Route path="/graduation" element={<GraduationCalculator />} />
       </Routes>
     </BrowserRouter>
   );
