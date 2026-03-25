@@ -11,7 +11,7 @@ import FeedbackAdminPage from './pages/FeedbackAdminPage';
 import UpdateLogPage from './pages/UpdateLogPage';
 import UpdateAdminPage from './pages/UpdateAdminPage';
 import GraduationCalculator from './pages/Graduationcalculator';
-
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path="/updates" element={<UpdateLogPage />} />
         <Route path="/updates/admin" element={<UpdateAdminPage />} />
         <Route path="/graduation" element={<GraduationCalculator />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
