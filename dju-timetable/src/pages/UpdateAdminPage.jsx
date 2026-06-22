@@ -325,9 +325,10 @@ function LoginModal({ onLogin }) {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (verifyAdminPassword(password)) {
+    const ok = await verifyAdminPassword(password);
+    if (ok) {
       localStorage.setItem('update_admin_auth', 'true');
       onLogin();
     } else {

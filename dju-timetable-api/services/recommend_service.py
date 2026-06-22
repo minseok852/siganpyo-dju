@@ -586,105 +586,101 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     return prompt
 
 
+def _extract_json(text: str) -> dict:
+    """Gemini 응답에서 JSON 추출 (코드블록 제거)"""
+    if "```json" in text:
+        text = text.split("```json")[1].split("```")[0]
+    elif "```" in text:
+        text = text.split("```")[1].split("```")[0]
+    return json.loads(text.strip())
+
+
 async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
     """Gemini API를 사용해 시간표 추천"""
-    
-    # ✅ 복수전공이면 분할 호출 방식 사용
+
     double_major = user_info.get('double_major')
     credit_allocation = user_info.get('preferences', {}).get('credit_allocation')
-    
-    
+
     if double_major and credit_allocation:
-        print(f"[DEBUG] ✅ 분할 호출 방식 사용!")
         return await recommend_schedule_split(user_info, available_courses)
-    
-    # 단일전공 또는 학점배분 미지정: 기존 방식
+
     prompt = build_recommend_prompt(user_info, available_courses)
-    
-    try:
-        model = genai.GenerativeModel('gemini-2.0-flash')
-        
-        response = model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                temperature=0.3,
-                max_output_tokens=3000,
+
+    last_error = None
+    for attempt, temperature in enumerate([0.3, 0.1]):
+        response_text = None
+        try:
+            model = genai.GenerativeModel('gemini-2.0-flash')
+            response = model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=temperature,
+                    max_output_tokens=3000,
+                )
             )
-        )
-        
-        response_text = response.text
-        
-        # JSON 추출
-        if "```json" in response_text:
-            response_text = response_text.split("```json")[1].split("```")[0]
-        elif "```" in response_text:
-            response_text = response_text.split("```")[1].split("```")[0]
-        
-        result = json.loads(response_text.strip())
-        
-        # ========== 후처리: course_code 검증 ==========
-        selected_courses = result.get('selected_courses', [])
-        
-        all_courses_map = {}
-        for category_courses in available_courses.values():
-            for c in category_courses:
-                key = f"{c.get('course_code', '')}-{c.get('section', '01')}"
-                all_courses_map[key] = c
-        
-        for course in selected_courses:
-            course_code = course.get('course_code', '')
-            section = course.get('section', '01')
-            key = f"{course_code}-{section}"
-            
-            if key in all_courses_map:
-                matched = all_courses_map[key]
-                if not course.get('department'):
-                    course['department'] = matched.get('department', '')
-                if not course.get('college'):
-                    course['college'] = matched.get('college', '')
-                if not course.get('room'):
-                    course['room'] = matched.get('room', '')
-            else:
-                course_name = course.get('course_name', '')
-                for cat_courses in available_courses.values():
-                    for c in cat_courses:
-                        if c.get('course_name') == course_name:
-                            course['course_code'] = c.get('course_code', '')
-                            course['section'] = c.get('section', '01')
-                            course['department'] = c.get('department', '')
-                            course['college'] = c.get('college', '')
-                            course['room'] = c.get('room', '')
-                            break
-                    else:
-                        continue
-                    break
-        
-        # ========== 후처리: 시간 충돌 검사 및 제거 ==========
-        validated_courses, removed_courses = validate_and_remove_conflicts(selected_courses)
-        
-        warnings = result.get('warnings', [])
-        if removed_courses:
-            for removed in removed_courses:
-                warnings.append(f"시간 충돌로 제거됨: {removed['course_name']} ({removed['conflict_with']}과 겹침)")
-        
-        result['selected_courses'] = validated_courses
-        result['warnings'] = warnings
-        result['total_credits'] = sum(c.get('credits', 0) for c in validated_courses)
-        result['empty_days'] = calculate_empty_days(validated_courses)
-        
-        return {"success": True, **result}
-        
-    except json.JSONDecodeError as e:
-        return {
-            "success": False,
-            "error": f"응답 파싱 실패: {str(e)}",
-            "raw_response": response_text if 'response_text' in locals() else None
-        }
-    except Exception as e:
-        return {
-            "success": False, 
-            "error": str(e)
-        }
+            response_text = response.text
+            result = _extract_json(response_text)
+
+            # ========== 후처리: course_code 검증 ==========
+            selected_courses = result.get('selected_courses', [])
+
+            all_courses_map = {}
+            for category_courses in available_courses.values():
+                for c in category_courses:
+                    key = f"{c.get('course_code', '')}-{c.get('section', '01')}"
+                    all_courses_map[key] = c
+
+            for course in selected_courses:
+                course_code = course.get('course_code', '')
+                section = course.get('section', '01')
+                key = f"{course_code}-{section}"
+
+                if key in all_courses_map:
+                    matched = all_courses_map[key]
+                    if not course.get('department'):
+                        course['department'] = matched.get('department', '')
+                    if not course.get('college'):
+                        course['college'] = matched.get('college', '')
+                    if not course.get('room'):
+                        course['room'] = matched.get('room', '')
+                else:
+                    course_name = course.get('course_name', '')
+                    for cat_courses in available_courses.values():
+                        for c in cat_courses:
+                            if c.get('course_name') == course_name:
+                                course['course_code'] = c.get('course_code', '')
+                                course['section'] = c.get('section', '01')
+                                course['department'] = c.get('department', '')
+                                course['college'] = c.get('college', '')
+                                course['room'] = c.get('room', '')
+                                break
+                        else:
+                            continue
+                        break
+
+            # ========== 후처리: 시간 충돌 검사 및 제거 ==========
+            validated_courses, removed_courses = validate_and_remove_conflicts(selected_courses)
+
+            warnings = result.get('warnings', [])
+            if removed_courses:
+                for removed in removed_courses:
+                    warnings.append(f"시간 충돌로 제거됨: {removed['course_name']} ({removed['conflict_with']}과 겹침)")
+
+            result['selected_courses'] = validated_courses
+            result['warnings'] = warnings
+            result['total_credits'] = sum(c.get('credits', 0) for c in validated_courses)
+            result['empty_days'] = calculate_empty_days(validated_courses)
+
+            return {"success": True, **result}
+
+        except json.JSONDecodeError as e:
+            last_error = f"응답 파싱 실패 (시도 {attempt + 1}): {str(e)}"
+            print(f"[WARN] {last_error}")
+            continue
+        except Exception as e:
+            return {"success": False, "error": str(e)}
+
+    return {"success": False, "error": last_error or "알 수 없는 오류"}
 
 
 # ============================================================

@@ -1,12 +1,7 @@
 // src/components/schedule/CourseBlock.jsx
 import { useMemo } from 'react';
 import { X } from 'lucide-react';
-
-// 시간 문자열을 분 단위로 변환
-function timeToMinutes(time) {
-  const [hours, minutes] = time.split(':').map(Number);
-  return hours * 60 + minutes;
-}
+import { timeToMinutes } from '../../utils/timeUtils';
 
 export default function CourseBlock({ 
   course, 

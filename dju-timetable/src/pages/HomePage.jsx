@@ -4,14 +4,71 @@ import { useNavigate } from 'react-router-dom';
 import {
   Plus, Trash2, Share2, Sparkles, BookOpen, Copy, Check,
   Loader2, X, Wand2, HelpCircle, Edit3, Files, ChevronDown, MessageSquarePlus,
-  Smartphone, Download, CheckCircle
+  Smartphone, Download, CheckCircle, Palette
 } from 'lucide-react';
+import { THEMES } from '../data/constants';
 import ScheduleGrid from '../components/schedule/ScheduleGrid';
 import CourseSearch from '../components/schedule/CourseSearch';
 import CourseDetail from '../components/schedule/CourseDetail';
 import { useSchedule } from '../hooks/useSchedule';
 import { saveScheduleForShare } from '../services/shareService';
 import { createTransfer, receiveTransfer } from '../services/transferService';
+
+// 테마 피커 컴포넌트
+function ThemePicker({ currentTheme, onSelect }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (ref.current && !ref.current.contains(e.target)) setIsOpen(false);
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        onClick={() => setIsOpen(v => !v)}
+        className={`p-1.5 border rounded-lg hover:bg-gray-50 transition-colors ${
+          isOpen ? 'border-blue-400 bg-blue-50 text-blue-600' : 'border-gray-300 text-gray-600'
+        }`}
+        title="테마 변경"
+      >
+        <Palette size={18} />
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 top-full mt-1.5 bg-white rounded-xl shadow-lg border border-gray-200 p-2 z-50 w-44">
+          <p className="text-[11px] font-medium text-gray-400 px-1 mb-1.5">색상 테마</p>
+          {Object.entries(THEMES).map(([key, theme]) => (
+            <button
+              key={key}
+              onClick={() => { onSelect(key); setIsOpen(false); }}
+              className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-gray-50 transition-colors ${
+                currentTheme === key ? 'bg-blue-50' : ''
+              }`}
+            >
+              {/* 색상 스와치 5개 */}
+              <div className="flex gap-0.5 flex-shrink-0">
+                {theme.preview.map((cls, i) => (
+                  <div key={i} className={`w-3 h-3 rounded-full ${cls} border border-black/10`} />
+                ))}
+              </div>
+              <span className={`text-xs font-medium ${currentTheme === key ? 'text-blue-600' : 'text-gray-700'}`}>
+                {theme.name}
+              </span>
+              {currentTheme === key && (
+                <Check size={12} className="text-blue-500 ml-auto flex-shrink-0" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 // 시간표 탭 메뉴 컴포넌트
 function ScheduleTabMenu({ schedule, isActive, onSwitch, onRename, onDuplicate, onDelete, canDelete, canDuplicate }) {
@@ -325,7 +382,7 @@ export default function HomePage() {
     schedules, activeId, activeSchedule, addSchedule, duplicateSchedule, deleteSchedule,
     renameSchedule, switchSchedule, maxSchedules,
     courses, stats, addCourse, removeCourse, clearSchedule, getCourseColor,
-    loadSchedule, saveToSchedule,
+    loadSchedule, saveToSchedule, setScheduleTheme,
   } = useSchedule();
 
   const handleShare = async () => {
@@ -427,6 +484,10 @@ export default function HomePage() {
               <button onClick={() => navigate('/recommend')} className="px-3 py-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 flex items-center gap-1 text-sm">
                 <Wand2 size={16} /><span className="hidden sm:inline">AI로</span>만들기
               </button>
+              <ThemePicker
+                currentTheme={activeSchedule?.theme || 'pastel'}
+                onSelect={(theme) => setScheduleTheme(activeId, theme)}
+              />
               <button onClick={handleShare} disabled={courses.length === 0} className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50" title="공유"><Share2 size={18} /></button>
               {courses.length > 0 && (
                 <button onClick={handleTransferSend} className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50" title="다른 기기로 보내기"><Smartphone size={18} /></button>

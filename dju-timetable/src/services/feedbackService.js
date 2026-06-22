@@ -1,14 +1,15 @@
 // src/services/feedbackService.js
-import { 
-  collection, 
-  doc, 
-  addDoc, 
-  getDocs, 
-  updateDoc, 
+import {
+  collection,
+  doc,
+  addDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
   deleteDoc,
   query,
   orderBy,
-  serverTimestamp 
+  serverTimestamp
 } from 'firebase/firestore';
 import { db } from './firebase';
 
@@ -130,32 +131,23 @@ export async function deleteFeedback(feedbackId) {
 export async function addAdminComment(feedbackId, content) {
   try {
     const docRef = doc(db, 'feedbacks', feedbackId);
-    const commentData = {
+    const snapshot = await getDoc(docRef);
+
+    if (!snapshot.exists()) {
+      return { success: false, error: '피드백을 찾을 수 없습니다.' };
+    }
+
+    const newComment = {
+      id: Date.now().toString(),
       content,
       createdAt: new Date().toISOString(),
     };
-    
-    // 기존 댓글 배열에 추가 (arrayUnion 대신 직접 관리)
-    const feedbacksRef = collection(db, 'feedbacks');
-    const snapshot = await getDocs(query(feedbacksRef));
-    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
-    
-    if (!feedbackDoc) {
-      return { success: false, error: '피드백을 찾을 수 없습니다.' };
-    }
-    
-    const existingComments = feedbackDoc.data().adminComments || [];
-    const newComment = {
-      id: Date.now().toString(),
-      ...commentData,
-    };
-    
+
     await updateDoc(docRef, {
-      adminComments: [...existingComments, newComment],
+      adminComments: [...(snapshot.data().adminComments || []), newComment],
       updatedAt: serverTimestamp(),
     });
-    
-    console.log('✅ 관리자 댓글 추가:', feedbackId);
+
     return { success: true, comment: newComment };
   } catch (error) {
     console.error('❌ 관리자 댓글 추가 실패:', error);
@@ -169,27 +161,23 @@ export async function addAdminComment(feedbackId, content) {
 export async function editAdminComment(feedbackId, commentId, newContent) {
   try {
     const docRef = doc(db, 'feedbacks', feedbackId);
-    const feedbacksRef = collection(db, 'feedbacks');
-    const snapshot = await getDocs(query(feedbacksRef));
-    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
-    
-    if (!feedbackDoc) {
+    const snapshot = await getDoc(docRef);
+
+    if (!snapshot.exists()) {
       return { success: false, error: '피드백을 찾을 수 없습니다.' };
     }
-    
-    const comments = feedbackDoc.data().adminComments || [];
-    const updatedComments = comments.map(c => 
-      c.id === commentId 
+
+    const updatedComments = (snapshot.data().adminComments || []).map(c =>
+      c.id === commentId
         ? { ...c, content: newContent, editedAt: new Date().toISOString() }
         : c
     );
-    
+
     await updateDoc(docRef, {
       adminComments: updatedComments,
       updatedAt: serverTimestamp(),
     });
-    
-    console.log('✅ 관리자 댓글 수정:', commentId);
+
     return { success: true };
   } catch (error) {
     console.error('❌ 관리자 댓글 수정 실패:', error);
@@ -203,23 +191,21 @@ export async function editAdminComment(feedbackId, commentId, newContent) {
 export async function deleteAdminComment(feedbackId, commentId) {
   try {
     const docRef = doc(db, 'feedbacks', feedbackId);
-    const feedbacksRef = collection(db, 'feedbacks');
-    const snapshot = await getDocs(query(feedbacksRef));
-    const feedbackDoc = snapshot.docs.find(d => d.id === feedbackId);
-    
-    if (!feedbackDoc) {
+    const snapshot = await getDoc(docRef);
+
+    if (!snapshot.exists()) {
       return { success: false, error: '피드백을 찾을 수 없습니다.' };
     }
-    
-    const comments = feedbackDoc.data().adminComments || [];
-    const filteredComments = comments.filter(c => c.id !== commentId);
-    
+
+    const filteredComments = (snapshot.data().adminComments || []).filter(
+      c => c.id !== commentId
+    );
+
     await updateDoc(docRef, {
       adminComments: filteredComments,
       updatedAt: serverTimestamp(),
     });
-    
-    console.log('✅ 관리자 댓글 삭제:', commentId);
+
     return { success: true };
   } catch (error) {
     console.error('❌ 관리자 댓글 삭제 실패:', error);
@@ -227,9 +213,15 @@ export async function deleteAdminComment(feedbackId, commentId) {
   }
 }
 
-// 관리자 비밀번호 검증 (실제로는 환경변수나 Firebase Auth 사용 권장)
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-
-export function verifyAdminPassword(password) {
-  return password === ADMIN_PASSWORD;
+export async function verifyAdminPassword(password) {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/admin/verify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }

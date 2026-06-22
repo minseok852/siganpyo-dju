@@ -1,7 +1,7 @@
 // src/hooks/useSchedule.js
 import { useState, useCallback, useEffect } from 'react';
-import { checkScheduleConflict, getTotalCredits, getEmptyDays } from '../utils/timeUtils';
-import { STORAGE_KEYS, COURSE_COLORS } from '../data/constants';
+import { checkScheduleConflict, getTotalCredits, getEmptyDays, parseScheduleToTimes } from '../utils/timeUtils';
+import { STORAGE_KEYS, COURSE_COLORS, THEMES } from '../data/constants';
 import { incrementCoursePopularity, decrementCoursePopularity } from '../services/popularService';
 
 // 최대 시간표 개수
@@ -9,52 +9,6 @@ const MAX_SCHEDULES = 3;
 
 // 기본 시간표 이름
 const DEFAULT_NAMES = ['시간표 1', '시간표 2', '시간표 3'];
-
-/**
- * schedule_raw를 times 배열로 파싱
- */
-function parseScheduleToTimes(scheduleRaw) {
-  if (!scheduleRaw) return [];
-  const times = [];
-  
-  const segments = scheduleRaw.split(',').map(s => s.trim());
-  
-  for (const segment of segments) {
-    const parts = segment.split(/\s+/).filter(p => p.trim());
-    
-    for (const part of parts) {
-      // "화10:00-11:30" 형식
-      const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
-      if (timeMatch) {
-        const [, day, startH, startM, endH, endM] = timeMatch;
-        times.push({
-          day,
-          start: `${startH.padStart(2, '0')}:${startM}`,
-          end: `${endH.padStart(2, '0')}:${endM}`,
-        });
-        continue;
-      }
-      
-      // "월1,2,3" 형식 (교시)
-      const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
-      if (periodMatch) {
-        const [, day, periodsStr] = periodMatch;
-        const periods = periodsStr.split(',').map(p => parseInt(p)).filter(p => !isNaN(p));
-        if (periods.length > 0) {
-          const minPeriod = Math.min(...periods);
-          const maxPeriod = Math.max(...periods);
-          times.push({
-            day,
-            start: `${(8 + minPeriod).toString().padStart(2, '0')}:00`,
-            end: `${(8 + maxPeriod + 1).toString().padStart(2, '0')}:00`,
-          });
-        }
-      }
-    }
-  }
-  
-  return times;
-}
 
 /**
  * 과목 데이터에 times 필드 보장
@@ -127,8 +81,9 @@ function getInitialState() {
 }
 
 export function useSchedule() {
-  const [schedules, setSchedules] = useState(() => getInitialState().schedules);
-  const [activeId, setActiveId] = useState(() => getInitialState().activeId);
+  const [init] = useState(getInitialState);
+  const [schedules, setSchedules] = useState(init.schedules);
+  const [activeId, setActiveId] = useState(init.activeId);
 
   // 현재 활성 시간표
   const activeSchedule = schedules.find(s => s.id === activeId) || schedules[0];
@@ -404,12 +359,23 @@ export function useSchedule() {
     setActiveId(scheduleId);
   }, []);
 
-  // 과목 색상 가져오기
+  // 활성 시간표의 테마 팔레트
+  const activePalette = THEMES[activeSchedule?.theme] ?? THEMES.pastel;
+
+  // 과목 색상 가져오기 (활성 테마 적용)
   const getCourseColor = useCallback((courseCode, section) => {
     const key = `${courseCode}-${section}`;
     const colorIndex = colorMap[key] ?? 0;
-    return COURSE_COLORS[colorIndex];
-  }, [colorMap]);
+    return activePalette.colors[colorIndex % activePalette.colors.length];
+  }, [colorMap, activePalette]);
+
+  // 시간표 테마 변경
+  const setScheduleTheme = useCallback((scheduleId, themeName) => {
+    if (!THEMES[themeName]) return;
+    setSchedules(prev => prev.map(s =>
+      s.id === scheduleId ? { ...s, theme: themeName } : s
+    ));
+  }, []);
 
   // 통계 계산
   const stats = {
@@ -429,6 +395,7 @@ export function useSchedule() {
     renameSchedule,
     switchSchedule,
     saveToSchedule,
+    setScheduleTheme,
     maxSchedules: MAX_SCHEDULES,
     
     // 기존 호환 (현재 활성 시간표)

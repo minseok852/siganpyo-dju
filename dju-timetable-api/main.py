@@ -4,9 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from typing import Optional, Any
-from datetime import datetime, timedelta
 import os
-import random
 import httpx
 
 # 환경변수 로드
@@ -153,53 +151,20 @@ async def graduation_plan(request: GraduationRequest):
         raise HTTPException(status_code=400, detail=result.get("error"))
     return result
 
-# ===== 시간표 전송 =====
+# ===== 관리자 인증 =====
 
-_transfer_store: dict[str, dict] = {}
+class AdminVerifyRequest(BaseModel):
+    password: str
 
-def _cleanup_expired():
-    now = datetime.now()
-    expired = [k for k, v in _transfer_store.items() if v["expires_at"] <= now]
-    for k in expired:
-        del _transfer_store[k]
-
-def _generate_code() -> str:
-    for _ in range(100):
-        code = f"{random.randint(0, 99999999):08d}"
-        entry = _transfer_store.get(code)
-        if entry is None or entry["used"] or entry["expires_at"] <= datetime.now():
-            return code
-    raise RuntimeError("코드 생성 실패")
-
-class TransferCreateRequest(BaseModel):
-    courses: list[dict[str, Any]]
-
-@app.post("/api/schedule/transfer")
-async def create_transfer(request: TransferCreateRequest):
-    _cleanup_expired()
-    code = _generate_code()
-    now = datetime.now()
-    _transfer_store[code] = {
-        "courses": request.courses,
-        "created_at": now,
-        "expires_at": now + timedelta(minutes=5),
-        "used": False,
-    }
-    return {"code": code}
-
-@app.get("/api/schedule/transfer/{code}")
-async def get_transfer(code: str):
-    entry = _transfer_store.get(code)
-    if entry is None:
-        raise HTTPException(status_code=404, detail="존재하지 않는 코드입니다")
-    if entry["used"]:
-        raise HTTPException(status_code=410, detail="이미 사용된 코드입니다")
-    if entry["expires_at"] <= datetime.now():
-        del _transfer_store[code]
-        raise HTTPException(status_code=410, detail="코드가 만료되었습니다")
-    courses = entry["courses"]
-    del _transfer_store[code]
-    return {"courses": courses}
+@app.post("/api/admin/verify")
+async def verify_admin(request: AdminVerifyRequest):
+    """관리자 비밀번호 검증 (서버에서만 비밀번호 보유)"""
+    admin_password = os.getenv("ADMIN_PASSWORD")
+    if not admin_password:
+        raise HTTPException(status_code=500, detail="서버 설정 오류")
+    if request.password != admin_password:
+        raise HTTPException(status_code=401, detail="비밀번호가 올바르지 않습니다")
+    return {"success": True}
 
 
 class FeedbackNotifyRequest(BaseModel):

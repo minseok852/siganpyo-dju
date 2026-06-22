@@ -18,6 +18,7 @@ import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
 import { recommendSchedule, modifySchedule } from '../services/aiService';
 import { COLLEGES, COURSE_COLORS } from '../data/constants';
+import { parseScheduleToTimes } from '../utils/timeUtils';
 import CourseDetail from '../components/schedule/CourseDetail';
 
 // 시간표 선택 모달 컴포넌트
@@ -808,160 +809,71 @@ export default function RecommendPage() {
   // 과목 필터링
   const filterAvailableCourses = async () => {
     const grade = userInfo.grade;
-    let generalRequired = [];
-    let generalElective = [];
+    const avoidCourseNames = avoidCourses.map(c => c.course_name);
+    const filterAvoid = (list) => list.filter(c => !isNameMatched(c.course_name, avoidCourseNames));
 
-    // 교양 안 듣기가 아니면 교양 과목 로드
-    if (!preferences.skipGeneral) {
-      const grResults = await searchCourses({ category: 'general_required', limit: 100 });
-      // ✅ 부분 일치로 변경 (띄어쓰기/오타 문제 방지)
-      generalRequired = grResults.filter(c => 
-        completedCourses.skipGeneralRequired || !isNameMatched(c.course_name, completedCourses.generalRequired)
-      );
+    // 모든 독립적인 쿼리를 한 번에 병렬 실행
+    const areasToSearch = !preferences.skipGeneral
+      ? (preferences.preferredAreas.length > 0 ? preferences.preferredAreas : AREA_OPTIONS.map(a => a.value))
+          .filter(area => !completedCourses.completedAreas.includes(area))
+      : [];
 
-      // 교양선택: 선호 영역 + 이수 완료 영역 제외
-      const areasToSearch = preferences.preferredAreas.length > 0 
-        ? preferences.preferredAreas 
-        : AREA_OPTIONS.map(a => a.value);
-      
-      // 이수 완료 영역 제외
-      const areasFiltered = areasToSearch.filter(
-        area => !completedCourses.completedAreas.includes(area)
-      );
-      
-      if (areasFiltered.length > 0) {
-        let tempElective = [];
-        for (const area of areasFiltered) {
-          const areaResults = await searchCourses({ category: 'general_elective', area, limit: 50 });
-          tempElective = [...tempElective, ...areaResults];
-        }
-        generalElective = tempElective;
-      }
-    }
+    const [
+      grResults,
+      mrResults,
+      meResults,
+      dmrResults,
+      dmeResults,
+      ...areaResults
+    ] = await Promise.all([
+      preferences.skipGeneral ? Promise.resolve([]) : searchCourses({ category: 'general_required', limit: 100 }),
+      searchCourses({ category: 'major', department: userInfo.major, classification: '전필', limit: 50 }),
+      searchCourses({ category: 'major', department: userInfo.major, classification: '전선', limit: 50 }),
+      (userInfo.hasDoubleMajor && userInfo.doubleMajor)
+        ? searchCourses({ category: 'major', department: userInfo.doubleMajor, classification: '전필', limit: 50 })
+        : Promise.resolve([]),
+      (userInfo.hasDoubleMajor && userInfo.doubleMajor)
+        ? searchCourses({ category: 'major', department: userInfo.doubleMajor, classification: '전선', limit: 50 })
+        : Promise.resolve([]),
+      ...areasToSearch.map(area => searchCourses({ category: 'general_elective', area, limit: 50 })),
+    ]);
 
-    // 전공필수 (해당 학과만!)
-    const mrResults = await searchCourses({ 
-      category: 'major', 
-      department: userInfo.major, 
-      classification: '전필',
-      limit: 50 
-    });
-    // ✅ 부분 일치로 변경 + 학년 필터링: target_year <= grade
+    const generalRequired = grResults.filter(c =>
+      completedCourses.skipGeneralRequired || !isNameMatched(c.course_name, completedCourses.generalRequired)
+    );
+
+    const generalElective = areaResults.flat();
+
     const majorRequired = mrResults.filter(c =>
       (completedCourses.skipMajorRequired || !isNameMatched(c.course_name, completedCourses.majorRequired)) &&
       (c.target_year === 0 || c.target_year <= grade)
     );
 
-    // 전공선택 (해당 학과만!)
-    const meResults = await searchCourses({ 
-      category: 'major', 
-      department: userInfo.major, 
-      classification: '전선',
-      limit: 50 
-    });
-    
-    // 학년 필터링 + 이수 완료 과목 제외
     const completedMajorNames = completedCourses.completedMajorElective.map(c => c.course_name);
     const majorElective = meResults.filter(c =>
       (c.target_year === 0 || c.target_year <= grade) &&
       !isNameMatched(c.course_name, completedMajorNames)
     );
 
-    // ========== 복수전공 과목 ==========
-    let doubleMajorRequired = [];
-    let doubleMajorElective = [];
-    
-    if (userInfo.hasDoubleMajor && userInfo.doubleMajor) {
-      // 복전 전필
-      const dmrResults = await searchCourses({ 
-        category: 'major', 
-        department: userInfo.doubleMajor, 
-        classification: '전필',
-        limit: 50 
-      });
-      doubleMajorRequired = dmrResults.filter(c =>
-        (completedCourses.skipDoubleMajorRequired || !isNameMatched(c.course_name, completedCourses.doubleMajorRequired)) &&
-        (c.target_year === 0 || c.target_year <= grade)
-      );
+    const doubleMajorRequired = dmrResults.filter(c =>
+      (completedCourses.skipDoubleMajorRequired || !isNameMatched(c.course_name, completedCourses.doubleMajorRequired)) &&
+      (c.target_year === 0 || c.target_year <= grade)
+    );
 
-      // 복전 전선
-      const dmeResults = await searchCourses({ 
-        category: 'major', 
-        department: userInfo.doubleMajor, 
-        classification: '전선',
-        limit: 50 
-      });
-      const completedDoubleMajorNames = completedCourses.completedDoubleMajorElective.map(c => c.course_name);
-      doubleMajorElective = dmeResults.filter(c =>
-        (c.target_year === 0 || c.target_year <= grade) &&
-        !isNameMatched(c.course_name, completedDoubleMajorNames)
-      );
-    }
-
-    // 듣기 싫은 과목명 목록
-    const avoidCourseNames = avoidCourses.map(c => c.course_name);
-
-    // 모든 결과에서 듣기 싫은 과목 제외 (부분 일치)
-    const filterAvoid = (courses) => courses.filter(c => !isNameMatched(c.course_name, avoidCourseNames));
+    const completedDoubleMajorNames = completedCourses.completedDoubleMajorElective.map(c => c.course_name);
+    const doubleMajorElective = dmeResults.filter(c =>
+      (c.target_year === 0 || c.target_year <= grade) &&
+      !isNameMatched(c.course_name, completedDoubleMajorNames)
+    );
 
     return {
       general_required: filterAvoid(generalRequired).slice(0, 20),
       major_required: filterAvoid(majorRequired).slice(0, 20),
       major_elective: filterAvoid(majorElective).slice(0, 30),
       general_elective: filterAvoid(generalElective).slice(0, 30),
-      // 복수전공
       double_major_required: filterAvoid(doubleMajorRequired).slice(0, 20),
       double_major_elective: filterAvoid(doubleMajorElective).slice(0, 30),
     };
-  };
-
-  // schedule_raw를 times 배열로 변환
-  const parseScheduleToTimes = (scheduleRaw) => {
-    if (!scheduleRaw) return [];
-    const times = [];
-    
-    // 다양한 형식 처리: "월10:00-11:30, 수10:00-11:30" 또는 "월1,2,3 수1,2,3"
-    // 쉼표로 먼저 분리, 그 다음 각 부분에서 요일+시간 파싱
-    const segments = scheduleRaw.split(',').map(s => s.trim());
-    
-    for (const segment of segments) {
-      // 공백으로 추가 분리 (여러 요일이 공백으로 구분된 경우)
-      const parts = segment.split(/\s+/).filter(p => p.trim());
-      
-      for (const part of parts) {
-        // "화10:00-11:30" 형식
-        const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
-        if (timeMatch) {
-          const [, day, startH, startM, endH, endM] = timeMatch;
-          times.push({
-            day,
-            start: `${startH.padStart(2, '0')}:${startM}`,
-            end: `${endH.padStart(2, '0')}:${endM}`,
-          });
-          continue;
-        }
-        
-        // "월1,2,3" 형식 (교시) - 이 경우는 segment 단위로 처리됨
-        const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
-        if (periodMatch) {
-          const [, day, periodsStr] = periodMatch;
-          const periods = periodsStr.split(',').map(p => parseInt(p)).filter(p => !isNaN(p));
-          if (periods.length > 0) {
-            const minPeriod = Math.min(...periods);
-            const maxPeriod = Math.max(...periods);
-            const startHour = 8 + minPeriod;
-            const endHour = 8 + maxPeriod + 1;
-            times.push({
-              day,
-              start: `${startHour.toString().padStart(2, '0')}:00`,
-              end: `${endHour.toString().padStart(2, '0')}:00`,
-            });
-          }
-        }
-      }
-    }
-    
-    return times;
   };
 
   // 시간표 수정 요청
@@ -1021,151 +933,37 @@ export default function RecommendPage() {
   // 실제로 특정 시간표에 저장
   const handleSaveToSchedule = (scheduleId) => {
     if (!result) return;
-    
-    // 새 시간표 데이터 준비
-    const newCourses = result.selected_courses.map(course => {
-      const times = parseScheduleToTimes(course.schedule_raw);
-      
-      return {
-        course_code: course.course_code || `AI-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
-        section: course.section || '01',
-        course_name: course.course_name || '과목명 없음',
-        professor: course.professor || '미정',
-        credits: course.credits || 3,
-        schedule_raw: course.schedule_raw || '',
-        times: times,
-        room: course.room || '',
-        category: course.category || '전공선택',
-        classification: course.category || '전선',
-        college: course.college || '',
-        department: course.department || '',
-      };
-    });
-    
-    // colorMap 생성
-    const newColorMap = {};
-    newCourses.forEach((course, idx) => {
-      const key = `${course.course_code}-${course.section}`;
-      newColorMap[key] = idx % COURSE_COLORS.length;
-    });
-    
-    // 기존 시간표 데이터 로드
-    let savedData = { schedules: [], activeId: 1 };
-    try {
-      const existing = localStorage.getItem('dju_my_schedules');
-      if (existing) {
-        savedData = JSON.parse(existing);
-      } else {
-        // 기존 단일 시간표 마이그레이션
-        const oldData = localStorage.getItem('dju_my_schedule');
-        if (oldData) {
-          const parsed = JSON.parse(oldData);
-          savedData = {
-            schedules: [{
-              id: 1,
-              name: '시간표 1',
-              courses: parsed.courses || [],
-              colorMap: parsed.colorMap || {},
-            }],
-            activeId: 1,
-          };
-        } else {
-          // 완전 새로 시작
-          savedData = {
-            schedules: [{
-              id: 1,
-              name: '시간표 1',
-              courses: [],
-              colorMap: {},
-            }],
-            activeId: 1,
-          };
-        }
-      }
-    } catch (e) {
-      console.error('localStorage 로드 실패:', e);
-    }
-    
-    // 해당 시간표에 저장
-    const updatedSchedules = savedData.schedules.map(s => {
-      if (s.id === scheduleId) {
-        return {
-          ...s,
-          courses: newCourses,
-          colorMap: newColorMap,
-        };
-      }
-      return s;
-    });
-    
-    // localStorage에 직접 저장
-    const dataToSave = {
-      schedules: updatedSchedules,
-      activeId: scheduleId,
-    };
-    
-    
-    localStorage.setItem('dju_my_schedules', JSON.stringify(dataToSave));
-    
-    // 저장 확인
-    const saved = localStorage.getItem('dju_my_schedules');
-    
-    
-    
-    
-    // 홈으로 이동 (새로고침으로 localStorage 반영)
-    window.location.href = '/';
+
+    const newCourses = result.selected_courses.map(course => ({
+      course_code: course.course_code || `AI-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+      section: course.section || '01',
+      course_name: course.course_name || '과목명 없음',
+      professor: course.professor || '미정',
+      credits: course.credits || 3,
+      schedule_raw: course.schedule_raw || '',
+      times: parseScheduleToTimes(course.schedule_raw),
+      room: course.room || '',
+      category: course.category || '전공선택',
+      classification: course.category || '전선',
+      college: course.college || '',
+      department: course.department || '',
+    }));
+
+    saveToSchedule(newCourses, scheduleId);
+    navigate('/');
   };
 
   // 새 시간표 생성 후 저장
   const handleSaveToNewSchedule = () => {
     if (!result) return;
-    
-    // 기존 데이터 로드
-    let savedData = { schedules: [], activeId: 1 };
-    try {
-      const existing = localStorage.getItem('dju_my_schedules');
-      if (existing) {
-        savedData = JSON.parse(existing);
-      } else {
-        savedData = {
-          schedules: [{
-            id: 1,
-            name: '시간표 1',
-            courses: [],
-            colorMap: {},
-          }],
-          activeId: 1,
-        };
-      }
-    } catch (e) {
-      console.error('localStorage 로드 실패:', e);
-    }
-    
-    // 최대 3개 체크
-    if (savedData.schedules.length >= 3) {
-      alert('최대 3개까지만 만들 수 있어요');
+
+    const newScheduleResult = addSchedule();
+    if (!newScheduleResult.success) {
+      alert(newScheduleResult.error);
       return;
     }
-    
-    // 새 시간표 ID 생성
-    const newId = Math.max(...savedData.schedules.map(s => s.id), 0) + 1;
-    const defaultNames = ['시간표 1', '시간표 2', '시간표 3'];
-    const newName = defaultNames[savedData.schedules.length] || `시간표 ${newId}`;
-    
-    // 새 빈 시간표 추가
-    savedData.schedules.push({
-      id: newId,
-      name: newName,
-      courses: [],
-      colorMap: {},
-    });
-    
-    // localStorage 저장 (새 시간표 생성)
-    localStorage.setItem('dju_my_schedules', JSON.stringify(savedData));
-    
-    // 새 시간표에 AI 결과 저장
-    handleSaveToSchedule(newId);
+
+    handleSaveToSchedule(newScheduleResult.id);
   };
 
   const handleRemoveMustTake = (course) => {

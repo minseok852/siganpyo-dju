@@ -122,6 +122,53 @@ export function calculateTimePosition(time, slotHeight = 30) {
   return { top, height };
 }
 
+/**
+ * schedule_raw 문자열을 times 배열로 파싱
+ * 지원 형식: "화10:00-11:30, 목10:00-11:30" / "월1,2,3 수1,2,3"
+ * @param {string} scheduleRaw
+ * @returns {{ day: string, start: string, end: string }[]}
+ */
+export function parseScheduleToTimes(scheduleRaw) {
+  if (!scheduleRaw) return [];
+  const times = [];
+
+  const segments = scheduleRaw.split(',').map(s => s.trim());
+
+  for (const segment of segments) {
+    const parts = segment.split(/\s+/).filter(p => p.trim());
+
+    for (const part of parts) {
+      const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
+      if (timeMatch) {
+        const [, day, startH, startM, endH, endM] = timeMatch;
+        times.push({
+          day,
+          start: `${startH.padStart(2, '0')}:${startM}`,
+          end: `${endH.padStart(2, '0')}:${endM}`,
+        });
+        continue;
+      }
+
+      const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
+      if (periodMatch) {
+        const [, day, periodsStr] = periodMatch;
+        const periods = periodsStr.split(',').map(p => parseInt(p)).filter(p => !isNaN(p));
+        if (periods.length > 0) {
+          const minPeriod = Math.min(...periods);
+          const maxPeriod = Math.max(...periods);
+          times.push({
+            day,
+            start: `${(8 + minPeriod).toString().padStart(2, '0')}:00`,
+            end: `${(8 + maxPeriod + 1).toString().padStart(2, '0')}:00`,
+          });
+        }
+      }
+    }
+  }
+
+  return times;
+}
+
 // 요일 인덱스 매핑
 export const dayIndex = {
   '월': 0,
