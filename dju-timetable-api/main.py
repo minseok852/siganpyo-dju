@@ -1,8 +1,13 @@
 # main.py
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from dotenv import load_dotenv
+from typing import Optional, Any
+from datetime import datetime, timedelta
 import os
+import random
+import httpx
 
 # 환경변수 로드
 load_dotenv()
@@ -101,6 +106,35 @@ async def recommend_schedule_endpoint(request: RecommendRequest):
 
 from models.graduation_schemas import GraduationRequest
 from services.graduation_service import validate, plan
+from services.modify_service import modify_schedule as _modify_schedule
+
+
+class ModifyRequest(BaseModel):
+    current_courses: list[dict[str, Any]]
+    modify_type: str
+    modify_params: dict[str, Any]
+    available_courses: dict[str, list[dict[str, Any]]]
+    user_info: dict[str, Any]
+
+
+@app.post("/api/recommend/modify")
+async def modify_schedule_endpoint(request: ModifyRequest):
+    """시간표 수정 API"""
+    if not request.current_courses:
+        raise HTTPException(status_code=400, detail="현재 시간표가 없습니다")
+
+    result = await _modify_schedule(
+        current_courses=request.current_courses,
+        modify_type=request.modify_type,
+        modify_params=request.modify_params,
+        available_courses=request.available_courses,
+        user_info=request.user_info,
+    )
+
+    if not result.get("success"):
+        raise HTTPException(status_code=500, detail=result.get("error", "수정 중 오류가 발생했습니다"))
+
+    return result
 
 @app.post("/api/graduation/validate")
 async def graduation_validate(request: GraduationRequest):
@@ -118,6 +152,86 @@ async def graduation_plan(request: GraduationRequest):
     if not result.get("success"):
         raise HTTPException(status_code=400, detail=result.get("error"))
     return result
+
+# ===== 시간표 전송 =====
+
+_transfer_store: dict[str, dict] = {}
+
+def _cleanup_expired():
+    now = datetime.now()
+    expired = [k for k, v in _transfer_store.items() if v["expires_at"] <= now]
+    for k in expired:
+        del _transfer_store[k]
+
+def _generate_code() -> str:
+    for _ in range(100):
+        code = f"{random.randint(0, 99999999):08d}"
+        entry = _transfer_store.get(code)
+        if entry is None or entry["used"] or entry["expires_at"] <= datetime.now():
+            return code
+    raise RuntimeError("코드 생성 실패")
+
+class TransferCreateRequest(BaseModel):
+    courses: list[dict[str, Any]]
+
+@app.post("/api/schedule/transfer")
+async def create_transfer(request: TransferCreateRequest):
+    _cleanup_expired()
+    code = _generate_code()
+    now = datetime.now()
+    _transfer_store[code] = {
+        "courses": request.courses,
+        "created_at": now,
+        "expires_at": now + timedelta(minutes=5),
+        "used": False,
+    }
+    return {"code": code}
+
+@app.get("/api/schedule/transfer/{code}")
+async def get_transfer(code: str):
+    entry = _transfer_store.get(code)
+    if entry is None:
+        raise HTTPException(status_code=404, detail="존재하지 않는 코드입니다")
+    if entry["used"]:
+        raise HTTPException(status_code=410, detail="이미 사용된 코드입니다")
+    if entry["expires_at"] <= datetime.now():
+        del _transfer_store[code]
+        raise HTTPException(status_code=410, detail="코드가 만료되었습니다")
+    courses = entry["courses"]
+    del _transfer_store[code]
+    return {"courses": courses}
+
+
+class FeedbackNotifyRequest(BaseModel):
+    category: str
+    content: str
+    courseName: Optional[str] = None
+
+@app.post("/api/feedback/notify")
+async def notify_feedback(request: FeedbackNotifyRequest):
+    """피드백 제출 시 디스코드로 알림 전송"""
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        raise HTTPException(status_code=500, detail="Discord webhook이 설정되지 않았습니다")
+
+    category_emoji = "🔤" if request.category == "오타 제보" else "💡"
+    lines = [
+        f"## {category_emoji} 새 피드백이 도착했어요!",
+        f"**카테고리:** {request.category}",
+    ]
+    if request.courseName:
+        lines.append(f"**과목:** {request.courseName}")
+    lines.append(f"**내용:**\n{request.content}")
+
+    payload = {"content": "\n".join(lines)}
+
+    async with httpx.AsyncClient() as client:
+        resp = await client.post(webhook_url, json=payload)
+        if resp.status_code not in (200, 204):
+            raise HTTPException(status_code=502, detail="Discord 알림 전송 실패")
+
+    return {"success": True}
+
 
 # 개발용 실행
 if __name__ == "__main__":

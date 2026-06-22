@@ -26,6 +26,8 @@ export const FEEDBACK_CATEGORY = {
   FEATURE: '기능 제안',
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
 /**
  * 피드백 작성
  */
@@ -34,7 +36,7 @@ export async function createFeedback({ category, content, courseName = null }) {
     const feedbackData = {
       category,
       content,
-      courseName,  // 오타 제보일 경우 과목명
+      courseName,
       status: FEEDBACK_STATUS.RECEIVED,
       rejectionReason: null,
       createdAt: serverTimestamp(),
@@ -43,7 +45,14 @@ export async function createFeedback({ category, content, courseName = null }) {
 
     const docRef = await addDoc(collection(db, 'feedbacks'), feedbackData);
     console.log('✅ 피드백 작성 완료:', docRef.id);
-    
+
+    // 디스코드 알림 (실패해도 피드백 저장은 성공으로 처리)
+    fetch(`${API_BASE_URL}/api/feedback/notify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ category, content, courseName }),
+    }).catch(() => {});
+
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error('❌ 피드백 작성 실패:', error);

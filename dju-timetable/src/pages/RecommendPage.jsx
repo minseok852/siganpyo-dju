@@ -16,8 +16,9 @@ import {
 } from 'lucide-react';
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
-import { recommendSchedule } from '../services/aiService';
+import { recommendSchedule, modifySchedule } from '../services/aiService';
 import { COLLEGES, COURSE_COLORS } from '../data/constants';
+import CourseDetail from '../components/schedule/CourseDetail';
 
 // 시간표 선택 모달 컴포넌트
 function ScheduleSelectModal({ isOpen, onClose, schedules, onSelect, onAddNew, maxSchedules }) {
@@ -447,6 +448,15 @@ export default function RecommendPage() {
   const [error, setError] = useState(null);
   const [timeConflicts, setTimeConflicts] = useState([]);
 
+  // 수정 기능 state
+  const [savedAvailableCourses, setSavedAvailableCourses] = useState(null);
+  const [isModifying, setIsModifying] = useState(false);
+  const [showMore, setShowMore] = useState(false);
+  const [showDayPicker, setShowDayPicker] = useState(false);
+  const [history, setHistory] = useState([]); // 최대 3단계
+  const [modifyError, setModifyError] = useState(null);
+  const [selectedResultCourse, setSelectedResultCourse] = useState(null);
+
   // 시간 충돌 검사 함수
   const checkTimeConflicts = (courses) => {
     const conflicts = [];
@@ -707,7 +717,8 @@ export default function RecommendPage() {
 
     try {
       const availableCourses = await filterAvailableCourses();
-      
+      setSavedAvailableCourses(availableCourses);
+
       const response = await recommendSchedule({
         grade: userInfo.grade,
         major: userInfo.major,
@@ -951,6 +962,54 @@ export default function RecommendPage() {
     }
     
     return times;
+  };
+
+  // 시간표 수정 요청
+  const handleModify = async (modifyType, modifyParams = {}) => {
+    if (!result || !savedAvailableCourses) return;
+    setShowDayPicker(false);
+    setIsModifying(true);
+    setModifyError(null);
+
+    // 현재 결과를 히스토리에 저장 (최대 3단계)
+    setHistory(prev => [...prev.slice(-2), result]);
+
+    const response = await modifySchedule(
+      result.selected_courses,
+      modifyType,
+      modifyParams,
+      savedAvailableCourses,
+      {
+        grade: userInfo.grade,
+        major: userInfo.major,
+        double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
+        credit_allocation: userInfo.hasDoubleMajor ? {
+          major: creditAllocation.major,
+          double_major: creditAllocation.doubleMajor,
+          general: creditAllocation.general,
+        } : null,
+      },
+    );
+
+    setIsModifying(false);
+
+    if (response.success) {
+      setResult(response);
+      setTimeConflicts(checkTimeConflicts(response.selected_courses || []));
+    } else {
+      // 실패 시 히스토리에서 제거
+      setHistory(prev => prev.slice(0, -1));
+      setModifyError(response.error);
+      setTimeout(() => setModifyError(null), 4000);
+    }
+  };
+
+  const handleUndo = () => {
+    if (history.length === 0) return;
+    const prev = history[history.length - 1];
+    setResult(prev);
+    setTimeConflicts(checkTimeConflicts(prev.selected_courses || []));
+    setHistory(h => h.slice(0, -1));
   };
 
   // 시간표 선택 모달 열기
@@ -2052,15 +2111,16 @@ export default function RecommendPage() {
               <h3 className="font-bold mb-3">📚 추천 과목</h3>
               <div className="space-y-2">
                 {result.selected_courses?.map((course, idx) => (
-                  <div key={idx} className="p-3 border rounded-lg">
+                  <div key={idx} onClick={() => setSelectedResultCourse(course)}
+                    className="p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <div className="font-medium text-sm">{course.course_name}</div>
                         <div className="text-xs text-gray-500">{course.professor} | {course.schedule_raw} | {course.credits}학점</div>
                       </div>
                       <span className={`text-xs px-2 py-1 rounded font-medium shrink-0 ${
-                        course.category?.includes('필수') 
-                          ? 'bg-red-100 text-red-700' 
+                        course.category?.includes('필수')
+                          ? 'bg-red-100 text-red-700'
                           : 'bg-blue-100 text-blue-700'
                       }`}>
                         {course.category}
@@ -2076,12 +2136,107 @@ export default function RecommendPage() {
               <p className="text-sm text-indigo-700">{result.summary}</p>
             </div>
 
+            {/* 수정 버튼 영역 */}
+            <div className="bg-white rounded-xl shadow-sm p-4">
+              <h3 className="font-bold text-gray-800 text-sm mb-3">✏️ 시간표 수정</h3>
+
+              {isModifying ? (
+                <div className="flex items-center justify-center gap-2 py-3 text-indigo-600">
+                  <Loader2 className="animate-spin" size={18} />
+                  <span className="text-sm">AI가 시간표를 수정하고 있어요...</span>
+                </div>
+              ) : showDayPicker ? (
+                /* 요일 선택 */
+                <div>
+                  <p className="text-xs text-gray-500 mb-2">공강 만들 요일을 선택하세요</p>
+                  {(() => {
+                    const emptyDays = result.empty_days || [];
+                    const allEmpty = emptyDays.length >= 4;
+                    return (
+                      <>
+                        <div className="flex gap-1.5 mb-2">
+                          {['월', '화', '수', '목', '금'].map(day => {
+                            const alreadyEmpty = emptyDays.includes(day);
+                            const isLastActive = allEmpty && !alreadyEmpty;
+                            const disabled = alreadyEmpty || isLastActive;
+                            return (
+                              <button key={day} onClick={() => !disabled && handleModify('EMPTY_DAY', { day })}
+                                disabled={disabled}
+                                className={`flex-1 py-2 rounded-lg text-xs font-medium flex flex-col items-center gap-0.5 transition-colors
+                                  ${alreadyEmpty ? 'bg-gray-100 text-gray-400 cursor-not-allowed' :
+                                    isLastActive ? 'bg-orange-50 text-orange-400 cursor-not-allowed' :
+                                    'bg-indigo-100 hover:bg-indigo-200 text-indigo-700'}`}>
+                                {day}
+                                {alreadyEmpty && <span className="text-[9px] leading-none">이미 공강</span>}
+                              </button>
+                            );
+                          })}
+                          <button onClick={() => setShowDayPicker(false)} className="px-1.5 text-gray-400 hover:text-gray-600">
+                            <X size={16} />
+                          </button>
+                        </div>
+                        {allEmpty && (
+                          <p className="text-xs text-orange-500">⚠️ 최소 1일은 수업이 있어야 해요</p>
+                        )}
+                      </>
+                    );
+                  })()}
+                </div>
+              ) : (
+                /* 기본 버튼 */
+                <div className="space-y-2">
+                  <div className="flex gap-2">
+                    <button onClick={() => { setShowDayPicker(true); setShowMore(false); }} disabled={isModifying}
+                      className="flex-1 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium disabled:opacity-50">
+                      🗓️ 공강 만들기
+                    </button>
+                    <button onClick={() => { setShowMore(v => !v); setShowDayPicker(false); }} disabled={isModifying}
+                      className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium disabled:opacity-50">
+                      {showMore ? '접기 ▲' : '더보기 ▼'}
+                    </button>
+                  </div>
+
+                  {showMore && (
+                    <div className="space-y-2 pt-1 border-t border-gray-100">
+                      {[
+                        { type: 'NO_EARLY_MORNING', label: '⏰ 9시 30분 수업 빼줘' },
+                        { type: 'ADD_MAJOR',         label: '📚 전공 더 넣어줘' },
+                        { type: 'REDUCE_GENERAL',    label: '🎓 교양 줄여줘' },
+                        { type: 'REDUCE_CREDITS',    label: '➖ 학점 줄여줘' },
+                        { type: 'INCREASE_CREDITS',  label: '➕ 학점 늘려줘' },
+                      ].map(({ type, label }) => (
+                        <button key={type} onClick={() => handleModify(type, {})} disabled={isModifying}
+                          className="w-full py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium disabled:opacity-50 text-left px-4">
+                          {label}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+
+                  {history.length > 0 && (
+                    <button onClick={handleUndo}
+                      className="w-full py-2 text-sm text-indigo-500 border border-indigo-200 rounded-lg hover:bg-indigo-50">
+                      ↩ 이전으로 되돌리기 ({history.length}단계)
+                    </button>
+                  )}
+                </div>
+              )}
+            </div>
+
             <div className="flex gap-2">
               <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium">다시 만들기</button>
               <button onClick={handleReplaceSchedule} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-2">
                 <Plus size={18} />이 시간표로 교체
               </button>
             </div>
+          </div>
+        )}
+
+        {/* 수정 에러 토스트 */}
+        {modifyError && (
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-red-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 max-w-sm w-full mx-4">
+            <AlertTriangle size={16} className="shrink-0" />
+            <span className="text-sm">{modifyError}</span>
           </div>
         )}
 
@@ -2213,6 +2368,22 @@ export default function RecommendPage() {
         onAddNew={handleSaveToNewSchedule}
         maxSchedules={maxSchedules}
       />
+
+      {/* AI 추천 과목 상세 모달 */}
+      {selectedResultCourse && (
+        <CourseDetail
+          course={selectedResultCourse}
+          onClose={() => setSelectedResultCourse(null)}
+          onAdd={() => {}}
+          onRemove={() => {}}
+          isAdded={false}
+          conflict={null}
+          onModifyReplace={(courseName) => {
+            setSelectedResultCourse(null);
+            handleModify('REMOVE_COURSE', { course_to_remove: courseName });
+          }}
+        />
+      )}
     </div>
   );
 }

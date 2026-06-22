@@ -139,3 +139,56 @@ export async function recommendSchedule(userInfo, availableCourses) {
     };
   }
 }
+
+/**
+ * 시간표 수정 API 호출
+ */
+export async function modifySchedule(currentCourses, modifyType, modifyParams, availableCourses, userInfo) {
+  const formatCourse = (c) => ({
+    course_code: c.course_code,
+    section: c.section,
+    course_name: c.course_name,
+    professor: c.professor || null,
+    credits: c.credits,
+    target_year: c.target_year || 0,
+    schedule_raw: c.schedule_raw || null,
+    times: c.times || null,
+    room: c.room || null,
+    category: c.category || null,
+    classification: c.classification || null,
+    college: c.college || null,
+    department: c.department || null,
+    notes: c.notes || null,
+  });
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/recommend/modify`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        current_courses: currentCourses.map(formatCourse),
+        modify_type: modifyType,
+        modify_params: modifyParams || {},
+        available_courses: {
+          general_required: (availableCourses.general_required || []).map(formatCourse),
+          major_required: (availableCourses.major_required || []).map(formatCourse),
+          major_elective: (availableCourses.major_elective || []).map(formatCourse),
+          general_elective: (availableCourses.general_elective || []).map(formatCourse),
+          double_major_required: (availableCourses.double_major_required || []).map(formatCourse),
+          double_major_elective: (availableCourses.double_major_elective || []).map(formatCourse),
+        },
+        user_info: userInfo,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || '수정 요청 실패');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('AI 수정 오류:', error);
+    return { success: false, error: error.message || '서버 연결에 실패했습니다.' };
+  }
+}

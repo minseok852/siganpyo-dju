@@ -2,13 +2,14 @@
 import { X, Plus, Clock, MapPin, User, BookOpen, AlertCircle, Info, Trash2 } from 'lucide-react';
 import { CATEGORY_LABELS } from '../../data/constants';
 
-export default function CourseDetail({ 
-  course, 
-  onClose, 
-  onAdd, 
+export default function CourseDetail({
+  course,
+  onClose,
+  onAdd,
   onRemove,
-  isAdded, 
-  conflict 
+  isAdded,
+  conflict,
+  onModifyReplace,
 }) {
   if (!course) return null;
 
@@ -146,39 +147,35 @@ export default function CourseDetail({
         </div>
 
         {/* 하단 버튼 - 고정 */}
-        <div className="px-4 py-3 border-t bg-white">
-          {isAdded ? (
+        <div className="px-4 py-3 border-t bg-white space-y-2">
+          {onModifyReplace && (
             <button
-              onClick={handleRemove}
-              className="w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
+              onClick={() => onModifyReplace(course.course_name)}
+              className="w-full py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 bg-orange-50 text-orange-600 hover:bg-orange-100 border border-orange-200 text-sm"
             >
-              <Trash2 size={18} />
-              시간표에서 삭제
+              🔄 이 과목 빼고 다시 짜줘
             </button>
-          ) : (
-            <button
-              onClick={() => {
-                onAdd(course);
-                if (!conflict?.conflict) {
-                  onClose();
-                }
-              }}
-              disabled={conflict?.conflict}
-              className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 ${
-                conflict?.conflict
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-blue-500 text-white hover:bg-blue-600'
-              }`}
-            >
-              {conflict?.conflict ? (
-                '시간이 겹쳐 추가할 수 없습니다'
-              ) : (
-                <>
-                  <Plus size={18} />
-                  시간표에 추가
-                </>
-              )}
-            </button>
+          )}
+          {!onModifyReplace && (
+            isAdded ? (
+              <button
+                onClick={handleRemove}
+                className="w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 bg-red-50 text-red-600 hover:bg-red-100 border border-red-200"
+              >
+                <Trash2 size={18} />
+                시간표에서 삭제
+              </button>
+            ) : (
+              <button
+                onClick={() => { onAdd(course); if (!conflict?.conflict) onClose(); }}
+                disabled={conflict?.conflict}
+                className={`w-full py-3 rounded-xl font-medium flex items-center justify-center gap-2 ${
+                  conflict?.conflict ? 'bg-gray-100 text-gray-400 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600'
+                }`}
+              >
+                {conflict?.conflict ? '시간이 겹쳐 추가할 수 없습니다' : <><Plus size={18} />시간표에 추가</>}
+              </button>
+            )
           )}
         </div>
       </div>
