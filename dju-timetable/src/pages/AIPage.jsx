@@ -1,15 +1,17 @@
 // src/pages/AIPage.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  Sparkles, 
+import {
+  ArrowLeft,
+  Sparkles,
   Loader2,
   ChevronRight,
-  RotateCcw
+  RotateCcw,
 } from 'lucide-react';
+import AiFeedback from '../components/AiFeedback';
 import { useSchedule } from '../hooks/useSchedule';
 import { evaluateSchedule } from '../services/aiService';
+import { logAiSession } from '../services/aiLogService';
 import { COLLEGES } from '../data/constants';
 import { getDepartmentsByCollege } from '../data/departments';  // ✅ 하드코딩 데이터 사용
 
@@ -36,6 +38,7 @@ export default function AIPage() {
   
   // 결과
   const [result, setResult] = useState(null);
+  const [logId, setLogId] = useState(null);
   const [error, setError] = useState(null);
 
   // ✅ 단과대학 변경시 학과 목록 로드 (하드코딩 사용 - 즉시 로드)
@@ -83,6 +86,13 @@ export default function AIPage() {
       if (response.success) {
         setResult(response);
         setStep('result');
+        // 세션 로그 저장 (fire-and-forget)
+        logAiSession('evaluate', {
+          grade: userInfo.grade,
+          major: userInfo.major,
+          double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
+          course_count: courses.length,
+        }, response).then(id => setLogId(id));
       } else {
         setError(response.error || '평가 중 오류가 발생했습니다');
         setStep('form');
@@ -393,6 +403,11 @@ export default function AIPage() {
               <h3 className="font-bold text-purple-800 mb-2">📝 총평</h3>
               <p className="text-sm text-purple-700">{result.summary}</p>
             </div>
+
+            {/* 👍/👎 피드백 */}
+            {logId && (
+              <AiFeedback logId={logId} />
+            )}
 
             {/* 다시 평가 버튼 */}
             <button

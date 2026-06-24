@@ -17,9 +17,11 @@ import {
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
 import { recommendSchedule, modifySchedule } from '../services/aiService';
+import { logAiSession } from '../services/aiLogService';
 import { COLLEGES, COURSE_COLORS } from '../data/constants';
 import { parseScheduleToTimes } from '../utils/timeUtils';
 import CourseDetail from '../components/schedule/CourseDetail';
+import AiFeedback from '../components/AiFeedback';
 
 // 시간표 선택 모달 컴포넌트
 function ScheduleSelectModal({ isOpen, onClose, schedules, onSelect, onAddNew, maxSchedules }) {
@@ -446,6 +448,7 @@ export default function RecommendPage() {
   
   // 결과
   const [result, setResult] = useState(null);
+  const [logId, setLogId] = useState(null);
   const [error, setError] = useState(null);
   const [timeConflicts, setTimeConflicts] = useState([]);
 
@@ -782,6 +785,17 @@ export default function RecommendPage() {
 
       if (response.success) {
         setResult(response);
+        setLogId(null);
+        logAiSession('recommend', {
+          grade: userInfo.grade,
+          major: userInfo.major,
+          double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
+          target_credits: userInfo.targetCredits,
+          preferences_summary: {
+            empty_days: preferences.emptyDays,
+            no_morning: preferences.noMorning,
+          },
+        }, response).then(id => setLogId(id));
         // 시간 충돌 검사
         if (response.selected_courses) {
           const conflicts = checkTimeConflicts(response.selected_courses);
@@ -2020,6 +2034,8 @@ export default function RecommendPage() {
                 </div>
               )}
             </div>
+
+            {logId && <AiFeedback logId={logId} />}
 
             <div className="flex gap-2">
               <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium">다시 만들기</button>

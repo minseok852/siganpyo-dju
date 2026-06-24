@@ -21,6 +21,18 @@ app = FastAPI(
     version="1.0.0"
 )
 
+
+async def _discord(lines: list[str]) -> None:
+    """Discord webhook으로 메시지 전송 (실패해도 무시)"""
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+    if not webhook_url:
+        return
+    try:
+        async with httpx.AsyncClient() as client:
+            await client.post(webhook_url, json={"content": "\n".join(lines)}, timeout=5)
+    except Exception:
+        pass
+
 # CORS 설정 (프론트엔드 연동용)
 app.add_middleware(
     CORSMiddleware,
@@ -53,53 +65,55 @@ async def health_check():
 
 @app.post("/api/evaluate")
 async def evaluate_schedule_endpoint(request: EvaluateRequest):
-    """
-    시간표 평가 API
-    """
-    
+    """시간표 평가 API"""
     if not request.courses:
         raise HTTPException(status_code=400, detail="과목이 없습니다")
-    
     if len(request.courses) > 15:
         raise HTTPException(status_code=400, detail="과목이 너무 많습니다 (최대 15개)")
-    
+
     courses_data = [course.model_dump() for course in request.courses]
     user_info_data = request.user_info.model_dump()
-    
+
     result = await evaluate_schedule(courses_data, user_info_data)
-    
+
     if not result.get("success"):
-        raise HTTPException(
-            status_code=500, 
-            detail=result.get("error", "AI 평가 중 오류가 발생했습니다")
-        )
-    
+        error_msg = result.get("error", "AI 평가 중 오류가 발생했습니다")
+        await _discord([
+            "## 🚨 AI 평가 실패",
+            f"**오류:** {error_msg}",
+            f"**학년:** {user_info_data.get('grade')}학년  **전공:** {user_info_data.get('major')}",
+            f"**과목 수:** {len(courses_data)}개",
+        ])
+        raise HTTPException(status_code=500, detail=error_msg)
+
     return result
 
 
 @app.post("/api/recommend")
 async def recommend_schedule_endpoint(request: RecommendRequest):
-    """
-    시간표 추천 API
-    """
-    
+    """시간표 추천 API"""
     if not request.available_courses:
         raise HTTPException(status_code=400, detail="사용 가능한 과목이 없습니다")
-    
+
     user_info_data = request.user_info.model_dump()
     available_courses_data = {
-        k: [c.model_dump() for c in v] 
+        k: [c.model_dump() for c in v]
         for k, v in request.available_courses.items()
     }
-    
+
     result = await recommend_schedule(user_info_data, available_courses_data)
-    
+
     if not result.get("success"):
-        raise HTTPException(
-            status_code=500, 
-            detail=result.get("error", "AI 추천 중 오류가 발생했습니다")
-        )
-    
+        error_msg = result.get("error", "AI 추천 중 오류가 발생했습니다")
+        prefs = user_info_data.get("preferences", {})
+        await _discord([
+            "## 🚨 AI 추천 실패",
+            f"**오류:** {error_msg}",
+            f"**학년:** {user_info_data.get('grade')}학년  **전공:** {user_info_data.get('major')}",
+            f"**목표학점:** {user_info_data.get('target_credits')}  **공강요일:** {prefs.get('empty_days')}",
+        ])
+        raise HTTPException(status_code=500, detail=error_msg)
+
     return result
 
 from models.graduation_schemas import GraduationRequest
@@ -164,6 +178,23 @@ async def verify_admin(request: AdminVerifyRequest):
         raise HTTPException(status_code=500, detail="서버 설정 오류")
     if request.password != admin_password:
         raise HTTPException(status_code=401, detail="비밀번호가 올바르지 않습니다")
+    return {"success": True}
+
+
+class AiFeedbackNotifyRequest(BaseModel):
+    log_id: str
+    comment: Optional[str] = None
+
+@app.post("/api/ai/feedback-notify")
+async def ai_feedback_notify(request: AiFeedbackNotifyRequest):
+    """AI 결과에 👎가 눌렸을 때 Discord 알림"""
+    lines = [
+        "## 👎 AI 결과 불만족 피드백",
+        f"**로그 ID:** {request.log_id}",
+    ]
+    if request.comment:
+        lines.append(f"**코멘트:** {request.comment}")
+    await _discord(lines)
     return {"success": True}
 
 
