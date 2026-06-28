@@ -10,12 +10,13 @@ import FeedbackPage from './pages/FeedbackPage';
 import FeedbackAdminPage from './pages/FeedbackAdminPage';
 import UpdateLogPage from './pages/UpdateLogPage';
 import UpdateAdminPage from './pages/UpdateAdminPage';
+import AdminPage from './pages/AdminPage';
 import GraduationCalculator from './pages/Graduationcalculator';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/share/:shareId" element={<SharedPage />} />
@@ -28,6 +29,7 @@ function App() {
         <Route path="/updates" element={<UpdateLogPage />} />
         <Route path="/updates/admin" element={<UpdateAdminPage />} />
         <Route path="/graduation" element={<GraduationCalculator />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

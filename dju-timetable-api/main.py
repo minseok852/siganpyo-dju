@@ -165,6 +165,32 @@ async def graduation_plan(request: GraduationRequest):
         raise HTTPException(status_code=400, detail=result.get("error"))
     return result
 
+# ===== 서버 헬스 =====
+
+@app.get("/api/health/ai-ping")
+async def ai_ping():
+    """Gemini AI에 실제 요청을 보내 응답 여부 확인 (관리자용)"""
+    import google.generativeai as genai
+    import time
+    import asyncio
+
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        return {"success": False, "error": "GEMINI_API_KEY 미설정", "latency_ms": None}
+
+    start = time.time()
+    try:
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-2.0-flash")
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, model.generate_content, "Say 'ok'")
+        ms = round((time.time() - start) * 1000)
+        return {"success": True, "latency_ms": ms}
+    except Exception as e:
+        ms = round((time.time() - start) * 1000)
+        return {"success": False, "error": str(e)[:120], "latency_ms": ms}
+
+
 # ===== 관리자 인증 =====
 
 class AdminVerifyRequest(BaseModel):
