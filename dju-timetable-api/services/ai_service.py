@@ -751,13 +751,13 @@ async def evaluate_schedule(courses: list, user_info: dict) -> dict:
     prompt = build_prompt(courses, user_info, analysis, schedule_type, score)
     
     try:
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        model = genai.GenerativeModel('gemini-flash-latest')
         
         response = model.generate_content(
             prompt,
             generation_config=genai.types.GenerationConfig(
                 temperature=0.9,  # 다양한 표현 유도
-                max_output_tokens=1500,
+                max_output_tokens=8192,
             )
         )
         

@@ -612,12 +612,12 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
     for attempt, temperature in enumerate([0.3, 0.1]):
         response_text = None
         try:
-            model = genai.GenerativeModel('gemini-2.0-flash')
+            model = genai.GenerativeModel('gemini-flash-latest')
             response = model.generate_content(
                 prompt,
                 generation_config=genai.types.GenerationConfig(
                     temperature=temperature,
-                    max_output_tokens=3000,
+                    max_output_tokens=8192,
                 )
             )
             response_text = response.text
@@ -763,13 +763,13 @@ def _build_phase_response_format(category_type: str) -> str:
 
 async def _call_gemini(prompt: str) -> dict:
     """Gemini API 단일 호출 + JSON 파싱"""
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-flash-latest')
     
     response = model.generate_content(
         prompt,
         generation_config=genai.types.GenerationConfig(
             temperature=0.2,
-            max_output_tokens=2000,
+            max_output_tokens=8192,
         )
     )
     
@@ -1221,9 +1221,9 @@ def calculate_empty_days(courses: list) -> list:
 # ✅ 다중 후보 추천 (A/B/C) - 선호 점수 기반 정렬
 # ============================================================
 
-async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = 3000) -> dict:
+async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = 8192) -> dict:
     """Gemini 호출을 스레드에서 실행(비동기 병렬화) + JSON 파싱"""
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-flash-latest')
 
     def _run():
         resp = model.generate_content(
@@ -1423,19 +1423,27 @@ def _postprocess_candidate(result: dict, available_courses: dict, locked_require
     }
 
 
+# 마지막 멀티 생성에서 후보들이 실패한 원인 (디버깅/에러 표면화용)
+_LAST_CANDIDATE_ERRORS: list = []
+
+
 async def _generate_candidate(prompt, user_info, available_courses, locked_required_names,
                               must_take_keys, target_credits, temperature) -> dict:
     """후보 1개 생성 (실패 시 None)"""
     try:
-        result = await _gemini_generate(prompt, temperature=temperature, max_tokens=3000)
+        result = await _gemini_generate(prompt, temperature=temperature, max_tokens=8192)
     except Exception as e:
-        print(f"[MULTI] 후보 생성 실패 (temp={temperature}): {e}")
+        msg = f"생성 실패 (temp={temperature}): {type(e).__name__}: {e}"
+        print(f"[MULTI] {msg}")
+        _LAST_CANDIDATE_ERRORS.append(msg)
         return None
     try:
         return _postprocess_candidate(result, available_courses, locked_required_names,
                                       must_take_keys, target_credits, user_info)
     except Exception as e:
-        print(f"[MULTI] 후처리 실패: {e}")
+        msg = f"후처리 실패 (temp={temperature}): {type(e).__name__}: {e}"
+        print(f"[MULTI] {msg}")
+        _LAST_CANDIDATE_ERRORS.append(msg)
         return None
 
 
@@ -1532,6 +1540,8 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
     base_prompt = build_recommend_prompt(user_info, available_courses)
     locked_note = _build_locked_note(locked_required_names, must_take)
 
+    _LAST_CANDIDATE_ERRORS.clear()
+
     # 후보 A: 최적 (낮은 temperature)
     cand_a = await _generate_candidate(
         base_prompt + locked_note, user_info, available_courses,
@@ -1557,7 +1567,8 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
 
     candidates = [c for c in candidates if c]
     if not candidates:
-        return {"success": False, "error": "시간표 생성에 실패했습니다. 다시 시도해주세요."}
+        detail = " | ".join(_LAST_CANDIDATE_ERRORS[:3]) or "알 수 없는 원인"
+        return {"success": False, "error": f"시간표 생성에 실패했습니다. ({detail})"}
 
     ranked = _rank_and_label(candidates)
     return {"success": True, "schedules": ranked[:num_candidates]}

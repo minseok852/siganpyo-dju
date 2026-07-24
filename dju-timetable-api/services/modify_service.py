@@ -248,12 +248,12 @@ async def modify_schedule(current_courses: list, modify_type: str, modify_params
     try:
         prompt = _build_prompt(current_courses, modify_type, modify_params, available_courses, user_info)
 
-        model = genai.GenerativeModel('gemini-2.0-flash')
+        model = genai.GenerativeModel('gemini-flash-latest')
         response = model.generate_content(
             prompt,
             generation_config=genai.types.GenerationConfig(
                 temperature=0.2,
-                max_output_tokens=3000,
+                max_output_tokens=8192,
             )
         )
 

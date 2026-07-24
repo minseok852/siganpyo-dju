@@ -181,7 +181,7 @@ async def ai_ping():
     start = time.time()
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-flash-latest")
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, model.generate_content, "Say 'ok'")
         ms = round((time.time() - start) * 1000)

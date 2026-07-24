@@ -20,9 +20,10 @@ import { db } from '../services/firebase';
 import {
   getFeedbacks, updateFeedbackStatus, deleteFeedback,
   addAdminComment, editAdminComment, deleteAdminComment,
-  verifyAdminPassword, FEEDBACK_STATUS, FEEDBACK_CATEGORY,
+  FEEDBACK_STATUS, FEEDBACK_CATEGORY,
 } from '../services/feedbackService';
 import { getUpdates, createUpdate, editUpdate, deleteUpdate } from '../services/updateService';
+import { adminLogin, adminLogout, onAdminAuthChanged } from '../services/authService';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
@@ -69,7 +70,8 @@ function fmtDate(ts) {
 // ══════════════════════════════════════════════════════════════════════════
 // LOGIN MODAL
 // ══════════════════════════════════════════════════════════════════════════
-function LoginModal({ onLogin }) {
+function LoginModal() {
+  const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [show, setShow] = useState(false);
   const [err, setErr] = useState('');
@@ -78,14 +80,13 @@ function LoginModal({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const ok = await verifyAdminPassword(pw);
-    if (ok) {
-      sessionStorage.setItem('admin_auth', 'true');
-      onLogin();
-    } else {
-      setErr('비밀번호가 올바르지 않습니다.');
+    setErr('');
+    const res = await adminLogin(email, pw);
+    // 성공 시 onAuthStateChanged가 상위에서 화면을 전환하므로 별도 처리 불필요
+    if (!res.success) {
+      setErr(res.error);
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -99,15 +100,27 @@ function LoginModal({ onLogin }) {
           <p className="text-sm text-gray-500 mt-1">대진대 시간표 관리자 페이지</p>
         </div>
         <form onSubmit={handleSubmit}>
+          <div className="relative mb-3">
+            <Shield className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <input
+              type="email"
+              value={email}
+              onChange={e => { setEmail(e.target.value); setErr(''); }}
+              placeholder="관리자 이메일"
+              autoComplete="username"
+              className="w-full pl-10 pr-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              autoFocus
+            />
+          </div>
           <div className="relative mb-4">
             <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <input
               type={show ? 'text' : 'password'}
               value={pw}
               onChange={e => { setPw(e.target.value); setErr(''); }}
-              placeholder="관리자 비밀번호"
+              placeholder="비밀번호"
+              autoComplete="current-password"
               className="w-full pl-10 pr-10 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              autoFocus
             />
             <button type="button" onClick={() => setShow(v => !v)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
@@ -115,7 +128,7 @@ function LoginModal({ onLogin }) {
             </button>
           </div>
           {err && <p className="text-sm text-red-500 mb-3">{err}</p>}
-          <button type="submit" disabled={loading}
+          <button type="submit" disabled={loading || !email || !pw}
             className="w-full py-2.5 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 disabled:opacity-50 flex items-center justify-center gap-2">
             {loading && <Loader2 size={16} className="animate-spin" />}
             로그인
@@ -1219,10 +1232,28 @@ function UpdateTab() {
 // ══════════════════════════════════════════════════════════════════════════
 export default function AdminPage() {
   const navigate = useNavigate();
-  const [authed, setAuthed] = useState(() => sessionStorage.getItem('admin_auth') === 'true');
+  const [authed, setAuthed] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
   const [tab, setTab] = useState('health');
 
-  if (!authed) return <LoginModal onLogin={() => setAuthed(true)} />;
+  // Firebase Auth 로그인 상태 구독
+  useEffect(() => {
+    const unsub = onAdminAuthChanged((user) => {
+      setAuthed(!!user);
+      setAuthLoading(false);
+    });
+    return unsub;
+  }, []);
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <Loader2 className="animate-spin text-blue-500" size={32} />
+      </div>
+    );
+  }
+
+  if (!authed) return <LoginModal />;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -1237,7 +1268,7 @@ export default function AdminPage() {
               <h1 className="text-base font-bold text-gray-800">관리자</h1>
             </div>
             <button
-              onClick={() => { sessionStorage.removeItem('admin_auth'); setAuthed(false); }}
+              onClick={() => adminLogout()}
               className="text-sm text-gray-500 hover:text-gray-700">
               로그아웃
             </button>
