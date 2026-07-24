@@ -67,6 +67,7 @@ class Preferences(BaseModel):
     preferred_areas: Optional[list[str]] = []
     skip_general: Optional[bool] = False  # 교양 안 듣기
     must_take_courses: Optional[list[Course]] = []  # 꼭 듣고 싶은 과목
+    locked_required: Optional[list[str]] = []  # ⭐ 반드시 포함할 필수과목명 (점수 깎여도 강제 포함)
     selected_major_courses: Optional[list[Course]] = []  # 직접 선택한 주전공 과목 (2학년+)
     selected_double_major_courses: Optional[list[Course]] = []  # 직접 선택한 복전 과목
     major_selection_mode: Optional[str] = "auto"  # "manual" (직접선택) | "auto" (상관없음)

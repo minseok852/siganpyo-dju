@@ -13,6 +13,9 @@ import {
 import {
   collection, getDocs, query, orderBy, limit, where, getCountFromServer,
 } from 'firebase/firestore';
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Cell,
+} from 'recharts';
 import { db } from '../services/firebase';
 import {
   getFeedbacks, updateFeedbackStatus, deleteFeedback,
@@ -311,6 +314,35 @@ function HealthTab() {
 }
 
 // ══════════════════════════════════════════════════════════════════════════
+// SUCCESS GAUGE — 반원형 성공률 게이지
+// ══════════════════════════════════════════════════════════════════════════
+function SuccessGauge({ rate }) {
+  const color = rate >= 90 ? '#22c55e' : rate >= 70 ? '#f59e0b' : '#ef4444';
+  const bgCard = rate >= 90 ? 'bg-green-50 border-green-200' : rate >= 70 ? 'bg-yellow-50 border-yellow-200' : 'bg-red-50 border-red-200';
+  const status = rate >= 90 ? '안정적' : rate >= 70 ? '주의' : '불안정';
+  // 반원 호 길이: π × r (r=56) ≈ 175.9
+  const arcLen = 175.9;
+  const filled = (rate / 100) * arcLen;
+
+  return (
+    <div className={`border rounded-xl p-3 flex flex-col items-center ${bgCard}`}>
+      <svg viewBox="0 0 140 80" className="w-full max-w-[160px]">
+        {/* 배경 호 */}
+        <path d="M 12 72 A 56 56 0 0 1 128 72"
+          fill="none" stroke="#e5e7eb" strokeWidth="14" strokeLinecap="round" />
+        {/* 채워진 호 */}
+        <path d="M 12 72 A 56 56 0 0 1 128 72"
+          fill="none" stroke={color} strokeWidth="14" strokeLinecap="round"
+          strokeDasharray={`${filled} ${arcLen}`} />
+        <text x="70" y="62" textAnchor="middle" fill={color} fontSize="22" fontWeight="bold">{rate}%</text>
+        <text x="70" y="76" textAnchor="middle" fill="#6b7280" fontSize="10">{status}</text>
+      </svg>
+      <p className="text-xs text-gray-500 mt-1">AI 성공률</p>
+    </div>
+  );
+}
+
+// ══════════════════════════════════════════════════════════════════════════
 // AI LOGS TAB — 세션 로그 + 통계 + 피드백 코멘트
 // ══════════════════════════════════════════════════════════════════════════
 function AiLogsTab() {
@@ -322,7 +354,7 @@ function AiLogsTab() {
     setLoading(true);
     try {
       const snap = await getDocs(
-        query(collection(db, 'ai_logs'), orderBy('created_at', 'desc'), limit(50))
+        query(collection(db, 'ai_logs'), orderBy('created_at', 'desc'), limit(100))
       );
       setLogs(snap.docs.map(d => ({ id: d.id, ...d.data() })));
     } catch { /* ignore */ }
@@ -355,35 +387,102 @@ function AiLogsTab() {
   const topMajors = Object.entries(majorCount).sort((a, b) => b[1] - a[1]).slice(0, 5);
   const gradeOrder = [1, 2, 3, 4];
 
+  // 일별 추이 (최근 7일)
+  const now = new Date();
+  const dailyData = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(now);
+    d.setDate(d.getDate() - (6 - i));
+    const label = `${d.getMonth() + 1}/${d.getDate()}`;
+    const dayLogs = logs.filter(l => {
+      const ld = l.created_at?.toDate?.();
+      return ld && ld.getDate() === d.getDate() && ld.getMonth() === d.getMonth() && ld.getFullYear() === d.getFullYear();
+    });
+    return { date: label, 성공: dayLogs.filter(l => l.success).length, 실패: dayLogs.filter(l => !l.success).length };
+  });
+
+  // 시간대별 분포 (6시~23시)
+  const hourData = Array.from({ length: 18 }, (_, i) => {
+    const h = i + 6;
+    return {
+      hour: `${h}시`,
+      count: logs.filter(l => { const ld = l.created_at?.toDate?.(); return ld && ld.getHours() === h; }).length,
+    };
+  });
+
   return (
     <div className="space-y-4">
-      {/* 통계 카드 */}
+      {/* 상단 요약 카드 */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-white border rounded-xl p-4">
-          <div className="text-2xl font-bold text-gray-800">{total}</div>
-          <div className="text-xs text-gray-500 mt-0.5">전체 AI 세션</div>
-        </div>
-        <div className={`border rounded-xl p-4 ${successRate >= 90 ? 'bg-green-50 border-green-200' : successRate >= 70 ? 'bg-yellow-50 border-yellow-200' : 'bg-red-50 border-red-200'}`}>
-          <div className={`text-2xl font-bold ${successRate >= 90 ? 'text-green-700' : successRate >= 70 ? 'text-yellow-700' : 'text-red-700'}`}>
-            {successRate}%
-          </div>
-          <div className="text-xs text-gray-500 mt-0.5">AI 성공률</div>
-        </div>
-        <div className="bg-white border rounded-xl p-4 flex items-center gap-3">
-          <ThumbsUp size={20} className="text-green-500" />
+        {/* 전체 세션 + 피드백 */}
+        <div className="bg-white border rounded-xl p-4 flex flex-col justify-between">
           <div>
-            <div className="text-xl font-bold text-gray-800">{thumbsUp}</div>
-            <div className="text-xs text-gray-500">좋아요</div>
+            <div className="text-3xl font-bold text-gray-800">{total}</div>
+            <div className="text-xs text-gray-500 mt-0.5">전체 AI 세션</div>
+          </div>
+          <div className="flex items-center gap-3 mt-3">
+            <div className="flex items-center gap-1 text-green-600">
+              <ThumbsUp size={14} />
+              <span className="text-sm font-bold">{thumbsUp}</span>
+            </div>
+            <div className="flex items-center gap-1 text-red-500">
+              <ThumbsDown size={14} />
+              <span className="text-sm font-bold">{thumbsDown}</span>
+            </div>
+            {total > 0 && (
+              <span className="text-xs text-gray-400 ml-auto">
+                피드백율 {Math.round(((thumbsUp + thumbsDown) / total) * 100)}%
+              </span>
+            )}
           </div>
         </div>
-        <div className="bg-white border rounded-xl p-4 flex items-center gap-3">
-          <ThumbsDown size={20} className="text-red-500" />
-          <div>
-            <div className="text-xl font-bold text-gray-800">{thumbsDown}</div>
-            <div className="text-xs text-gray-500">별로예요</div>
-          </div>
-        </div>
+        {/* 성공률 게이지 */}
+        <SuccessGauge rate={successRate} />
       </div>
+
+      {/* 일별 호출 추이 */}
+      {total > 0 && (
+        <div className="bg-white border rounded-xl p-4">
+          <h3 className="text-sm font-bold text-gray-700 mb-3">📈 일별 AI 호출 추이 (최근 7일)</h3>
+          <ResponsiveContainer width="100%" height={160}>
+            <BarChart data={dailyData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+              <XAxis dataKey="date" tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} allowDecimals={false} />
+              <Tooltip
+                contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }}
+                cursor={{ fill: '#f9fafb' }} />
+              <Bar dataKey="성공" stackId="a" fill="#6366f1" radius={[0, 0, 0, 0]} />
+              <Bar dataKey="실패" stackId="a" fill="#f87171" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+          <div className="flex items-center gap-4 mt-2 justify-center">
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-indigo-500 inline-block" /><span className="text-xs text-gray-500">성공</span></div>
+            <div className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm bg-red-400 inline-block" /><span className="text-xs text-gray-500">실패</span></div>
+          </div>
+        </div>
+      )}
+
+      {/* 시간대별 분포 */}
+      {total > 0 && (
+        <div className="bg-white border rounded-xl p-4">
+          <h3 className="text-sm font-bold text-gray-700 mb-3">🕐 시간대별 사용 분포</h3>
+          <ResponsiveContainer width="100%" height={130}>
+            <BarChart data={hourData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" />
+              <XAxis dataKey="hour" tick={{ fontSize: 10, fill: '#9ca3af' }} axisLine={false} tickLine={false}
+                interval={2} />
+              <YAxis tick={{ fontSize: 11, fill: '#9ca3af' }} axisLine={false} tickLine={false} allowDecimals={false} />
+              <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e5e7eb' }} cursor={{ fill: '#f9fafb' }} />
+              <Bar dataKey="count" name="호출 수" radius={[4, 4, 0, 0]}>
+                {hourData.map((entry, idx) => (
+                  <Cell key={idx} fill={entry.count === Math.max(...hourData.map(h => h.count)) ? '#6366f1' : '#c7d2fe'} />
+                ))}
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+          <p className="text-xs text-gray-400 text-center mt-1">가장 많이 사용되는 시간대가 진하게 표시됩니다</p>
+        </div>
+      )}
 
       {/* 필터 */}
       <div className="flex items-center gap-2">

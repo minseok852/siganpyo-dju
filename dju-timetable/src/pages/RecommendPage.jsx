@@ -447,10 +447,15 @@ export default function RecommendPage() {
   const [loadingCourses, setLoadingCourses] = useState(false);
   
   // 결과
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState(null);            // 현재 선택된 후보 (작업본)
+  const [candidates, setCandidates] = useState([]);      // A/B/C 후보 배열
+  const [selectedIndex, setSelectedIndex] = useState(0); // 선택된 후보 인덱스
   const [logId, setLogId] = useState(null);
   const [error, setError] = useState(null);
   const [timeConflicts, setTimeConflicts] = useState([]);
+
+  // ⭐ 반드시 포함할 필수과목명 (점수 깎여도 강제 포함)
+  const [lockedRequired, setLockedRequired] = useState([]);
 
   // 수정 기능 state
   const [savedAvailableCourses, setSavedAvailableCourses] = useState(null);
@@ -780,11 +785,20 @@ export default function RecommendPage() {
           completed_areas: completedCourses.completedAreas,
           // 이수 완료 전공선택 (과목명 배열)
           completed_major_elective: completedCourses.completedMajorElective.map(c => c.course_name),
+          // ⭐ 반드시 포함할 필수과목명
+          locked_required: lockedRequired,
         }
       }, availableCourses);
 
       if (response.success) {
-        setResult(response);
+        // 새 응답: schedules 배열 / 구 응답: 단일 객체 → 배열로 정규화
+        const schedules = response.schedules
+          || (response.selected_courses ? [response] : []);
+        setCandidates(schedules);
+        setSelectedIndex(0);
+        const first = schedules[0] || null;
+        setResult(first);
+        setHistory([]);
         setLogId(null);
         logAiSession('recommend', {
           grade: userInfo.grade,
@@ -796,11 +810,8 @@ export default function RecommendPage() {
             no_morning: preferences.noMorning,
           },
         }, response).then(id => setLogId(id));
-        // 시간 충돌 검사
-        if (response.selected_courses) {
-          const conflicts = checkTimeConflicts(response.selected_courses);
-          setTimeConflicts(conflicts);
-        }
+        // 시간 충돌 검사 (선택된 후보 기준)
+        setTimeConflicts(first?.selected_courses ? checkTimeConflicts(first.selected_courses) : []);
         setStep(6);  // 결과 화면
       } else {
         setError(response.error);
@@ -981,9 +992,78 @@ export default function RecommendPage() {
   };
 
   const handleRemoveMustTake = (course) => {
-    setMustTakeCourses(prev => 
+    setMustTakeCourses(prev =>
       prev.filter(c => !(c.course_code === course.course_code && c.section === course.section))
     );
+  };
+
+  // ========== 필수과목 3-상태 (이수함 / 꼭 넣기 / —) ==========
+  // "이수함" 토글 → completed에 추가/제거, locked에서는 해제 (상호배타)
+  const toggleCompletedRequired = (course, completedKey) => {
+    setCompletedCourses(prev => {
+      const has = prev[completedKey].includes(course);
+      return {
+        ...prev,
+        [completedKey]: has
+          ? prev[completedKey].filter(c => c !== course)
+          : [...prev[completedKey], course],
+      };
+    });
+    setLockedRequired(prev => prev.filter(c => c !== course));
+  };
+
+  // "⭐ 꼭 넣기" 토글 → locked에 추가/제거, 모든 이수 목록에서는 해제 (상호배타)
+  const toggleLockedRequired = (course) => {
+    setLockedRequired(prev =>
+      prev.includes(course) ? prev.filter(c => c !== course) : [...prev, course]
+    );
+    setCompletedCourses(prev => ({
+      ...prev,
+      generalRequired: prev.generalRequired.filter(c => c !== course),
+      majorRequired: prev.majorRequired.filter(c => c !== course),
+      doubleMajorRequired: prev.doubleMajorRequired.filter(c => c !== course),
+    }));
+  };
+
+  // 필수과목 한 줄 렌더 (이수함 / 꼭 넣기 세그먼트 버튼)
+  const renderRequiredRow = (course, completedKey) => {
+    const completed = completedCourses[completedKey].includes(course);
+    const locked = lockedRequired.includes(course);
+    return (
+      <div key={course} className="flex items-center justify-between gap-2 py-1">
+        <span className="text-sm">{course}</span>
+        <div className="flex gap-1 shrink-0">
+          <button
+            type="button"
+            onClick={() => toggleCompletedRequired(course, completedKey)}
+            className={`text-xs px-2 py-1 rounded transition-colors ${
+              completed ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
+          >
+            이수함
+          </button>
+          <button
+            type="button"
+            onClick={() => toggleLockedRequired(course)}
+            className={`text-xs px-2 py-1 rounded transition-colors ${
+              locked ? 'bg-amber-400 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
+          >
+            ⭐ 꼭 넣기
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  // 후보 전환 (A/B/C 탭 선택)
+  const selectCandidate = (i) => {
+    const cand = candidates[i];
+    if (!cand) return;
+    setSelectedIndex(i);
+    setResult(cand);
+    setHistory([]);  // 후보 바꾸면 수정 히스토리 초기화
+    setTimeConflicts(checkTimeConflicts(cand.selected_courses || []));
   };
 
   // 이수한 전공선택 추가 (과목명만 저장 - 분반 무관)
@@ -1203,25 +1283,12 @@ export default function RecommendPage() {
               </div>
               
               {!completedCourses.skipGeneralRequired && (
-                <div className="space-y-2 pl-2">
+                <div className="pl-2">
+                  <p className="text-[11px] text-gray-400 mb-1">
+                    이수한 과목은 <b>이수함</b>, 이번에 꼭 넣을 과목은 <b>⭐꼭 넣기</b>를 눌러주세요
+                  </p>
                   {generalRequiredList.length > 0 ? (
-                    generalRequiredList.map(course => (
-                      <label key={course} className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={completedCourses.generalRequired.includes(course)}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setCompletedCourses(prev => ({ ...prev, generalRequired: [...prev.generalRequired, course] }));
-                            } else {
-                              setCompletedCourses(prev => ({ ...prev, generalRequired: prev.generalRequired.filter(c => c !== course) }));
-                            }
-                          }}
-                          className="w-4 h-4"
-                        />
-                        <span className="text-sm">{course}</span>
-                      </label>
-                    ))
+                    generalRequiredList.map(course => renderRequiredRow(course, 'generalRequired'))
                   ) : (
                     <p className="text-sm text-gray-400">교양필수 과목이 없습니다</p>
                   )}
@@ -1245,25 +1312,12 @@ export default function RecommendPage() {
               </div>
               
               {!completedCourses.skipMajorRequired && (
-                <div className="space-y-2 pl-2">
+                <div className="pl-2">
+                  <p className="text-[11px] text-gray-400 mb-1">
+                    내년에 들을 필수는 그냥 두면 AI가 알아서 판단해요
+                  </p>
                   {majorRequiredList.length > 0 ? (
-                    majorRequiredList.map(course => (
-                      <label key={course} className="flex items-center gap-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={completedCourses.majorRequired.includes(course)}
-                          onChange={(e) => {
-                            if (e.target.checked) {
-                              setCompletedCourses(prev => ({ ...prev, majorRequired: [...prev.majorRequired, course] }));
-                            } else {
-                              setCompletedCourses(prev => ({ ...prev, majorRequired: prev.majorRequired.filter(c => c !== course) }));
-                            }
-                          }}
-                          className="w-4 h-4"
-                        />
-                        <span className="text-sm">{course}</span>
-                      </label>
-                    ))
+                    majorRequiredList.map(course => renderRequiredRow(course, 'majorRequired'))
                   ) : (
                     <p className="text-sm text-gray-400">전공필수 과목이 없습니다</p>
                   )}
@@ -1373,25 +1427,9 @@ export default function RecommendPage() {
                   </div>
                   
                   {!completedCourses.skipDoubleMajorRequired && (
-                    <div className="space-y-2 pl-2">
+                    <div className="pl-2">
                       {doubleMajorRequiredList.length > 0 ? (
-                        doubleMajorRequiredList.map(course => (
-                          <label key={`dm-${course}`} className="flex items-center gap-2 cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={completedCourses.doubleMajorRequired.includes(course)}
-                              onChange={(e) => {
-                                if (e.target.checked) {
-                                  setCompletedCourses(prev => ({ ...prev, doubleMajorRequired: [...prev.doubleMajorRequired, course] }));
-                                } else {
-                                  setCompletedCourses(prev => ({ ...prev, doubleMajorRequired: prev.doubleMajorRequired.filter(c => c !== course) }));
-                                }
-                              }}
-                              className="w-4 h-4 accent-indigo-500"
-                            />
-                            <span className="text-sm">{course}</span>
-                          </label>
-                        ))
+                        doubleMajorRequiredList.map(course => renderRequiredRow(course, 'doubleMajorRequired'))
                       ) : (
                         <p className="text-sm text-gray-400">복수전공 전공필수 과목이 없습니다</p>
                       )}
@@ -1875,6 +1913,44 @@ export default function RecommendPage() {
         {/* ========== Step 6: 결과 ========== */}
         {step === 6 && result && (
           <div className="space-y-4">
+            {/* 후보 선택 (A/B/C) */}
+            {candidates.length > 1 && (
+              <div>
+                <p className="text-xs text-gray-500 mb-2">
+                  마음에 드는 시간표를 골라보세요 ({candidates.length}개 추천)
+                </p>
+                <div className="grid grid-cols-3 gap-2">
+                  {candidates.map((cand, i) => {
+                    const active = i === selectedIndex;
+                    return (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => selectCandidate(i)}
+                        className={`text-left p-2.5 rounded-lg border transition-colors ${
+                          active
+                            ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-400'
+                            : 'border-gray-200 bg-white hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between mb-1">
+                          <span className={`text-sm font-bold ${active ? 'text-indigo-700' : 'text-gray-700'}`}>
+                            {['A', 'B', 'C', 'D'][i] || i + 1}안
+                          </span>
+                          {typeof cand.score === 'number' && (
+                            <span className="text-[10px] text-gray-400">{cand.score}점</span>
+                          )}
+                        </div>
+                        <div className={`text-[11px] leading-tight ${active ? 'text-indigo-600' : 'text-gray-500'}`}>
+                          {cand.theme_label || `${cand.total_credits}학점`}
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-4 text-white">
               <h2 className="text-lg font-bold mb-2">✨ AI 추천 시간표</h2>
               <div className="flex gap-4">

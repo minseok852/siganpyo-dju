@@ -102,6 +102,8 @@ export async function recommendSchedule(userInfo, availableCourses) {
             major_selection_mode: userInfo.preferences?.major_selection_mode || 'auto',
             selected_major_courses: (userInfo.preferences?.selected_major_courses || []).map(formatCourse),
             must_take_courses: (userInfo.preferences?.must_take_courses || []).map(formatCourse),
+            // ⭐ 반드시 포함할 필수과목명 (점수 깎여도 강제 포함)
+            locked_required: userInfo.preferences?.locked_required || [],
             avoid_courses: userInfo.preferences?.avoid_courses || null,
             // ✅ 복수전공 관련 필드
             selected_double_major_courses: (userInfo.preferences?.selected_double_major_courses || []).map(formatCourse),

@@ -13,7 +13,7 @@ if not os.getenv("GEMINI_API_KEY"):
     print("⚠️ WARNING: GEMINI_API_KEY가 설정되지 않았습니다!")
 from models.schemas import EvaluateRequest, RecommendRequest
 from services.ai_service import evaluate_schedule
-from services.recommend_service import recommend_schedule
+from services.recommend_service import recommend_schedules_multi
 
 app = FastAPI(
     title="대진대 시간표 AI API",
@@ -101,7 +101,7 @@ async def recommend_schedule_endpoint(request: RecommendRequest):
         for k, v in request.available_courses.items()
     }
 
-    result = await recommend_schedule(user_info_data, available_courses_data)
+    result = await recommend_schedules_multi(user_info_data, available_courses_data)
 
     if not result.get("success"):
         error_msg = result.get("error", "AI 추천 중 오류가 발생했습니다")

@@ -1,6 +1,8 @@
 # services/recommend_service.py
 import os
 import json
+import asyncio
+from collections import defaultdict
 import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
@@ -1143,29 +1145,41 @@ def is_time_overlap(t1: dict, t2: dict) -> bool:
     return t1['start_min'] < t2['end_min'] and t1['end_min'] > t2['start_min']
 
 
-def validate_and_remove_conflicts(courses: list) -> tuple:
+def course_key(c: dict) -> str:
+    """과목 고유 키 (course_code-section)"""
+    return f"{c.get('course_code', '')}-{c.get('section', '01')}"
+
+
+def validate_and_remove_conflicts(courses: list, locked_keys: set = None) -> tuple:
     """
     시간 충돌 검사 및 충돌 과목 제거
+    locked_keys에 포함된 과목(⭐꼭 넣기 필수 + 꼭 듣고 싶은 과목)은 절대 제거하지 않는다.
+    → 충돌 시 비(非)locked 과목을 대신 제거하고, locked끼리 겹치면 뒤 과목만 제거 + 강한 경고.
     Returns: (검증된 과목 리스트, 제거된 과목 리스트)
     """
+    locked_keys = locked_keys or set()
+
+    # locked 과목을 앞으로 정렬 → 비locked 과목이 locked에 양보하게 됨
+    ordered = sorted(courses, key=lambda c: 0 if course_key(c) in locked_keys else 1)
+
     validated = []
     removed = []
-    
-    for course in courses:
+
+    for course in ordered:
         course_times = parse_schedule_raw(course.get('schedule_raw', ''))
-        
+
         # 온라인/시간미정 과목은 충돌 없음
         if not course_times:
             validated.append(course)
             continue
-        
+
         # 기존 검증된 과목들과 충돌 검사
         has_conflict = False
         conflict_with = None
-        
+
         for existing in validated:
             existing_times = parse_schedule_raw(existing.get('schedule_raw', ''))
-            
+
             for ct in course_times:
                 for et in existing_times:
                     if is_time_overlap(ct, et):
@@ -1176,15 +1190,17 @@ def validate_and_remove_conflicts(courses: list) -> tuple:
                     break
             if has_conflict:
                 break
-        
+
         if has_conflict:
+            is_locked = course_key(course) in locked_keys
             removed.append({
                 'course_name': course.get('course_name', ''),
-                'conflict_with': conflict_with
+                'conflict_with': conflict_with,
+                'locked': is_locked,  # locked끼리 충돌인 경우 True
             })
         else:
             validated.append(course)
-    
+
     return validated, removed
 
 
@@ -1192,10 +1208,378 @@ def calculate_empty_days(courses: list) -> list:
     """공강일 계산"""
     days = ['월', '화', '수', '목', '금']
     occupied = set()
-    
+
     for course in courses:
         times = parse_schedule_raw(course.get('schedule_raw', ''))
         for t in times:
             occupied.add(t['day'])
-    
+
     return [d for d in days if d not in occupied]
+
+
+# ============================================================
+# ✅ 다중 후보 추천 (A/B/C) - 선호 점수 기반 정렬
+# ============================================================
+
+async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = 3000) -> dict:
+    """Gemini 호출을 스레드에서 실행(비동기 병렬화) + JSON 파싱"""
+    model = genai.GenerativeModel('gemini-2.0-flash')
+
+    def _run():
+        resp = model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                temperature=temperature,
+                max_output_tokens=max_tokens,
+            ),
+        )
+        return resp.text
+
+    text = await asyncio.to_thread(_run)
+    return _extract_json(text)
+
+
+def _conflicts_with_any(course: dict, others: list) -> bool:
+    """course가 others 중 어느 것과라도 시간이 겹치는지"""
+    ct = parse_schedule_raw(course.get('schedule_raw', ''))
+    if not ct:
+        return False
+    for o in others:
+        for a in ct:
+            for b in parse_schedule_raw(o.get('schedule_raw', '')):
+                if is_time_overlap(a, b):
+                    return True
+    return False
+
+
+def _guess_category(c: dict) -> str:
+    """classification → category 추정"""
+    cls = (c.get('classification') or '').strip()
+    mapping = {'전필': '전공필수', '전선': '전공선택', '교필': '교양필수', '교선': '교양선택'}
+    return mapping.get(cls, c.get('category') or '전공필수')
+
+
+def _ensure_locked_required(selected: list, available_courses: dict, locked_required_names: set) -> list:
+    """⭐반드시 포함 필수과목이 누락됐으면 충돌 없는 분반을 결정적으로 채워 넣음"""
+    if not locked_required_names:
+        return selected
+
+    present = {c.get('course_name') for c in selected}
+    for name in locked_required_names:
+        if name in present:
+            continue
+
+        sections = []
+        for cat_courses in available_courses.values():
+            for c in cat_courses:
+                if c.get('course_name') == name:
+                    sections.append(c)
+        if not sections:
+            continue  # 목록에 없음 → 어쩔 수 없음 (경고는 아래 validate에서 처리 불가하므로 스킵)
+
+        # 충돌 안 나는 분반 우선, 없으면 첫 분반(경고는 validate에서)
+        chosen = next((c for c in sections if not _conflicts_with_any(c, selected)), sections[0])
+        inj = dict(chosen)
+        inj.setdefault('reason', '반드시 포함 (사용자 지정 필수)')
+        if not inj.get('category'):
+            inj['category'] = _guess_category(chosen)
+        selected.append(inj)
+        present.add(name)
+
+    return selected
+
+
+def _consecutive_stats(courses: list) -> tuple:
+    """(같은 요일 인접 쌍 수, 그 중 연강(간격<=30분) 쌍 수)"""
+    by_day = defaultdict(list)
+    for c in courses:
+        for t in parse_schedule_raw(c.get('schedule_raw', '')):
+            by_day[t['day']].append(t)
+
+    adj = 0
+    cons = 0
+    for slots in by_day.values():
+        slots.sort(key=lambda s: s['start_min'])
+        for i in range(len(slots) - 1):
+            adj += 1
+            gap = slots[i + 1]['start_min'] - slots[i]['end_min']
+            if 0 <= gap <= 30:
+                cons += 1
+    return adj, cons
+
+
+def score_schedule(courses: list, user_info: dict, removed_count: int = 0, target_credits: int = None) -> tuple:
+    """
+    사용자가 실제로 설정한 선호만 채점 → 부합도(0~100) + 하드 감점.
+    가중치: 공강30 / 아침회피25 / 시간대20 / 연강15 / 교양영역10
+    감점: 충돌제거 -20/개, 목표학점 오차 -8/학점(±1 면제)
+    Returns: (score, breakdown)
+    """
+    prefs = user_info.get('preferences', {}) or {}
+    weights = {}
+    got = {}
+
+    # 공강 (30)
+    empty_req = prefs.get('empty_days', []) or []
+    if empty_req:
+        actual = set(calculate_empty_days(courses))
+        satisfied = sum(1 for d in empty_req if d in actual)
+        weights['empty_days'] = 30
+        got['empty_days'] = 30 * satisfied / len(empty_req)
+
+    # 아침 9시 회피 (25)
+    if prefs.get('no_morning'):
+        weights['no_morning'] = 25
+        morning_hits = 0
+        for c in courses:
+            if any(t['start_min'] <= 9 * 60 for t in parse_schedule_raw(c.get('schedule_raw', ''))):
+                morning_hits += 1
+        got['no_morning'] = 25 * max(0.0, 1 - morning_hits / max(1, len(courses)))
+
+    # 선호 시간대 (20)
+    ptime = prefs.get('preferred_time', '상관없음')
+    if ptime in ('오전', '오후'):
+        weights['preferred_time'] = 20
+        match = 0
+        total = 0
+        for c in courses:
+            for t in parse_schedule_raw(c.get('schedule_raw', '')):
+                total += 1
+                if ptime == '오전' and t['start_min'] < 12 * 60:
+                    match += 1
+                elif ptime == '오후' and t['start_min'] >= 12 * 60:
+                    match += 1
+        got['preferred_time'] = 20 * (match / total) if total else 20
+
+    # 연강 (15)
+    consec = prefs.get('consecutive', '상관없음')
+    if consec in ('좋음', '싫음'):
+        weights['consecutive'] = 15
+        adj, cons = _consecutive_stats(courses)
+        if adj == 0:
+            got['consecutive'] = 15
+        else:
+            ratio = cons / adj
+            got['consecutive'] = 15 * (ratio if consec == '좋음' else (1 - ratio))
+
+    # 선호 교양 영역 (10)
+    pareas = prefs.get('preferred_areas', []) or []
+    if pareas and not prefs.get('skip_general'):
+        weights['preferred_areas'] = 10
+        has_ge = any(c.get('category') == '교양선택' for c in courses)
+        got['preferred_areas'] = 10 if has_ge else 0
+
+    base = 100.0 * (sum(got.values()) / sum(weights.values())) if weights else 100.0
+
+    # 하드 감점
+    penalty = 20 * removed_count
+    if target_credits is not None:
+        diff = abs(sum(c.get('credits', 0) for c in courses) - target_credits)
+        if diff > 1:
+            penalty += 8 * (diff - 1)
+
+    score = max(0, min(100, round(base - penalty)))
+    return score, {
+        "weights": weights,
+        "got": {k: round(v, 1) for k, v in got.items()},
+        "penalty": penalty,
+    }
+
+
+def _postprocess_candidate(result: dict, available_courses: dict, locked_required_names: set,
+                           must_take_keys: set, target_credits: int, user_info: dict) -> dict:
+    """LLM 원시 결과 → 검증/보완/채점된 후보 1개"""
+    selected = result.get('selected_courses', []) or []
+    selected = _enrich_courses(selected, available_courses)
+    selected = _ensure_locked_required(selected, available_courses, locked_required_names)
+
+    # locked 키 = 꼭 듣고 싶은 과목 + locked_required에 해당하는 선택 과목
+    locked_keys = set(must_take_keys)
+    for c in selected:
+        if c.get('course_name') in locked_required_names:
+            locked_keys.add(course_key(c))
+
+    validated, removed = validate_and_remove_conflicts(selected, locked_keys=locked_keys)
+
+    warnings = list(result.get('warnings', []) or [])
+    for r in removed:
+        if r.get('locked'):
+            warnings.append(f"⚠️ 필수/고정 과목 시간 충돌: {r['course_name']} ({r['conflict_with']}과 겹침) — 직접 조정이 필요해요")
+        else:
+            warnings.append(f"시간 충돌로 제거됨: {r['course_name']} ({r['conflict_with']}과 겹침)")
+
+    total_credits = sum(c.get('credits', 0) for c in validated)
+    empty_days = calculate_empty_days(validated)
+    score, breakdown = score_schedule(validated, user_info, removed_count=len(removed), target_credits=target_credits)
+
+    return {
+        "selected_courses": validated,
+        "total_credits": total_credits,
+        "empty_days": empty_days,
+        "warnings": warnings,
+        "summary": result.get('summary', ''),
+        "score": score,
+        "_breakdown": breakdown,
+    }
+
+
+async def _generate_candidate(prompt, user_info, available_courses, locked_required_names,
+                              must_take_keys, target_credits, temperature) -> dict:
+    """후보 1개 생성 (실패 시 None)"""
+    try:
+        result = await _gemini_generate(prompt, temperature=temperature, max_tokens=3000)
+    except Exception as e:
+        print(f"[MULTI] 후보 생성 실패 (temp={temperature}): {e}")
+        return None
+    try:
+        return _postprocess_candidate(result, available_courses, locked_required_names,
+                                      must_take_keys, target_credits, user_info)
+    except Exception as e:
+        print(f"[MULTI] 후처리 실패: {e}")
+        return None
+
+
+def _build_locked_note(locked_required_names: set, must_take: list) -> str:
+    if not locked_required_names and not must_take:
+        return ""
+    txt = "\n## ⭐ 반드시 포함해야 하는 과목 (절대 제외 금지!)\n"
+    for n in locked_required_names:
+        txt += f"- {n} (무조건 시간표에 포함, 다른 과목과 시간이 겹치지 않게 배치)\n"
+    for c in must_take:
+        txt += f"- [{c.get('course_code', '')}-{c.get('section', '01')}] {c.get('course_name', '')} (사용자 지정 필수)\n"
+    return txt
+
+
+def _elective_names(cand: dict) -> list:
+    if not cand:
+        return []
+    return [c.get('course_name') for c in cand['selected_courses']
+            if c.get('category') in ('전공선택', '교양선택', '복전선택')]
+
+
+def _diversity_note(avoid_names: list) -> str:
+    if not avoid_names:
+        return "\n## 🔀 다양성 요청\n이전 후보와 다른 선택과목/분반 조합으로 구성해주세요.\n"
+    joined = ', '.join(avoid_names[:12])
+    return (
+        "\n## 🔀 다양성 요청 (다른 대안 만들기)\n"
+        f"다음 선택과목들은 **가급적 피하고** 다른 전공선택/교양선택/분반 조합으로 구성해주세요: {joined}\n"
+        "단, ⭐반드시 포함 과목과 안 들은 전공필수/교양필수는 그대로 유지하세요.\n"
+    )
+
+
+def _jaccard(a: frozenset, b: frozenset) -> float:
+    if not a and not b:
+        return 1.0
+    union = len(a | b)
+    return len(a & b) / union if union else 0.0
+
+
+def _diff_label(best: dict, other: dict) -> str:
+    """A(best) 대비 이 후보의 차이를 짧게 요약"""
+    parts = []
+    extra_empty = set(other.get('empty_days', [])) - set(best.get('empty_days', []))
+    if extra_empty:
+        parts.append(f"{'·'.join(sorted(extra_empty))} 공강")
+
+    best_keys = frozenset(course_key(x) for x in best['selected_courses'])
+    diff_names = [x.get('course_name') for x in other['selected_courses']
+                  if course_key(x) not in best_keys]
+    if diff_names:
+        parts.append(f"{diff_names[0]} 등 과목 구성 다름")
+
+    if not parts:
+        parts.append("대안 시간표")
+    return ' · '.join(parts[:2])
+
+
+def _rank_and_label(candidates: list) -> list:
+    """중복 제거 → 점수순 정렬 → 라벨링"""
+    unique = []
+    for c in candidates:
+        sig = frozenset(course_key(x) for x in c['selected_courses'])
+        if any(_jaccard(sig, frozenset(course_key(x) for x in u['selected_courses'])) >= 0.85
+               for u in unique):
+            continue
+        unique.append(c)
+
+    unique.sort(key=lambda c: c['score'], reverse=True)
+
+    for i, c in enumerate(unique):
+        c['theme_label'] = '가장 잘 맞아요' if i == 0 else _diff_label(unique[0], c)
+        c.pop('_breakdown', None)
+    return unique
+
+
+async def recommend_schedules_multi(user_info: dict, available_courses: dict, num_candidates: int = 3) -> dict:
+    """
+    시간표 후보 여러 개(A/B/C)를 생성해 선호 점수로 정렬해 반환.
+    A = 선호 최적, B/C = 제약은 지키되 A와 다른 대안.
+    """
+    double_major = user_info.get('double_major')
+    credit_allocation = (user_info.get('preferences', {}) or {}).get('credit_allocation')
+
+    # 복수전공 + 학점배분 → split 경로 (현재는 후보 1개)
+    if double_major and credit_allocation:
+        return await _recommend_multi_split(user_info, available_courses)
+
+    prefs = user_info.get('preferences', {}) or {}
+    locked_required_names = set(prefs.get('locked_required', []) or [])
+    must_take = prefs.get('must_take_courses', []) or []
+    must_take_keys = {course_key(c) for c in must_take}
+    target_credits = user_info.get('target_credits')
+
+    base_prompt = build_recommend_prompt(user_info, available_courses)
+    locked_note = _build_locked_note(locked_required_names, must_take)
+
+    # 후보 A: 최적 (낮은 temperature)
+    cand_a = await _generate_candidate(
+        base_prompt + locked_note, user_info, available_courses,
+        locked_required_names, must_take_keys, target_credits, temperature=0.25,
+    )
+
+    candidates = [cand_a] if cand_a else []
+
+    # 후보 B, C: A와 다른 선택과목 조합 (병렬)
+    variant_note = _diversity_note(_elective_names(cand_a))
+    temps = [0.5, 0.8][:max(0, num_candidates - 1)]
+    if temps:
+        others = await asyncio.gather(*[
+            _generate_candidate(
+                base_prompt + locked_note + variant_note, user_info, available_courses,
+                locked_required_names, must_take_keys, target_credits, temperature=t,
+            )
+            for t in temps
+        ], return_exceptions=True)
+        for o in others:
+            if isinstance(o, dict):
+                candidates.append(o)
+
+    candidates = [c for c in candidates if c]
+    if not candidates:
+        return {"success": False, "error": "시간표 생성에 실패했습니다. 다시 시도해주세요."}
+
+    ranked = _rank_and_label(candidates)
+    return {"success": True, "schedules": ranked[:num_candidates]}
+
+
+async def _recommend_multi_split(user_info: dict, available_courses: dict) -> dict:
+    """복수전공(학점배분) 경로 - 기존 split 결과를 후보 배열 형식으로 감쌈"""
+    res = await recommend_schedule_split(user_info, available_courses)
+    if not res.get('success'):
+        return res
+
+    target_credits = user_info.get('target_credits')
+    selected = res.get('selected_courses', [])
+    score, _ = score_schedule(selected, user_info, removed_count=0, target_credits=target_credits)
+
+    cand = {
+        "selected_courses": selected,
+        "total_credits": res.get('total_credits', 0),
+        "empty_days": res.get('empty_days', []),
+        "warnings": res.get('warnings', []),
+        "summary": res.get('summary', ''),
+        "score": score,
+        "theme_label": '가장 잘 맞아요',
+    }
+    return {"success": True, "schedules": [cand]}
