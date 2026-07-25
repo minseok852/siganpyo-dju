@@ -18,6 +18,15 @@ body {
   font-family: 'Malgun Gothic', '맑은 고딕', -apple-system, BlinkMacSystemFont, sans-serif !important;
 }
 
+/* 스크롤바 숨김 유틸리티 (시간표 탭 가로 스크롤 등) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* line-clamp 유틸리티 */
 .line-clamp-2 {
   display: -webkit-box;

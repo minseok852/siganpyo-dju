@@ -7,8 +7,16 @@ import { incrementCoursePopularity, decrementCoursePopularity } from '../service
 // 최대 시간표 개수
 const MAX_SCHEDULES = 3;
 
-// 기본 시간표 이름
-const DEFAULT_NAMES = ['시간표 1', '시간표 2', '시간표 3'];
+/**
+ * 다음 사용 가능한 "시간표 N" 이름 계산
+ * (기존: 인덱스 기반이라 삭제 후 추가 시 이름 중복 발생 — 버그 수정)
+ */
+function getNextScheduleName(schedules) {
+  const used = new Set(schedules.map(s => s.name));
+  let n = 1;
+  while (used.has(`시간표 ${n}`)) n++;
+  return `시간표 ${n}`;
+}
 
 /**
  * 과목 데이터에 times 필드 보장
@@ -108,8 +116,8 @@ export function useSchedule() {
     }
     
     const newId = Math.max(...schedules.map(s => s.id), 0) + 1;
-    const newName = name || DEFAULT_NAMES[schedules.length] || `시간표 ${newId}`;
-    
+    const newName = name || getNextScheduleName(schedules);
+
     const newSchedule = {
       id: newId,
       name: newName,

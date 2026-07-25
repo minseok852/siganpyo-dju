@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+  body{margin:0;}
+  ::-webkit-scrollbar{width:8px;height:8px}
+  ::-webkit-scrollbar-thumb{background:#c7cede;border-radius:4px}
+</style>
+</helmet>
+
+<div style="display:flex;flex-direction:column;gap:40px;padding:56px;background:#EEF1F6;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',sans-serif;align-items:flex-start;box-sizing:border-box">
+
+  <section id="1a" style="display:flex;flex-direction:column;gap:6px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <span style="font-size:11px;font-weight:700;color:#2F6FEB;background:#EAF1FE;padding:3px 9px;border-radius:20px;letter-spacing:.3px">1a</span>
+      <h1 style="margin:0;font-size:20px;font-weight:800;color:#1E2530">메인 화면 리디자인 — 데스크톱 · 모바일</h1>
+    </div>
+    <p style="margin:0;font-size:13px;color:#6B7686;max-width:640px;line-height:1.6">기존 블루 계열 유지 · 톤 정리, 모바일 반응형 붕괴 수정, 이모지/아이콘 일관성, 여백·타이포 계층, 중복 이름·작은 터치 타깃 버그를 함께 반영했습니다. 우측 상단 Tweaks에서 이모지 On/Off, 모바일 내비 방식을 바꿔볼 수 있어요.</p>
+  </section>
+
+  <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+
+    <!-- ===================== DESKTOP FRAME ===================== -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:12px;font-weight:700;color:#8892A4">데스크톱 · 1240px</span>
+      <div style="width:1240px;background:#F6F8FB;border-radius:18px;box-shadow:0 20px 50px -20px rgba(30,40,60,.25);overflow:hidden;border:1px solid #E4E8F0">
+
+        <!-- Header -->
+        <header style="background:#FFFFFF;border-bottom:1px solid #EBEEF3;padding:0 28px">
+          <div style="display:flex;align-items:center;justify-content:space-between;height:60px;min-height:60px">
+            <div style="display:flex;align-items:center;gap:9px;flex-shrink:0">
+              <sc-if value="{{ showEmoji }}" hint-placeholder-val="{{ false }}">
+                <span style="font-size:20px">📚</span>
+              </sc-if>
+              <sc-if value="{{ !showEmoji }}" hint-placeholder-val="{{ true }}">
+                <span style="color:#2F6FEB"><svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.3" y="3.6" width="7" height="12.8" rx="1"></rect><rect x="10.7" y="3.6" width="7" height="12.8" rx="1"></rect><line x1="10" y1="3.6" x2="10" y2="16.4"></line></svg></span>
+              </sc-if>
+              <span style="font-size:17px;font-weight:800;color:#1E2530;letter-spacing:-.2px;white-space:nowrap">대진대 시간표</span>
+            </div>
+            <nav style="display:flex;align-items:center;gap:28px">
+              <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+                <a href="#" style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#5B6472;text-decoration:none;white-space:nowrap;flex-shrink:0">
+                  <sc-if value="{{ showEmoji }}" hint-placeholder-val="{{ false }}"><span>{{ item.emoji }}</span></sc-if>
+                  <sc-if value="{{ !showEmoji }}" hint-placeholder-val="{{ true }}"><span style="color:#9AA3B2" dangerouslySetInnerHTML="{{ item.svg }}"></span></sc-if>
+                  <span>{{ item.label }}</span>
+                </a>
+              </sc-for>
+            </nav>
+          </div>
+        </header>
+
+        <!-- Body -->
+        <main style="padding:24px 28px 32px">
+
+          <!-- Tabs -->
+          <div style="display:flex;align-items:flex-end;gap:4px">
+            <sc-for list="{{ schedules }}" as="s" hint-placeholder-count="3">
+              <div onClick="{{ () => setTab(s.id) }}" style="cursor:pointer;display:flex;align-items:center;gap:7px;padding:10px 16px;border-radius:10px 10px 0 0;background:{{ s.active ? '#FFFFFF' : 'transparent' }};box-shadow:{{ s.active ? '0 -1px 0 0 #EBEEF3 inset' : 'none' }}">
+                <span style="font-size:13.5px;font-weight:700;color:{{ s.active ? '#2F6FEB' : '#8892A4' }}">{{ s.name }}</span>
+                <span style="font-size:10.5px;font-weight:700;padding:1px 6px;border-radius:20px;background:{{ s.active ? '#EAF1FE' : '#EEF1F6' }};color:{{ s.active ? '#2F6FEB' : '#9AA3B2' }}">{{ s.credits }}</span>
+              </div>
+            </sc-for>
+            <div style="padding:10px 12px;color:#B9C0CC"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"></line><line x1="4" y1="10" x2="16" y2="10"></line></svg></div>
+          </div>
+
+          <!-- Stat + action bar -->
+          <div style="background:#FFFFFF;border-radius:0 14px 14px 14px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 0 0 #EBEEF3">
+            <div style="display:flex;align-items:baseline;gap:22px">
+              <div style="display:flex;align-items:baseline;gap:5px"><span style="font-size:26px;font-weight:800;color:#2F6FEB">18</span><span style="font-size:12.5px;color:#8892A4;font-weight:600">학점</span></div>
+              <div style="display:flex;align-items:baseline;gap:5px"><span style="font-size:26px;font-weight:800;color:#1E2530">6</span><span style="font-size:12.5px;color:#8892A4;font-weight:600">과목</span></div>
+              <div style="display:flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#1FA97A;white-space:nowrap;flex-shrink:0">
+                <sc-if value="{{ showEmoji }}" hint-placeholder-val="{{ false }}"><span>🎉</span></sc-if>
+                금요일 공강
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <button style="display:flex;align-items:center;gap:6px;background:#2F6FEB;color:#fff;border:none;padding:9px 15px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer">
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"></line><line x1="4" y1="10" x2="16" y2="10"></line></svg>과목 추가
+              </button>
+              <button style="display:flex;align-items:center;gap:6px;background:#1E2530;color:#fff;border:none;padding:9px 15px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer">
+                <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l1.3 3.8L15 7.6l-3.7 1.3L10 12.7l-1.3-3.8L5 7.6l3.7-1.3z"></path></svg>AI로 만들기
+              </button>
+              <div style="width:1px;height:22px;background:#EBEEF3;margin:0 4px"></div>
+              <button title="공유" style="width:34px;height:34px;border-radius:9px;border:1px solid #E4E8F0;background:#fff;color:#5B6472;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="15" cy="4.5" r="2"></circle><circle cx="5" cy="10" r="2"></circle><circle cx="15" cy="15.5" r="2"></circle><line x1="6.8" y1="9" x2="13.2" y2="5.5"></line><line x1="6.8" y1="11" x2="13.2" y2="14.5"></line></svg></button>
+              <button title="다른 기기로 보내기" style="width:34px;height:34px;border-radius:9px;border:1px solid #E4E8F0;background:#fff;color:#5B6472;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="10" height="16" rx="2"></rect><line x1="9" y1="15.3" x2="11" y2="15.3"></line></svg></button>
+              <button title="초기화" style="width:34px;height:34px;border-radius:9px;border:1px solid #FBD8D8;background:#FEF4F4;color:#E5484D;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5h11"></path><path d="M8 5.5V4h4v1.5"></path><path d="M6 5.5l.8 10.5a1.5 1.5 0 0 0 1.5 1.4h3.4a1.5 1.5 0 0 0 1.5-1.4l.8-10.5"></path></svg></button>
+            </div>
+          </div>
+
+          <!-- Grid -->
+          <div style="margin-top:16px;background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 0 #EBEEF3">
+            <div style="display:grid;grid-template-columns:56px repeat(5,1fr)">
+              <div style="padding:10px;background:#F9FAFC;border-bottom:1px solid #EEF1F5"></div>
+              <sc-for list="{{ days }}" as="d" hint-placeholder-count="5">
+                <div style="padding:10px;text-align:center;font-size:12.5px;font-weight:700;color:#5B6472;background:#F9FAFC;border-bottom:1px solid #EEF1F5;border-left:1px solid #EEF1F5">{{ d }}</div>
+              </sc-for>
+            </div>
+            <div style="position:relative;display:grid;grid-template-columns:56px repeat(5,1fr);grid-template-rows:repeat(13,30px)">
+              <sc-for list="{{ hourLabels }}" as="h" hint-placeholder-count="7">
+                <div style="grid-column:1;grid-row:{{ h.row }};border-bottom:1px solid #F3F5F8;display:flex;justify-content:center;padding-top:2px"><span style="font-size:11px;color:#B0B7C3;font-weight:600">{{ h.hour }}</span></div>
+              </sc-for>
+              <sc-for list="{{ gridCols }}" as="c" hint-placeholder-count="5">
+                <div style="grid-column:{{ c }};grid-row:1 / 14;border-left:1px solid #F3F5F8;display:grid;grid-template-rows:repeat(13,30px)">
+                  <sc-for list="{{ hourLabels }}" as="h" hint-placeholder-count="7"><div style="grid-row:{{ h.row }};border-bottom:1px solid #F6F7FA"></div></sc-for>
+                </div>
+              </sc-for>
+              <sc-for list="{{ courses }}" as="course" hint-placeholder-count="9">
+                <div style="grid-column:{{ course.col }};grid-row:{{ course.rowStyle }};margin:2px 5px;border-radius:8px;background:{{ course.bg }};border:1.5px solid {{ course.border }};padding:7px 9px;overflow:hidden;cursor:pointer">
+                  <div style="font-size:12.5px;font-weight:700;color:{{ course.text }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ course.name }}</div>
+                  <div style="font-size:10.5px;color:{{ course.text }};opacity:.75;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ course.prof }} · {{ course.room }}</div>
+                  <div style="font-size:9.5px;color:{{ course.text }};opacity:.55;margin-top:3px">{{ course.time }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="border-top:1px solid #EEF1F5;background:#FBFCFE;padding:10px 14px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:9px">
+                <div style="width:4px;height:22px;border-radius:4px;background:#E77FC0"></div>
+                <span style="font-size:12.5px;font-weight:700;color:#B23E85">남북한경제의이해</span>
+                <span style="font-size:11px;color:#9AA3B2">박영민 · 3학점</span>
+                <span style="font-size:10.5px;padding:2px 7px;border-radius:6px;background:#FDE1F1;color:#B23E85;font-weight:700">온라인</span>
+              </div>
+              <button style="width:26px;height:26px;border-radius:7px;border:none;background:transparent;color:#B0B7C3;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="5" x2="15" y2="15"></line><line x1="15" y1="5" x2="5" y2="15"></line></svg></button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===================== MOBILE FRAME ===================== -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <span style="font-size:12px;font-weight:700;color:#8892A4">모바일 · 390px</span>
+      <div style="width:390px;background:#F6F8FB;border-radius:28px;box-shadow:0 20px 50px -20px rgba(30,40,60,.25);overflow:hidden;border:1px solid #E4E8F0;position:relative">
+
+        <header style="background:#FFFFFF;border-bottom:1px solid #EBEEF3;padding:0 16px;position:relative">
+          <div style="display:flex;align-items:center;justify-content:space-between;height:52px">
+            <div style="display:flex;align-items:center;gap:7px">
+              <span style="color:#2F6FEB"><svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.3" y="3.6" width="7" height="12.8" rx="1"></rect><rect x="10.7" y="3.6" width="7" height="12.8" rx="1"></rect><line x1="10" y1="3.6" x2="10" y2="16.4"></line></svg></span>
+              <span style="font-size:15px;font-weight:800;color:#1E2530">대진대 시간표</span>
+            </div>
+            <sc-if value="{{ mobileNavStyle === 'hamburger' }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ toggleMenu }}" style="width:32px;height:32px;border:none;background:transparent;color:#5B6472;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><line x1="3.5" y1="6" x2="16.5" y2="6"></line><line x1="3.5" y1="10" x2="16.5" y2="10"></line><line x1="3.5" y1="14" x2="16.5" y2="14"></line></svg></button>
+            </sc-if>
+          </div>
+          <sc-if value="{{ mobileNavStyle === 'icon_row' }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:14px;padding:0 2px 10px;overflow-x:auto">
+              <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+                <div title="{{ item.label }}" style="display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0">
+                  <div style="width:30px;height:30px;border-radius:9px;background:#F1F4FA;color:#5B6472;display:flex;align-items:center;justify-content:center" dangerouslySetInnerHTML="{{ item.svg }}"></div>
+                  <span style="font-size:9.5px;color:#8892A4;font-weight:600">{{ item.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ mobileNavStyle === 'hamburger' && menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute;top:52px;left:0;right:0;background:#fff;border-bottom:1px solid #EBEEF3;box-shadow:0 12px 24px -12px rgba(30,40,60,.2);z-index:10;padding:6px">
+              <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+                <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px">
+                  <span style="color:#9AA3B2" dangerouslySetInnerHTML="{{ item.svg }}"></span>
+                  <span style="font-size:13.5px;font-weight:600;color:#3A4150">{{ item.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </header>
+
+        <main style="padding:14px 12px 20px">
+          <div style="display:flex;align-items:flex-end;gap:3px;overflow-x:auto">
+            <sc-for list="{{ schedules }}" as="s" hint-placeholder-count="3">
+              <div onClick="{{ () => setTab(s.id) }}" style="cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:5px;padding:8px 12px;border-radius:9px 9px 0 0;background:{{ s.active ? '#FFFFFF' : 'transparent' }}">
+                <span style="font-size:12.5px;font-weight:700;color:{{ s.active ? '#2F6FEB' : '#8892A4' }}">{{ s.name }}</span>
+                <span style="font-size:10px;font-weight:700;padding:1px 5px;border-radius:20px;background:{{ s.active ? '#EAF1FE' : '#EEF1F6' }};color:{{ s.active ? '#2F6FEB' : '#9AA3B2' }}">{{ s.credits }}</span>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="background:#FFFFFF;border-radius:0 12px 12px 12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;box-shadow:0 1px 0 0 #EBEEF3">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:baseline;gap:14px">
+                <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:21px;font-weight:800;color:#2F6FEB">18</span><span style="font-size:11px;color:#8892A4;font-weight:600">학점</span></div>
+                <div style="display:flex;align-items:baseline;gap:4px"><span style="font-size:21px;font-weight:800;color:#1E2530">6</span><span style="font-size:11px;color:#8892A4;font-weight:600">과목</span></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#1FA97A;white-space:nowrap;flex-shrink:0">금요일 공강</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:7px">
+              <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;background:#2F6FEB;color:#fff;border:none;padding:9px 0;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="10" y1="4" x2="10" y2="16"></line><line x1="4" y1="10" x2="16" y2="10"></line></svg>과목 추가
+              </button>
+              <button style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;background:#1E2530;color:#fff;border:none;padding:9px 0;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l1.3 3.8L15 7.6l-3.7 1.3L10 12.7l-1.3-3.8L5 7.6l3.7-1.3z"></path></svg>AI 추천
+              </button>
+              <button style="width:36px;height:36px;border-radius:9px;border:1px solid #E4E8F0;background:#fff;color:#5B6472;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="15" cy="4.5" r="2"></circle><circle cx="5" cy="10" r="2"></circle><circle cx="15" cy="15.5" r="2"></circle><line x1="6.8" y1="9" x2="13.2" y2="5.5"></line><line x1="6.8" y1="11" x2="13.2" y2="14.5"></line></svg></button>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 1px 0 0 #EBEEF3">
+            <div style="display:grid;grid-template-columns:34px repeat(5,1fr)">
+              <div style="padding:7px;background:#F9FAFC;border-bottom:1px solid #EEF1F5"></div>
+              <sc-for list="{{ days }}" as="d" hint-placeholder-count="5">
+                <div style="padding:7px 2px;text-align:center;font-size:11px;font-weight:700;color:#5B6472;background:#F9FAFC;border-bottom:1px solid #EEF1F5;border-left:1px solid #EEF1F5">{{ d }}</div>
+              </sc-for>
+            </div>
+            <div style="position:relative;display:grid;grid-template-columns:34px repeat(5,1fr);grid-template-rows:repeat(13,22px)">
+              <sc-for list="{{ hourLabels }}" as="h" hint-placeholder-count="7">
+                <div style="grid-column:1;grid-row:{{ h.row }};border-bottom:1px solid #F3F5F8;display:flex;justify-content:center;padding-top:1px"><span style="font-size:9.5px;color:#B0B7C3;font-weight:600">{{ h.hour }}</span></div>
+              </sc-for>
+              <sc-for list="{{ gridCols }}" as="c" hint-placeholder-count="5">
+                <div style="grid-column:{{ c }};grid-row:1 / 14;border-left:1px solid #F3F5F8;display:grid;grid-template-rows:repeat(13,22px)">
+                  <sc-for list="{{ hourLabels }}" as="h" hint-placeholder-count="7"><div style="grid-row:{{ h.row }};border-bottom:1px solid #F6F7FA"></div></sc-for>
+                </div>
+              </sc-for>
+              <sc-for list="{{ courses }}" as="course" hint-placeholder-count="9">
+                <div style="grid-column:{{ course.col }};grid-row:{{ course.rowStyle }};margin:1px 3px;border-radius:6px;background:{{ course.bg }};border:1.3px solid {{ course.border }};padding:3px 4px;overflow:hidden">
+                  <div style="font-size:9.5px;font-weight:700;color:{{ course.text }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ course.name }}</div>
+                  <div style="font-size:8px;color:{{ course.text }};opacity:.7;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ course.room }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="border-top:1px solid #EEF1F5;background:#FBFCFE;padding:9px 10px;display:flex;align-items:center;justify-content:space-between">
+              <div style="display:flex;align-items:center;gap:7px;min-width:0">
+                <div style="width:3px;height:18px;border-radius:4px;background:#E77FC0;flex-shrink:0"></div>
+                <span style="font-size:11px;font-weight:700;color:#B23E85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">남북한경제의이해</span>
+                <span style="font-size:9.5px;padding:1px 5px;border-radius:6px;background:#FDE1F1;color:#B23E85;font-weight:700;flex-shrink:0">온라인</span>
+              </div>
+              <button style="width:26px;height:26px;border-radius:7px;border:none;background:transparent;color:#B0B7C3;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="5" x2="15" y2="15"></line><line x1="15" y1="5" x2="5" y2="15"></line></svg></button>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- ===================== NOTES PANEL ===================== -->
+    <div style="width:300px;background:#FFFFFF;border-radius:16px;padding:20px 22px;box-shadow:0 1px 0 0 #EBEEF3;display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:13px;font-weight:800;color:#1E2530">무엇이 바뀌었나</span>
+      <sc-for list="{{ notes }}" as="n" hint-placeholder-count="6">
+        <div style="display:flex;gap:9px">
+          <div style="width:6px;height:6px;border-radius:50%;background:#2F6FEB;margin-top:6px;flex-shrink:0"></div>
+          <span style="font-size:12.5px;color:#4A5262;line-height:1.55">{{ n }}</span>
+        </div>
+      </sc-for>
+      <div style="height:1px;background:#EEF1F5;margin:4px 0"></div>
+      <span style="font-size:11.5px;color:#9AA3B2;line-height:1.6">과목 검색 모달·AI 추천 페이지도 같은 컬러·타이포·아이콘 체계로 이어서 정리할 예정이에요. 확인되면 이어서 만들어드릴게요.</span>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showEmoji&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;비교&quot;},&quot;mobileNavStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;icon_row&quot;,&quot;options&quot;:[&quot;icon_row&quot;,&quot;hamburger&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;모바일 내비&quot;}}">
+const ICON = {
+  message: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3.5" width="15" height="11" rx="2"></rect><path d="M6 16.5l3-2.5"></path></svg>',
+  file: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h7l3 3v12H5z"></path><line x1="8" y1="8.5" x2="13" y2="8.5"></line><line x1="8" y1="11.5" x2="13" y2="11.5"></line><line x1="8" y1="14.5" x2="11" y2="14.5"></line></svg>',
+  help: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"></circle><path d="M7.8 7.8a2.2 2.2 0 1 1 3 2c-.7.4-1.1.9-1.1 1.7"></path><line x1="9.9" y1="14.3" x2="9.9" y2="14.4"></line></svg>',
+  sparkles: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l1.3 3.8L15 7.6l-3.7 1.3L10 12.7l-1.3-3.8L5 7.6l3.7-1.3z"></path></svg>',
+  book: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="7" height="12" rx="1"></rect><rect x="10.5" y="4" width="7" height="12" rx="1"></rect><line x1="10" y1="4" x2="10" y2="16"></line></svg>',
+  flame: '<svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.8c.9 2.6-2.4 3.3-2.4 6.6a2.4 2.4 0 0 0 4.8 0c0-.8-.8-1.6-.8-1.6s1.6.9 1.6 3.2a4 4 0 0 1-8 0c0-4 4-4.8 4.8-8.2z"></path></svg>',
+};
+
+const NAV_ITEMS = [
+  { label: '피드백', emoji: '✉️', svg: { __html: ICON.message } },
+  { label: '업데이트', emoji: '📋', svg: { __html: ICON.file } },
+  { label: 'FAQ', emoji: '❓', svg: { __html: ICON.help } },
+  { label: 'AI평가', emoji: '✨', svg: { __html: ICON.sparkles } },
+  { label: '졸업계산기', emoji: '🎓', svg: { __html: ICON.book } },
+  { label: '인기', emoji: '🔥', svg: { __html: ICON.flame } },
+];
+
+const DAYS = ['월', '화', '수', '목', '금'];
+const DAY_COL = { '월': 2, '화': 3, '수': 4, '목': 5, '금': 6 };
+
+function line(hour, half) { return 2 + (hour - 9) * 2 + (half ? 1 : 0); }
+
+const RAW_COURSES = [
+  { name: '운영체제론', prof: '이시진', room: '공다A 410', day: '월', start: [10, 0], end: [11, 30], time: '10:00-11:30', bg: '#FFDEE1', border: '#FF9BA3', text: '#C23A46' },
+  { name: '운영체제론', prof: '이시진', room: '공다A 410', day: '목', start: [10, 0], end: [11, 30], time: '10:00-11:30', bg: '#FFDEE1', border: '#FF9BA3', text: '#C23A46' },
+  { name: '임베디드시스템응용', prof: '장윤석', room: '공다B 412', day: '화', start: [9, 30], end: [12, 30], time: '09:30-12:30', bg: '#EBE0FB', border: '#B78FF2', text: '#6C3FC4' },
+  { name: '데이터베이스론', prof: '신판섭', room: '공다A 411', day: '수', start: [10, 0], end: [11, 30], time: '10:00-11:30', bg: '#DCE8FF', border: '#7CA6FF', text: '#2D5FCC' },
+  { name: '데이터베이스론', prof: '신판섭', room: '공다A 411', day: '금', start: [10, 0], end: [11, 30], time: '10:00-11:30', bg: '#DCE8FF', border: '#7CA6FF', text: '#2D5FCC' },
+  { name: '컴퓨터알고리즘', prof: '박정규', room: '공다A 411', day: '수', start: [11, 30], end: [13, 0], time: '11:30-13:00', bg: '#DFF5E6', border: '#7DD6A0', text: '#1F8A54' },
+  { name: '컴퓨터알고리즘', prof: '박정규', room: '공다A 411', day: '목', start: [11, 30], end: [13, 0], time: '11:30-13:00', bg: '#DFF5E6', border: '#7DD6A0', text: '#1F8A54' },
+  { name: 'iOS프로그래밍', prof: '박정규', room: '공다A 410', day: '월', start: [13, 30], end: [15, 0], time: '13:30-15:00', bg: '#FFF1C4', border: '#EACB5C', text: '#9C7A0E' },
+  { name: 'iOS프로그래밍', prof: '박정규', room: '공다A 410', day: '화', start: [13, 30], end: [15, 0], time: '13:30-15:00', bg: '#FFF1C4', border: '#EACB5C', text: '#9C7A0E' },
+];
+
+const COURSES = RAW_COURSES.map(function (c) {
+  var s = line(c.start[0], c.start[1] === 30);
+  var e = line(c.end[0], c.end[1] === 30);
+  return Object.assign({}, c, { col: DAY_COL[c.day], rowStyle: s + ' / ' + e });
+});
+
+const HOUR_LABELS = [9, 10, 11, 12, 13, 14, 15].map(function (h) {
+  return { hour: h, row: line(h, false) + (h === 15 ? ' / ' + (line(h, false) + 1) : ' / ' + (line(h, false) + 2)) };
+});
+
+const SCHEDULES = [
+  { id: 1, name: '시간표 1', credits: 15 },
+  { id: 2, name: '시간표 2', credits: 18 },
+  { id: 3, name: '시간표 3', credits: 0 },
+];
+
+const NOTES = [
+  '헤더 내비를 아이콘+라벨로 통일하고 모바일에서는 가로 스크롤 아이콘 열 또는 드롭다운 메뉴로 전환 — 더 이상 줄바꿈·겹침 없음',
+  '통계·액션 바를 여유 있게 재배치해 "18학점"이 줄바꿈되지 않고, 버튼 라벨이 항상 온전히 보임',
+  '이모지와 아이콘 혼용을 정리해 하나의 라인 아이콘 세트로 통일 (Tweaks에서 이모지 버전과 비교 가능)',
+  '시간표 이름 중복 버그 수정 — 새 시간표는 항상 다음 번호로 자동 명명',
+  '보라↔파랑↔코랄 등 과목 색상 팔레트를 더 뚜렷하게 구분되도록 재조정',
+  '카드·탭·그리드 간 여백을 늘리고 통계 숫자를 크게 키워 화면의 시각적 우선순위를 명확히 함',
+];
+
+class Component extends DCLogic {
+  state = { activeTab: 2, menuOpen: false };
+
+  setTab(id) { this.setState({ activeTab: id }); }
+  toggleMenu() { this.setState(function (s) { return { menuOpen: !s.menuOpen }; }); }
+
+  renderVals() {
+    var activeTab = this.state.activeTab;
+    var showEmoji = this.props.showEmoji ?? false;
+    var mobileNavStyle = this.props.mobileNavStyle ?? 'icon_row';
+    return {
+      showEmoji: showEmoji,
+      mobileNavStyle: mobileNavStyle,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: this.toggleMenu.bind(this),
+      setTab: this.setTab.bind(this),
+      navItems: NAV_ITEMS,
+      days: DAYS,
+      gridCols: [2, 3, 4, 5, 6],
+      hourLabels: HOUR_LABELS,
+      courses: COURSES,
+      schedules: SCHEDULES.map(function (s) { return Object.assign({}, s, { active: s.id === activeTab }); }),
+      notes: NOTES,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

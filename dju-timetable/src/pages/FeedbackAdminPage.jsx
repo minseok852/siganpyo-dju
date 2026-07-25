@@ -18,7 +18,7 @@ import {
   Pencil,
   X
 } from 'lucide-react';
-import { 
+import {
   getFeedbacks,
   updateFeedbackStatus,
   deleteFeedback,
@@ -27,8 +27,9 @@ import {
   deleteAdminComment,
   verifyAdminPassword,
   FEEDBACK_STATUS,
-  FEEDBACK_CATEGORY 
+  FEEDBACK_CATEGORY
 } from '../services/feedbackService';
+import { SEMESTERS, CURRENT_SEMESTER, formatSemester } from '../data/constants';
 
 // 상태별 스타일
 const STATUS_STYLES = {
@@ -124,16 +125,23 @@ function AdminFeedbackCard({ feedback, onStatusChange, onDelete, onAddComment, o
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       <div className="p-4">
         <div className="flex items-start justify-between gap-2 mb-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* 학기 배지 */}
+            {feedback.semester && (
+              <span className="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 font-medium">
+                {formatSemester(feedback.semester)}
+              </span>
+            )}
+
             {/* 카테고리 */}
             <span className={`text-xs px-2 py-0.5 rounded-full ${
-              feedback.category === FEEDBACK_CATEGORY.TYPO 
-                ? 'bg-orange-100 text-orange-700' 
+              feedback.category === FEEDBACK_CATEGORY.TYPO
+                ? 'bg-orange-100 text-orange-700'
                 : 'bg-purple-100 text-purple-700'
             }`}>
               {feedback.category}
             </span>
-            
+
             {/* 상태 드롭다운 */}
             <div className="relative">
               <button
@@ -453,6 +461,7 @@ export default function FeedbackAdminPage() {
   const [feedbacks, setFeedbacks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');  // all, received, reviewing, completed, rejected
+  const [semesterFilter, setSemesterFilter] = useState(CURRENT_SEMESTER);  // 'all' 또는 '2026-2' 등
 
   // 인증 확인
   useEffect(() => {
@@ -534,8 +543,13 @@ export default function FeedbackAdminPage() {
     setIsAuthenticated(false);
   };
 
-  // 필터링된 피드백
-  const filteredFeedbacks = feedbacks.filter(fb => {
+  // 1) 학기로 먼저 좁힘 ('all'이면 전체)
+  const semesterScoped = feedbacks.filter(
+    fb => semesterFilter === 'all' || fb.semester === semesterFilter
+  );
+
+  // 2) 상태 필터 적용
+  const filteredFeedbacks = semesterScoped.filter(fb => {
     if (filter === 'all') return true;
     if (filter === 'received') return fb.status === FEEDBACK_STATUS.RECEIVED;
     if (filter === 'reviewing') return fb.status === FEEDBACK_STATUS.REVIEWING;
@@ -544,13 +558,13 @@ export default function FeedbackAdminPage() {
     return true;
   });
 
-  // 통계
+  // 통계 (선택한 학기 범위 기준)
   const stats = {
-    total: feedbacks.length,
-    received: feedbacks.filter(f => f.status === FEEDBACK_STATUS.RECEIVED).length,
-    reviewing: feedbacks.filter(f => f.status === FEEDBACK_STATUS.REVIEWING).length,
-    completed: feedbacks.filter(f => f.status === FEEDBACK_STATUS.COMPLETED).length,
-    rejected: feedbacks.filter(f => f.status === FEEDBACK_STATUS.REJECTED).length,
+    total: semesterScoped.length,
+    received: semesterScoped.filter(f => f.status === FEEDBACK_STATUS.RECEIVED).length,
+    reviewing: semesterScoped.filter(f => f.status === FEEDBACK_STATUS.REVIEWING).length,
+    completed: semesterScoped.filter(f => f.status === FEEDBACK_STATUS.COMPLETED).length,
+    rejected: semesterScoped.filter(f => f.status === FEEDBACK_STATUS.REJECTED).length,
   };
 
   if (!isAuthenticated) {
@@ -585,6 +599,36 @@ export default function FeedbackAdminPage() {
       </header>
 
       <main className="max-w-4xl mx-auto px-3 py-4">
+        {/* 학기 필터 */}
+        <div className="flex items-center gap-1.5 mb-3 overflow-x-auto no-scrollbar">
+          {SEMESTERS.map(sem => (
+            <button
+              key={sem}
+              onClick={() => setSemesterFilter(sem)}
+              className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition-colors ${
+                semesterFilter === sem
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
+              }`}
+            >
+              {formatSemester(sem)}
+              {sem === CURRENT_SEMESTER && (
+                <span className={`ml-1 text-[10px] ${semesterFilter === sem ? 'text-blue-100' : 'text-blue-500'}`}>진행중</span>
+              )}
+            </button>
+          ))}
+          <button
+            onClick={() => setSemesterFilter('all')}
+            className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition-colors ${
+              semesterFilter === 'all'
+                ? 'bg-gray-700 text-white'
+                : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
+            }`}
+          >
+            전체 학기
+          </button>
+        </div>
+
         {/* 통계 카드 */}
         <div className="grid grid-cols-5 gap-2 mb-4">
           <button

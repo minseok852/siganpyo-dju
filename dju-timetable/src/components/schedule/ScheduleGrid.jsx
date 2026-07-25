@@ -181,9 +181,10 @@ export default function ScheduleGrid({
                       e.stopPropagation();
                       onRemoveCourse(course.course_code, course.section);
                     }}
-                    className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded shrink-0"
+                    className="w-[26px] h-[26px] flex items-center justify-center text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg shrink-0"
+                    title="삭제"
                   >
-                    <X size={14} />
+                    <X size={15} />
                   </button>
                 )}
               </div>

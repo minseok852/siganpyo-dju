@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import {
   Plus, Trash2, Share2, Sparkles, BookOpen, Copy, Check,
   Loader2, X, Wand2, HelpCircle, Edit3, Files, ChevronDown, MessageSquarePlus,
-  Smartphone, Download, CheckCircle, Palette, Megaphone
+  Smartphone, Download, CheckCircle, Palette, Megaphone,
+  Menu, FileText, GraduationCap, Flame
 } from 'lucide-react';
 import { THEMES } from '../data/constants';
 import ScheduleGrid from '../components/schedule/ScheduleGrid';
@@ -13,6 +14,16 @@ import CourseDetail from '../components/schedule/CourseDetail';
 import { useSchedule } from '../hooks/useSchedule';
 import { saveScheduleForShare } from '../services/shareService';
 import { createTransfer, receiveTransfer } from '../services/transferService';
+
+// 헤더 내비게이션 항목 (아이콘 통일 — 이모지 제거)
+const NAV_ITEMS = [
+  { href: '/feedback', label: '피드백', icon: MessageSquarePlus },
+  { href: '/updates', label: '업데이트', icon: FileText },
+  { href: '/faq', label: 'FAQ', icon: HelpCircle },
+  { href: '/ai', label: 'AI평가', icon: Sparkles },
+  { href: '/graduation', label: '졸업계산기', icon: GraduationCap },
+  { href: '/popular', label: '인기', icon: Flame },
+];
 
 // 테마 피커 컴포넌트
 function ThemePicker({ currentTheme, onSelect }) {
@@ -111,8 +122,10 @@ function ScheduleTabMenu({ schedule, isActive, onSwitch, onRename, onDuplicate, 
   return (
     <div className="relative" ref={menuRef}>
       <div
-        className={`flex items-center gap-1 px-3 py-1.5 rounded-t-lg cursor-pointer transition-all ${
-          isActive ? 'bg-white text-blue-600 font-medium shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+        className={`flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-t-[10px] cursor-pointer transition-all whitespace-nowrap ${
+          isActive
+            ? 'bg-white text-[#2F6FEB] font-bold shadow-[0_-1px_0_0_#EBEEF3_inset]'
+            : 'bg-transparent text-[#8892A4] font-semibold hover:bg-white/60'
         }`}
         onClick={() => !isRenaming && onSwitch(schedule.id)}
       >
@@ -121,13 +134,13 @@ function ScheduleTabMenu({ schedule, isActive, onSwitch, onRename, onDuplicate, 
             onBlur={handleRename} onKeyDown={handleKeyDown} onClick={(e) => e.stopPropagation()}
             className="w-20 px-1 py-0 text-sm border border-blue-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500" maxLength={15} />
         ) : (
-          <span className="text-sm truncate max-w-[80px]">{schedule.name}</span>
+          <span className="text-[13px] sm:text-[13.5px] truncate max-w-[80px]">{schedule.name}</span>
         )}
-        <span className={`text-[10px] px-1 py-0.5 rounded ${isActive ? 'bg-blue-100 text-blue-600' : 'bg-gray-200 text-gray-500'}`}>
+        <span className={`text-[10.5px] font-bold px-1.5 py-0.5 rounded-full ${isActive ? 'bg-[#EAF1FE] text-[#2F6FEB]' : 'bg-[#EEF1F6] text-[#9AA3B2]'}`}>
           {schedule.courses.reduce((sum, c) => sum + (c.credits || 0), 0)}
         </span>
         {isActive && !isRenaming && (
-          <button onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen); }} className="p-0.5 hover:bg-blue-100 rounded">
+          <button onClick={(e) => { e.stopPropagation(); setIsMenuOpen(!isMenuOpen); }} className="p-0.5 -mr-1 hover:bg-blue-50 rounded">
             <ChevronDown size={14} />
           </button>
         )}
@@ -378,6 +391,9 @@ export default function HomePage() {
   const [isTransferSending, setIsTransferSending] = useState(false);
   const [isTransferReceiveOpen, setIsTransferReceiveOpen] = useState(false);
 
+  // 모바일 헤더 메뉴 열림/닫힘
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   // 2학기 시간표 미확정 안내 팝업
   const NOTICE_KEY = 'notice-2sem-2026';
   const [showNotice, setShowNotice] = useState(false);
@@ -455,71 +471,124 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-3 py-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <BookOpen className="text-blue-600" size={20} />
-              <h1 className="text-base font-bold text-gray-800">대진대 시간표</h1>
-            </div>
-            <nav className="flex items-center gap-1">
-              <a href="/feedback" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"><MessageSquarePlus size={14} />피드백</a>
-              <a href="/updates" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1">📋업데이트</a>
-              <a href="/faq" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"><HelpCircle size={14} />FAQ</a>
-              <a href="/ai" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600 flex items-center gap-1"><Sparkles size={14} />AI평가</a>
-              <a href="/graduation" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600">졸업계산기</a>
-              <a href="/popular" className="px-2 py-1 text-xs text-gray-600 hover:text-blue-600">인기</a>
+      <header className="bg-white border-b border-[#EBEEF3] sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-4 sm:px-7">
+          <div className="flex items-center justify-between h-[52px] sm:h-[60px]">
+            {/* 로고 */}
+            <a href="/" className="flex items-center gap-2 flex-shrink-0">
+              <BookOpen className="text-[#2F6FEB]" size={20} />
+              <span className="text-[15px] sm:text-[17px] font-extrabold text-[#1E2530] tracking-tight whitespace-nowrap">
+                대진대 시간표
+              </span>
+            </a>
+
+            {/* 데스크톱 내비 */}
+            <nav className="hidden md:flex items-center gap-7">
+              {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+                <a key={href} href={href}
+                  className="group flex items-center gap-1.5 text-[13px] font-semibold text-[#5B6472] hover:text-[#2F6FEB] transition-colors whitespace-nowrap">
+                  <Icon size={16} className="text-[#9AA3B2] group-hover:text-[#2F6FEB] transition-colors" />
+                  {label}
+                </a>
+              ))}
             </nav>
+
+            {/* 모바일 햄버거 */}
+            <button
+              onClick={() => setMobileMenuOpen(v => !v)}
+              className="md:hidden w-9 h-9 -mr-1.5 flex items-center justify-center text-[#5B6472] hover:bg-gray-50 rounded-lg transition-colors"
+              aria-label="메뉴"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
+
+        {/* 모바일 드롭다운 메뉴 */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-[#EBEEF3] bg-white shadow-[0_12px_24px_-12px_rgba(30,40,60,0.2)]">
+            <nav className="max-w-6xl mx-auto px-2 py-1.5">
+              {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+                <a key={href} href={href}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-semibold text-[#3A4150] hover:bg-gray-50 transition-colors">
+                  <Icon size={17} className="text-[#9AA3B2]" />
+                  {label}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
 
-      <main className="max-w-6xl mx-auto px-2 py-3">
+      <main className="max-w-6xl mx-auto px-3 sm:px-5 py-3 sm:py-4">
         {/* 시간표 탭 */}
-        <div className="flex items-end gap-1 mb-0">
+        <div className="flex items-end gap-0.5 overflow-x-auto no-scrollbar">
           {schedules.map(schedule => (
             <ScheduleTabMenu key={schedule.id} schedule={schedule} isActive={schedule.id === activeId}
               onSwitch={switchSchedule} onRename={renameSchedule} onDuplicate={duplicateSchedule}
               onDelete={deleteSchedule} canDelete={schedules.length > 1} canDuplicate={schedules.length < maxSchedules} />
           ))}
           {schedules.length < maxSchedules && (
-            <button onClick={handleAddSchedule} className="px-2 py-1.5 text-gray-400 hover:text-blue-500 hover:bg-gray-100 rounded-t-lg transition-colors" title="새 시간표 추가">
-              <Plus size={18} />
+            <button onClick={handleAddSchedule} className="flex-shrink-0 px-2.5 py-2.5 text-[#B9C0CC] hover:text-[#2F6FEB] transition-colors" title="새 시간표 추가">
+              <Plus size={16} />
             </button>
           )}
         </div>
 
         {/* 통계 & 액션 바 */}
-        <div className="bg-white rounded-lg rounded-tl-none shadow-sm p-3 mb-3">
-          <div className="flex items-center justify-between gap-2">
-            <div className="flex items-center gap-3">
-              <div className="text-center"><span className="text-xl font-bold text-blue-600">{stats.totalCredits}</span><span className="text-xs text-gray-500 ml-0.5">학점</span></div>
-              <div className="text-center"><span className="text-xl font-bold text-gray-700">{stats.courseCount}</span><span className="text-xs text-gray-500 ml-0.5">과목</span></div>
-              {stats.emptyDays.length > 0 && <div className="text-xs text-green-600 hidden sm:block">🎉 {stats.emptyDays.join(', ')} 공강</div>}
+        <div className="bg-white rounded-[14px] rounded-tl-none shadow-[0_1px_0_0_#EBEEF3] p-3 sm:p-4 mb-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {/* 통계 */}
+            <div className="flex items-center gap-5 sm:gap-6">
+              <div className="flex items-baseline gap-1">
+                <span className="text-[21px] sm:text-[26px] font-extrabold text-[#2F6FEB] leading-none">{stats.totalCredits}</span>
+                <span className="text-[12.5px] font-semibold text-[#8892A4]">학점</span>
+              </div>
+              <div className="flex items-baseline gap-1">
+                <span className="text-[21px] sm:text-[26px] font-extrabold text-[#1E2530] leading-none">{stats.courseCount}</span>
+                <span className="text-[12.5px] font-semibold text-[#8892A4]">과목</span>
+              </div>
+              {stats.emptyDays.length > 0 && (
+                <div className="text-[12.5px] font-semibold text-[#1FA97A] whitespace-nowrap">🎉 {stats.emptyDays.join(', ')} 공강</div>
+              )}
             </div>
-            <div className="flex items-center gap-1.5">
-              <button onClick={() => setIsSearchOpen(true)} className="px-3 py-1.5 bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex items-center gap-1 text-sm">
-                <Plus size={16} /><span className="hidden sm:inline">과목</span>추가
-              </button>
-              <button onClick={() => navigate('/recommend')} className="px-3 py-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 flex items-center gap-1 text-sm">
-                <Wand2 size={16} /><span className="hidden sm:inline">AI로</span>만들기
-              </button>
-              <ThemePicker
-                currentTheme={activeSchedule?.theme || 'pastel'}
-                onSelect={(theme) => setScheduleTheme(activeId, theme)}
-              />
-              <button onClick={handleShare} disabled={courses.length === 0} className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50" title="공유"><Share2 size={18} /></button>
-              {courses.length > 0 && (
-                <button onClick={handleTransferSend} className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50" title="다른 기기로 보내기"><Smartphone size={18} /></button>
-              )}
-              <button onClick={() => setIsTransferReceiveOpen(true)} className="p-1.5 border border-gray-300 rounded-lg hover:bg-gray-50" title="코드로 불러오기"><Download size={18} /></button>
-              {courses.length > 0 && (
-                <button onClick={() => { if (confirm(`"${activeSchedule?.name}" 시간표를 초기화할까요?`)) clearSchedule(); }}
-                  className="p-1.5 text-red-500 border border-red-200 rounded-lg hover:bg-red-50" title="현재 시간표 초기화"><Trash2 size={18} /></button>
-              )}
+
+            {/* 액션 */}
+            <div className="flex flex-wrap items-center gap-2">
+              {/* 주요 버튼 (모바일에서 각각 flex-1로 폭 채움) */}
+              <div className="flex gap-2 w-full sm:w-auto">
+                <button onClick={() => setIsSearchOpen(true)}
+                  className="flex-1 sm:flex-none justify-center px-4 py-2.5 sm:py-2 bg-[#2F6FEB] text-white rounded-[9px] hover:bg-[#2559C4] flex items-center gap-1.5 text-[13px] font-bold transition-colors">
+                  <Plus size={15} />과목 추가
+                </button>
+                <button onClick={() => navigate('/recommend')}
+                  className="flex-1 sm:flex-none justify-center px-4 py-2.5 sm:py-2 bg-[#1E2530] text-white rounded-[9px] hover:bg-[#2D3444] flex items-center gap-1.5 text-[13px] font-bold transition-colors">
+                  <Wand2 size={15} />AI로 만들기
+                </button>
+              </div>
+
+              {/* 보조 아이콘 버튼 */}
+              <div className="flex items-center gap-1.5 ml-auto sm:ml-0">
+                <ThemePicker
+                  currentTheme={activeSchedule?.theme || 'pastel'}
+                  onSelect={(theme) => setScheduleTheme(activeId, theme)}
+                />
+                <div className="hidden sm:block w-px h-[22px] bg-[#EBEEF3] mx-0.5" />
+                <button onClick={handleShare} disabled={courses.length === 0}
+                  className="w-9 h-9 flex items-center justify-center border border-[#E4E8F0] text-[#5B6472] rounded-[9px] hover:bg-gray-50 disabled:opacity-40 transition-colors" title="공유"><Share2 size={17} /></button>
+                {courses.length > 0 && (
+                  <button onClick={handleTransferSend}
+                    className="w-9 h-9 flex items-center justify-center border border-[#E4E8F0] text-[#5B6472] rounded-[9px] hover:bg-gray-50 transition-colors" title="다른 기기로 보내기"><Smartphone size={17} /></button>
+                )}
+                <button onClick={() => setIsTransferReceiveOpen(true)}
+                  className="w-9 h-9 flex items-center justify-center border border-[#E4E8F0] text-[#5B6472] rounded-[9px] hover:bg-gray-50 transition-colors" title="코드로 불러오기"><Download size={17} /></button>
+                {courses.length > 0 && (
+                  <button onClick={() => { if (confirm(`"${activeSchedule?.name}" 시간표를 초기화할까요?`)) clearSchedule(); }}
+                    className="w-9 h-9 flex items-center justify-center border border-[#FBD8D8] bg-[#FEF4F4] text-[#E5484D] rounded-[9px] hover:bg-[#FBE9E9] transition-colors" title="현재 시간표 초기화"><Trash2 size={17} /></button>
+                )}
+              </div>
             </div>
           </div>
-          {stats.emptyDays.length > 0 && <div className="text-xs text-green-600 mt-2 sm:hidden">🎉 {stats.emptyDays.join(', ')} 공강!</div>}
         </div>
 
         {/* 시간표 그리드 */}
@@ -529,8 +598,8 @@ export default function HomePage() {
             <h2 className="text-lg font-medium text-gray-700 mb-2">시간표를 만들어보세요!</h2>
             <p className="text-sm text-gray-500 mb-4">직접 과목을 추가하거나, AI가 만들어줄 수도 있어요</p>
             <div className="flex items-center justify-center gap-2">
-              <button onClick={() => setIsSearchOpen(true)} className="px-5 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 inline-flex items-center gap-2"><Plus size={18} />과목 추가</button>
-              <button onClick={() => navigate('/recommend')} className="px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-lg hover:from-indigo-600 hover:to-purple-600 inline-flex items-center gap-2"><Wand2 size={18} />AI로 만들기</button>
+              <button onClick={() => setIsSearchOpen(true)} className="px-5 py-2.5 bg-[#2F6FEB] text-white rounded-[9px] hover:bg-[#2559C4] inline-flex items-center gap-2 font-bold transition-colors"><Plus size={18} />과목 추가</button>
+              <button onClick={() => navigate('/recommend')} className="px-5 py-2.5 bg-[#1E2530] text-white rounded-[9px] hover:bg-[#2D3444] inline-flex items-center gap-2 font-bold transition-colors"><Wand2 size={18} />AI로 만들기</button>
             </div>
           </div>
         ) : (

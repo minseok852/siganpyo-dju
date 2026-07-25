@@ -252,12 +252,12 @@ export default function CourseSearch({
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black/50 z-50 flex flex-col justify-end"
       onClick={onClose}
     >
       {/* 하단 슬라이드업 패널 */}
-      <div 
+      <div
         className="bg-white rounded-t-2xl w-full max-h-[85vh] flex flex-col animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >

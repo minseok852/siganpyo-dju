@@ -12,6 +12,7 @@ import {
   serverTimestamp
 } from 'firebase/firestore';
 import { db } from './firebase';
+import { CURRENT_SEMESTER, LEGACY_SEMESTER } from '../data/constants';
 
 // 피드백 상태 상수
 export const FEEDBACK_STATUS = {
@@ -38,6 +39,7 @@ export async function createFeedback({ category, content, courseName = null }) {
       category,
       content,
       courseName,
+      semester: CURRENT_SEMESTER,  // 작성 시점의 학기로 태깅
       status: FEEDBACK_STATUS.RECEIVED,
       rejectionReason: null,
       createdAt: serverTimestamp(),
@@ -73,6 +75,8 @@ export async function getFeedbacks() {
     const feedbacks = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data(),
+      // 기존 데이터는 semester 필드가 없으므로 지난 학기로 간주
+      semester: doc.data().semester || LEGACY_SEMESTER,
       createdAt: doc.data().createdAt?.toDate(),
       updatedAt: doc.data().updatedAt?.toDate(),
     }));

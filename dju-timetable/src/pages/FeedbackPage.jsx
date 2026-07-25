@@ -16,12 +16,13 @@ import {
   Search,
   X
 } from 'lucide-react';
-import { 
-  createFeedback, 
+import {
+  createFeedback,
   getFeedbacks,
   FEEDBACK_STATUS,
-  FEEDBACK_CATEGORY 
+  FEEDBACK_CATEGORY
 } from '../services/feedbackService';
+import { SEMESTERS, CURRENT_SEMESTER, formatSemester } from '../data/constants';
 import { useCourses } from '../hooks/useCourses';
 
 // 상태별 스타일
@@ -459,6 +460,12 @@ export default function FeedbackPage() {
   const [loading, setLoading] = useState(true);
   const [isWriteModalOpen, setIsWriteModalOpen] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [selectedSemester, setSelectedSemester] = useState(CURRENT_SEMESTER);
+
+  // 선택한 학기의 피드백만 표시
+  const visibleFeedbacks = feedbacks.filter(fb => fb.semester === selectedSemester);
+  // 현재 학기에서만 작성 가능 (지난 학기 탭은 읽기 전용)
+  const isCurrentSemester = selectedSemester === CURRENT_SEMESTER;
 
   // 피드백 목록 로드
   const loadFeedbacks = async () => {
@@ -480,6 +487,7 @@ export default function FeedbackPage() {
     
     if (result.success) {
       setSubmitSuccess(true);
+      setSelectedSemester(CURRENT_SEMESTER);  // 방금 작성한 현재 학기 탭으로 이동
       setTimeout(() => setSubmitSuccess(false), 3000);
       loadFeedbacks();  // 목록 새로고침
     } else {
@@ -541,11 +549,47 @@ export default function FeedbackPage() {
           </button>
         </div>
 
+        {/* 학기 탭 */}
+        <div className="flex items-center gap-1.5 mb-3 overflow-x-auto no-scrollbar">
+          {SEMESTERS.map(sem => {
+            const isActive = sem === selectedSemester;
+            const isCurrent = sem === CURRENT_SEMESTER;
+            return (
+              <button
+                key={sem}
+                onClick={() => setSelectedSemester(sem)}
+                className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-[13px] font-semibold whitespace-nowrap transition-colors ${
+                  isActive
+                    ? 'bg-blue-500 text-white'
+                    : 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50'
+                }`}
+              >
+                {formatSemester(sem)}
+                {isCurrent && <span className={`ml-1 text-[10px] ${isActive ? 'text-blue-100' : 'text-blue-500'}`}>진행중</span>}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 지난 학기 읽기 전용 안내 */}
+        {!isCurrentSemester && (
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-3 flex items-start gap-2">
+            <AlertCircle className="text-amber-500 shrink-0 mt-0.5" size={16} />
+            <p className="text-xs text-amber-700 leading-relaxed">
+              지난 학기 피드백이에요. 열람만 가능하며, 새 피드백은{' '}
+              <button onClick={() => setSelectedSemester(CURRENT_SEMESTER)} className="font-semibold underline">
+                {formatSemester(CURRENT_SEMESTER)}
+              </button>
+              {' '}탭에서 작성해주세요.
+            </p>
+          </div>
+        )}
+
         {/* 피드백 목록 */}
         <div className="space-y-2">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-medium text-gray-700">
-              전체 피드백 ({feedbacks.length})
+              {formatSemester(selectedSemester)} 피드백 ({visibleFeedbacks.length})
             </h3>
           </div>
 
@@ -554,14 +598,18 @@ export default function FeedbackPage() {
               <Loader2 className="animate-spin mx-auto text-gray-400" size={32} />
               <p className="text-sm text-gray-500 mt-2">불러오는 중...</p>
             </div>
-          ) : feedbacks.length === 0 ? (
+          ) : visibleFeedbacks.length === 0 ? (
             <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
               <MessageSquarePlus className="mx-auto mb-3 text-gray-300" size={48} />
-              <p className="text-gray-500">아직 피드백이 없어요</p>
-              <p className="text-sm text-gray-400 mt-1">첫 번째 피드백을 남겨주세요!</p>
+              <p className="text-gray-500">
+                {isCurrentSemester ? '아직 피드백이 없어요' : '이 학기 피드백이 없어요'}
+              </p>
+              {isCurrentSemester && (
+                <p className="text-sm text-gray-400 mt-1">첫 번째 피드백을 남겨주세요!</p>
+              )}
             </div>
           ) : (
-            feedbacks.map(feedback => (
+            visibleFeedbacks.map(feedback => (
               <FeedbackCard key={feedback.id} feedback={feedback} />
             ))
           )}
@@ -575,13 +623,15 @@ export default function FeedbackPage() {
         onSubmit={handleSubmit}
       />
 
-      {/* 플로팅 작성 버튼 */}
-      <button
-        onClick={() => setIsWriteModalOpen(true)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 flex items-center justify-center z-30"
-      >
-        <MessageSquarePlus size={24} />
-      </button>
+      {/* 플로팅 작성 버튼 (현재 학기에서만) */}
+      {isCurrentSemester && (
+        <button
+          onClick={() => setIsWriteModalOpen(true)}
+          className="fixed bottom-6 right-6 w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 flex items-center justify-center z-30"
+        >
+          <MessageSquarePlus size={24} />
+        </button>
+      )}
     </div>
   );
 }

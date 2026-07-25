@@ -133,6 +133,22 @@ export const CLASSIFICATION_OPTIONS = [
   { value: '전선', label: '전공선택' },
 ];
 
+// ===== 학기 (피드백 학기별 분리) =====
+// 현재 학기 — 매 학기 이 값만 변경하면 됨
+export const CURRENT_SEMESTER = '2026-2';
+
+// 피드백 탭에 노출할 학기 목록 (최신순)
+export const SEMESTERS = ['2026-2', '2026-1'];
+
+// semester 필드가 없는 기존 피드백의 기본 학기 (마이그레이션 대체)
+export const LEGACY_SEMESTER = '2026-1';
+
+// '2026-2' → '2026년 2학기'
+export function formatSemester(sem) {
+  const [year, term] = String(sem || '').split('-');
+  return year && term ? `${year}년 ${term}학기` : (sem || '');
+}
+
 // 요일
 export const DAYS = ['월', '화', '수', '목', '금'];
 
