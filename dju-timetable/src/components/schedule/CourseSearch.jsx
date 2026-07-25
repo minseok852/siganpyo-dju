@@ -258,7 +258,7 @@ export default function CourseSearch({
     >
       {/* 하단 슬라이드업 패널 */}
       <div
-        className="bg-white rounded-t-2xl w-full max-h-[85vh] flex flex-col animate-slide-up"
+        className="bg-white rounded-t-2xl w-full max-h-[70vh] flex flex-col animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* 핸들 바 */}
