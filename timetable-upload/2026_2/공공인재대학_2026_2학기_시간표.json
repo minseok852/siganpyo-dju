@@ -1,0 +1,4215 @@
+{
+  "college": "공공인재대학",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "PUBLIC_LAW",
+      "department_name": "공공인재법학과",
+      "courses": [
+        {
+          "course_code": "161001",
+          "course_name": "민법총칙",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "법학강사1",
+              "schedule": {
+                "raw": "화11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날둘째날법학1학년셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "162095",
+          "course_name": "헌법II",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김도협",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "162500",
+          "course_name": "***법학입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "수15:30-17:00, 목15:30-17:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": "첫째날자율전공/둘째날법학/셋째날전체"
+            }
+          ]
+        },
+        {
+          "course_code": "162085",
+          "course_name": "행정구제법",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "월13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사208 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "208",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "수19:15-20:05",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "19:15",
+                    "end": "20:05"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "온라인",
+                "room_number": "",
+                "room_type": "e-learning"
+              },
+              "capacity": null,
+              "notes": "[원격수업]법학과학생수강불가"
+            }
+          ]
+        },
+        {
+          "course_code": "162096",
+          "course_name": "형법각론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "월15:30-18:25",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109 - 교양A/V강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": null,
+              "notes": "[이중언어과정교과목]중국학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "165017",
+          "course_name": "채권법",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "법학강사1",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "165018",
+          "course_name": "상법II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "법학강사1",
+              "schedule": {
+                "raw": "화13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최진웅",
+              "schedule": {
+                "raw": "월11:30-14:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109 - 교양A/V강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": null,
+              "notes": "[이중언어과정교과목]중국학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "162047",
+          "course_name": "법철학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "수10:00-11:30, 금10:00-11:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "수15:30-18:25",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109 - 교양A/V강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": null,
+              "notes": "[이중언어과정교과목]중국학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "165021",
+          "course_name": "부동산법I",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장욱",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대101 - e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "165024",
+          "course_name": "민사소송법실무II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명엽",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사208 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "208",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "165030",
+          "course_name": "경찰행정법",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "월10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사205 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "205",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "금19:15-20:05",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "19:15",
+                    "end": "20:05"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": "",
+                "building_full": "온라인",
+                "room_number": "",
+                "room_type": "e-learning"
+              },
+              "capacity": null,
+              "notes": "[원격수업]법학과학생수강불가"
+            },
+            {
+              "section": "03",
+              "professor": "최용전",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109 - 교양A/V강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": null,
+              "notes": "[이중언어과정교과목]중국학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "165032",
+          "course_name": "형사소송법II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "수11:30-13:00, 금11:30-13:00",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "화13:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": "[이중언어과정교과목]중국학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "162041",
+          "course_name": "형사정책",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최대호",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대106 - 법학A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "106",
+                "room_type": "법학A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "162501",
+          "course_name": "캡스톤디자인(통일법제)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "천영성",
+              "schedule": {
+                "raw": "화11:30-15:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109 - 교양A/V강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109",
+                "room_type": "교양A/V강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "PUBLIC_ADMIN",
+      "department_name": "행정정보학과",
+      "courses": [
+        {
+          "course_code": "172500",
+          "course_name": "행정과NIE",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍성우",
+              "schedule": {
+                "raw": "화11:30-13:00, 목13:30-15:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대105 - 행정A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "105",
+                "room_type": "행정A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "172501",
+          "course_name": "***기초행정학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고대유",
+              "schedule": {
+                "raw": "화15:30-17:00, 수15:30-17:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175025",
+          "course_name": "인사행정관리",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창진",
+              "schedule": {
+                "raw": "월13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175026",
+          "course_name": "재무행정관리",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "행정강사1",
+              "schedule": {
+                "raw": "수15:30-17:00, 목15:30-17:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사205 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "205",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "172003",
+          "course_name": "계량행정및실습",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고대유",
+              "schedule": {
+                "raw": "수13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 406 정보실습실H",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "406",
+                "room_type": "정보실습실H"
+              },
+              "capacity": null,
+              "notes": "행정정보학과및부,복수전공생만신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "172601",
+          "course_name": "AI행정기초",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창진",
+              "schedule": {
+                "raw": "월15:30-17:00, 화15:30-17:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실/사302 - 디지털정보처리실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175011",
+          "course_name": "공공갈등및협상론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍성우",
+              "schedule": {
+                "raw": "월13:30-15:00, 화13:30-15:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대105 - 행정A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "105",
+                "room_type": "행정A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175040",
+          "course_name": "도시관리론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍성우",
+              "schedule": {
+                "raw": "월11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "172021",
+          "course_name": "지방자치론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "행정강사1",
+              "schedule": {
+                "raw": "수10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대105 - 행정A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "105",
+                "room_type": "행정A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175009",
+          "course_name": "문화예술정책론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김종래",
+              "schedule": {
+                "raw": "화10:00-13:00",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사206- e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "206",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175027",
+          "course_name": "사업분석평가",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창진",
+              "schedule": {
+                "raw": "수11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대102 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175034",
+          "course_name": "비정형빅데이터분석",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고대유",
+              "schedule": {
+                "raw": "화13:30-15:00, 금11:30-13:00",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 406 정보실습실H",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "406",
+                "room_type": "정보실습실H"
+              },
+              "capacity": null,
+              "notes": "행정정보학과및부,복수전공생만신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "175044",
+          "course_name": "기획이론과기법",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김종래",
+              "schedule": {
+                "raw": "수14:00-17:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "14:00",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대105 - 행정A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "105",
+                "room_type": "행정A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "174047",
+          "course_name": "행정마케팅론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "행정강사1",
+              "schedule": {
+                "raw": "월13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사209 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "209",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "175033",
+          "course_name": "정형빅데이터분석",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김창진",
+              "schedule": {
+                "raw": "월11:30-13:00, 금11:30-13:00",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 408 정보실습실E",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "408",
+                "room_type": "정보실습실E"
+              },
+              "capacity": null,
+              "notes": "행정정보학과및부,복수전공생만신청가능"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SOCIAL_WELFARE",
+      "department_name": "사회복지학과",
+      "courses": [
+        {
+          "course_code": "191001",
+          "course_name": "***사회복지학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안치민",
+              "schedule": {
+                "raw": "수15:30-17:00, 목15:30-17:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대104 - 사복A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "104",
+                "room_type": "사복A/V실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "191002",
+          "course_name": "사회문제론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안치민",
+              "schedule": {
+                "raw": "화13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대104 - 사복A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "104",
+                "room_type": "사복A/V실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "191003",
+          "course_name": "인간행동과사회환경",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "월11:30-13:00, 수14:00-15:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "사회복지학과1학년만수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "홍세영",
+              "schedule": {
+                "raw": "월14:00-15:30, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대104 - 사복A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "104",
+                "room_type": "사복A/V실"
+              },
+              "capacity": null,
+              "notes": "사회복지학과1학년수강불가능"
+            }
+          ]
+        },
+        {
+          "course_code": "192004",
+          "course_name": "사회복지행정론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍세영",
+              "schedule": {
+                "raw": "수11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "홍세영",
+              "schedule": {
+                "raw": "수15:30-17:00, 금12:00-13:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "12:00",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192008",
+          "course_name": "노인복지론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "사회강사2",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192012",
+          "course_name": "사회보장론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "안치민",
+              "schedule": {
+                "raw": "화15:30-17:00, 수13:30-15:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대104 - 사복A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "104",
+                "room_type": "사복A/V실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192030",
+          "course_name": "사회복지실천론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이수비",
+              "schedule": {
+                "raw": "화11:30-13:00, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "이수비",
+              "schedule": {
+                "raw": "화13:30-15:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192039",
+          "course_name": "아동복지론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "사회강사2",
+              "schedule": {
+                "raw": "월10:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192032",
+          "course_name": "지역사회복지론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "화11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사205 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "205",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사205 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "205",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "192035",
+          "course_name": "사회복지현장실습I",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이수비",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대104 - 사복A/V실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "104",
+                "room_type": "사복A/V실"
+              },
+              "capacity": null,
+              "notes": "하계방학및2학기실습자만가능"
+            },
+            {
+              "section": "02",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대109-2 - 사복 e-강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "109-2",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "하계방학및2학기실습자만가능"
+            }
+          ]
+        },
+        {
+          "course_code": "194014",
+          "course_name": "사회복지자료분석론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이수비",
+              "schedule": {
+                "raw": "수11:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "409",
+                "room_type": "정보실습실F"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "195010",
+          "course_name": "캡스톤디자인(사회복지)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍세영",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "3,4학년만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "195012",
+          "course_name": "가족상담및가족치료",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "사회강사3",
+              "schedule": {
+                "raw": "목10:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "195013",
+          "course_name": "의료사회복지론",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "사회강사3",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사201 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "201",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날사복/둘째날10시전체"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "CHILD_STUDIES",
+      "department_name": "아동학과",
+      "courses": [
+        {
+          "course_code": "191004",
+          "course_name": "보육학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신지현",
+              "schedule": {
+                "raw": "월10:00-13:00",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인306 - 국문A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "306",
+                "room_type": "국문A/V강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        },
+        {
+          "course_code": "191005",
+          "course_name": "***영유아발달",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영희",
+              "schedule": {
+                "raw": "월12:00-13:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "12:00",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동1학년/둘째날전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235013",
+          "course_name": "아동권리와복지",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이혜원",
+              "schedule": {
+                "raw": "화13:30-15:00, 금11:30-13:00",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동1학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235016",
+          "course_name": "아동상담론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영희",
+              "schedule": {
+                "raw": "월13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동1학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235035",
+          "course_name": "아동문학치료",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경",
+              "schedule": {
+                "raw": "월10:00-11:30, 목15:30-17:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실/인110 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동1학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "191006",
+          "course_name": "언어지도",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경",
+              "schedule": {
+                "raw": "화09:30-12:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인110 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "110",
+                "room_type": "일반강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동2학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "232601",
+          "course_name": "AI에기반한인간관계론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박영아",
+              "schedule": {
+                "raw": "수11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실/사302 - 디지털정보처리실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동2학년/둘째날전체"
+            },
+            {
+              "section": "02",
+              "professor": "김형연",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        },
+        {
+          "course_code": "234011",
+          "course_name": "보육과정",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신지현",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        },
+        {
+          "course_code": "235036",
+          "course_name": "아동놀이치료",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영희",
+              "schedule": {
+                "raw": "목10:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동2학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "232502",
+          "course_name": "캡스톤디자인(아동)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박영아",
+              "schedule": {
+                "raw": "목11:30-15:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인110 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "110",
+                "room_type": "일반강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동3학년/둘째날전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235012",
+          "course_name": "보육교사인성론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최경",
+              "schedule": {
+                "raw": "월11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동3학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235029",
+          "course_name": "영유아사회정서지도",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박영아",
+              "schedule": {
+                "raw": "화13:30-15:00, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동3학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235030",
+          "course_name": "아동안전관리",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이혜원",
+              "schedule": {
+                "raw": "수11:30-14:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "14:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인110 - 일반강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "110",
+                "room_type": "일반강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동3학년/둘째날아동학과/셋째전체"
+            }
+          ]
+        },
+        {
+          "course_code": "235037",
+          "course_name": "발달심리학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김형연",
+              "schedule": {
+                "raw": "화10:00-13:00",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인201 - 스마트강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "201",
+                "room_type": "스마트강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        },
+        {
+          "course_code": "235031",
+          "course_name": "어린이집운영관리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이혜원",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째날아동4학년/둘째날아동학과/셋째전체"
+            },
+            {
+              "section": "02",
+              "professor": "신지현",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인312 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "312",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        },
+        {
+          "course_code": "235038",
+          "course_name": "아동미술치료",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김형연",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인309 - 아동A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "309",
+                "room_type": "아동A/V강의실"
+              },
+              "capacity": null,
+              "notes": "이중언어외국인유학생전용분반"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "MEDIA_COMMUNICATION",
+      "department_name": "미디어커뮤니케이션학과",
+      "courses": [
+        {
+          "course_code": "215001",
+          "course_name": "신문과저널리즘",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이용준",
+              "schedule": {
+                "raw": "수16:00-17:30, 목15:30-17:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "16:00",
+                    "end": "17:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실/정보 408 정보실습실E",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "미컴1학년만수강신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "215006",
+          "course_name": "마케팅커뮤니케이션",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김태양",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "미컴1학년만수강신청/셋째날(10시)해제"
+            },
+            {
+              "section": "02",
+              "professor": "황지원",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사209 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "209",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "미컴1학년만수강신청/셋째날(10시)해제"
+            },
+            {
+              "section": "03",
+              "professor": "김태양",
+              "schedule": {
+                "raw": "금18:25-19:15",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "18:25",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "온라인",
+                "room_number": "",
+                "room_type": "e-learning"
+              },
+              "capacity": null,
+              "notes": "[원격수업]미컴과수강신청금지"
+            }
+          ]
+        },
+        {
+          "course_code": "215029",
+          "course_name": "영상콘텐츠제작",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김연성",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사302 - 디지털정보처리실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "302",
+                "room_type": "디지털정보처리실"
+              },
+              "capacity": null,
+              "notes": "미컴1학년만수강신청/셋째날(10시)해제"
+            },
+            {
+              "section": "02",
+              "professor": "김연성",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "미컴1학년만수강신청/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "232500",
+          "course_name": "***미디어커뮤니케이션입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황지원",
+              "schedule": {
+                "raw": "월12:00-13:30, 수12:00-13:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "12:00",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "12:00",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사209 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "209",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째자율전공/둘째미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "215007",
+          "course_name": "미디어커뮤니케이션이론",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "조수선",
+              "schedule": {
+                "raw": "월11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            },
+            {
+              "section": "02",
+              "professor": "조수선",
+              "schedule": {
+                "raw": "월13:30-15:00, 금10:00-11:30",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]첫째,둘째미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "212601",
+          "course_name": "소셜미디어와인공지능",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정훈",
+              "schedule": {
+                "raw": "목12:00-13:30, 금12:00-13:30",
+                "days": [
+                  "목",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "12:00",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "12:00",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실/사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "214014",
+          "course_name": "잡지콘텐츠론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이용준",
+              "schedule": {
+                "raw": "수12:00-13:30, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "12:00",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]미컴과학생만수강신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "214016",
+          "course_name": "뉴스_취재와리포트",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정훈",
+              "schedule": {
+                "raw": "월10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "215009",
+          "course_name": "브랜드커뮤니케이션",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "조재현",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            },
+            {
+              "section": "02",
+              "professor": "조재현",
+              "schedule": {
+                "raw": "화13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "212160",
+          "course_name": "온라인저널리즘",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이용준",
+              "schedule": {
+                "raw": "화10:00-11:30, 금10:00-11:30",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사313 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "313",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "미컴과학생만수강신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "212176",
+          "course_name": "여론과캠페인",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정훈",
+              "schedule": {
+                "raw": "월11:30-13:00, 수11:30-13:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사101 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "215011",
+          "course_name": "글로벌마케팅커뮤니케이션",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "조재현",
+              "schedule": {
+                "raw": "월10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사101 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "215024",
+          "course_name": "사물인터넷(IOT)콘텐츠제작",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이예지",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사101 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "101",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "212165",
+          "course_name": "미디어교육",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "조수선",
+              "schedule": {
+                "raw": "화11:30-13:00, 목13:30-15:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사509 - A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "509",
+                "room_type": "A/V강의실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        },
+        {
+          "course_code": "212602",
+          "course_name": "글로벌마케팅캠페인",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정훈",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사204 - 강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "204",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "K-MOVE참여학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "215025",
+          "course_name": "캡스톤디자인(미디어커뮤니케이션)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이예지",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사302 - 디지털정보처리실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "302",
+                "room_type": "디지털정보처리실"
+              },
+              "capacity": null,
+              "notes": "첫째,둘째날미컴/셋째날(10시)해제"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "LIBRARY_INFO",
+      "department_name": "문헌정보학과",
+      "courses": [
+        {
+          "course_code": "221004",
+          "course_name": "***문헌정보학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장인호",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인208 - 교직A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "208",
+                "room_type": "교직A/V강의실"
+              },
+              "capacity": null,
+              "notes": "1일차자율전공신청/2일차10시이후해제"
+            }
+          ]
+        },
+        {
+          "course_code": "222003",
+          "course_name": "도서관문화사",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유부현",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인315 - 문정A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "315",
+                "room_type": "문정A/V강의실"
+              },
+              "capacity": null,
+              "notes": "1일차문정과만신청/2일차10시이후해제"
+            }
+          ]
+        },
+        {
+          "course_code": "222080",
+          "course_name": "독서교육론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심효정",
+              "schedule": {
+                "raw": "화13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인315 - 문정A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "315",
+                "room_type": "문정A/V강의실"
+              },
+              "capacity": null,
+              "notes": "1일차문정과만신청/2일차10시이후해제"
+            }
+          ]
+        },
+        {
+          "course_code": "222500",
+          "course_name": "정보학의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송민선",
+              "schedule": {
+                "raw": "월13:30-15:00, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "221006",
+          "course_name": "목록편성론",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "윤현수",
+              "schedule": {
+                "raw": "화14:00-15:30, 수15:30-17:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": "학번끝자리홀수만신청"
+            },
+            {
+              "section": "02",
+              "professor": "윤현수",
+              "schedule": {
+                "raw": "화15:30-17:00, 수14:00-15:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": "학번끝자리짝수만신청"
+            }
+          ]
+        },
+        {
+          "course_code": "222010",
+          "course_name": "고전자료강독",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유부현",
+              "schedule": {
+                "raw": "월09:30-11:00, 화09:30-11:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "11:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인315 - 문정A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "315",
+                "room_type": "문정A/V강의실"
+              },
+              "capacity": null,
+              "notes": "1일차문정과만신청/2일차10시이후해제"
+            }
+          ]
+        },
+        {
+          "course_code": "222021",
+          "course_name": "정보검색론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송민선",
+              "schedule": {
+                "raw": "월11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "225012",
+          "course_name": "저작권",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "문헌강사1",
+              "schedule": {
+                "raw": "목14:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "14:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인208 - 교직A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "208",
+                "room_type": "교직A/V강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "222024",
+          "course_name": "장서개발론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심효정",
+              "schedule": {
+                "raw": "수13:30-15:00, 목11:30-13:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인315 - 문정A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "315",
+                "room_type": "문정A/V강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "222502",
+          "course_name": "데이터분석과시각화",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송민선",
+              "schedule": {
+                "raw": "수11:30-13:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "225015",
+          "course_name": "정보봉사론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최지영",
+              "schedule": {
+                "raw": "월09:30-12:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인208 - 교직A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "208",
+                "room_type": "교직A/V강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "225023",
+          "course_name": "사서윤리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심효정",
+              "schedule": {
+                "raw": "화11:30-13:00, 금10:00-11:30",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인316 - 문헌정보학과실습실/인315 - 문정A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "316",
+                "room_type": "실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "225027",
+          "course_name": "캡스톤디자인(학술데이터분석)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "송민선",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인208 - 교직A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "208",
+                "room_type": "교직A/V강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

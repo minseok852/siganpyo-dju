@@ -1,0 +1,338 @@
+{
+  "college": "공통",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "GENERAL",
+      "department_name": "일반선택",
+      "courses": [
+        {
+          "course_code": "952600",
+          "course_name": "학부연구입문(연구학점교과Ⅰ)",
+          "classification": "일선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최진희",
+              "schedule": {
+                "raw": "화17:30-19:15",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 309 - 대학원세미나실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "309",
+                "room_type": "대학원세미나실"
+              },
+              "capacity": 0,
+              "notes": "사전협의된학생만수강신청가능"
+            },
+            {
+              "section": "02",
+              "professor": "김소희",
+              "schedule": {
+                "raw": "수15:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사209 - e-강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "209",
+                "room_type": "e-강의실"
+              },
+              "capacity": 0,
+              "notes": "사전협의된학생만수강신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "952601",
+          "course_name": "연구방법론실습(연구학점교과Ⅱ)",
+          "classification": "일선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "월18:00-19:40",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "18:00",
+                    "end": "19:40"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": 0,
+              "notes": "사전협의된학생만수강가능"
+            },
+            {
+              "section": "03",
+              "professor": "홍경민",
+              "schedule": {
+                "raw": "월13:30-15:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "예113 - 제품컴퓨터실",
+                "building": "예",
+                "building_full": "예술관",
+                "room_number": "113",
+                "room_type": "제품컴퓨터실"
+              },
+              "capacity": 0,
+              "notes": "사전협의된학생만수강가능"
+            },
+            {
+              "section": "02",
+              "professor": "김정식",
+              "schedule": {
+                "raw": "금11:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "사312 - 경영학과A/V강의실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "312",
+                "room_type": "A/V강의실"
+              },
+              "capacity": 0,
+              "notes": "사전협의된학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "004803",
+          "course_name": "현장실습I",
+          "classification": "일선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 0,
+          "lab_hours": 12,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "취업강사1",
+              "schedule": {
+                "raw": "",
+                "days": [],
+                "times": []
+              },
+              "room": {
+                "raw": "",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": ""
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "008005",
+          "course_name": "현장실습Ⅲ",
+          "classification": "일선",
+          "target_year": 3,
+          "credits": 15,
+          "hours": 0,
+          "lab_hours": 60,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "취업강사1",
+              "schedule": {
+                "raw": "",
+                "days": [],
+                "times": []
+              },
+              "room": {
+                "raw": "",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": ""
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "951006",
+          "course_name": "안전및조직관리사례연구(군사학)",
+          "classification": "일선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 12,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박종현",
+              "schedule": {
+                "raw": "월14:30-16:30, 금13:30-17:30",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "16:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "학군102 - 강의실A",
+                "building": "학군",
+                "building_full": "학군단",
+                "room_number": "102",
+                "room_type": "강의실"
+              },
+              "capacity": 0,
+              "notes": "학군단학군사관후보생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "956004",
+          "course_name": "현장실습Ⅴ",
+          "classification": "일선",
+          "target_year": 3,
+          "credits": 12,
+          "hours": 0,
+          "lab_hours": 48,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "취업강사1",
+              "schedule": {
+                "raw": "",
+                "days": [],
+                "times": []
+              },
+              "room": {
+                "raw": "",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": ""
+              },
+              "capacity": 0,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "951008",
+          "course_name": "조직리더십사례연구(군사학)",
+          "classification": "일선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 12,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "노보환",
+              "schedule": {
+                "raw": "월14:30-16:30, 금13:30-17:30",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:30",
+                    "end": "16:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "학군101 - 강의실B",
+                "building": "학군",
+                "building_full": "학군단",
+                "room_number": "101",
+                "room_type": "강의실"
+              },
+              "capacity": 0,
+              "notes": "학군단학군사관후보생만수강가능"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

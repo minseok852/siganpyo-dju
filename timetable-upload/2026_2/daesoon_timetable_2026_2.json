@@ -1,0 +1,611 @@
+{
+  "college": "대순종학대학",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "DAESOON",
+      "department_name": "대순종학과",
+      "courses": [
+        {
+          "course_code": "045016",
+          "course_name": "대순진리회역사",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차선근",
+              "schedule": {
+                "raw": "월13:30-15:00, 목13:30-15:00",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "13:30", "end": "15:00"},
+                  {"day": "목", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "대교310 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "044002",
+          "course_name": "수도교화실습Ⅱ",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차선근",
+              "schedule": {
+                "raw": "수18:00-19:40",
+                "days": ["수"],
+                "times": [
+                  {"day": "수", "start": "18:00", "end": "19:40"}
+                ]
+              },
+              "room": {
+                "raw": "대교310 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045017",
+          "course_name": "대순신앙개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이경원",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30",
+                "days": ["화", "목"],
+                "times": [
+                  {"day": "화", "start": "10:00", "end": "11:30"},
+                  {"day": "목", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045018",
+          "course_name": "대순사회복지학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이재호",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": ["수"],
+                "times": [
+                  {"day": "수", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "042500",
+          "course_name": "대순사상의본체와인성",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최치봉",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "10:00", "end": "11:30"},
+                  {"day": "화", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교301 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "044004",
+          "course_name": "수도교화실습Ⅳ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이재호",
+              "schedule": {
+                "raw": "수18:00-19:40",
+                "days": ["수"],
+                "times": [
+                  {"day": "수", "start": "18:00", "end": "19:40"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045019",
+          "course_name": "대순문화콘텐츠제작Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 8,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김안주",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": ["화"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교309 - PC실습실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "309",
+                "room_type": "PC실습실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045031",
+          "course_name": "동양종교사상사",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김태수",
+              "schedule": {
+                "raw": "월15:30-17:00, 목15:30-17:00",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "15:30", "end": "17:00"},
+                  {"day": "목", "start": "15:30", "end": "17:00"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045038",
+          "course_name": "대순생태학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 2,
+          "hours": 4,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차선근",
+              "schedule": {
+                "raw": "수13:30-15:30",
+                "days": ["수"],
+                "times": [
+                  {"day": "수", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교301 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "042601",
+          "course_name": "AI와함께하는대순문화콘텐츠제작",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 8,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김안주",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": ["화"],
+                "times": [
+                  {"day": "화", "start": "09:30", "end": "13:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교309 - PC실습실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "309",
+                "room_type": "PC실습실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "042602",
+          "course_name": "상생상담실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 0,
+          "lab_hours": 8,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황희연",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": ["수"],
+                "times": [
+                  {"day": "수", "start": "13:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교310 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "044006",
+          "course_name": "수도교화실습Ⅵ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박상규",
+              "schedule": {
+                "raw": "목18:00-19:40",
+                "days": ["목"],
+                "times": [
+                  {"day": "목", "start": "18:00", "end": "19:40"}
+                ]
+              },
+              "room": {
+                "raw": "대교310 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045025",
+          "course_name": "성적도해요람강독",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이경원",
+              "schedule": {
+                "raw": "화13:30-15:00, 목13:30-15:00",
+                "days": ["화", "목"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:00"},
+                  {"day": "목", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045035",
+          "course_name": "한국종교사상사",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최치봉",
+              "schedule": {
+                "raw": "월15:30-17:00, 화15:30-17:00",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "15:30", "end": "17:00"},
+                  {"day": "화", "start": "15:30", "end": "17:00"}
+                ]
+              },
+              "room": {
+                "raw": "대교301 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045040",
+          "course_name": "전경한문강독Ⅰ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박상규",
+              "schedule": {
+                "raw": "목10:00-11:30, 금10:00-11:30",
+                "days": ["목", "금"],
+                "times": [
+                  {"day": "목", "start": "10:00", "end": "11:30"},
+                  {"day": "금", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교310 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "042092",
+          "course_name": "대순종학특강",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최치봉",
+              "schedule": {
+                "raw": "수10:00-11:30, 금10:00-11:30",
+                "days": ["수", "금"],
+                "times": [
+                  {"day": "수", "start": "10:00", "end": "11:30"},
+                  {"day": "금", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교301 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "042503",
+          "course_name": "대순사상과고전이해",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이경원",
+              "schedule": {
+                "raw": "화15:30-17:00, 수15:30-17:00",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "15:30", "end": "17:00"},
+                  {"day": "수", "start": "15:30", "end": "17:00"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과학생만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "044008",
+          "course_name": "수도교화실습Ⅷ",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 1,
+          "hours": 0,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이경원",
+              "schedule": {
+                "raw": "목18:00-19:40",
+                "days": ["목"],
+                "times": [
+                  {"day": "목", "start": "18:00", "end": "19:40"}
+                ]
+              },
+              "room": {
+                "raw": "대교302 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "302",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "045044",
+          "course_name": "대순종교윤리학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박상규",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": ["목"],
+                "times": [
+                  {"day": "목", "start": "13:30", "end": "16:30"}
+                ]
+              },
+              "room": {
+                "raw": "대교301 - 강의실",
+                "building": "대교",
+                "building_full": "대진교육관",
+                "room_number": "301",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "대순종학과 학생만 수강가능"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

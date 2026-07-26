@@ -1,0 +1,6445 @@
+{
+  "college": "공과대학",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "ELECTRICAL",
+      "department_name": "전기공학과",
+      "courses": [
+        {
+          "course_code": "512500",
+          "course_name": "***전기의세계",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김철민",
+              "schedule": {
+                "raw": "화11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 109 - 멀티 강의실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "109",
+                "room_type": "멀티 강의실"
+              },
+              "capacity": null,
+              "notes": "공학자율,자율전공1학년만신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "512502",
+          "course_name": "전기공학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김철민",
+              "schedule": {
+                "raw": "월13:30-15:00, 수11:30-13:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 210 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "210",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전기1학년만신청/변경둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525109",
+          "course_name": "아날로그회로실험실습",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박범수",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 210 - 전기기기실험실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "210",
+                "room_type": "전기기기실험실"
+              },
+              "capacity": null,
+              "notes": "전기2학년만신청/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "박범수",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 210 - 전기기기실험실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "210",
+                "room_type": "전기기기실험실"
+              },
+              "capacity": null,
+              "notes": "전기2학년만신청/변경둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "522026",
+          "course_name": "회로이론II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남준",
+              "schedule": {
+                "raw": "화11:30-13:30, 수13:30-15:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)/정보 207 정보실습실A",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "522032",
+          "course_name": "전자기학II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김종호",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 111 - e-강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "111",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525107",
+          "course_name": "프로그래밍언어2",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "전기강사1",
+              "schedule": {
+                "raw": "금10:00-13:00",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "409",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "전기2학년만가능/변경둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525127",
+          "course_name": "디지털이산수학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정택근",
+              "schedule": {
+                "raw": "화14:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525027",
+          "course_name": "전기기기II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남준",
+              "schedule": {
+                "raw": "월14:00-15:30, 수11:30-13:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525112",
+          "course_name": "전력전자공학Ⅰ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남준",
+              "schedule": {
+                "raw": "월11:30-13:00, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525114",
+          "course_name": "자동제어공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정택근",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525117",
+          "course_name": "전력시스템공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차준민",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525123",
+          "course_name": "전기응용",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김철민",
+              "schedule": {
+                "raw": "금10:00-13:00",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525121",
+          "course_name": "신재생분산전원",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차준민",
+              "schedule": {
+                "raw": "목17:30-18:25",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 214 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "214",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "525130",
+          "course_name": "캡스톤디자인(전기Ⅱ)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "차준민",
+              "schedule": {
+                "raw": "수11:30-15:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 314 - 캡스톤디자인실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "314",
+                "room_type": "캡스톤디자인실"
+              },
+              "capacity": null,
+              "notes": "전기4학년만가능/변경둘째날10시전체"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "CHEMICAL",
+      "department_name": "화학공학과",
+      "courses": [
+        {
+          "course_code": "511003",
+          "course_name": "에너지공학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용렬",
+              "schedule": {
+                "raw": "월13:30-15:00, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 510 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "화공,공학자율1학년만/변경셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "512501",
+          "course_name": "***지속가능한화학공학의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배병철",
+              "schedule": {
+                "raw": "수13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 109 - 멀티 강의실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "109",
+                "room_type": "멀티 강의실"
+              },
+              "capacity": null,
+              "notes": "1학년만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "602601",
+          "course_name": "창의화학공학실험실습",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정현택",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 513 - 화공기초실험실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "513",
+                "room_type": "화공기초실험실"
+              },
+              "capacity": null,
+              "notes": "화공,공학자율1학년만/변경셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "605022",
+          "course_name": "화학공정공학",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용렬",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 510 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "화학공학과학생만수강/변경셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "602045",
+          "course_name": "유기공업화학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배병철",
+              "schedule": {
+                "raw": "월11:30-13:00, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 509 - 강의실(공용)",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "602603",
+          "course_name": "AI기반고분자공학개론및실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이주형",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 509 - 강의실(공용)",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "605030",
+          "course_name": "응용기기분석",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정현택",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 510 - 강의실(공용)/공나B 511 - 화학공학실험실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "화공2,3학년만수강/변경셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "605044",
+          "course_name": "고급유기화학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배병철",
+              "schedule": {
+                "raw": "화18:25-19:15",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "18:25",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "601024",
+          "course_name": "열및물질전달",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용렬",
+              "schedule": {
+                "raw": "화13:30-15:00, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 510 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "602043",
+          "course_name": "무기공업화학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배병철",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 509 - 강의실(공용)",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "602500",
+          "course_name": "연소공학의산업적이해",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이주형",
+              "schedule": {
+                "raw": "월13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 509 - 강의실(공용)",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "602606",
+          "course_name": "고분자물성",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이주형",
+              "schedule": {
+                "raw": "월15:30-17:00, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 509 - 강의실(공용)",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "605029",
+          "course_name": "나노공학실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정현택",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 513 - 화공기초실험실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "513",
+                "room_type": "화공기초실험실"
+              },
+              "capacity": null,
+              "notes": "화공3,4학년만수강/변경셋째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "605043",
+          "course_name": "화학반응공학Ⅱ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정현택",
+              "schedule": {
+                "raw": "",
+                "days": [],
+                "times": []
+              },
+              "room": {
+                "raw": "",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": ""
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "605013",
+          "course_name": "신재생에너지",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이주형",
+              "schedule": {
+                "raw": "수17:30-18:25",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "605039",
+          "course_name": "캡스톤디자인(화학공학)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배병철",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나B 513 - 화공기초실험실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "513",
+                "room_type": "화공기초실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "ARCHITECTURAL_ENGINEERING",
+      "department_name": "건축공학과",
+      "courses": [
+        {
+          "course_code": "541003",
+          "course_name": "건축구법",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정주홍",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542500",
+          "course_name": "***건축공학입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강경모",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": "공학자율학부,자율전공학부만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "542601",
+          "course_name": "건축설계기초Ⅰ",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이민협",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542076",
+          "course_name": "건축구조역학II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정주홍",
+              "schedule": {
+                "raw": "월11:30-13:00, 수11:30-13:00",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542093",
+          "course_name": "서양건축사II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "곽동엽",
+              "schedule": {
+                "raw": "화14:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542605",
+          "course_name": "건축정보모델링",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김민석",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 310 - 공학설계STUDIO",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "310",
+                "room_type": "공학설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545009",
+          "course_name": "기초건축공학설계Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강경모",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "정주홍",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545010",
+          "course_name": "건축환경공학Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강경모",
+              "schedule": {
+                "raw": "월09:30-11:30, 수09:30-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545026",
+          "course_name": "창의건축재료실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심상락",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "건축강사1",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542108",
+          "course_name": "건축적산",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심상락",
+              "schedule": {
+                "raw": "화13:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542504",
+          "course_name": "건설사업관리Ⅰ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유무영",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 310 - 공학설계STUDIO",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "310",
+                "room_type": "공학설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542505",
+          "course_name": "건축물유지보수보강",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "심상락",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545018",
+          "course_name": "철근콘크리트구조Ⅱ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정주홍",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545019",
+          "course_name": "건축설비Ⅱ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강경모",
+              "schedule": {
+                "raw": "월11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545029",
+          "course_name": "캡스톤디자인(건축공학설계Ⅱ)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "강경모",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "유무영",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 310 - 공학설계STUDIO",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "310",
+                "room_type": "공학설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "545031",
+          "course_name": "캡스톤디자인(건축공학종합설계Ⅱ)",
+          "classification": "전필",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "류동우",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 301 - 시청각실(공용)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "301",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "정주홍",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 308 - 공학종합설계STUDIO",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "308",
+                "room_type": "공학종합설계STUDIO"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "ARCHITECTURE",
+      "department_name": "건축학전공",
+      "courses": [
+        {
+          "course_code": "542070",
+          "course_name": "건축설계II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고영빈",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 313 - 설계STUDIO-3",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "313",
+                "room_type": "설계STUDIO-3"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "542022",
+          "course_name": "건축법규",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "전병권",
+              "schedule": {
+                "raw": "화17:30-18:50, 수17:30-18:50",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "18:50"
+                  },
+                  {
+                    "day": "수",
+                    "start": "17:30",
+                    "end": "18:50"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544017",
+          "course_name": "지속가능주거학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나인혜",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544032",
+          "course_name": "캡스톤디자인(건축설계Ⅳ-1)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "문지선",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 312-3 - 설계STUDIO-2",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "312-3",
+                "room_type": "설계STUDIO-2"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "전병권",
+              "schedule": {
+                "raw": "화11:30-13:30, 금09:30-11:30",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-2 - 설계STUDIO-5",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-2",
+                "room_type": "설계STUDIO-5"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544033",
+          "course_name": "캡스톤디자인(건축설계Ⅳ-2)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "문지선",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 312-3 - 설계STUDIO-2",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "312-3",
+                "room_type": "설계STUDIO-2"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "전병권",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-2 - 설계STUDIO-5",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-2",
+                "room_type": "설계STUDIO-5"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544021",
+          "course_name": "건축디테일",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "고영빈",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544023",
+          "course_name": "도시의역사",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나인혜",
+              "schedule": {
+                "raw": "목10:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 302 - 시청각실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "302",
+                "room_type": "시청각실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544036",
+          "course_name": "캡스톤디자인(종합건축설계Ⅱ-1)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "곽동엽",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-1 - 설계STUDIO-4",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-1",
+                "room_type": "설계STUDIO-4"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "곽동엽",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-3 - 설계STUDIO-6",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-3",
+                "room_type": "설계STUDIO-6"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "544037",
+          "course_name": "캡스톤디자인(종합건축설계Ⅱ-2)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "곽동엽",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-1 - 설계STUDIO-4",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-1",
+                "room_type": "설계STUDIO-4"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "곽동엽",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 314-3 - 설계STUDIO-6",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "314-3",
+                "room_type": "설계STUDIO-6"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SMART_CONSTRUCTION_ENV",
+      "department_name": "스마트건설환경공학과",
+      "courses": [
+        {
+          "course_code": "672503",
+          "course_name": "스마트건설환경공학과미래사회",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신동철",
+              "schedule": {
+                "raw": "월10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 509 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "스마트건설환경공학과1학년만신청가능"
+            }
+          ]
+        },
+        {
+          "course_code": "672500",
+          "course_name": "***스마트건설환경공학의이해",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유상균",
+              "schedule": {
+                "raw": "수11:30-13:00, 목10:00-11:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 113 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "113",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "1학년만수강가능/스건환신청불가"
+            }
+          ]
+        },
+        {
+          "course_code": "672504",
+          "course_name": "스마트기초응용설계Ⅱ",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김홍기",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 207 정보실습실A",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "207",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "스건환1학년만/변경둘째날14시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "672513",
+          "course_name": "토지이용계획및설계",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유상균",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672514",
+          "course_name": "도시모형론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백인길",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672515",
+          "course_name": "신교통공학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동선",
+              "schedule": {
+                "raw": "월10:00-11:30, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 501 - 스마트도시이론강의실Ⅰ",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "501",
+                "room_type": "스마트도시이론강의실Ⅰ"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672516",
+          "course_name": "구조역학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "문일환",
+              "schedule": {
+                "raw": "목09:30-12:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 107 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "107",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672517",
+          "course_name": "수리학기초및실험Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이재경",
+              "schedule": {
+                "raw": "월13:30-15:30, 수11:30-13:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 114 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "114",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672518",
+          "course_name": "토질역학및실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황태현",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 114 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "114",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672519",
+          "course_name": "폐자원에너지개론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신동철",
+              "schedule": {
+                "raw": "월11:30-13:00, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 510 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "672520",
+          "course_name": "수질환경분석실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명운",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 511 - 수처리실험실",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "511",
+                "room_type": "수처리실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "CIVIL",
+      "department_name": "토목공학전공",
+      "courses": [
+        {
+          "course_code": "631059",
+          "course_name": "응용토질역학및연습",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김윤희",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 112 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "112",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "632052",
+          "course_name": "구조역학II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김용직",
+              "schedule": {
+                "raw": "화09:30-12:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 113 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "113",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "632060",
+          "course_name": "건설시공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이강일",
+              "schedule": {
+                "raw": "화17:30-18:25",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "18:25"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "632065",
+          "course_name": "PS콘크리트구조물설계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이정배",
+              "schedule": {
+                "raw": "목09:30-12:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 112 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "112",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "634009",
+          "course_name": "상하수도공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신재환",
+              "schedule": {
+                "raw": "화13:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 114 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "114",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "632091",
+          "course_name": "해안및항만공학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장창환",
+              "schedule": {
+                "raw": "월14:00-15:30, 화14:00-15:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 112 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "112",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "635002",
+          "course_name": "지하구조물설계",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이강일",
+              "schedule": {
+                "raw": "수09:30-12:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 112 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "112",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "635021",
+          "course_name": "캡스톤디자인(토목적산)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이혜진",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 112 - e-강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "112",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SMART_CITY",
+      "department_name": "스마트시티전공",
+      "courses": [
+        {
+          "course_code": "660009",
+          "course_name": "통합교통조사및프로젝트",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배기목",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 411 - 도시설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "411",
+                "room_type": "도시설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660012",
+          "course_name": "스마트주거단지설계",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유상균",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660018",
+          "course_name": "지속가능한도시설계",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백인길",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660019",
+          "course_name": "스마트교통안전",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "배기목",
+              "schedule": {
+                "raw": "월10:00-13:00",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 411 - 도시설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "411",
+                "room_type": "도시설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660021",
+          "course_name": "스마트시티부동산경제론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "양동우",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 310 스마트강의실",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "310",
+                "room_type": "스마트강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660022",
+          "course_name": "도로기하구조설계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김동선",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 501 - 스마트도시이론강의실Ⅰ",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "501",
+                "room_type": "스마트도시이론강의실Ⅰ"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660033",
+          "course_name": "캡스톤디자인(스마트도시계획실습Ⅰ)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백인길",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 410 - 도시정보시스템실(GIS)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "410",
+                "room_type": "도시정보시스템실(GIS)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660025",
+          "course_name": "프롭테크컨설팅",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사5",
+              "schedule": {
+                "raw": "월10:00-13:00",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660031",
+          "course_name": "공공데이터기반사업타당성평가",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유상균",
+              "schedule": {
+                "raw": "화10:00-13:00",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 410 - 도시정보시스템실(GIS)",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "410",
+                "room_type": "도시정보시스템실(GIS)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "660032",
+          "course_name": "도시사",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이지은",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가B 413 - 환경설계실험실",
+                "building": "공가B",
+                "building_full": "이공대 가동",
+                "room_number": "413",
+                "room_type": "환경설계실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "ENV_ENERGY",
+      "department_name": "환경에너지공학전공",
+      "courses": [
+        {
+          "course_code": "552058",
+          "course_name": "환경수리학",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사6",
+              "schedule": {
+                "raw": "수10:00-13:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 510 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "551009",
+          "course_name": "대기오염방지공학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박원석",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 510 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "551019",
+          "course_name": "수처리공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신동철",
+              "schedule": {
+                "raw": "화11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 509 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "552008",
+          "course_name": "환경관계법규",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명운",
+              "schedule": {
+                "raw": "수10:00-11:30, 금10:00-11:30",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 415 - 캡스톤디자인실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "415",
+                "room_type": "캡스톤디자인실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "552101",
+          "course_name": "해양오염론",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명운",
+              "schedule": {
+                "raw": "화10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 509 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "555010",
+          "course_name": "기후변화대응정책",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박원석",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 510 - 강의실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "510",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "555022",
+          "course_name": "폐기물에너지공학실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신동철",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 513 - 폐기물처리실험실",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "513",
+                "room_type": "폐기물처리실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "555023",
+          "course_name": "환경에너지빅데이터분석",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김명운",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 403 정보실습실J",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "403",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "555026",
+          "course_name": "캡스톤디자인(환경에너지공학Ⅱ)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신동철",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공가A 415 - 캡스톤디자인실(공용)",
+                "building": "공가A",
+                "building_full": "이공대 가동",
+                "room_number": "415",
+                "room_type": "캡스톤디자인실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "DATA_MGMT_IE",
+      "department_name": "데이터경영산업공학과",
+      "courses": [
+        {
+          "course_code": "612500",
+          "course_name": "***데이터경영산업공학개론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김훈태",
+              "schedule": {
+                "raw": "월14:00-15:30, 화14:00-15:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 111 - e-강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "111",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": "1학년만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "615026",
+          "course_name": "비즈니스컴퓨팅",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오용희",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 212 - 빅데이터분석실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "212",
+                "room_type": "빅데이터분석실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612055",
+          "course_name": "시스템운영관리",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김훈태",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612057",
+          "course_name": "원가공학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최재호",
+              "schedule": {
+                "raw": "월14:00-15:30, 금11:30-13:00",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)/공나A 210 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "612082",
+          "course_name": "물류관리",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오용희",
+              "schedule": {
+                "raw": "화14:00-15:30, 금10:00-11:30",
+                "days": [
+                  "화",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 210 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "210",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "615015",
+          "course_name": "기업데이터베이스설계",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신기태",
+              "schedule": {
+                "raw": "월11:30-13:30, 수11:30-13:30",
+                "days": [
+                  "월",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 211 - 품질공학실험실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "211",
+                "room_type": "품질공학실험실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "612099",
+          "course_name": "컴퓨터응용설계실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "오용희",
+              "schedule": {
+                "raw": "수13:30-15:30, 목09:30-11:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 212 - 빅데이터분석실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "212",
+                "room_type": "빅데이터분석실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612104",
+          "course_name": "정보컴퓨터교과논리및논술",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신기태",
+              "schedule": {
+                "raw": "화14:00-17:00",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 211 - 품질공학실험실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "211",
+                "room_type": "품질공학실험실"
+              },
+              "capacity": null,
+              "notes": "교직과정이수자만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "612502",
+          "course_name": "캡스톤디자인(빅데이터경영분석)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백창화",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 210 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "210",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612503",
+          "course_name": "비즈니스데이터분석",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신기태",
+              "schedule": {
+                "raw": "월14:00-15:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 210 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "210",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612504",
+          "course_name": "안전관리",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최재호",
+              "schedule": {
+                "raw": "월15:30-17:00, 화15:30-17:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "615021",
+          "course_name": "스마트팩토리경영",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김훈태",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "612107",
+          "course_name": "공급사슬관리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김훈태",
+              "schedule": {
+                "raw": "수11:30-13:00, 금11:30-13:00",
+                "days": [
+                  "수",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "612506",
+          "course_name": "빅데이터기업응용",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신기태",
+              "schedule": {
+                "raw": "화11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 210 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "210",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L강좌]"
+            }
+          ]
+        },
+        {
+          "course_code": "615014",
+          "course_name": "기업분석실무",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "최재호",
+              "schedule": {
+                "raw": "화14:00-15:30, 목14:00-15:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "15:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공나A 209 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "209",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SEMICONDUCTOR",
+      "department_name": "반도체융합공학과",
+      "courses": [
+        {
+          "course_code": "682500",
+          "course_name": "***반도체융합공학입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백경갑",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전학과1학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "682502",
+          "course_name": "반도체기초물성",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주성후",
+              "schedule": {
+                "raw": "월10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "682503",
+          "course_name": "IT기초프로그래밍언어",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김영헌",
+              "schedule": {
+                "raw": "화13:30-15:00, 수13:30-15:00",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "정보 310 스마트강의실",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "310",
+                "room_type": "스마트강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "682511",
+          "course_name": "정보디스플레이",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주성후",
+              "schedule": {
+                "raw": "금18:25-19:15",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "18:25",
+                    "end": "19:15"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)1",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "682512",
+          "course_name": "회로이론및해석2",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남선",
+              "schedule": {
+                "raw": "수13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 310 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "682513",
+          "course_name": "결정학실험",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나현석",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L]"
+            }
+          ]
+        },
+        {
+          "course_code": "682514",
+          "course_name": "기초반도체공학실험Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백경갑",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 211 - EmbeddedMCU실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "211",
+                "room_type": "EmbeddedMCU실험실"
+              },
+              "capacity": null,
+              "notes": "반도체2학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "ELECTRONICS",
+      "department_name": "전자공학과",
+      "courses": [
+        {
+          "course_code": "525087",
+          "course_name": "반도체공학",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백경갑",
+              "schedule": {
+                "raw": "수13:30-15:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전자2학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525047",
+          "course_name": "확률변수론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남선",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 310 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전자2학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525079",
+          "course_name": "회로이론2",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남선",
+              "schedule": {
+                "raw": "수10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 310 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "310",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전자2학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525055",
+          "course_name": "신호및시스템",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정목근",
+              "schedule": {
+                "raw": "수11:30-13:00, 목11:30-13:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전자3학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525057",
+          "course_name": "수치해석",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정목근",
+              "schedule": {
+                "raw": "화13:30-16:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "525058",
+          "course_name": "전자회로II",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백경갑",
+              "schedule": {
+                "raw": "수15:30-17:00, 목15:30-17:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "15:30",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 311 - 강의실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "311",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "전자3학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525059",
+          "course_name": "아날로그회로실험및설계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "여희주",
+              "schedule": {
+                "raw": "금13:30-17:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 211 - EmbeddedMCU실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "211",
+                "room_type": "EmbeddedMCU실험실"
+              },
+              "capacity": null,
+              "notes": "전자3,4학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525061",
+          "course_name": "공업교과논리및논술",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한지영",
+              "schedule": {
+                "raw": "화17:30-20:05",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "17:30",
+                    "end": "20:05"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "인208 - 교직A/V강의실",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "208",
+                "room_type": "교직A/V강의실"
+              },
+              "capacity": null,
+              "notes": "교직이수자만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "525062",
+          "course_name": "마이크로프로세서응용",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "여희주",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 211 - EmbeddedMCU실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "211",
+                "room_type": "EmbeddedMCU실험실"
+              },
+              "capacity": null,
+              "notes": "전자3,4학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525090",
+          "course_name": "공업교과교재연구및지도법",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "한지영",
+              "schedule": {
+                "raw": "월09:30-12:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "09:30",
+                    "end": "12:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "대205 - 강의실",
+                "building": "대",
+                "building_full": "대학원관",
+                "room_number": "205",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "교직이수자만수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "525070",
+          "course_name": "디지털신호처리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정목근",
+              "schedule": {
+                "raw": "화19:15-20:05",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "19:15",
+                    "end": "20:05"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격수업]"
+            }
+          ]
+        },
+        {
+          "course_code": "525092",
+          "course_name": "캡스톤디자인(전자공학Ⅱ)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정목근",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 211 - EmbeddedMCU실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "211",
+                "room_type": "EmbeddedMCU실험실"
+              },
+              "capacity": null,
+              "notes": "전자4학년만수강/수강신청3일차11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "525097",
+          "course_name": "디지털통신공학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김남선",
+              "schedule": {
+                "raw": "수20:30-21:20",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "20:30",
+                    "end": "21:20"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "",
+                "room_number": "",
+                "room_type": "온라인"
+              },
+              "capacity": null,
+              "notes": "[원격]전자3,4학년수강/변경1일차11시전체"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "MATERIALS",
+      "department_name": "신소재공학과",
+      "courses": [
+        {
+          "course_code": "584021",
+          "course_name": "재료구조물성",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "반도강사1",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 513 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "513",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "581043",
+          "course_name": "세라믹공학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나현석",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": "[B/L]"
+            }
+          ]
+        },
+        {
+          "course_code": "582026",
+          "course_name": "부식및방식공학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "반도강사1",
+              "schedule": {
+                "raw": "월14:00-17:00",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "584023",
+          "course_name": "재료열역학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "반도강사1",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "585007",
+          "course_name": "금속상변태",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황승준",
+              "schedule": {
+                "raw": "화10:00-11:30, 수10:00-11:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "584034",
+          "course_name": "박막제조공학실험",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주성후",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 513 - 강의실(공용)/공다A 516 - 전자재료실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "513",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "584037",
+          "course_name": "반도체재료공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나현석",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 513 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "513",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "585011",
+          "course_name": "캡스톤디자인(신소재Ⅰ)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황승준",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)/공다B 501 - 합금설계실험실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "582098",
+          "course_name": "합금설계",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "황승준",
+              "schedule": {
+                "raw": "화13:30-17:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 509 - 강의실(공용)/공다B 501 - 합금설계실험실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "509",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "584036",
+          "course_name": "차세대디스플레이",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "주성후",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 513 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "513",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "584038",
+          "course_name": "LED공학",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "나현석",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 513 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "513",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "IT_MECHANICAL",
+      "department_name": "IT기계공학과",
+      "courses": [
+        {
+          "course_code": "572002",
+          "course_name": "정역학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김봉진",
+              "schedule": {
+                "raw": "화15:30-17:00, 수12:00-13:30",
+                "days": [
+                  "화",
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "15:30",
+                    "end": "17:00"
+                  },
+                  {
+                    "day": "수",
+                    "start": "12:00",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 108 - e-강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572500",
+          "course_name": "***IT기계공학입문",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "월14:00-15:30, 화10:00-11:30",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "14:00",
+                    "end": "15:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A107 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "107",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "574005",
+          "course_name": "3DCAD실습I",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구본승",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A110 - CAE실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "110",
+                "room_type": "CAE실"
+              },
+              "capacity": null,
+              "notes": "첫째날IT기계1학년만/둘째날11시전체"
+            },
+            {
+              "section": "02",
+              "professor": "구본승",
+              "schedule": {
+                "raw": "목09:30-13:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A110 - CAE실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "110",
+                "room_type": "CAE실"
+              },
+              "capacity": null,
+              "notes": "첫째날IT기계1학년만/둘째날11시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "572006",
+          "course_name": "고체역학II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "수11:30-13:00, 목13:30-15:00",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "11:30",
+                    "end": "13:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "15:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A107 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "107",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572025",
+          "course_name": "동역학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정규홍",
+              "schedule": {
+                "raw": "월10:00-11:30, 목10:00-11:30",
+                "days": [
+                  "월",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A107 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "107",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572057",
+          "course_name": "유체역학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구본승",
+              "schedule": {
+                "raw": "월13:30-15:00, 금10:00-11:30",
+                "days": [
+                  "월",
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572066",
+          "course_name": "공학수학II",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김봉진",
+              "schedule": {
+                "raw": "수10:00-11:30, 목12:00-13:30",
+                "days": [
+                  "수",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "목",
+                    "start": "12:00",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 108 - e-강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572100",
+          "course_name": "기초전기이론및실습",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정규홍",
+              "schedule": {
+                "raw": "화09:30-13:30",
+                "days": [
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "09:30",
+                    "end": "13:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 112 - 자동화실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "112",
+                "room_type": "자동화실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572601",
+          "course_name": "미래모빌리티와인공지능",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "13:30",
+                    "end": "17:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "571007",
+          "course_name": "기계설계",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "화13:30-15:00, 목10:00-11:30",
+                "days": [
+                  "화",
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "화",
+                    "start": "13:30",
+                    "end": "15:00"
+                  },
+                  {
+                    "day": "목",
+                    "start": "10:00",
+                    "end": "11:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "571012",
+          "course_name": "열유체공학이론및실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "구본승",
+              "schedule": {
+                "raw": "수10:00-13:00",
+                "days": [
+                  "수"
+                ],
+                "times": [
+                  {
+                    "day": "수",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            },
+            {
+              "section": "02",
+              "professor": "구본승",
+              "schedule": {
+                "raw": "목14:00-17:00",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "14:00",
+                    "end": "17:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572050",
+          "course_name": "자동제어",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정규홍",
+              "schedule": {
+                "raw": "금10:00-13:00",
+                "days": [
+                  "금"
+                ],
+                "times": [
+                  {
+                    "day": "금",
+                    "start": "10:00",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A107 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "107",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572068",
+          "course_name": "에너지공학",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "원현우",
+              "schedule": {
+                "raw": "월10:00-11:30, 화11:30-13:00",
+                "days": [
+                  "월",
+                  "화"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "10:00",
+                    "end": "11:30"
+                  },
+                  {
+                    "day": "화",
+                    "start": "11:30",
+                    "end": "13:00"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다B 108 - 강의실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572501",
+          "course_name": "취창업세미나(기계공학)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김정수",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": [
+                  "월"
+                ],
+                "times": [
+                  {
+                    "day": "월",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다A 108 - e-강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "108",
+                "room_type": "e-강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "572502",
+          "course_name": "파이썬라이브러리프로그래밍",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 2,
+          "hours": 2,
+          "lab_hours": 4,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정규홍",
+              "schedule": {
+                "raw": "목13:30-16:30",
+                "days": [
+                  "목"
+                ],
+                "times": [
+                  {
+                    "day": "목",
+                    "start": "13:30",
+                    "end": "16:30"
+                  }
+                ]
+              },
+              "room": {
+                "raw": "공다 A110 - CAE실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "110",
+                "room_type": "CAE실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

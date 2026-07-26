@@ -45,3 +45,11 @@ yarn-error.log*
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
+
+# Firebase 서비스 계정 키 (절대 커밋 금지)
+serviceAccountKey.json
+**/serviceAccountKey.json
+*-firebase-adminsdk-*.json
+
+# 업로드 전 자동 생성되는 Firestore 백업 (용량 큼)
+backup_courses_*.json

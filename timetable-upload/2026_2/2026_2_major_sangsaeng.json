@@ -1,0 +1,106 @@
+{
+  "college": "상생교양대학",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "AUTONOMOUS_MAJOR",
+      "department_name": "자율전공학부",
+      "courses": [
+        {
+          "course_code": "302501",
+          "course_name": "전공탐색및설계Ⅱ",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "금09:30-12:30",
+                "days": ["금"],
+                "times": [
+                  {"day": "금", "start": "09:30", "end": "12:30"}
+                ]
+              },
+              "room": {
+                "raw": "사504 - 사회과학관멀티미디어실",
+                "building": "사",
+                "building_full": "사회과학관",
+                "room_number": "504",
+                "room_type": "사회과학관멀티미디어실"
+              },
+              "capacity": null,
+              "notes": "자율전공학부 1학년만 수강가능"
+            }
+          ]
+        },
+        {
+          "course_code": "302502",
+          "course_name": "전공설계Ⅰ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "목15:30-16:30",
+                "days": ["목"],
+                "times": [
+                  {"day": "목", "start": "15:30", "end": "16:30"}
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": null,
+              "notes": "자기설계전공 희망자, 1학년 방문신청"
+            }
+          ]
+        },
+        {
+          "course_code": "302503",
+          "course_name": "전공설계Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 1,
+          "hours": 2,
+          "lab_hours": 0,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "임기태",
+              "schedule": {
+                "raw": "목16:30-17:30",
+                "days": ["목"],
+                "times": [
+                  {"day": "목", "start": "16:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "인122-2 - 교양 회화실 1",
+                "building": "인",
+                "building_full": "인문학관",
+                "room_number": "122-2",
+                "room_type": "교양 회화실 1"
+              },
+              "capacity": null,
+              "notes": "자기설계전공 주전공 해당자 방문신청"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

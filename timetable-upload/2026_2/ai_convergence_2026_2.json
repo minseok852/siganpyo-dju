@@ -1,0 +1,2140 @@
+{
+  "college": "AI융합대학",
+  "semester": "2026학년도 2학기",
+  "updated_at": "2026-07-26",
+  "departments": [
+    {
+      "department_id": "SMART_MOBILITY",
+      "department_name": "스마트모빌리티전공",
+      "courses": [
+        {
+          "course_code": "652500",
+          "course_name": "***미래모빌리티",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사1",
+              "schedule": {
+                "raw": "화14:00-17:00",
+                "days": ["화"],
+                "times": [{"day": "화", "start": "14:00", "end": "17:00"}]
+              },
+              "room": {
+                "raw": "공다A 213 -강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "213",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "652501",
+          "course_name": "모빌리티기초프로그램",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정인혜",
+              "schedule": {
+                "raw": "월09:30-12:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "09:30", "end": "12:30"}]
+              },
+              "room": {
+                "raw": "정보 407 정보실습실G",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "407",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선/변경둘째날14시전체해제"
+            },
+            {
+              "section": "02",
+              "professor": "정인혜",
+              "schedule": {
+                "raw": "월12:30-15:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "12:30", "end": "15:30"}]
+              },
+              "room": {
+                "raw": "정보 407 정보실습실G",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "407",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652601",
+          "course_name": "드론개론및항공역학",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이관형",
+              "schedule": {
+                "raw": "화10:00-11:30, 목11:30-13:00",
+                "days": ["화", "목"],
+                "times": [
+                  {"day": "화", "start": "10:00", "end": "11:30"},
+                  {"day": "목", "start": "11:30", "end": "13:00"}
+                ]
+              },
+              "room": {
+                "raw": "공나A 111 - e-강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "111",
+                "room_type": "e-강의실(공용)"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "650011",
+          "course_name": "융합프로그래밍언어Ⅱ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사1",
+              "schedule": {
+                "raw": "화10:00-13:00",
+                "days": ["화"],
+                "times": [{"day": "화", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다A 515 -회로실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "515",
+                "room_type": "회로실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "650029",
+          "course_name": "융합캐드",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김효구",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "정보 404 정보실습실I",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "404",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            },
+            {
+              "section": "02",
+              "professor": "김효구",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "정보 404 정보실습실I",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "404",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652503",
+          "course_name": "드론비행실습",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이관형",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다A 515 -회로실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "515",
+                "room_type": "회로실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652603",
+          "course_name": "오픈소스SWⅡ",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사10",
+              "schedule": {
+                "raw": "화14:00-17:00",
+                "days": ["화"],
+                "times": [{"day": "화", "start": "14:00", "end": "17:00"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652604",
+          "course_name": "자율주행시스템개론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사3",
+              "schedule": {
+                "raw": "수14:00-15:30, 목10:00-11:30",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "14:00", "end": "15:30"},
+                  {"day": "목", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 213 -강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "213",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652605",
+          "course_name": "드론제어시스템",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사2",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "650021",
+          "course_name": "융합임베디드시스템Ⅱ",
+          "classification": "전필",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이관형",
+              "schedule": {
+                "raw": "목13:30-17:30",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "공다A 515 -회로실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "515",
+                "room_type": "회로실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "650022",
+          "course_name": "데이터처리프로그램Ⅱ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사10",
+              "schedule": {
+                "raw": "월11:30-13:00, 화11:30-13:00",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "11:30", "end": "13:00"},
+                  {"day": "화", "start": "11:30", "end": "13:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652608",
+          "course_name": "피지컬AIⅡ",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사11",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652609",
+          "course_name": "센서융합",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사1",
+              "schedule": {
+                "raw": "수14:00-17:00",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "14:00", "end": "17:00"}]
+              },
+              "room": {
+                "raw": "공다A 515 -회로실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "515",
+                "room_type": "회로실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "652610",
+          "course_name": "캡스톤디자인(드론MRO)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사11",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": ["금"],
+                "times": [{"day": "금", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다A 515 -회로실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "515",
+                "room_type": "회로실험실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선/변경둘째날14시전체해제"
+            }
+          ]
+        },
+        {
+          "course_code": "650046",
+          "course_name": "캡스톤디자인(모빌리티와융합IPⅡ)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이관형",
+              "schedule": {
+                "raw": "수13:30-17:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "652612",
+          "course_name": "자율주행SW처리",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사2",
+              "schedule": {
+                "raw": "수10:00-13:00",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "652613",
+          "course_name": "드론AI군집비행알고리즘",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "스마강사3",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": ["금"],
+                "times": [{"day": "금", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다A 512 - IT융합실험실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "512",
+                "room_type": "IT융합실험실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "COMPUTER_ENGINEERING",
+      "department_name": "컴퓨터공학전공",
+      "courses": [
+        {
+          "course_code": "564016",
+          "course_name": "객체지향프로그래밍",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백영미",
+              "schedule": {
+                "raw": "화13:30-15:30, 수15:30-17:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:30"},
+                  {"day": "수", "start": "15:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 409 - 캡스톤디자인실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "409",
+                "room_type": "캡스톤디자인실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "백영미",
+              "schedule": {
+                "raw": "화15:30-17:30, 수09:30-11:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "15:30", "end": "17:30"},
+                  {"day": "수", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선수강/변경둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "565006",
+          "course_name": "***컴퓨터프로그래밍기초",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백영미",
+              "schedule": {
+                "raw": "수14:00-15:30, 목11:30-13:00",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "14:00", "end": "15:30"},
+                  {"day": "목", "start": "11:30", "end": "13:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 410 - MacOS실습실/공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "MacOS실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565009",
+          "course_name": "컴퓨터시스템기초실습",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장윤석",
+              "schedule": {
+                "raw": "월09:30-11:30, 화09:30-11:30",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "09:30", "end": "11:30"},
+                  {"day": "화", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 412 - 마이크로컴퓨터실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "412",
+                "room_type": "마이크로컴퓨터실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "장윤석",
+              "schedule": {
+                "raw": "월11:30-13:30, 금09:30-11:30",
+                "days": ["월", "금"],
+                "times": [
+                  {"day": "월", "start": "11:30", "end": "13:30"},
+                  {"day": "금", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 412 - 마이크로컴퓨터실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "412",
+                "room_type": "마이크로컴퓨터실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(1학년)우선수강/변경둘째날10시전체"
+            }
+          ]
+        },
+        {
+          "course_code": "561099",
+          "course_name": "컴퓨터시스템구조",
+          "classification": "전필",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "장윤석",
+              "schedule": {
+                "raw": "월17:30-18:25",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "17:30", "end": "18:25"}]
+              },
+              "room": {
+                "raw": "e-learning(온라인)2",
+                "building": "",
+                "building_full": "온라인",
+                "room_number": "",
+                "room_type": "e-learning(온라인)"
+              },
+              "capacity": null,
+              "notes": "[원격수업]컴공만/변경첫날10시해제"
+            }
+          ]
+        },
+        {
+          "course_code": "562005",
+          "course_name": "시스템프로그래밍",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이시진",
+              "schedule": {
+                "raw": "월09:30-11:30, 목09:30-11:30",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "09:30", "end": "11:30"},
+                  {"day": "목", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "이시진",
+              "schedule": {
+                "raw": "월13:30-15:30, 목13:30-15:30",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "13:30", "end": "15:30"},
+                  {"day": "목", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "562102",
+          "course_name": "파일처리론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신판섭",
+              "schedule": {
+                "raw": "화10:00-11:30, 금10:00-11:30",
+                "days": ["화", "금"],
+                "times": [
+                  {"day": "화", "start": "10:00", "end": "11:30"},
+                  {"day": "금", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 411 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "신판섭",
+              "schedule": {
+                "raw": "화13:30-15:00, 금13:30-15:00",
+                "days": ["화", "금"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:00"},
+                  {"day": "금", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "564017",
+          "course_name": "웹프로그래밍",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "화13:30-15:30, 수13:30-15:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:30"},
+                  {"day": "수", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "화15:30-17:30, 수15:30-17:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "15:30", "end": "17:30"},
+                  {"day": "수", "start": "15:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565025",
+          "course_name": "스크립트프로그래밍",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "월13:30-15:30, 목13:30-15:30",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "13:30", "end": "15:30"},
+                  {"day": "목", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 410 - MacOS실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "MacOS실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(2학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "월15:30-17:30, 목15:30-17:30",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "15:30", "end": "17:30"},
+                  {"day": "목", "start": "15:30", "end": "17:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "562063",
+          "course_name": "데이터베이스설계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "신판섭",
+              "schedule": {
+                "raw": "수09:30-11:30, 목09:30-11:30",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "09:30", "end": "11:30"},
+                  {"day": "목", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 409 - 캡스톤디자인실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "409",
+                "room_type": "캡스톤디자인실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "신판섭",
+              "schedule": {
+                "raw": "수13:30-15:30, 목13:30-15:30",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "13:30", "end": "15:30"},
+                  {"day": "목", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 409 - 캡스톤디자인실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "409",
+                "room_type": "캡스톤디자인실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "562065",
+          "course_name": "인공지능",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박정규",
+              "schedule": {
+                "raw": "금09:30-12:30",
+                "days": ["금"],
+                "times": [{"day": "금", "start": "09:30", "end": "12:30"}]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "562107",
+          "course_name": "고급시스템프로그래밍",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이시진",
+              "schedule": {
+                "raw": "목15:30-17:00, 금13:30-15:00",
+                "days": ["목", "금"],
+                "times": [
+                  {"day": "목", "start": "15:30", "end": "17:00"},
+                  {"day": "금", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 411 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "이시진",
+              "schedule": {
+                "raw": "수15:30-17:00, 금10:00-11:30",
+                "days": ["수", "금"],
+                "times": [
+                  {"day": "수", "start": "15:30", "end": "17:00"},
+                  {"day": "금", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565013",
+          "course_name": "마이크로임베디드프로그래밍",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정문성",
+              "schedule": {
+                "raw": "월11:30-13:30, 수11:30-13:30",
+                "days": ["월", "수"],
+                "times": [
+                  {"day": "월", "start": "11:30", "end": "13:30"},
+                  {"day": "수", "start": "11:30", "end": "13:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실/공다B 412 - 마이크로컴퓨터실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "정문성",
+              "schedule": {
+                "raw": "월09:30-11:30, 수09:30-11:30",
+                "days": ["월", "수"],
+                "times": [
+                  {"day": "월", "start": "09:30", "end": "11:30"},
+                  {"day": "수", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실/공다B 412 - 마이크로컴퓨터실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565019",
+          "course_name": "캡스톤디자인(소프트웨어공학)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "백영미",
+              "schedule": {
+                "raw": "월15:30-19:15",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "15:30", "end": "19:15"}]
+              },
+              "room": {
+                "raw": "공다A 411 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565022",
+          "course_name": "컴퓨터네트워크및보안",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박정규",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "10:00", "end": "11:30"},
+                  {"day": "화", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 410 - MacOS실습실/공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "MacOS실습실"
+              },
+              "capacity": null,
+              "notes": "자과생(3학년)우선수강/변경둘째날10시전체"
+            },
+            {
+              "section": "02",
+              "professor": "박정규",
+              "schedule": {
+                "raw": "월13:30-15:00, 화13:30-15:00",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "13:30", "end": "15:00"},
+                  {"day": "화", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565015",
+          "course_name": "스마트앱프로그래밍",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "월10:00-11:30, 화10:00-11:30",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "10:00", "end": "11:30"},
+                  {"day": "화", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "565021",
+          "course_name": "캡스톤디자인(정보시스템응용)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이시진",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다A 411 - 강의실(공용)",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": "자과생은 팀원끼리 같은 분반으로 수강요망"
+            },
+            {
+              "section": "02",
+              "professor": "박정규",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": "자과생은팀원끼리같은분반으로수강요망"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "AI_BIGDATA",
+      "department_name": "AI빅데이터전공",
+      "courses": [
+        {
+          "course_code": "567003",
+          "course_name": "객체지향자바",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유승호",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567004",
+          "course_name": "데이터기반프로그래밍(1)",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김승현",
+              "schedule": {
+                "raw": "금09:30-13:30",
+                "days": ["금"],
+                "times": [{"day": "금", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다B 410 - 프로그램실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "프로그램실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567009",
+          "course_name": "빅데이터분석심화",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "서혜선",
+              "schedule": {
+                "raw": "화09:30-12:30",
+                "days": ["화"],
+                "times": [{"day": "화", "start": "09:30", "end": "12:30"}]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567013",
+          "course_name": "프론트엔드웹개발",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "홍명덕",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "공다A 409 - 캡스톤디자인실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "409",
+                "room_type": "캡스톤디자인실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567014",
+          "course_name": "데이터모델링수학",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손방용",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다B 301 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "301",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567035",
+          "course_name": "데이터베이스실무",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유승호",
+              "schedule": {
+                "raw": "목14:00-17:00",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "14:00", "end": "17:00"}]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567501",
+          "course_name": "오픈소스소프트웨어기초",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김승현",
+              "schedule": {
+                "raw": "화13:30-15:00, 수09:30-11:00",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:00"},
+                  {"day": "수", "start": "09:30", "end": "11:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 301 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "301",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567021",
+          "course_name": "머신러닝의이해및실습",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정종진",
+              "schedule": {
+                "raw": "수13:30-16:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "13:30", "end": "16:30"}]
+              },
+              "room": {
+                "raw": "공다B 401 - 정보보안,e-biz실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "401",
+                "room_type": "정보보안,e-biz실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567022",
+          "course_name": "캡스톤디자인(SW개발)",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김승현",
+              "schedule": {
+                "raw": "월13:30-17:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "13:30", "end": "17:30"}]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567023",
+          "course_name": "모바일앱프로그래밍",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김정민",
+              "schedule": {
+                "raw": "수09:30-11:30, 목09:30-11:30",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "09:30", "end": "11:30"},
+                  {"day": "목", "start": "09:30", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다A 410 - MacOS실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "410",
+                "room_type": "MacOS실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567024",
+          "course_name": "고급빅데이터분석실무",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "서혜선",
+              "schedule": {
+                "raw": "월09:30-12:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "09:30", "end": "12:30"}]
+              },
+              "room": {
+                "raw": "공다A 409 - 캡스톤디자인실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "409",
+                "room_type": "캡스톤디자인실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567025",
+          "course_name": "백엔드네트워크",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이현구",
+              "schedule": {
+                "raw": "목11:30-14:30",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "11:30", "end": "14:30"}]
+              },
+              "room": {
+                "raw": "공다A 414 - VR실습실",
+                "building": "공다A",
+                "building_full": "이공대 다동",
+                "room_number": "414",
+                "room_type": "VR실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567026",
+          "course_name": "알고리즘설계",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "손방용",
+              "schedule": {
+                "raw": "화10:00-13:00",
+                "days": ["화"],
+                "times": [{"day": "화", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공다B 301 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "301",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "567033",
+          "course_name": "캡스톤디자인(AI빅데이터와실무IP)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "정종진",
+              "schedule": {
+                "raw": "수09:30-13:30",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공나B 112 -스마트강의실",
+                "building": "공나B",
+                "building_full": "이공대 나동",
+                "room_number": "112",
+                "room_type": "스마트강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "department_id": "SMART_SECURITY",
+      "department_name": "스마트융합보안학과",
+      "courses": [
+        {
+          "course_code": "577503",
+          "course_name": "정보보호개론",
+          "classification": "전필",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김자원",
+              "schedule": {
+                "raw": "월13:30-16:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "13:30", "end": "16:30"}]
+              },
+              "room": {
+                "raw": "공나A 412 - 시청각강의실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "412",
+                "room_type": "시청각강의실"
+              },
+              "capacity": null,
+              "notes": "보안학과1학년만/수강신청둘째날11시해제"
+            }
+          ]
+        },
+        {
+          "course_code": "576006",
+          "course_name": "자바프로그래밍언어",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김자원",
+              "schedule": {
+                "raw": "화13:30-15:30, 수13:30-15:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:30"},
+                  {"day": "수", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "정보 202 정보실습실B",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "202",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "보안학과1학년만/수강신청둘째날11시해제"
+            }
+          ]
+        },
+        {
+          "course_code": "577500",
+          "course_name": "***융합산업보안론",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박현호",
+              "schedule": {
+                "raw": "수10:00-13:00",
+                "days": ["수"],
+                "times": [{"day": "수", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공나A 412 - 시청각강의실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "412",
+                "room_type": "시청각강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "577504",
+          "course_name": "SW프로그래밍Ⅱ",
+          "classification": "전선",
+          "target_year": 1,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이성진",
+              "schedule": {
+                "raw": "월09:30-11:30, 목13:30-15:30",
+                "days": ["월", "목"],
+                "times": [
+                  {"day": "월", "start": "09:30", "end": "11:30"},
+                  {"day": "목", "start": "13:30", "end": "15:30"}
+                ]
+              },
+              "room": {
+                "raw": "정보 409 정보실습실F",
+                "building": "정보",
+                "building_full": "정보전산원",
+                "room_number": "409",
+                "room_type": "정보실습실"
+              },
+              "capacity": null,
+              "notes": "보안학과1학년만/수강신청둘째날11시해제"
+            }
+          ]
+        },
+        {
+          "course_code": "576012",
+          "course_name": "알고리즘이론",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이성진",
+              "schedule": {
+                "raw": "월13:30-15:00, 화13:30-15:00",
+                "days": ["월", "화"],
+                "times": [
+                  {"day": "월", "start": "13:30", "end": "15:00"},
+                  {"day": "화", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "공나A 411 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "576013",
+          "course_name": "웹서버프로그래밍",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유동영",
+              "schedule": {
+                "raw": "수13:30-15:30, 금11:30-13:30",
+                "days": ["수", "금"],
+                "times": [
+                  {"day": "수", "start": "13:30", "end": "15:30"},
+                  {"day": "금", "start": "11:30", "end": "13:30"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 312 - 컴퓨터실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "312",
+                "room_type": "컴퓨터실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "576016",
+          "course_name": "방산보안",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "박현호",
+              "schedule": {
+                "raw": "목10:00-13:00",
+                "days": ["목"],
+                "times": [{"day": "목", "start": "10:00", "end": "13:00"}]
+              },
+              "room": {
+                "raw": "공나A 412 - 시청각강의실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "412",
+                "room_type": "시청각강의실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "577602",
+          "course_name": "산업보안법.정책",
+          "classification": "전선",
+          "target_year": 2,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김자원",
+              "schedule": {
+                "raw": "화10:00-11:30, 목13:30-15:00",
+                "days": ["화", "목"],
+                "times": [
+                  {"day": "화", "start": "10:00", "end": "11:30"},
+                  {"day": "목", "start": "13:30", "end": "15:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 302 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "302",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "576026",
+          "course_name": "산업보안컨설팅",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "김자원",
+              "schedule": {
+                "raw": "수11:30-13:00, 목11:30-13:00",
+                "days": ["수", "목"],
+                "times": [
+                  {"day": "수", "start": "11:30", "end": "13:00"},
+                  {"day": "목", "start": "11:30", "end": "13:00"}
+                ]
+              },
+              "room": {
+                "raw": "공다B 302 - 강의실(공용)",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "302",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "577507",
+          "course_name": "웹기반응용과보안",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": false,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유동영",
+              "schedule": {
+                "raw": "화13:30-15:00, 수10:00-11:30",
+                "days": ["화", "수"],
+                "times": [
+                  {"day": "화", "start": "13:30", "end": "15:00"},
+                  {"day": "수", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공나A 414 - 수리교육매체실",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "414",
+                "room_type": "수리교육매체실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "577603",
+          "course_name": "AI알고리즘",
+          "classification": "전선",
+          "target_year": 3,
+          "credits": 3,
+          "hours": 6,
+          "lab_hours": 0,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "이성진",
+              "schedule": {
+                "raw": "화10:00-11:30, 금10:00-11:30",
+                "days": ["화", "금"],
+                "times": [
+                  {"day": "화", "start": "10:00", "end": "11:30"},
+                  {"day": "금", "start": "10:00", "end": "11:30"}
+                ]
+              },
+              "room": {
+                "raw": "공나A 411 - 강의실(공용)",
+                "building": "공나A",
+                "building_full": "이공대 나동",
+                "room_number": "411",
+                "room_type": "강의실(공용)"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "course_code": "576030",
+          "course_name": "캡스톤디자인(융합보안)",
+          "classification": "전선",
+          "target_year": 4,
+          "credits": 3,
+          "hours": 4,
+          "lab_hours": 4,
+          "is_micro_major": true,
+          "sections": [
+            {
+              "section": "01",
+              "professor": "유동영",
+              "schedule": {
+                "raw": "월09:30-13:30",
+                "days": ["월"],
+                "times": [{"day": "월", "start": "09:30", "end": "13:30"}]
+              },
+              "room": {
+                "raw": "공다B 312 - 컴퓨터실습실",
+                "building": "공다B",
+                "building_full": "이공대 다동",
+                "room_number": "312",
+                "room_type": "컴퓨터실습실"
+              },
+              "capacity": null,
+              "notes": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
