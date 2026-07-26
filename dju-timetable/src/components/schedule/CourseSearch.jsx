@@ -1,17 +1,33 @@
 // src/components/schedule/CourseSearch.jsx
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Search, X, Plus, AlertCircle, Filter, Info, Clock } from 'lucide-react';
 import { useCourses } from '../../hooks/useCourses';
 import { checkScheduleConflict } from '../../utils/timeUtils';
-import { 
-  CATEGORY_OPTIONS, 
-  YEAR_OPTIONS, 
+import {
+  CATEGORY_OPTIONS,
+  YEAR_OPTIONS,
   AREA_OPTIONS,
   CLASSIFICATION_OPTIONS,
   COLLEGES,
-  CATEGORY_LABELS 
+  CATEGORY_LABELS,
+  STORAGE_KEYS,
+  SEARCH_PANEL_HEIGHT
 } from '../../data/constants';
 import CourseDetail from './CourseDetail';
+
+const { MIN: MIN_H, MAX: MAX_H, DEFAULT: DEFAULT_H } = SEARCH_PANEL_HEIGHT;
+
+const clampHeight = (v) => Math.min(MAX_H, Math.max(MIN_H, v));
+
+// 저장된 높이 불러오기 (없거나 범위 밖이면 기본값)
+function loadSavedHeight() {
+  try {
+    const saved = Number(localStorage.getItem(STORAGE_KEYS.SEARCH_PANEL_HEIGHT));
+    return Number.isFinite(saved) && saved > 0 ? clampHeight(saved) : DEFAULT_H;
+  } catch {
+    return DEFAULT_H;   // 시크릿 모드 등에서 localStorage 접근 불가
+  }
+}
 
 // 요일 옵션
 const DAY_OPTIONS = [
@@ -63,6 +79,11 @@ export default function CourseSearch({
   const [showFilters, setShowFilters] = useState(false);
   const [departments, setDepartments] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
+
+  // 검색창 높이 (vh) — 핸들 바를 끌어 조절, localStorage에 유지
+  const [sheetHeight, setSheetHeight] = useState(loadSavedHeight);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragRef = useRef(null);
 
   const { 
     courses, 
@@ -212,6 +233,54 @@ export default function CourseSearch({
     }
   };
 
+  // ── 검색창 높이 조절 ──────────────────────────────────────
+  // 핸들 바를 위로 끌면 커지고 아래로 끌면 작아진다.
+  // 마우스/터치를 모두 커버하려고 포인터 이벤트를 씀.
+  const saveHeight = (h) => {
+    try {
+      localStorage.setItem(STORAGE_KEYS.SEARCH_PANEL_HEIGHT, String(Math.round(h)));
+    } catch {
+      // 저장 실패해도 이번 세션 크기는 유지되므로 무시
+    }
+  };
+
+  const handleDragStart = (e) => {
+    e.preventDefault();
+    dragRef.current = { startY: e.clientY, startHeight: sheetHeight };
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+
+  const handleDragMove = (e) => {
+    if (!dragRef.current) return;
+    const movedUp = dragRef.current.startY - e.clientY;   // 위로 끌면 양수
+    const deltaVh = (movedUp / window.innerHeight) * 100;
+    setSheetHeight(clampHeight(dragRef.current.startHeight + deltaVh));
+  };
+
+  const handleDragEnd = (e) => {
+    if (!dragRef.current) return;
+    dragRef.current = null;
+    setIsDragging(false);
+    e.currentTarget.releasePointerCapture?.(e.pointerId);
+    saveHeight(sheetHeight);
+  };
+
+  // 핸들 더블클릭 시 기본 크기로
+  const resetHeight = () => {
+    setSheetHeight(DEFAULT_H);
+    saveHeight(DEFAULT_H);
+  };
+
+  // 키보드로도 조절 (접근성)
+  const handleHandleKeyDown = (e) => {
+    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+    e.preventDefault();
+    const next = clampHeight(sheetHeight + (e.key === 'ArrowUp' ? 5 : -5));
+    setSheetHeight(next);
+    saveHeight(next);
+  };
+
   // 시간대 필터 초기화
   const resetTimeFilter = () => {
     setFilters(f => ({ ...f, day: '', startTime: '' }));
@@ -258,12 +327,37 @@ export default function CourseSearch({
     >
       {/* 하단 슬라이드업 패널 */}
       <div
-        className="bg-white rounded-t-2xl w-full max-h-[70vh] flex flex-col animate-slide-up"
+        className={`bg-white rounded-t-2xl w-full flex flex-col animate-slide-up ${
+          isDragging ? '' : 'transition-[height] duration-200'
+        }`}
+        style={{ height: `${sheetHeight}vh` }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 핸들 바 */}
-        <div className="flex justify-center pt-3 pb-2">
-          <div className="w-10 h-1 bg-gray-300 rounded-full" />
+        {/* 핸들 바 — 끌어서 검색창 크기 조절 */}
+        <div
+          role="separator"
+          aria-orientation="horizontal"
+          aria-label="검색창 크기 조절"
+          aria-valuenow={Math.round(sheetHeight)}
+          aria-valuemin={MIN_H}
+          aria-valuemax={MAX_H}
+          tabIndex={0}
+          onPointerDown={handleDragStart}
+          onPointerMove={handleDragMove}
+          onPointerUp={handleDragEnd}
+          onPointerCancel={handleDragEnd}
+          onDoubleClick={resetHeight}
+          onKeyDown={handleHandleKeyDown}
+          title="위아래로 끌어서 크기 조절 (더블클릭하면 기본 크기)"
+          className="group flex justify-center items-center pt-3 pb-2 cursor-ns-resize select-none touch-none focus:outline-none"
+        >
+          <div
+            className={`h-1 rounded-full transition-all ${
+              isDragging
+                ? 'w-16 bg-blue-500'
+                : 'w-10 bg-gray-300 group-hover:w-14 group-hover:bg-gray-400 group-focus:bg-blue-400'
+            }`}
+          />
         </div>
 
         {/* 헤더 */}

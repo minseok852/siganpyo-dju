@@ -182,4 +182,12 @@ export const STORAGE_KEYS = {
   MY_SCHEDULES: 'dju_my_schedules',         // 새로운 복수 시간표
   BOOKMARKED: 'dju_bookmarked_schedules',
   RECENT_SEARCHES: 'dju_recent_searches',
+  SEARCH_PANEL_HEIGHT: 'dju_search_panel_height',  // 과목 검색창 높이 (vh)
+};
+
+// 과목 검색창 높이 (vh 단위) — 사용자가 핸들을 끌어 조절
+export const SEARCH_PANEL_HEIGHT = {
+  MIN: 40,
+  MAX: 92,
+  DEFAULT: 70,
 };
