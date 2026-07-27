@@ -1,5 +1,5 @@
 // src/App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import SharedPage from './pages/SharedPage';
 import PopularPage from './pages/PopularPage';
@@ -11,7 +11,7 @@ import FeedbackAdminPage from './pages/FeedbackAdminPage';
 import UpdateLogPage from './pages/UpdateLogPage';
 import UpdateAdminPage from './pages/UpdateAdminPage';
 import AdminPage from './pages/AdminPage';
-import GraduationCalculator from './pages/Graduationcalculator';
+import CreditPlanner from './pages/Graduationcalculator';
 import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
@@ -28,7 +28,9 @@ function App() {
         <Route path="/feedback/admin" element={<FeedbackAdminPage />} />
         <Route path="/updates" element={<UpdateLogPage />} />
         <Route path="/updates/admin" element={<UpdateAdminPage />} />
-        <Route path="/graduation" element={<GraduationCalculator />} />
+        <Route path="/credits" element={<CreditPlanner />} />
+        {/* 구 주소 — 기존 링크·북마크 보존 */}
+        <Route path="/graduation" element={<Navigate to="/credits" replace />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

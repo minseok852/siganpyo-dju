@@ -5,9 +5,20 @@ import {
   setDoc, 
   increment,
   collection,
-  getDocs
+  getDocs,
+  query,
+  where
 } from 'firebase/firestore';
 import { db } from './firebase';
+import { CURRENT_SEMESTER } from '../data/constants';
+
+/**
+ * 인기도 문서 ID — 학기별로 분리
+ * 학기 접두사가 없는 문서는 2026-1 이전의 집계이며 더 이상 조회되지 않음
+ */
+function popularDocId(courseCode, section) {
+  return `${CURRENT_SEMESTER}_${courseCode}-${section}`;
+}
 
 /**
  * 과목 추가 시 인기도 카운트 증가
@@ -19,8 +30,8 @@ export async function incrementCoursePopularity(course) {
       console.warn('⚠️ 인기도 카운트 스킵: course_code 또는 section 누락');
       return;
     }
-    
-    const courseId = `${course.course_code}-${course.section}`;
+
+    const courseId = popularDocId(course.course_code, course.section);
     const docRef = doc(db, 'popular_courses', courseId);
     
     const docSnap = await getDoc(docRef);
@@ -34,6 +45,7 @@ export async function incrementCoursePopularity(course) {
     } else {
       // 새 문서 생성 - undefined 값 필터링!
       const courseData = {
+        semester: CURRENT_SEMESTER,
         course_code: course.course_code,
         section: course.section,
         course_name: course.course_name || '과목명 없음',
@@ -71,7 +83,7 @@ export async function decrementCoursePopularity(courseCode, section) {
       return;
     }
     
-    const courseId = `${courseCode}-${section}`;
+    const courseId = popularDocId(courseCode, section);
     const docRef = doc(db, 'popular_courses', courseId);
     
     const docSnap = await getDoc(docRef);
@@ -108,28 +120,30 @@ let lastFetchTime = null;
 const CACHE_DURATION = 5 * 60 * 1000; // 5분
 
 /**
- * 전체 인기 과목 로드 (캐시 사용)
+ * 현재 학기 인기 과목 로드 (캐시 사용)
  */
 async function loadAllPopularCourses() {
   const now = Date.now();
-  
+
   // 캐시가 유효하면 캐시 반환
   if (allPopularCourses && lastFetchTime && (now - lastFetchTime < CACHE_DURATION)) {
     return allPopularCourses;
   }
-  
+
   try {
     const popularRef = collection(db, 'popular_courses');
-    const snapshot = await getDocs(popularRef);
-    
+    // 현재 학기 문서만 — 학기 필드가 없는 이전 학기 집계는 자동으로 제외됨
+    const q = query(popularRef, where('semester', '==', CURRENT_SEMESTER));
+    const snapshot = await getDocs(q);
+
     allPopularCourses = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     }));
-    
+
     lastFetchTime = now;
-    console.log('📊 인기 과목 로드:', allPopularCourses.length, '개');
-    
+    console.log('📊 인기 과목 로드:', CURRENT_SEMESTER, allPopularCourses.length, '개');
+
     return allPopularCourses;
   } catch (error) {
     console.error('인기 과목 로드 실패:', error);

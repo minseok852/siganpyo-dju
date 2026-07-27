@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import SiteHeader from "../components/SiteHeader";
 
 // ============================================================
 // 상수
@@ -580,8 +580,7 @@ function Step4({ result }) {
 // ============================================================
 // 메인 컴포넌트
 // ============================================================
-export default function GraduationCalculator() {
-  const navigate = useNavigate();
+export default function CreditPlanner() {
   const [step, setStep] = useState(1);
   const [userInfo, setUserInfo] = useState(INITIAL_USER_INFO);
   const [acquired, setAcquired] = useState(INITIAL_ACQUIRED);
@@ -627,27 +626,7 @@ export default function GraduationCalculator() {
 
   return (
     <>
-    <header style={{
-      background: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
-      position: "sticky", top: 0, zIndex: 40,
-    }}>
-      <div style={{
-        maxWidth: 600, margin: "0 auto", padding: "8px 16px",
-        display: "flex", alignItems: "center", gap: 8,
-      }}>
-        <button
-          onClick={() => navigate("/")}
-          style={{
-            background: "none", border: "none", cursor: "pointer",
-            padding: "6px 8px", borderRadius: 8, display: "flex",
-            alignItems: "center", color: "#374151", fontSize: 20,
-          }}
-        >
-          ←
-        </button>
-        <span style={{ fontSize: 15, fontWeight: 700, color: "#111827" }}>졸업요건 계산기</span>
-      </div>
-    </header>
+    <SiteHeader activeHref="/credits" title="학점 플래너" />
     <div style={{
       minHeight: "100vh", background: "linear-gradient(135deg, #EEF2FF 0%, #F8FAFF 100%)",
       display: "flex", justifyContent: "center", alignItems: "flex-start",
@@ -660,8 +639,10 @@ export default function GraduationCalculator() {
       }}>
         <div style={{ textAlign: "center", marginBottom: 28 }}>
           <div style={{ fontSize: 28, marginBottom: 6 }}>🎓</div>
-          <h1 style={{ fontSize: 20, fontWeight: 900, color: "#111827", margin: 0 }}>졸업요건 계산기</h1>
-          <p style={{ fontSize: 12, color: "#9CA3AF", marginTop: 4 }}>대진대학교</p>
+          <h1 style={{ fontSize: 20, fontWeight: 900, color: "#111827", margin: 0 }}>학점 플래너</h1>
+          <p style={{ fontSize: 12, color: "#9CA3AF", marginTop: 4 }}>
+            지금까지 들은 학점을 넣으면, 남은 학기마다 몇 학점씩 들어야 하는지 알려드려요
+          </p>
         </div>
 
         <ProgressBar step={step} />

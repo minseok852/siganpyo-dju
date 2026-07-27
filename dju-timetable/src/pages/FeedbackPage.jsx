@@ -1,8 +1,8 @@
 // src/pages/FeedbackPage.jsx
 import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
+import SiteHeader from '../components/SiteHeader';
+import {
   MessageSquarePlus,
   Send,
   Loader2,
@@ -500,31 +500,19 @@ export default function FeedbackPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* 헤더 */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-2xl mx-auto px-3 py-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => navigate('/')}
-                className="p-1.5 hover:bg-gray-100 rounded-full"
-              >
-                <ArrowLeft size={20} />
-              </button>
-              <MessageSquarePlus className="text-blue-500" size={20} />
-              <h1 className="text-base font-bold text-gray-800">피드백</h1>
-            </div>
-            
-            {/* 관리자 버튼 */}
-            <button
-              onClick={() => navigate('/feedback/admin')}
-              className="p-1.5 hover:bg-gray-100 rounded-full text-gray-500"
-              title="관리자"
-            >
-              <Settings size={18} />
-            </button>
-          </div>
-        </div>
-      </header>
+      <SiteHeader
+        activeHref="/feedback"
+        title="피드백"
+        right={
+          <button
+            onClick={() => navigate('/feedback/admin')}
+            className="w-8 h-8 rounded-full bg-[#F1F4FA] hover:bg-[#E4E8F0] flex items-center justify-center text-[#8892A4] transition-colors flex-shrink-0"
+            title="관리자"
+          >
+            <Settings size={16} strokeWidth={1.6} />
+          </button>
+        }
+      />
 
       <main className="max-w-2xl mx-auto px-3 py-4">
         {/* 성공 메시지 */}

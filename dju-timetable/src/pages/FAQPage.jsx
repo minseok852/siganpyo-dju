@@ -1,10 +1,8 @@
 // src/pages/FAQPage.jsx
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  HelpCircle, 
-  ChevronDown, 
+import SiteHeader from '../components/SiteHeader';
+import {
+  ChevronDown,
   ChevronUp,
   BookOpen,
   Clock,
@@ -440,7 +438,6 @@ const FAQ_DATA = [
 ];
 
 export default function FAQPage() {
-  const navigate = useNavigate();
   const [openItems, setOpenItems] = useState({});
   const [allOpen, setAllOpen] = useState(false);
 
@@ -466,17 +463,7 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-2xl mx-auto px-3 py-2">
-          <div className="flex items-center gap-2">
-            <button onClick={() => navigate('/')} className="p-1.5 hover:bg-gray-100 rounded-full">
-              <ArrowLeft size={20} />
-            </button>
-            <HelpCircle className="text-blue-500" size={20} />
-            <h1 className="text-base font-bold text-gray-800">자주 묻는 질문</h1>
-          </div>
-        </div>
-      </header>
+      <SiteHeader activeHref="/faq" title="자주 묻는 질문" />
 
       <main className="max-w-2xl mx-auto px-3 py-4">
         <div className="bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl p-4 text-white mb-4">

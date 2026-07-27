@@ -2,28 +2,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  Plus, Trash2, Share2, Sparkles, BookOpen, Copy, Check,
-  Loader2, X, Wand2, HelpCircle, Edit3, Files, ChevronDown, MessageSquarePlus,
-  Smartphone, Download, CheckCircle, Palette, Megaphone,
-  Menu, FileText, GraduationCap, Flame
+  Plus, Trash2, Share2, Copy, Check,
+  Loader2, X, Wand2, Edit3, Files, ChevronDown,
+  Smartphone, Download, CheckCircle, Palette, Megaphone
 } from 'lucide-react';
 import { THEMES } from '../data/constants';
+import SiteHeader from '../components/SiteHeader';
 import ScheduleGrid from '../components/schedule/ScheduleGrid';
 import CourseSearch from '../components/schedule/CourseSearch';
 import CourseDetail from '../components/schedule/CourseDetail';
 import { useSchedule } from '../hooks/useSchedule';
 import { saveScheduleForShare } from '../services/shareService';
 import { createTransfer, receiveTransfer } from '../services/transferService';
-
-// 헤더 내비게이션 항목 (아이콘 통일 — 이모지 제거)
-const NAV_ITEMS = [
-  { href: '/feedback', label: '피드백', icon: MessageSquarePlus },
-  { href: '/updates', label: '업데이트', icon: FileText },
-  { href: '/faq', label: 'FAQ', icon: HelpCircle },
-  { href: '/ai', label: 'AI평가', icon: Sparkles },
-  { href: '/graduation', label: '졸업계산기', icon: GraduationCap },
-  { href: '/popular', label: '인기', icon: Flame },
-];
 
 // 테마 피커 컴포넌트
 function ThemePicker({ currentTheme, onSelect }) {
@@ -391,8 +381,6 @@ export default function HomePage() {
   const [isTransferSending, setIsTransferSending] = useState(false);
   const [isTransferReceiveOpen, setIsTransferReceiveOpen] = useState(false);
 
-  // 모바일 헤더 메뉴 열림/닫힘
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // 2학기 시간표 미확정 안내 팝업
   const NOTICE_KEY = 'notice-2sem-2026';
@@ -471,54 +459,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-white border-b border-[#EBEEF3] sticky top-0 z-40">
-        <div className="max-w-6xl mx-auto px-4 sm:px-7">
-          <div className="flex items-center justify-between h-[52px] sm:h-[60px]">
-            {/* 로고 */}
-            <a href="/" className="flex items-center gap-2 flex-shrink-0">
-              <BookOpen className="text-[#2F6FEB]" size={20} />
-              <span className="text-[15px] sm:text-[17px] font-extrabold text-[#1E2530] tracking-tight whitespace-nowrap">
-                대진대 시간표
-              </span>
-            </a>
-
-            {/* 데스크톱 내비 */}
-            <nav className="hidden md:flex items-center gap-7">
-              {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
-                <a key={href} href={href}
-                  className="group flex items-center gap-1.5 text-[13px] font-semibold text-[#5B6472] hover:text-[#2F6FEB] transition-colors whitespace-nowrap">
-                  <Icon size={16} className="text-[#9AA3B2] group-hover:text-[#2F6FEB] transition-colors" />
-                  {label}
-                </a>
-              ))}
-            </nav>
-
-            {/* 모바일 햄버거 */}
-            <button
-              onClick={() => setMobileMenuOpen(v => !v)}
-              className="md:hidden w-9 h-9 -mr-1.5 flex items-center justify-center text-[#5B6472] hover:bg-gray-50 rounded-lg transition-colors"
-              aria-label="메뉴"
-            >
-              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-
-        {/* 모바일 드롭다운 메뉴 */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-[#EBEEF3] bg-white shadow-[0_12px_24px_-12px_rgba(30,40,60,0.2)]">
-            <nav className="max-w-6xl mx-auto px-2 py-1.5">
-              {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
-                <a key={href} href={href}
-                  className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-semibold text-[#3A4150] hover:bg-gray-50 transition-colors">
-                  <Icon size={17} className="text-[#9AA3B2]" />
-                  {label}
-                </a>
-              ))}
-            </nav>
-          </div>
-        )}
-      </header>
+      <SiteHeader />
 
       <main className="max-w-6xl mx-auto px-3 sm:px-5 py-3 sm:py-4">
         {/* 시간표 탭 */}

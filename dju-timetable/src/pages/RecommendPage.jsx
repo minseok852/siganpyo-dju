@@ -1,9 +1,9 @@
 // src/pages/RecommendPage.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { 
-  ArrowLeft, 
-  Wand2, 
+import {
+  ArrowLeft,
+  Sparkles,
   Loader2,
   ChevronRight,
   ChevronLeft,
@@ -12,7 +12,8 @@ import {
   X,
   Search,
   BookOpen,
-  Shuffle
+  Shuffle,
+  RotateCcw
 } from 'lucide-react';
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
@@ -23,54 +24,130 @@ import { parseScheduleToTimes } from '../utils/timeUtils';
 import CourseDetail from '../components/schedule/CourseDetail';
 import AiFeedback from '../components/AiFeedback';
 
+/* ========================================================================
+ *  디자인 토큰 (AI Recommend Redesign)
+ *  ink #1E2530 / body #3A4150 / label #5B6472 / muted #8892A4 / faint #B0B7C3
+ *  primary #2F6FEB / primary-soft #EAF1FE / border #E4E8F0 / page #EEF1F6
+ * ===================================================================== */
+const CARD = 'bg-white rounded-[14px] shadow-[0_1px_0_0_#EBEEF3]';
+const FIELD = 'w-full px-3 py-2.5 border border-[#E4E8F0] rounded-[9px] text-[13px] text-[#1E2530] bg-white outline-none focus:border-[#2F6FEB] transition-colors';
+const LABEL = 'block text-[12.5px] font-bold text-[#5B6472] mb-2';
+const HINT = 'text-[11.5px] text-[#8892A4]';
+const DASHED = 'w-full py-2.5 border-[1.5px] border-dashed rounded-[10px] text-[13px] font-bold flex items-center justify-center gap-1.5 transition-colors';
+
+// 선택된 과목 톤 (배경 / 아이콘색 / 점선버튼)
+const TONES = {
+  blue:  { bg: 'bg-[#EAF1FE]', x: 'text-[#2F6FEB]', dashed: 'border-[#B9C7F5] text-[#2F6FEB] hover:bg-[#F7FAFF]' },
+  green: { bg: 'bg-[#E8F8F0]', x: 'text-[#1FA97A]', dashed: 'border-[#BEEBD3] text-[#1FA97A] hover:bg-[#F3FCF7]' },
+  amber: { bg: 'bg-[#FFF8EC]', x: 'text-[#C99A2E]', dashed: 'border-[#F0DCB4] text-[#C99A2E] hover:bg-[#FFFBF3]' },
+  red:   { bg: 'bg-[#FEF4F4]', x: 'text-[#E5484D]', dashed: 'border-[#FBD8D8] text-[#E5484D] hover:bg-[#FEF7F7]' },
+};
+
+// 세그먼트 버튼 (선택형)
+function SegButton({ active, onClick, children, className = '' }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`py-2.5 rounded-[9px] border text-[13px] font-bold whitespace-nowrap transition-colors ${
+        active
+          ? 'border-[#2F6FEB] bg-[#EAF1FE] text-[#2F6FEB]'
+          : 'border-[#E4E8F0] bg-white text-[#5B6472] hover:border-[#C9D3E4]'
+      } ${className}`}
+    >
+      {children}
+    </button>
+  );
+}
+
+// 칩 버튼 (요일/영역 등 다중 선택)
+function ChipButton({ active, onClick, children, tone = 'blue', className = '' }) {
+  const activeCls = tone === 'ink' ? 'bg-[#1E2530] text-white' : 'bg-[#2F6FEB] text-white';
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`py-2.5 rounded-[8px] text-[12.5px] font-bold whitespace-nowrap transition-colors ${
+        active ? activeCls : 'bg-[#EEF1F6] text-[#8892A4] hover:bg-[#E4E8F0]'
+      } ${className}`}
+    >
+      {children}
+    </button>
+  );
+}
+
+// 선택된 과목 한 줄 (과목명 + 교수/시간/학점 유지)
+function SelectedRow({ name, meta, tone = 'blue', onRemove }) {
+  const t = TONES[tone];
+  return (
+    <div className={`flex items-center justify-between gap-2 px-3 py-2.5 rounded-[10px] ${t.bg}`}>
+      <div className="min-w-0">
+        <div className="text-[13px] font-bold text-[#1E2530] truncate">{name}</div>
+        {meta && <div className="text-[11.5px] text-[#5B6472] truncate mt-px">{meta}</div>}
+      </div>
+      <button onClick={onRemove} className={`${t.x} shrink-0`}>
+        <X size={14} strokeWidth={2.5} />
+      </button>
+    </div>
+  );
+}
+
+// 카드 헤더 (제목 + 설명)
+function CardHead({ title, desc }) {
+  return (
+    <div className="mb-4">
+      <h2 className="text-[17px] font-extrabold text-[#1E2530] tracking-[-0.2px]">{title}</h2>
+      {desc && <p className="mt-0.5 text-[13px] text-[#8892A4]">{desc}</p>}
+    </div>
+  );
+}
+
 // 시간표 선택 모달 컴포넌트
 function ScheduleSelectModal({ isOpen, onClose, schedules, onSelect, onAddNew, maxSchedules }) {
   if (!isOpen) return null;
-  
+
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl w-full max-w-sm p-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold">저장할 시간표 선택</h2>
-          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
-            <X size={20} />
+    <div className="fixed inset-0 bg-[rgba(20,26,38,.5)] flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl w-full max-w-[360px] p-5">
+        <div className="flex items-center justify-between">
+          <h2 className="text-[16px] font-extrabold text-[#1E2530]">저장할 시간표 선택</h2>
+          <button onClick={onClose} className="w-7 h-7 flex items-center justify-center text-[#8892A4] hover:bg-[#F1F4FA] rounded-lg">
+            <X size={16} />
           </button>
         </div>
-        
-        <p className="text-sm text-gray-600 mb-4">
+
+        <p className="mt-1 mb-3.5 text-[12.5px] text-[#8892A4]">
           AI 추천 시간표를 어디에 저장할까요?
         </p>
-        
+
         <div className="space-y-2">
           {schedules.map(schedule => (
             <button
               key={schedule.id}
               onClick={() => onSelect(schedule.id)}
-              className="w-full p-3 border rounded-lg hover:bg-indigo-50 hover:border-indigo-300 text-left transition-colors"
+              className="w-full px-3.5 py-3 border border-[#E4E8F0] rounded-[10px] bg-white text-left hover:border-[#2F6FEB] hover:bg-[#F7FAFF] transition-colors flex items-center justify-between gap-2"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-medium">{schedule.name}</span>
-                <span className="text-xs text-gray-500">
-                  {schedule.courses.length > 0 
-                    ? `${schedule.courses.length}과목 (교체됨)` 
-                    : '비어있음'}
-                </span>
-              </div>
+              <span className="text-[13px] font-bold text-[#1E2530]">{schedule.name}</span>
+              <span className="text-[11.5px] text-[#8892A4] shrink-0">
+                {schedule.courses.length > 0
+                  ? `${schedule.courses.length}과목 (교체됨)`
+                  : '비어있음'}
+              </span>
             </button>
           ))}
-          
+
           {schedules.length < maxSchedules && (
             <button
               onClick={onAddNew}
-              className="w-full p-3 border-2 border-dashed border-indigo-300 rounded-lg text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+              className={`${DASHED} ${TONES.blue.dashed} py-3`}
             >
-              <Plus size={18} />
+              <Plus size={14} />
               새 시간표로 저장
             </button>
           )}
         </div>
-        
-        <p className="text-xs text-gray-400 mt-4">
+
+        <p className="text-[11px] text-[#B0B7C3] mt-3.5">
           ⚠️ 기존 과목이 있는 시간표는 교체됩니다
         </p>
       </div>
@@ -93,7 +170,7 @@ const DEFAULT_GENERAL_REQUIRED = [
   '대학생활과진로',
   '사고와표현',
   '영어1',
-  '영어2', 
+  '영어2',
   '정보능력',
   'AI시대의컴퓨팅사고',
 ];
@@ -102,7 +179,7 @@ const DEFAULT_GENERAL_REQUIRED = [
 function SchedulePreview({ courses }) {
   const DAYS = ['월', '화', '수', '목', '금'];
   const HOURS = Array.from({ length: 13 }, (_, i) => i + 9); // 9시~21시
-  
+  const ROW_H = 36;  // 1시간 높이
 
   // 변경 - COLORS 배열 삭제하고:
   const courseColors = {};
@@ -114,14 +191,14 @@ function SchedulePreview({ courses }) {
   const parseSchedule = (scheduleRaw) => {
     if (!scheduleRaw) return [];
     const result = [];
-    
+
     // 쉼표로 먼저 분리
     const segments = scheduleRaw.split(',').map(s => s.trim());
-    
+
     for (const segment of segments) {
       // 공백으로 추가 분리
       const parts = segment.split(/\s+/).filter(p => p.trim());
-      
+
       for (const part of parts) {
         // "화10:00-11:30" 형식
         const timeMatch = part.match(/^(월|화|수|목|금)(\d{1,2}):(\d{2})-(\d{1,2}):(\d{2})$/);
@@ -134,7 +211,7 @@ function SchedulePreview({ courses }) {
           });
           continue;
         }
-        
+
         // "월1,2,3" 형식 (교시)
         const periodMatch = part.match(/^(월|화|수|목|금)([\d,]+)$/);
         if (periodMatch) {
@@ -153,10 +230,10 @@ function SchedulePreview({ courses }) {
         }
       }
     }
-    
+
     return result;
   };
-      
+
   const getBlocksForDay = (day) => {
     const blocks = [];
     courses.forEach(course => {
@@ -176,48 +253,50 @@ function SchedulePreview({ courses }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+    <div className={`${CARD} overflow-hidden`}>
       <div className="overflow-x-auto">
         <div className="min-w-[500px]">
           {/* 헤더 */}
-          <div className="grid grid-cols-6 border-b">
-            <div className="p-2 text-center text-xs font-medium text-gray-500 bg-gray-50">시간</div>
+          <div className="grid grid-cols-6 border-b border-[#EEF1F5]">
+            <div className="py-2.5 text-center text-[11px] font-semibold text-[#8892A4] bg-[#F9FAFC]">시간</div>
             {DAYS.map(day => (
-              <div key={day} className="p-2 text-center text-xs font-medium text-gray-700 bg-gray-50 border-l">{day}</div>
+              <div key={day} className="py-2.5 text-center text-[12px] font-bold text-[#5B6472] bg-[#F9FAFC] border-l border-[#EEF1F5]">
+                {day}
+              </div>
             ))}
           </div>
-          
+
           {/* 시간 그리드 */}
           <div className="relative">
             {HOURS.map(hour => (
-              <div key={hour} className="grid grid-cols-6 border-b" style={{ height: '40px' }}>
-                <div className="p-1 text-[10px] text-gray-400 text-center border-r bg-gray-50">{hour}:00</div>
-                {DAYS.map(day => (<div key={day} className="border-l relative" />))}
+              <div key={hour} className="grid grid-cols-6 border-b border-[#F3F5F8]" style={{ height: `${ROW_H}px` }}>
+                <div className="pt-1 text-[10.5px] font-semibold text-[#B0B7C3] text-center border-r border-[#F3F5F8]">{hour}:00</div>
+                {DAYS.map(day => (<div key={day} className="border-l border-[#F3F5F8]" />))}
               </div>
             ))}
-            
+
             {/* 과목 블록 */}
             {DAYS.map((day, dayIdx) => {
               const blocks = getBlocksForDay(day);
               return blocks.map((block, blockIdx) => {
-                const top = (block.startHour - 9) * 40;
-                const height = (block.endHour - block.startHour) * 40;
-                const left = `calc(${(dayIdx + 1) * (100/6)}% + 2px)`;
-                const width = `calc(${100/6}% - 4px)`;
-                
+                const top = (block.startHour - 9) * ROW_H;
+                const height = (block.endHour - block.startHour) * ROW_H;
+                const left = `calc(${(dayIdx + 1) * (100/6)}% + 3px)`;
+                const width = `calc(${100/6}% - 6px)`;
+
                 if (height <= 0 || top < 0) return null;
-                
+
                 return (
                   <div
                     key={`${day}-${blockIdx}-${block.course.course_name}`}
-                    className={`absolute rounded p-1 ${block.color.bg} ${block.color.border} border overflow-hidden`}
-                    style={{ top: `${top}px`, height: `${Math.max(height, 20)}px`, left, width }}
+                    className={`absolute rounded-lg px-1.5 py-1 ${block.color.bg} ${block.color.border} border-[1.5px] overflow-hidden`}
+                    style={{ top: `${top + 2}px`, height: `${Math.max(height - 4, 18)}px`, left, width }}
                   >
-                    <div className={`text-[10px] font-medium ${block.color.text} truncate`}>
+                    <div className={`text-[11px] font-bold ${block.color.text} truncate leading-tight`}>
                       {block.course.course_name}
                     </div>
-                    {height > 30 && (
-                      <div className="text-[9px] text-gray-500 truncate">{block.course.professor}</div>
+                    {height > 34 && (
+                      <div className="text-[9.5px] text-[#8892A4] truncate mt-0.5">{block.course.professor}</div>
                     )}
                   </div>
                 );
@@ -231,10 +310,10 @@ function SchedulePreview({ courses }) {
 }
 
 // 과목 검색 모달 (범용)
-function CourseSearchModal({ 
-  isOpen, 
-  onClose, 
-  onSelect, 
+function CourseSearchModal({
+  isOpen,
+  onClose,
+  onSelect,
   currentSelections,
   title = "과목 검색",
   filterOptions = {},  // { category, department, classification }
@@ -252,11 +331,11 @@ function CourseSearchModal({
           ...filterOptions,
           limit: 50
         };
-        
+
         if (searchTerm.length >= 2) {
           filters.searchTerm = searchTerm;
         }
-        
+
         const results = await searchCourses(filters);
         setSearchResults(results);
       } else {
@@ -284,77 +363,77 @@ function CourseSearchModal({
     if (matchByName) {
       return currentSelections.some(c => c.course_name === course.course_name);
     }
-    return currentSelections.some(c => 
+    return currentSelections.some(c =>
       c.course_code === course.course_code && c.section === course.section
     );
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-xl w-full max-w-lg max-h-[80vh] flex flex-col">
-        <div className="p-4 border-b flex items-center justify-between">
-          <h2 className="font-bold">{title}</h2>
-          <button onClick={onClose} className="p-1 hover:bg-gray-100 rounded-full">
-            <X size={20} />
+    <div className="fixed inset-0 bg-[rgba(20,26,38,.5)] flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-2xl w-full max-w-lg max-h-[80vh] flex flex-col overflow-hidden">
+        <div className="px-5 py-4 border-b border-[#EBEEF3] flex items-center justify-between">
+          <h2 className="text-[15px] font-extrabold text-[#1E2530]">{title}</h2>
+          <button onClick={onClose} className="w-7 h-7 flex items-center justify-center text-[#8892A4] hover:bg-[#F1F4FA] rounded-lg">
+            <X size={16} />
           </button>
         </div>
-        
-        <div className="p-4 border-b">
+
+        <div className="px-5 py-3.5 border-b border-[#EBEEF3]">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#B0B7C3]" size={16} />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="과목명, 교수명 검색..."
-              className="w-full pl-10 pr-4 py-2 border rounded-lg text-sm"
+              className={`${FIELD} pl-9`}
               autoFocus
             />
           </div>
           {filterOptions.department && (
-            <p className="text-xs text-indigo-600 mt-2">
+            <p className="text-[11.5px] text-[#2F6FEB] mt-2">
               📌 {filterOptions.department} 학과 전공과목만 표시됩니다
             </p>
           )}
         </div>
 
-        <div className="flex-1 overflow-y-auto p-2">
+        <div className="flex-1 overflow-y-auto p-2.5">
           {loading ? (
             <div className="text-center py-8">
-              <Loader2 className="animate-spin mx-auto text-gray-400" size={24} />
+              <Loader2 className="animate-spin mx-auto text-[#B0B7C3]" size={22} />
             </div>
           ) : searchResults.length === 0 ? (
-            <div className="text-center py-8 text-gray-500 text-sm">
+            <div className="text-center py-8 text-[13px] text-[#8892A4]">
               검색 결과가 없습니다
             </div>
           ) : (
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               {searchResults.map(course => {
                 const selected = isSelected(course);
                 return (
                   <div
                     key={`${course.course_code}-${course.section}`}
                     onClick={() => !selected && onSelect(course)}
-                    className={`p-3 rounded-lg border cursor-pointer ${
-                      selected 
-                        ? 'bg-green-50 border-green-300' 
-                        : 'hover:bg-blue-50 border-gray-200'
+                    className={`px-3 py-2.5 rounded-[10px] border cursor-pointer transition-colors ${
+                      selected
+                        ? 'bg-[#E8F8F0] border-[#BEEBD3]'
+                        : 'bg-white border-[#E4E8F0] hover:border-[#2F6FEB] hover:bg-[#F7FAFF]'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between gap-2">
                       <div className="flex-1 min-w-0">
-                        <div className="font-medium text-sm">{course.course_name}</div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-[13px] font-bold text-[#1E2530] truncate">{course.course_name}</div>
+                        <div className="text-[11.5px] text-[#8892A4] truncate">
                           {course.professor} | {course.schedule_raw} | {course.credits}학점
                           {course.target_year > 0 && (
-                            <span className="ml-1 text-indigo-500">({course.target_year}학년 대상)</span>
+                            <span className="ml-1 text-[#2F6FEB]">({course.target_year}학년 대상)</span>
                           )}
                         </div>
                       </div>
                       {selected ? (
-                        <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">선택됨</span>
+                        <span className="text-[10.5px] font-bold bg-[#D5F2E3] text-[#1FA97A] px-2 py-0.5 rounded-full shrink-0">선택됨</span>
                       ) : (
-                        <Plus size={18} className="text-blue-500" />
+                        <Plus size={16} className="text-[#2F6FEB] shrink-0" />
                       )}
                     </div>
                   </div>
@@ -372,11 +451,11 @@ export default function RecommendPage() {
   const navigate = useNavigate();
   const { getDepartments, searchCourses, getGeneralRequired, getMajorRequired } = useCourses();
   const { addCourse, clearSchedule, schedules, addSchedule, saveToSchedule, maxSchedules } = useSchedule();
-  
+
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isScheduleSelectOpen, setIsScheduleSelectOpen] = useState(false);  // 시간표 선택 모달
-  
+
   // ========== Step 1: 기본 정보 ==========
   const [userInfo, setUserInfo] = useState({
     grade: 1,
@@ -387,7 +466,7 @@ export default function RecommendPage() {
     doubleMajor: '',
     targetCredits: 18,
   });
-  
+
   // ========== Step 2: 이수 현황 (2학년+) ==========
   const [completedCourses, setCompletedCourses] = useState({
     generalRequired: [],
@@ -403,7 +482,7 @@ export default function RecommendPage() {
   });
   const [isCompletedMajorSearchOpen, setIsCompletedMajorSearchOpen] = useState(false);  // 전공선택 이수과목 검색 모달
   const [isCompletedDoubleMajorSearchOpen, setIsCompletedDoubleMajorSearchOpen] = useState(false);  // 복전 전선 이수과목 검색 모달
-  
+
   // ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ==========
   const [majorSelection, setMajorSelection] = useState({
     mode: 'auto',  // 'manual' | 'auto'
@@ -412,14 +491,14 @@ export default function RecommendPage() {
   });
   const [isMajorSearchOpen, setIsMajorSearchOpen] = useState(false);
   const [isDoubleMajorSearchOpen, setIsDoubleMajorSearchOpen] = useState(false);  // 복전 과목 검색 모달
-  
+
   // 학점 배분 (복수전공 전용)
   const [creditAllocation, setCreditAllocation] = useState({
     major: 9,
     doubleMajor: 6,
     general: 3,
   });
-  
+
   // ========== Step 4: 선호도 ==========
   const [preferences, setPreferences] = useState({
     emptyDays: [],
@@ -429,23 +508,23 @@ export default function RecommendPage() {
     preferredAreas: [],
     skipGeneral: false,
   });
-  
+
   // ========== Step 5: 추가 설정 ==========
   const [mustTakeCourses, setMustTakeCourses] = useState([]);
   const [avoidCourses, setAvoidCourses] = useState([]);  // 배열로 변경
   const [isCourseSearchOpen, setIsCourseSearchOpen] = useState(false);
   const [isAvoidSearchOpen, setIsAvoidSearchOpen] = useState(false);  // 듣기 싫은 과목 검색 모달
-  
+
   // 학과 목록
   const [departments, setDepartments] = useState([]);
   const [doubleMajorDepts, setDoubleMajorDepts] = useState([]);
-  
+
   // 필수과목 목록
   const [generalRequiredList, setGeneralRequiredList] = useState([]);
   const [majorRequiredList, setMajorRequiredList] = useState([]);
   const [doubleMajorRequiredList, setDoubleMajorRequiredList] = useState([]);
   const [loadingCourses, setLoadingCourses] = useState(false);
-  
+
   // 결과
   const [result, setResult] = useState(null);            // 현재 선택된 후보 (작업본)
   const [candidates, setCandidates] = useState([]);      // A/B/C 후보 배열
@@ -469,13 +548,13 @@ export default function RecommendPage() {
   // 시간 충돌 검사 함수
   const checkTimeConflicts = (courses) => {
     const conflicts = [];
-    
+
     // schedule_raw 파싱 함수
     const parseSchedule = (scheduleRaw) => {
       if (!scheduleRaw) return [];
       const times = [];
       const segments = scheduleRaw.split(',').map(s => s.trim());
-      
+
       for (const segment of segments) {
         const parts = segment.split(/\s+/).filter(p => p.trim());
         for (const part of parts) {
@@ -505,7 +584,7 @@ export default function RecommendPage() {
       for (let j = i + 1; j < courses.length; j++) {
         const times1 = parseSchedule(courses[i].schedule_raw);
         const times2 = parseSchedule(courses[j].schedule_raw);
-        
+
         for (const t1 of times1) {
           for (const t2 of times2) {
             if (isOverlap(t1, t2)) {
@@ -519,7 +598,7 @@ export default function RecommendPage() {
         }
       }
     }
-    
+
     return conflicts;
   };
 
@@ -633,7 +712,7 @@ export default function RecommendPage() {
     }
   }, [userInfo.targetCredits, userInfo.hasDoubleMajor]);
 
-  const filteredColleges = COLLEGES.filter(c => 
+  const filteredColleges = COLLEGES.filter(c =>
     c !== '전체' && c !== '융합전공' && c !== '상생교양대학'
   );
 
@@ -643,7 +722,7 @@ export default function RecommendPage() {
       alert('전공을 선택해주세요!');
       return;
     }
-    
+
     // Step 3 → 4로 넘어갈 때 학점 배분 검증 (복수전공)
     if (step === 3 && userInfo.hasDoubleMajor && userInfo.doubleMajor) {
       const total = creditAllocation.major + creditAllocation.doubleMajor + creditAllocation.general;
@@ -652,7 +731,7 @@ export default function RecommendPage() {
         return;
       }
     }
-    
+
     if (userInfo.grade === 1) {
       // 1학년: 1 → 4 → 5
       if (step === 1) setStep(4);
@@ -826,7 +905,7 @@ export default function RecommendPage() {
   // ✅ 부분 일치 헬퍼 함수 (띄어쓰기/오타 문제 방지)
   const isNameMatched = (courseName, completedList) => {
     if (!courseName || !completedList || completedList.length === 0) return false;
-    return completedList.some(completed => 
+    return completedList.some(completed =>
       courseName.includes(completed) || completed.includes(courseName)
     );
   };
@@ -1030,14 +1109,17 @@ export default function RecommendPage() {
     const completed = completedCourses[completedKey].includes(course);
     const locked = lockedRequired.includes(course);
     return (
-      <div key={course} className="flex items-center justify-between gap-2 py-1">
-        <span className="text-sm">{course}</span>
-        <div className="flex gap-1 shrink-0">
+      <div key={course} className="flex items-center justify-between gap-2 py-[7px] border-b border-[#F6F7FA] last:border-b-0">
+        {/* 긴 과목명(예: LCT(LearningbyCommunication&Teamwork))도 넘치지 않게 줄바꿈 */}
+        <span className="flex-1 min-w-0 text-[13px] leading-[1.35] text-[#3A4150] [overflow-wrap:anywhere]">
+          {course}
+        </span>
+        <div className="flex gap-1.5 shrink-0">
           <button
             type="button"
             onClick={() => toggleCompletedRequired(course, completedKey)}
-            className={`text-xs px-2 py-1 rounded transition-colors ${
-              completed ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            className={`text-[11px] font-bold px-2.5 py-[5px] rounded-[7px] transition-colors ${
+              completed ? 'bg-[#3A4150] text-white' : 'bg-[#EEF1F6] text-[#8892A4] hover:bg-[#E4E8F0]'
             }`}
           >
             이수함
@@ -1045,11 +1127,11 @@ export default function RecommendPage() {
           <button
             type="button"
             onClick={() => toggleLockedRequired(course)}
-            className={`text-xs px-2 py-1 rounded transition-colors ${
-              locked ? 'bg-amber-400 text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            className={`text-[11px] font-bold px-2.5 py-[5px] rounded-[7px] transition-colors ${
+              locked ? 'bg-[#F5A524] text-white' : 'bg-[#EEF1F6] text-[#8892A4] hover:bg-[#E4E8F0]'
             }`}
           >
-            ⭐ 꼭 넣기
+            꼭 넣기
           </button>
         </div>
       </div>
@@ -1117,33 +1199,34 @@ export default function RecommendPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#EEF1F6]">
       {/* 헤더 */}
-      <header className="bg-white shadow-sm sticky top-0 z-40">
-        <div className="max-w-2xl mx-auto px-3 py-2">
-          <div className="flex items-center gap-2">
-            <button onClick={() => navigate('/')} className="p-1.5 hover:bg-gray-100 rounded-full">
-              <ArrowLeft size={20} />
-            </button>
-            <Wand2 className="text-indigo-500" size={20} />
-            <h1 className="text-base font-bold text-gray-800">AI 시간표 추천</h1>
-          </div>
+      <header className="bg-white border-b border-[#EBEEF3] sticky top-0 z-40">
+        <div className="max-w-[640px] mx-auto px-5 h-14 flex items-center gap-2.5">
+          <button
+            onClick={() => navigate('/')}
+            className="w-8 h-8 flex items-center justify-center text-[#5B6472] hover:bg-[#F1F4FA] rounded-lg shrink-0 transition-colors"
+          >
+            <ArrowLeft size={18} />
+          </button>
+          <Sparkles className="text-[#2F6FEB] shrink-0" size={19} />
+          <h1 className="text-[16px] font-extrabold text-[#1E2530] tracking-[-0.2px] whitespace-nowrap">AI 시간표 추천</h1>
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-3 py-4">
-        
+      <main className="max-w-[640px] mx-auto px-4 pt-5 pb-16 space-y-4">
+
         {/* 진행 바 */}
         {step <= 5 && (
-          <div className="mb-4">
-            <div className="flex justify-between text-xs text-gray-500 mb-1">
+          <div>
+            <div className="flex justify-between text-[12px] font-semibold text-[#8892A4] mb-[7px]">
               <span>Step {displayStep}/{stepConfig.totalSteps}</span>
-              <span>{stepConfig.stepNames[displayStep - 1]}</span>
+              <span className="text-[#3A4150] font-bold">{stepConfig.stepNames[displayStep - 1]}</span>
             </div>
-            <div className="h-2 bg-gray-200 rounded-full">
-              <div 
-                className="h-full bg-indigo-500 rounded-full transition-all" 
-                style={{ width: `${(displayStep / stepConfig.totalSteps) * 100}%` }} 
+            <div className="h-1.5 bg-[#E4E8F0] rounded-full overflow-hidden">
+              <div
+                className="h-full bg-[#2F6FEB] rounded-full transition-all duration-300"
+                style={{ width: `${(displayStep / stepConfig.totalSteps) * 100}%` }}
               />
             </div>
           </div>
@@ -1151,35 +1234,36 @@ export default function RecommendPage() {
 
         {/* ========== Step 1: 기본 정보 ========== */}
         {step === 1 && (
-          <div className="bg-white rounded-xl shadow-sm p-4">
-            <h2 className="text-lg font-bold mb-4">📋 기본 정보</h2>
-            
+          <div className={`${CARD} px-5 py-[22px]`}>
+            <CardHead title="기본 정보" desc="학년과 전공을 알려주면 딱 맞는 조합을 짜드려요" />
+
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">학년</label>
-                <select
-                  value={userInfo.grade}
-                  onChange={(e) => setUserInfo(prev => ({ ...prev, grade: Number(e.target.value) }))}
-                  className="w-full px-3 py-2 border rounded-lg text-sm"
-                >
-                  <option value={1}>1학년 (신입생)</option>
-                  <option value={2}>2학년</option>
-                  <option value={3}>3학년</option>
-                  <option value={4}>4학년</option>
-                </select>
+                <label className={LABEL}>학년</label>
+                <div className="grid grid-cols-4 gap-1.5">
+                  {[1, 2, 3, 4].map(g => (
+                    <SegButton
+                      key={g}
+                      active={userInfo.grade === g}
+                      onClick={() => setUserInfo(prev => ({ ...prev, grade: g }))}
+                    >
+                      {g}학년
+                    </SegButton>
+                  ))}
+                </div>
                 {userInfo.grade === 1 && (
-                  <p className="text-xs text-indigo-600 mt-1">
-                    💡 1학년은 전공기초 과목이 자동으로 포함됩니다
+                  <p className="mt-2 text-[11.5px] text-[#2F6FEB]">
+                    💡 1학년(신입생)은 전공기초 과목이 자동으로 포함됩니다
                   </p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">단과대학</label>
+                <label className={LABEL}>단과대학</label>
                 <select
                   value={userInfo.college}
                   onChange={(e) => setUserInfo(prev => ({ ...prev, college: e.target.value, major: '' }))}
-                  className="w-full px-3 py-2 border rounded-lg text-sm"
+                  className={FIELD}
                 >
                   <option value="">선택하세요</option>
                   {filteredColleges.map(c => (<option key={c} value={c}>{c}</option>))}
@@ -1187,11 +1271,11 @@ export default function RecommendPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">전공</label>
+                <label className={LABEL}>전공</label>
                 <select
                   value={userInfo.major}
                   onChange={(e) => setUserInfo(prev => ({ ...prev, major: e.target.value }))}
-                  className="w-full px-3 py-2 border rounded-lg text-sm"
+                  className={`${FIELD} ${!userInfo.college ? 'bg-[#F6F8FB] text-[#B0B7C3]' : ''}`}
                   disabled={!userInfo.college}
                 >
                   <option value="">선택하세요</option>
@@ -1199,24 +1283,22 @@ export default function RecommendPage() {
                 </select>
               </div>
 
-              <div>
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={userInfo.hasDoubleMajor}
-                    onChange={(e) => setUserInfo(prev => ({ ...prev, hasDoubleMajor: e.target.checked, doubleMajorCollege: '', doubleMajor: '' }))}
-                    className="w-4 h-4"
-                  />
-                  <span className="text-sm">복수전공 있음</span>
-                </label>
-              </div>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={userInfo.hasDoubleMajor}
+                  onChange={(e) => setUserInfo(prev => ({ ...prev, hasDoubleMajor: e.target.checked, doubleMajorCollege: '', doubleMajor: '' }))}
+                  className="w-4 h-4 accent-[#2F6FEB]"
+                />
+                <span className="text-[13px] font-semibold text-[#3A4150]">복수전공 있음</span>
+              </label>
 
               {userInfo.hasDoubleMajor && (
-                <div className="pl-6 space-y-3 border-l-2 border-indigo-200">
+                <div className="pl-3.5 space-y-2.5 border-l-2 border-[#EAF1FE]">
                   <select
                     value={userInfo.doubleMajorCollege}
                     onChange={(e) => setUserInfo(prev => ({ ...prev, doubleMajorCollege: e.target.value, doubleMajor: '' }))}
-                    className="w-full px-3 py-2 border rounded-lg text-sm"
+                    className={FIELD}
                   >
                     <option value="">복수전공 단과대학</option>
                     {filteredColleges.map(c => (<option key={c} value={c}>{c}</option>))}
@@ -1224,7 +1306,7 @@ export default function RecommendPage() {
                   <select
                     value={userInfo.doubleMajor}
                     onChange={(e) => setUserInfo(prev => ({ ...prev, doubleMajor: e.target.value }))}
-                    className="w-full px-3 py-2 border rounded-lg text-sm"
+                    className={`${FIELD} ${!userInfo.doubleMajorCollege ? 'bg-[#F6F8FB] text-[#B0B7C3]' : ''}`}
                     disabled={!userInfo.doubleMajorCollege}
                   >
                     <option value="">복수전공 학과</option>
@@ -1234,18 +1316,22 @@ export default function RecommendPage() {
               )}
 
               <div>
-                <label className="block text-sm font-medium mb-1">
-                  목표 학점: <strong className="text-indigo-600">{userInfo.targetCredits}</strong>학점
-                </label>
+                <div className="flex items-baseline justify-between mb-2">
+                  <span className="text-[12.5px] font-bold text-[#5B6472]">목표 학점</span>
+                  <span className="whitespace-nowrap">
+                    <span className="text-[22px] font-extrabold text-[#2F6FEB]">{userInfo.targetCredits}</span>
+                    <span className="text-[12.5px] font-bold text-[#5B6472]"> 학점</span>
+                  </span>
+                </div>
                 <input
                   type="range"
                   min={12}
                   max={21}
                   value={userInfo.targetCredits}
                   onChange={(e) => setUserInfo(prev => ({ ...prev, targetCredits: Number(e.target.value) }))}
-                  className="w-full"
+                  className="w-full accent-[#2F6FEB]"
                 />
-                <div className="flex justify-between text-xs text-gray-400">
+                <div className="flex justify-between text-[11px] text-[#B0B7C3] mt-0.5">
                   <span>12</span>
                   <span>21</span>
                 </div>
@@ -1256,145 +1342,136 @@ export default function RecommendPage() {
 
         {/* ========== Step 2: 이수 현황 (2학년+) ========== */}
         {step === 2 && (
-          <div className="bg-white rounded-xl shadow-sm p-4">
-            <h2 className="text-lg font-bold mb-2">📚 이수 현황</h2>
-            <p className="text-sm text-gray-500 mb-4">이미 들은 과목을 체크해주세요</p>
-            
+          <div className={`${CARD} px-5 py-[22px] space-y-5`}>
+            <CardHead title="이수 현황" desc="이미 들은 과목을 표시해주세요" />
+
             {loadingCourses && (
               <div className="text-center py-4">
-                <Loader2 className="animate-spin mx-auto text-gray-400" size={24} />
-                <p className="text-sm text-gray-500 mt-2">과목 불러오는 중...</p>
+                <Loader2 className="animate-spin mx-auto text-[#B0B7C3]" size={22} />
+                <p className="text-[12.5px] text-[#8892A4] mt-2">과목 불러오는 중...</p>
               </div>
             )}
 
             {/* 교양필수 */}
-            <div className="mb-6">
+            <div>
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium">교양필수</h3>
-                <label className="flex items-center gap-2 cursor-pointer">
+                <h3 className="text-[13.5px] font-bold text-[#3A4150]">교양필수</h3>
+                <label className="flex items-center gap-1.5 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={completedCourses.skipGeneralRequired}
                     onChange={(e) => setCompletedCourses(prev => ({ ...prev, skipGeneralRequired: e.target.checked }))}
-                    className="w-4 h-4"
+                    className="w-[15px] h-[15px] accent-[#2F6FEB]"
                   />
-                  <span className="text-xs text-gray-500">다 들었어요</span>
+                  <span className="text-[11.5px] font-semibold text-[#8892A4]">다 들었어요</span>
                 </label>
               </div>
-              
+
               {!completedCourses.skipGeneralRequired && (
-                <div className="pl-2">
-                  <p className="text-[11px] text-gray-400 mb-1">
-                    이수한 과목은 <b>이수함</b>, 이번에 꼭 넣을 과목은 <b>⭐꼭 넣기</b>를 눌러주세요
+                <>
+                  <p className={`${HINT} mb-1`}>
+                    이수한 과목은 <b>이수함</b>, 이번에 꼭 넣을 과목은 <b>꼭 넣기</b>를 눌러주세요
                   </p>
                   {generalRequiredList.length > 0 ? (
-                    generalRequiredList.map(course => renderRequiredRow(course, 'generalRequired'))
+                    <div>{generalRequiredList.map(course => renderRequiredRow(course, 'generalRequired'))}</div>
                   ) : (
-                    <p className="text-sm text-gray-400">교양필수 과목이 없습니다</p>
+                    <p className="text-[13px] text-[#B0B7C3]">교양필수 과목이 없습니다</p>
                   )}
-                </div>
+                </>
               )}
             </div>
 
             {/* 전공필수 */}
-            <div className="mb-6">
+            <div>
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium">전공필수 ({userInfo.major})</h3>
-                <label className="flex items-center gap-2 cursor-pointer">
+                <h3 className="text-[13.5px] font-bold text-[#3A4150]">전공필수 ({userInfo.major})</h3>
+                <label className="flex items-center gap-1.5 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={completedCourses.skipMajorRequired}
                     onChange={(e) => setCompletedCourses(prev => ({ ...prev, skipMajorRequired: e.target.checked }))}
-                    className="w-4 h-4"
+                    className="w-[15px] h-[15px] accent-[#2F6FEB]"
                   />
-                  <span className="text-xs text-gray-500">다 들었어요</span>
+                  <span className="text-[11.5px] font-semibold text-[#8892A4]">다 들었어요</span>
                 </label>
               </div>
-              
+
               {!completedCourses.skipMajorRequired && (
-                <div className="pl-2">
-                  <p className="text-[11px] text-gray-400 mb-1">
+                <>
+                  <p className={`${HINT} mb-1`}>
                     내년에 들을 필수는 그냥 두면 AI가 알아서 판단해요
                   </p>
                   {majorRequiredList.length > 0 ? (
-                    majorRequiredList.map(course => renderRequiredRow(course, 'majorRequired'))
+                    <div>{majorRequiredList.map(course => renderRequiredRow(course, 'majorRequired'))}</div>
                   ) : (
-                    <p className="text-sm text-gray-400">전공필수 과목이 없습니다</p>
+                    <p className="text-[13px] text-[#B0B7C3]">전공필수 과목이 없습니다</p>
                   )}
-                </div>
+                </>
               )}
             </div>
 
             {/* 교양선택 이수 영역 */}
-            <div className="mb-6">
-              <h3 className="text-sm font-medium mb-2">교양선택 이수 영역</h3>
-              <p className="text-xs text-gray-500 mb-2">이미 들은 영역을 체크하면 해당 영역 과목은 추천에서 제외돼요</p>
-              <div className="grid grid-cols-3 gap-2">
-                {AREA_OPTIONS.map(area => (
-                  <button
-                    key={area.value}
-                    onClick={() => {
-                      if (completedCourses.completedAreas.includes(area.value)) {
-                        setCompletedCourses(prev => ({ 
-                          ...prev, 
-                          completedAreas: prev.completedAreas.filter(a => a !== area.value) 
-                        }));
-                      } else {
-                        setCompletedCourses(prev => ({ 
-                          ...prev, 
-                          completedAreas: [...prev.completedAreas, area.value] 
-                        }));
-                      }
-                    }}
-                    className={`py-2 rounded-lg text-xs font-medium transition-colors ${
-                      completedCourses.completedAreas.includes(area.value) 
-                        ? 'bg-green-500 text-white' 
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {completedCourses.completedAreas.includes(area.value) ? '✓ ' : ''}{area.label}
-                  </button>
-                ))}
+            <div>
+              <h3 className="text-[13.5px] font-bold text-[#3A4150] mb-1.5">교양선택 이수 영역</h3>
+              <p className={`${HINT} mb-2`}>이미 들은 영역을 체크하면 해당 영역 과목은 추천에서 제외돼요</p>
+              <div className="grid grid-cols-3 gap-[7px]">
+                {AREA_OPTIONS.map(area => {
+                  const selected = completedCourses.completedAreas.includes(area.value);
+                  return (
+                    <ChipButton
+                      key={area.value}
+                      tone="ink"
+                      active={selected}
+                      onClick={() => {
+                        if (selected) {
+                          setCompletedCourses(prev => ({
+                            ...prev,
+                            completedAreas: prev.completedAreas.filter(a => a !== area.value)
+                          }));
+                        } else {
+                          setCompletedCourses(prev => ({
+                            ...prev,
+                            completedAreas: [...prev.completedAreas, area.value]
+                          }));
+                        }
+                      }}
+                    >
+                      {selected ? '✓ ' : ''}{area.label}
+                    </ChipButton>
+                  );
+                })}
               </div>
             </div>
 
             {/* 전공선택 이수 과목 */}
             <div>
-              <h3 className="text-sm font-medium mb-2">전공선택 이수 과목</h3>
-              <p className="text-xs text-gray-500 mb-2">이미 들은 전공선택은 모든 분반이 추천에서 제외돼요</p>
-              
+              <h3 className="text-[13.5px] font-bold text-[#3A4150] mb-1.5">전공선택 이수 과목</h3>
+              <p className={`${HINT} mb-2`}>이미 들은 전공선택은 모든 분반이 추천에서 제외돼요</p>
+
               {completedCourses.completedMajorElective.length > 0 && (
-                <div className="space-y-2 mb-3">
+                <div className="space-y-1.5 mb-2.5">
                   {completedCourses.completedMajorElective.map((course, idx) => (
-                    <div 
+                    <SelectedRow
                       key={`completed-${course.course_name}-${idx}`}
-                      className="flex items-center justify-between p-2 bg-green-50 border border-green-200 rounded-lg"
-                    >
-                      <div>
-                        <div className="text-sm font-medium">{course.course_name}</div>
-                        <div className="text-xs text-gray-500">{course.credits}학점</div>
-                      </div>
-                      <button 
-                        onClick={() => setCompletedCourses(prev => ({
-                          ...prev,
-                          completedMajorElective: prev.completedMajorElective.filter(
-                            c => c.course_name !== course.course_name
-                          )
-                        }))} 
-                        className="p-1 hover:bg-green-100 rounded"
-                      >
-                        <X size={16} className="text-gray-500" />
-                      </button>
-                    </div>
+                      name={course.course_name}
+                      meta={`${course.credits}학점`}
+                      tone="green"
+                      onRemove={() => setCompletedCourses(prev => ({
+                        ...prev,
+                        completedMajorElective: prev.completedMajorElective.filter(
+                          c => c.course_name !== course.course_name
+                        )
+                      }))}
+                    />
                   ))}
                 </div>
               )}
-              
+
               <button
                 onClick={() => setIsCompletedMajorSearchOpen(true)}
-                className="w-full py-2 border-2 border-dashed border-green-300 rounded-lg text-sm text-green-600 hover:bg-green-50 flex items-center justify-center gap-2"
+                className={`${DASHED} ${TONES.green.dashed}`}
               >
-                <Plus size={16} />
+                <Plus size={14} />
                 이수한 전공선택 추가
               </button>
             </div>
@@ -1403,79 +1480,69 @@ export default function RecommendPage() {
             {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
               <>
                 {/* 구분선 */}
-                <div className="mt-6 mb-4 flex items-center gap-3">
-                  <div className="flex-1 h-px bg-indigo-200" />
-                  <span className="text-xs font-semibold text-indigo-500 px-2">복수전공 ({userInfo.doubleMajor})</span>
-                  <div className="flex-1 h-px bg-indigo-200" />
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="flex-1 h-px bg-[#E4E8F0]" />
+                  <span className="text-[11.5px] font-bold text-[#2F6FEB]">복수전공 ({userInfo.doubleMajor})</span>
+                  <div className="flex-1 h-px bg-[#E4E8F0]" />
                 </div>
 
                 {/* 복수전공 전필 */}
-                <div className="mb-6">
+                <div>
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm font-medium">
-                      <span className="text-indigo-500">복전</span> 전공필수 ({userInfo.doubleMajor})
+                    <h3 className="text-[13.5px] font-bold text-[#3A4150]">
+                      <span className="text-[#2F6FEB]">복전</span> 전공필수 ({userInfo.doubleMajor})
                     </h3>
-                    <label className="flex items-center gap-2 cursor-pointer">
+                    <label className="flex items-center gap-1.5 cursor-pointer">
                       <input
                         type="checkbox"
                         checked={completedCourses.skipDoubleMajorRequired}
                         onChange={(e) => setCompletedCourses(prev => ({ ...prev, skipDoubleMajorRequired: e.target.checked }))}
-                        className="w-4 h-4"
+                        className="w-[15px] h-[15px] accent-[#2F6FEB]"
                       />
-                      <span className="text-xs text-gray-500">다 들었어요</span>
+                      <span className="text-[11.5px] font-semibold text-[#8892A4]">다 들었어요</span>
                     </label>
                   </div>
-                  
+
                   {!completedCourses.skipDoubleMajorRequired && (
-                    <div className="pl-2">
-                      {doubleMajorRequiredList.length > 0 ? (
-                        doubleMajorRequiredList.map(course => renderRequiredRow(course, 'doubleMajorRequired'))
-                      ) : (
-                        <p className="text-sm text-gray-400">복수전공 전공필수 과목이 없습니다</p>
-                      )}
-                    </div>
+                    doubleMajorRequiredList.length > 0 ? (
+                      <div>{doubleMajorRequiredList.map(course => renderRequiredRow(course, 'doubleMajorRequired'))}</div>
+                    ) : (
+                      <p className="text-[13px] text-[#B0B7C3]">복수전공 전공필수 과목이 없습니다</p>
+                    )
                   )}
                 </div>
 
                 {/* 복수전공 전선 이수 과목 */}
                 <div>
-                  <h3 className="text-sm font-medium mb-2">
-                    <span className="text-indigo-500">복전</span> 전공선택 이수 과목
+                  <h3 className="text-[13.5px] font-bold text-[#3A4150] mb-1.5">
+                    <span className="text-[#2F6FEB]">복전</span> 전공선택 이수 과목
                   </h3>
-                  <p className="text-xs text-gray-500 mb-2">이미 들은 복전 전공선택은 추천에서 제외돼요</p>
-                  
+                  <p className={`${HINT} mb-2`}>이미 들은 복전 전공선택은 추천에서 제외돼요</p>
+
                   {completedCourses.completedDoubleMajorElective.length > 0 && (
-                    <div className="space-y-2 mb-3">
+                    <div className="space-y-1.5 mb-2.5">
                       {completedCourses.completedDoubleMajorElective.map((course, idx) => (
-                        <div 
+                        <SelectedRow
                           key={`dm-completed-${course.course_name}-${idx}`}
-                          className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
-                        >
-                          <div>
-                            <div className="text-sm font-medium">{course.course_name}</div>
-                            <div className="text-xs text-gray-500">{course.credits}학점</div>
-                          </div>
-                          <button 
-                            onClick={() => setCompletedCourses(prev => ({
-                              ...prev,
-                              completedDoubleMajorElective: prev.completedDoubleMajorElective.filter(
-                                c => c.course_name !== course.course_name
-                              )
-                            }))} 
-                            className="p-1 hover:bg-indigo-100 rounded"
-                          >
-                            <X size={16} className="text-gray-500" />
-                          </button>
-                        </div>
+                          name={course.course_name}
+                          meta={`${course.credits}학점`}
+                          tone="blue"
+                          onRemove={() => setCompletedCourses(prev => ({
+                            ...prev,
+                            completedDoubleMajorElective: prev.completedDoubleMajorElective.filter(
+                              c => c.course_name !== course.course_name
+                            )
+                          }))}
+                        />
                       ))}
                     </div>
                   )}
-                  
+
                   <button
                     onClick={() => setIsCompletedDoubleMajorSearchOpen(true)}
-                    className="w-full py-2 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+                    className={`${DASHED} ${TONES.blue.dashed}`}
                   >
-                    <Plus size={16} />
+                    <Plus size={14} />
                     이수한 복전 전공선택 추가
                   </button>
                 </div>
@@ -1484,70 +1551,44 @@ export default function RecommendPage() {
           </div>
         )}
 
-        {/* ========== Step 3: 전공 선택 (2학년+) - 새로 추가! ========== */}
+        {/* ========== Step 3: 전공 선택 (2학년+) ========== */}
         {step === 3 && (
-          <div className="bg-white rounded-xl shadow-sm p-4">
-            <h2 className="text-lg font-bold mb-2">🎯 전공과목 선택</h2>
+          <div className={`${CARD} px-5 py-[22px]`}>
+            <CardHead title="전공 선택" desc="전공 과목을 AI가 고를지, 직접 고를지 정해주세요" />
 
             {/* ===== 학점 배분 (복수전공 전용) ===== */}
             {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
-              <div className="mb-5">
-                <h3 className="text-sm font-medium mb-2">📊 학점 배분</h3>
-                <p className="text-xs text-gray-500 mb-3">
+              <div className="mb-6 pb-6 border-b border-[#F1F4FA]">
+                <h3 className="text-[13.5px] font-bold text-[#3A4150] mb-1">📊 학점 배분</h3>
+                <p className={`${HINT} mb-3`}>
                   총 {userInfo.targetCredits}학점을 주전공 / 복수전공 / 교양으로 나눠주세요
                 </p>
-                
-                <div className="space-y-3">
-                  {/* 주전공 */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-indigo-700">🔵 주전공 ({userInfo.major})</span>
-                    <select
-                      value={creditAllocation.major}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        setCreditAllocation(prev => ({ ...prev, major: val }));
-                      }}
-                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
-                    >
-                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
-                        <option key={i} value={i}>{i}학점</option>
-                      ))}
-                    </select>
-                  </div>
 
-                  {/* 복수전공 */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-emerald-700">🟢 복수전공 ({userInfo.doubleMajor})</span>
-                    <select
-                      value={creditAllocation.doubleMajor}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        setCreditAllocation(prev => ({ ...prev, doubleMajor: val }));
-                      }}
-                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
-                    >
-                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
-                        <option key={i} value={i}>{i}학점</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* 교양 */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium text-amber-700">🟡 교양</span>
-                    <select
-                      value={creditAllocation.general}
-                      onChange={(e) => {
-                        const val = Number(e.target.value);
-                        setCreditAllocation(prev => ({ ...prev, general: val }));
-                      }}
-                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm w-24 text-center"
-                    >
-                      {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
-                        <option key={i} value={i}>{i}학점</option>
-                      ))}
-                    </select>
-                  </div>
+                <div className="space-y-2.5">
+                  {[
+                    { key: 'major', label: `주전공 (${userInfo.major})`, dot: 'bg-[#2F6FEB]' },
+                    { key: 'doubleMajor', label: `복수전공 (${userInfo.doubleMajor})`, dot: 'bg-[#1FA97A]' },
+                    { key: 'general', label: '교양', dot: 'bg-[#F5A524]' },
+                  ].map(({ key, label, dot }) => (
+                    <div key={key} className="flex items-center justify-between gap-3">
+                      <span className="flex items-center gap-2 text-[13px] font-semibold text-[#3A4150] min-w-0">
+                        <span className={`w-2 h-2 rounded-full shrink-0 ${dot}`} />
+                        <span className="truncate">{label}</span>
+                      </span>
+                      <select
+                        value={creditAllocation[key]}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          setCreditAllocation(prev => ({ ...prev, [key]: val }));
+                        }}
+                        className="border border-[#E4E8F0] rounded-[9px] px-3 py-1.5 text-[13px] text-[#1E2530] bg-white w-[92px] text-center shrink-0 outline-none focus:border-[#2F6FEB]"
+                      >
+                        {Array.from({ length: userInfo.targetCredits + 1 }, (_, i) => (
+                          <option key={i} value={i}>{i}학점</option>
+                        ))}
+                      </select>
+                    </div>
+                  ))}
                 </div>
 
                 {/* 합계 표시 */}
@@ -1555,107 +1596,97 @@ export default function RecommendPage() {
                   const total = creditAllocation.major + creditAllocation.doubleMajor + creditAllocation.general;
                   const isMatch = total === userInfo.targetCredits;
                   return (
-                    <div className={`mt-3 p-2.5 rounded-lg flex items-center justify-between ${isMatch ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
-                      <span className="text-sm font-medium">
+                    <div className={`mt-3 px-3.5 py-2.5 rounded-[10px] border flex items-center justify-between ${
+                      isMatch ? 'bg-[#E8F8F0] border-[#BEEBD3]' : 'bg-[#FEF4F4] border-[#FBD8D8]'
+                    }`}>
+                      <span className="text-[12.5px] font-bold text-[#3A4150]">
                         합계: {total} / {userInfo.targetCredits}학점
                       </span>
                       {isMatch ? (
-                        <span className="text-xs text-green-600 font-medium">✅ 딱 맞아요!</span>
+                        <span className="text-[11.5px] font-bold text-[#1FA97A]">✅ 딱 맞아요!</span>
                       ) : total > userInfo.targetCredits ? (
-                        <span className="text-xs text-red-600 font-medium">❌ {total - userInfo.targetCredits}학점 초과</span>
+                        <span className="text-[11.5px] font-bold text-[#C23A46]">❌ {total - userInfo.targetCredits}학점 초과</span>
                       ) : (
-                        <span className="text-xs text-red-600 font-medium">⚠️ {userInfo.targetCredits - total}학점 부족</span>
+                        <span className="text-[11.5px] font-bold text-[#C23A46]">⚠️ {userInfo.targetCredits - total}학점 부족</span>
                       )}
                     </div>
                   );
                 })()}
 
-                <p className="text-xs text-gray-400 mt-2">
+                <p className={`${HINT} mt-2`}>
                   💡 전필 + 전선 합산 학점이에요. AI가 전필 먼저 배치 후 남은 학점을 전선으로 채워요.
                 </p>
               </div>
             )}
 
             {/* ===== 모드 선택 ===== */}
-            <p className="text-sm text-gray-500 mb-3">
-              전공선택 과목을 어떻게 정할까요?
-            </p>
+            <p className={`${HINT} mb-2.5`}>전공선택 과목을 어떻게 정할까요?</p>
 
-            <div className="grid grid-cols-2 gap-3 mb-4">
+            <div className="grid grid-cols-2 gap-2 mb-4">
               <button
-                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'manual' }))}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  majorSelection.mode === 'manual' 
-                    ? 'border-indigo-500 bg-indigo-50' 
-                    : 'border-gray-200 hover:border-gray-300'
+                type="button"
+                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'auto', selectedCourses: [], selectedDoubleMajorCourses: [] }))}
+                className={`p-4 rounded-[12px] border text-left transition-colors ${
+                  majorSelection.mode === 'auto'
+                    ? 'border-[#2F6FEB] bg-[#EAF1FE]'
+                    : 'border-[#E4E8F0] bg-white hover:border-[#C9D3E4]'
                 }`}
               >
-                <BookOpen className={`mb-2 ${majorSelection.mode === 'manual' ? 'text-indigo-500' : 'text-gray-400'}`} size={24} />
-                <div className="font-medium text-sm">직접 고르기</div>
-                <p className="text-xs text-gray-500 mt-1">
-                  듣고 싶은 전공 선택과목을 직접 골라요
+                <Shuffle className={`mb-2 ${majorSelection.mode === 'auto' ? 'text-[#2F6FEB]' : 'text-[#B0B7C3]'}`} size={22} />
+                <div className={`text-[13px] font-bold ${majorSelection.mode === 'auto' ? 'text-[#2F6FEB]' : 'text-[#1E2530]'}`}>상관없음</div>
+                <p className="text-[11.5px] text-[#8892A4] mt-1 leading-snug">
+                  AI가 {userInfo.grade}학년에 맞게 알아서 선택해요
                 </p>
               </button>
-              
+
               <button
-                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'auto', selectedCourses: [], selectedDoubleMajorCourses: [] }))}
-                className={`p-4 rounded-xl border-2 text-left transition-all ${
-                  majorSelection.mode === 'auto' 
-                    ? 'border-indigo-500 bg-indigo-50' 
-                    : 'border-gray-200 hover:border-gray-300'
+                type="button"
+                onClick={() => setMajorSelection(prev => ({ ...prev, mode: 'manual' }))}
+                className={`p-4 rounded-[12px] border text-left transition-colors ${
+                  majorSelection.mode === 'manual'
+                    ? 'border-[#2F6FEB] bg-[#EAF1FE]'
+                    : 'border-[#E4E8F0] bg-white hover:border-[#C9D3E4]'
                 }`}
               >
-                <Shuffle className={`mb-2 ${majorSelection.mode === 'auto' ? 'text-indigo-500' : 'text-gray-400'}`} size={24} />
-                <div className="font-medium text-sm">상관없음</div>
-                <p className="text-xs text-gray-500 mt-1">
-                  AI가 {userInfo.grade}학년에 맞게 알아서 선택해요
+                <BookOpen className={`mb-2 ${majorSelection.mode === 'manual' ? 'text-[#2F6FEB]' : 'text-[#B0B7C3]'}`} size={22} />
+                <div className={`text-[13px] font-bold ${majorSelection.mode === 'manual' ? 'text-[#2F6FEB]' : 'text-[#1E2530]'}`}>직접 고르기</div>
+                <p className="text-[11.5px] text-[#8892A4] mt-1 leading-snug">
+                  듣고 싶은 전공 선택과목을 직접 골라요
                 </p>
               </button>
             </div>
 
             {/* ===== 직접 고르기 모드 ===== */}
             {majorSelection.mode === 'manual' && (
-              <div className="mt-4 space-y-5">
+              <div className="space-y-5">
                 {/* --- 주전공 전공과목 --- */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-sm font-medium">
+                    <h3 className="text-[13.5px] font-bold text-[#3A4150]">
                       🔵 주전공 과목 ({majorSelection.selectedCourses.length})
                     </h3>
-                    <span className="text-xs text-gray-500">
-                      {userInfo.major}
-                    </span>
+                    <span className="text-[11.5px] text-[#8892A4]">{userInfo.major}</span>
                   </div>
 
                   {majorSelection.selectedCourses.length > 0 && (
-                    <div className="space-y-2 mb-3">
+                    <div className="space-y-1.5 mb-2.5">
                       {majorSelection.selectedCourses.map(course => (
-                        <div 
+                        <SelectedRow
                           key={`${course.course_code}-${course.section}`}
-                          className="flex items-center justify-between p-2 bg-indigo-50 border border-indigo-200 rounded-lg"
-                        >
-                          <div>
-                            <div className="text-sm font-medium">{course.course_name}</div>
-                            <div className="text-xs text-gray-500">
-                              {course.professor} | {course.schedule_raw} | {course.credits}학점
-                            </div>
-                          </div>
-                          <button 
-                            onClick={() => handleRemoveMajorCourse(course)} 
-                            className="p-1 hover:bg-indigo-100 rounded"
-                          >
-                            <X size={16} className="text-gray-500" />
-                          </button>
-                        </div>
+                          name={course.course_name}
+                          meta={`${course.professor} | ${course.schedule_raw} | ${course.credits}학점`}
+                          tone="blue"
+                          onRemove={() => handleRemoveMajorCourse(course)}
+                        />
                       ))}
                     </div>
                   )}
 
                   <button
                     onClick={() => setIsMajorSearchOpen(true)}
-                    className="w-full py-3 border-2 border-dashed border-indigo-300 rounded-lg text-sm text-indigo-600 hover:bg-indigo-50 flex items-center justify-center gap-2"
+                    className={`${DASHED} ${TONES.blue.dashed} py-3`}
                   >
-                    <Plus size={18} />
+                    <Plus size={16} />
                     {userInfo.major} 전공과목 검색
                   </button>
                 </div>
@@ -1664,61 +1695,47 @@ export default function RecommendPage() {
                 {userInfo.hasDoubleMajor && userInfo.doubleMajor && (
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-sm font-medium">
+                      <h3 className="text-[13.5px] font-bold text-[#3A4150]">
                         🟢 복전 과목 ({majorSelection.selectedDoubleMajorCourses.length})
                       </h3>
-                      <span className="text-xs text-gray-500">
-                        {userInfo.doubleMajor}
-                      </span>
+                      <span className="text-[11.5px] text-[#8892A4]">{userInfo.doubleMajor}</span>
                     </div>
 
                     {majorSelection.selectedDoubleMajorCourses.length > 0 && (
-                      <div className="space-y-2 mb-3">
+                      <div className="space-y-1.5 mb-2.5">
                         {majorSelection.selectedDoubleMajorCourses.map(course => (
-                          <div 
+                          <SelectedRow
                             key={`dm-${course.course_code}-${course.section}`}
-                            className="flex items-center justify-between p-2 bg-emerald-50 border border-emerald-200 rounded-lg"
-                          >
-                            <div>
-                              <div className="text-sm font-medium">{course.course_name}</div>
-                              <div className="text-xs text-gray-500">
-                                {course.professor} | {course.schedule_raw} | {course.credits}학점
-                              </div>
-                            </div>
-                            <button 
-                              onClick={() => handleRemoveDoubleMajorCourse(course)} 
-                              className="p-1 hover:bg-emerald-100 rounded"
-                            >
-                              <X size={16} className="text-gray-500" />
-                            </button>
-                          </div>
+                            name={course.course_name}
+                            meta={`${course.professor} | ${course.schedule_raw} | ${course.credits}학점`}
+                            tone="green"
+                            onRemove={() => handleRemoveDoubleMajorCourse(course)}
+                          />
                         ))}
                       </div>
                     )}
 
                     <button
                       onClick={() => setIsDoubleMajorSearchOpen(true)}
-                      className="w-full py-3 border-2 border-dashed border-emerald-300 rounded-lg text-sm text-emerald-600 hover:bg-emerald-50 flex items-center justify-center gap-2"
+                      className={`${DASHED} ${TONES.green.dashed} py-3`}
                     >
-                      <Plus size={18} />
+                      <Plus size={16} />
                       {userInfo.doubleMajor} 복전 과목 검색
                     </button>
                   </div>
                 )}
 
-                <p className="text-xs text-gray-400">
-                  💡 여기서 선택한 과목들이 시간표에 우선 배치됩니다
-                </p>
+                <p className={HINT}>💡 여기서 선택한 과목들이 시간표에 우선 배치됩니다</p>
               </div>
             )}
 
             {/* ===== 상관없음 모드 ===== */}
             {majorSelection.mode === 'auto' && (
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                <p className="text-sm text-gray-600">
+              <div className="px-4 py-3.5 bg-[#F7F9FC] rounded-[10px]">
+                <p className="text-[13px] text-[#3A4150]">
                   🤖 AI가 <strong>{userInfo.grade}학년</strong>에 적합한 전공과목을 자동으로 선택합니다.
                 </p>
-                <ul className="mt-2 text-xs text-gray-500 space-y-1">
+                <ul className="mt-2 text-[11.5px] text-[#8892A4] space-y-1">
                   <li>• 전공필수 과목 우선 배치</li>
                   <li>• {userInfo.grade}학년 대상 과목 위주 선택</li>
                   <li>• {userInfo.major} 학과 과목{userInfo.hasDoubleMajor ? ` + ${userInfo.doubleMajor} 복전 과목` : '만'} 선택</li>
@@ -1730,100 +1747,117 @@ export default function RecommendPage() {
 
         {/* ========== Step 4: 선호도 ========== */}
         {step === 4 && (
-          <div className="bg-white rounded-xl shadow-sm p-4">
-            <h2 className="text-lg font-bold mb-4">⭐ 선호도</h2>
-            
-            <div className="space-y-4">
-              {/* 교양 옵션 (2학년+) */}
-              {userInfo.grade >= 2 && (
-                <div>
-                  <label className="block text-sm font-medium mb-2">교양 수강</label>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => setPreferences(prev => ({ ...prev, skipGeneral: false }))}
-                      className={`flex-1 py-2 rounded-lg text-sm ${!preferences.skipGeneral ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}
-                    >
-                      영역 선택
-                    </button>
-                    <button
-                      onClick={() => setPreferences(prev => ({ ...prev, skipGeneral: true, preferredAreas: [] }))}
-                      className={`flex-1 py-2 rounded-lg text-sm ${preferences.skipGeneral ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}
-                    >
-                      교양 안 듣기 🚫
-                    </button>
-                  </div>
-                </div>
-              )}
+          <div className={`${CARD} px-5 py-[22px] space-y-[18px]`}>
+            <CardHead title="선호도" desc="원하는 시간표 스타일을 알려주세요" />
 
-              {/* 교양 영역 */}
-              {!preferences.skipGeneral && (
-                <div>
-                  <label className="block text-sm font-medium mb-2">듣고 싶은 교양 영역</label>
-                  <div className="grid grid-cols-3 gap-2">
-                    {AREA_OPTIONS.map(area => (
-                      <button
-                        key={area.value}
-                        onClick={() => {
-                          if (preferences.preferredAreas.includes(area.value)) {
-                            setPreferences(prev => ({ ...prev, preferredAreas: prev.preferredAreas.filter(a => a !== area.value) }));
-                          } else {
-                            setPreferences(prev => ({ ...prev, preferredAreas: [...prev.preferredAreas, area.value] }));
-                          }
-                        }}
-                        className={`py-2 rounded-lg text-xs ${preferences.preferredAreas.includes(area.value) ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}
-                      >
-                        {area.label}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
+            {/* 교양 옵션 (2학년+) */}
+            {userInfo.grade >= 2 && (
               <div>
-                <label className="block text-sm font-medium mb-2">공강 원하는 요일</label>
-                <div className="flex gap-2">
-                  {['월', '화', '수', '목', '금'].map(day => (
-                    <button
-                      key={day}
+                <label className={LABEL}>교양 수강</label>
+                <div className="grid grid-cols-2 gap-1.5">
+                  <SegButton
+                    active={!preferences.skipGeneral}
+                    onClick={() => setPreferences(prev => ({ ...prev, skipGeneral: false }))}
+                  >
+                    영역 선택
+                  </SegButton>
+                  <SegButton
+                    active={preferences.skipGeneral}
+                    onClick={() => setPreferences(prev => ({ ...prev, skipGeneral: true, preferredAreas: [] }))}
+                  >
+                    교양 안 듣기 🚫
+                  </SegButton>
+                </div>
+              </div>
+            )}
+
+            {/* 교양 영역 */}
+            {!preferences.skipGeneral && (
+              <div>
+                <label className={LABEL}>듣고 싶은 교양 영역</label>
+                <div className="grid grid-cols-3 gap-[7px]">
+                  {AREA_OPTIONS.map(area => (
+                    <ChipButton
+                      key={area.value}
+                      tone="ink"
+                      active={preferences.preferredAreas.includes(area.value)}
                       onClick={() => {
-                        if (preferences.emptyDays.includes(day)) {
-                          setPreferences(prev => ({ ...prev, emptyDays: prev.emptyDays.filter(d => d !== day) }));
+                        if (preferences.preferredAreas.includes(area.value)) {
+                          setPreferences(prev => ({ ...prev, preferredAreas: prev.preferredAreas.filter(a => a !== area.value) }));
                         } else {
-                          setPreferences(prev => ({ ...prev, emptyDays: [...prev.emptyDays, day] }));
+                          setPreferences(prev => ({ ...prev, preferredAreas: [...prev.preferredAreas, area.value] }));
                         }
                       }}
-                      className={`w-10 h-10 rounded-full text-sm font-medium ${preferences.emptyDays.includes(day) ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600'}`}
                     >
-                      {day}
-                    </button>
+                      {area.label}
+                    </ChipButton>
                   ))}
                 </div>
               </div>
+            )}
 
-              <div>
-                <label className="block text-sm font-medium mb-2">아침 수업 (9시 30분)</label>
-                <div className="flex gap-2">
-                  <button onClick={() => setPreferences(prev => ({ ...prev, noMorning: false }))} className={`flex-1 py-2 rounded-lg text-sm ${!preferences.noMorning ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>괜찮음</button>
-                  <button onClick={() => setPreferences(prev => ({ ...prev, noMorning: true }))} className={`flex-1 py-2 rounded-lg text-sm ${preferences.noMorning ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>싫음 😴</button>
-                </div>
+            <div>
+              <label className={LABEL}>공강 원하는 요일</label>
+              <div className="grid grid-cols-5 gap-1.5">
+                {['월', '화', '수', '목', '금'].map(day => (
+                  <ChipButton
+                    key={day}
+                    active={preferences.emptyDays.includes(day)}
+                    onClick={() => {
+                      if (preferences.emptyDays.includes(day)) {
+                        setPreferences(prev => ({ ...prev, emptyDays: prev.emptyDays.filter(d => d !== day) }));
+                      } else {
+                        setPreferences(prev => ({ ...prev, emptyDays: [...prev.emptyDays, day] }));
+                      }
+                    }}
+                  >
+                    {day}
+                  </ChipButton>
+                ))}
               </div>
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2">연강</label>
-                <div className="flex gap-2">
-                  {['좋음', '싫음', '상관없음'].map(opt => (
-                    <button key={opt} onClick={() => setPreferences(prev => ({ ...prev, consecutive: opt }))} className={`flex-1 py-2 rounded-lg text-sm ${preferences.consecutive === opt ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>{opt}</button>
-                  ))}
-                </div>
+            <div>
+              <label className={LABEL}>아침 수업 (9시 30분)</label>
+              <div className="grid grid-cols-2 gap-1.5">
+                <SegButton active={!preferences.noMorning} onClick={() => setPreferences(prev => ({ ...prev, noMorning: false }))}>
+                  괜찮음
+                </SegButton>
+                <SegButton active={preferences.noMorning} onClick={() => setPreferences(prev => ({ ...prev, noMorning: true }))}>
+                  싫음 😴
+                </SegButton>
               </div>
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium mb-2">선호 시간대</label>
-                <div className="flex gap-2">
-                  {['오전', '오후', '상관없음'].map(opt => (
-                    <button key={opt} onClick={() => setPreferences(prev => ({ ...prev, preferredTime: opt }))} className={`flex-1 py-2 rounded-lg text-sm ${preferences.preferredTime === opt ? 'bg-indigo-500 text-white' : 'bg-gray-100'}`}>{opt}</button>
-                  ))}
-                </div>
+            <div>
+              <label className={LABEL}>연강</label>
+              <div className="grid grid-cols-3 gap-1.5">
+                {['좋음', '싫음', '상관없음'].map(opt => (
+                  <SegButton
+                    key={opt}
+                    active={preferences.consecutive === opt}
+                    onClick={() => setPreferences(prev => ({ ...prev, consecutive: opt }))}
+                    className="!py-2 !text-[12.5px]"
+                  >
+                    {opt}
+                  </SegButton>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className={LABEL}>선호 시간대</label>
+              <div className="grid grid-cols-3 gap-1.5">
+                {['오전', '오후', '상관없음'].map(opt => (
+                  <SegButton
+                    key={opt}
+                    active={preferences.preferredTime === opt}
+                    onClick={() => setPreferences(prev => ({ ...prev, preferredTime: opt }))}
+                    className="!py-2 !text-[12.5px]"
+                  >
+                    {opt}
+                  </SegButton>
+                ))}
               </div>
             </div>
           </div>
@@ -1831,81 +1865,63 @@ export default function RecommendPage() {
 
         {/* ========== Step 5: 추가 설정 ========== */}
         {step === 5 && (
-          <div className="bg-white rounded-xl shadow-sm p-4">
-            <h2 className="text-lg font-bold mb-2">➕ 추가 설정</h2>
-            <p className="text-sm text-gray-500 mb-4">선택사항이에요</p>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">⭐ 꼭 듣고 싶은 과목</label>
-                <p className="text-xs text-gray-500 mb-2">전공/교양 관계없이 꼭 넣고 싶은 과목</p>
-                
-                {mustTakeCourses.length > 0 && (
-                  <div className="space-y-2 mb-3">
-                    {mustTakeCourses.map(course => (
-                      <div 
-                        key={`${course.course_code}-${course.section}`}
-                        className="flex items-center justify-between p-2 bg-yellow-50 border border-yellow-200 rounded-lg"
-                      >
-                        <div>
-                          <div className="text-sm font-medium">{course.course_name}</div>
-                          <div className="text-xs text-gray-500">{course.professor} | {course.schedule_raw}</div>
-                        </div>
-                        <button onClick={() => handleRemoveMustTake(course)} className="p-1 hover:bg-yellow-100 rounded">
-                          <X size={16} className="text-gray-500" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                
-                <button
-                  onClick={() => setIsCourseSearchOpen(true)}
-                  className="w-full py-2 border-2 border-dashed border-gray-300 rounded-lg text-sm text-gray-500 hover:border-indigo-400 hover:text-indigo-600 flex items-center justify-center gap-2"
-                >
-                  <Plus size={16} />
-                  과목 검색하여 추가
-                </button>
-              </div>
+          <div className={`${CARD} px-5 py-[22px] space-y-5`}>
+            <CardHead title="추가 설정" desc="선택사항이에요 — 꼭 넣거나 빼고 싶은 과목이 있나요?" />
 
-              <div>
-                <label className="block text-sm font-medium mb-2">🚫 듣기 싫은 과목</label>
-                <p className="text-xs text-gray-500 mb-2">이 과목은 모든 분반이 추천에서 제외돼요</p>
-                
-                {avoidCourses.length > 0 && (
-                  <div className="space-y-2 mb-3">
-                    {avoidCourses.map((course, idx) => (
-                      <div 
-                        key={`avoid-${course.course_name}-${idx}`}
-                        className="flex items-center justify-between p-2 bg-red-50 border border-red-200 rounded-lg"
-                      >
-                        <div>
-                          <div className="text-sm font-medium">{course.course_name}</div>
-                          {course.professor && (
-                            <div className="text-xs text-gray-500">{course.professor}</div>
-                          )}
-                        </div>
-                        <button 
-                          onClick={() => setAvoidCourses(prev => prev.filter(
-                            c => c.course_name !== course.course_name
-                          ))} 
-                          className="p-1 hover:bg-red-100 rounded"
-                        >
-                          <X size={16} className="text-gray-500" />
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                
-                <button
-                  onClick={() => setIsAvoidSearchOpen(true)}
-                  className="w-full py-2 border-2 border-dashed border-red-300 rounded-lg text-sm text-red-500 hover:bg-red-50 flex items-center justify-center gap-2"
-                >
-                  <Plus size={16} />
-                  듣기 싫은 과목 추가
-                </button>
-              </div>
+            <div>
+              <label className={LABEL}>⭐ 꼭 듣고 싶은 과목</label>
+              <p className={`${HINT} mb-2`}>전공/교양 관계없이 꼭 넣고 싶은 과목</p>
+
+              {mustTakeCourses.length > 0 && (
+                <div className="space-y-1.5 mb-2.5">
+                  {mustTakeCourses.map(course => (
+                    <SelectedRow
+                      key={`${course.course_code}-${course.section}`}
+                      name={course.course_name}
+                      meta={`${course.professor} | ${course.schedule_raw}`}
+                      tone="amber"
+                      onRemove={() => handleRemoveMustTake(course)}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <button
+                onClick={() => setIsCourseSearchOpen(true)}
+                className={`${DASHED} ${TONES.blue.dashed}`}
+              >
+                <Plus size={14} />
+                과목 검색하여 추가
+              </button>
+            </div>
+
+            <div>
+              <label className={LABEL}>🚫 듣기 싫은 과목</label>
+              <p className={`${HINT} mb-2`}>이 과목은 모든 분반이 추천에서 제외돼요</p>
+
+              {avoidCourses.length > 0 && (
+                <div className="space-y-1.5 mb-2.5">
+                  {avoidCourses.map((course, idx) => (
+                    <SelectedRow
+                      key={`avoid-${course.course_name}-${idx}`}
+                      name={course.course_name}
+                      meta={course.professor}
+                      tone="red"
+                      onRemove={() => setAvoidCourses(prev => prev.filter(
+                        c => c.course_name !== course.course_name
+                      ))}
+                    />
+                  ))}
+                </div>
+              )}
+
+              <button
+                onClick={() => setIsAvoidSearchOpen(true)}
+                className={`${DASHED} ${TONES.red.dashed}`}
+              >
+                <Plus size={14} />
+                듣기 싫은 과목 추가
+              </button>
             </div>
           </div>
         )}
@@ -1916,10 +1932,10 @@ export default function RecommendPage() {
             {/* 후보 선택 (A/B/C) */}
             {candidates.length > 1 && (
               <div>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className={`${HINT} mb-1.5`}>
                   마음에 드는 시간표를 골라보세요 ({candidates.length}개 추천)
                 </p>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="flex items-end gap-1">
                   {candidates.map((cand, i) => {
                     const active = i === selectedIndex;
                     return (
@@ -1927,21 +1943,23 @@ export default function RecommendPage() {
                         key={i}
                         type="button"
                         onClick={() => selectCandidate(i)}
-                        className={`text-left p-2.5 rounded-lg border transition-colors ${
-                          active
-                            ? 'border-indigo-500 bg-indigo-50 ring-1 ring-indigo-400'
-                            : 'border-gray-200 bg-white hover:border-gray-300'
+                        className={`flex-1 min-w-0 px-3 py-2.5 rounded-t-[10px] transition-colors ${
+                          active ? 'bg-white' : 'bg-transparent hover:bg-white/50'
                         }`}
                       >
-                        <div className="flex items-center justify-between mb-1">
-                          <span className={`text-sm font-bold ${active ? 'text-indigo-700' : 'text-gray-700'}`}>
+                        <div className="flex items-center justify-center gap-[7px]">
+                          <span className={`text-[13px] font-bold whitespace-nowrap ${active ? 'text-[#2F6FEB]' : 'text-[#8892A4]'}`}>
                             {['A', 'B', 'C', 'D'][i] || i + 1}안
                           </span>
                           {typeof cand.score === 'number' && (
-                            <span className="text-[10px] text-gray-400">{cand.score}점</span>
+                            <span className={`text-[10.5px] font-bold px-1.5 py-px rounded-full ${
+                              active ? 'bg-[#EAF1FE] text-[#2F6FEB]' : 'bg-[#EEF1F6] text-[#9AA3B2]'
+                            }`}>
+                              {cand.score}점
+                            </span>
                           )}
                         </div>
-                        <div className={`text-[11px] leading-tight ${active ? 'text-indigo-600' : 'text-gray-500'}`}>
+                        <div className={`text-[11px] leading-tight truncate mt-0.5 ${active ? 'text-[#5B6472]' : 'text-[#9AA3B2]'}`}>
                           {cand.theme_label || `${cand.total_credits}학점`}
                         </div>
                       </button>
@@ -1951,120 +1969,162 @@ export default function RecommendPage() {
               </div>
             )}
 
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl p-4 text-white">
-              <h2 className="text-lg font-bold mb-2">✨ AI 추천 시간표</h2>
-              <div className="flex gap-4">
-                <div><span className="text-2xl font-bold">{result.total_credits}</span><span className="text-sm opacity-80">학점</span></div>
-                <div><span className="text-2xl font-bold">{result.selected_courses?.length || 0}</span><span className="text-sm opacity-80">과목</span></div>
-                {result.empty_days?.length > 0 && (
-                  <div><span className="text-2xl font-bold">{result.empty_days.join(', ')}</span><span className="text-sm opacity-80">공강</span></div>
-                )}
-              </div>
+            {/* 유형 카드 */}
+            <div className={`rounded-2xl px-[22px] py-[26px] text-white bg-gradient-to-br from-[#1E2530] to-[#2F6FEB] ${candidates.length > 1 ? '-mt-4' : ''}`}>
+              <p className="text-[12.5px] font-semibold opacity-75 mb-2">✨ AI가 추천한 시간표</p>
+              <h2 className="text-[23px] font-extrabold mb-2">{result.theme_label || 'AI 추천 시간표'}</h2>
+              {result.empty_days?.length > 0 && (
+                <p className="text-[13px] opacity-90 leading-relaxed mb-4">
+                  {result.empty_days.join(', ')}요일이 공강이에요
+                </p>
+              )}
+              {typeof result.score === 'number' && (
+                <span className="inline-block px-3.5 py-1.5 rounded-full bg-white/[.18] text-[14px] font-extrabold">
+                  {result.score}
+                  <span className="text-[11px] font-semibold opacity-80"> / 100</span>
+                </span>
+              )}
             </div>
 
+            {/* 요약 바 */}
+            <div className={`${CARD} px-[18px] py-3.5 flex items-center justify-between`}>
+              <div className="flex items-baseline gap-[18px]">
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[22px] font-extrabold text-[#2F6FEB]">{result.total_credits}</span>
+                  <span className="text-[12px] font-semibold text-[#8892A4]">학점</span>
+                </div>
+                <div className="flex items-baseline gap-1.5">
+                  <span className="text-[22px] font-extrabold text-[#1E2530]">{result.selected_courses?.length || 0}</span>
+                  <span className="text-[12px] font-semibold text-[#8892A4]">과목</span>
+                </div>
+              </div>
+              {result.empty_days?.length > 0 && (
+                <div className="text-[12px] font-semibold text-[#1FA97A]">공강 {result.empty_days.join(', ')}</div>
+              )}
+            </div>
+
+            {/* 시간표 미리보기 */}
             <div>
-              <h3 className="font-bold text-gray-800 mb-2">📅 시간표 미리보기</h3>
+              <h3 className="text-[14px] font-extrabold text-[#1E2530] mb-2">📅 시간표 미리보기</h3>
               <SchedulePreview courses={result.selected_courses || []} />
             </div>
 
+            {/* 주의사항 */}
             {result.warnings?.length > 0 && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
-                <div className="flex items-center gap-2 text-yellow-700 font-medium text-sm mb-1">
-                  <AlertTriangle size={16} />주의사항
+              <div className="bg-[#FFF8EC] border border-[#F7E3BC] rounded-[10px] px-3.5 py-3 flex gap-2.5 items-start">
+                <AlertTriangle size={16} className="text-[#F5A524] shrink-0 mt-px" />
+                <div>
+                  <span className="text-[12.5px] font-bold text-[#9C7A0E]">주의사항</span>
+                  {result.warnings.map((w, i) => (
+                    <p key={i} className="text-[12px] text-[#9C7A0E] mt-1">• {w}</p>
+                  ))}
                 </div>
-                <ul className="text-sm text-yellow-600 space-y-1">
-                  {result.warnings.map((w, i) => (<li key={i}>• {w}</li>))}
-                </ul>
               </div>
             )}
 
             {/* 시간 충돌 경고 (프론트엔드 검사) */}
             {timeConflicts.length > 0 && (
-              <div className="bg-red-50 border border-red-300 rounded-lg p-3">
-                <div className="flex items-center gap-2 text-red-700 font-bold text-sm mb-2">
-                  <AlertTriangle size={18} />⚠️ 시간 충돌 발견!
-                </div>
-                <p className="text-xs text-red-600 mb-2">
-                  AI가 실수로 시간이 겹치는 과목을 추천했습니다. 다시 만들기를 권장합니다.
-                </p>
-                <ul className="text-sm text-red-600 space-y-1">
+              <div className="bg-[#FEF4F4] border border-[#FBD8D8] rounded-[10px] px-3.5 py-3 flex gap-2.5 items-start">
+                <AlertTriangle size={16} className="text-[#E5484D] shrink-0 mt-px" />
+                <div>
+                  <span className="text-[12.5px] font-bold text-[#C23A46]">⚠️ 시간 충돌 발견!</span>
+                  <p className="text-[11.5px] text-[#C23A46] opacity-80 mt-0.5">
+                    AI가 실수로 시간이 겹치는 과목을 추천했습니다. 다시 만들기를 권장합니다.
+                  </p>
                   {timeConflicts.map((conflict, i) => (
-                    <li key={i}>• {conflict.day}요일: <strong>{conflict.course1}</strong> ↔ <strong>{conflict.course2}</strong> 시간 겹침</li>
+                    <p key={i} className="text-[12px] text-[#C23A46] mt-1">
+                      • {conflict.day}요일: <strong>{conflict.course1}</strong> ↔ <strong>{conflict.course2}</strong> 시간 겹침
+                    </p>
                   ))}
-                </ul>
+                </div>
               </div>
             )}
 
-            <div className="bg-white rounded-xl shadow-sm p-4">
-              <h3 className="font-bold mb-3">📚 추천 과목</h3>
-              <div className="space-y-2">
+            {/* 추천 과목 */}
+            <div className={`${CARD} p-[18px]`}>
+              <h3 className="text-[14px] font-extrabold text-[#1E2530] mb-3">📚 추천 과목</h3>
+              <div>
                 {result.selected_courses?.map((course, idx) => (
-                  <div key={idx} onClick={() => setSelectedResultCourse(course)}
-                    className="p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="font-medium text-sm">{course.course_name}</div>
-                        <div className="text-xs text-gray-500">{course.professor} | {course.schedule_raw} | {course.credits}학점</div>
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedResultCourse(course)}
+                    className="flex items-start justify-between gap-2.5 py-2.5 border-b border-[#F6F7FA] last:border-b-0 cursor-pointer hover:bg-[#FAFBFD] -mx-2 px-2 rounded-lg transition-colors"
+                  >
+                    <div className="min-w-0">
+                      <div className="text-[13px] font-bold text-[#1E2530] truncate">{course.course_name}</div>
+                      <div className="text-[11.5px] text-[#8892A4] truncate mt-0.5">
+                        {course.professor} | {course.schedule_raw} | {course.credits}학점
                       </div>
-                      <span className={`text-xs px-2 py-1 rounded font-medium shrink-0 ${
-                        course.category?.includes('필수')
-                          ? 'bg-red-100 text-red-700'
-                          : 'bg-blue-100 text-blue-700'
-                      }`}>
-                        {course.category}
-                      </span>
                     </div>
+                    <span className={`text-[10.5px] font-bold px-2 py-1 rounded-full shrink-0 whitespace-nowrap ${
+                      course.category?.includes('필수')
+                        ? 'bg-[#FEF4F4] text-[#C23A46]'
+                        : 'bg-[#EAF1FE] text-[#2F6FEB]'
+                    }`}>
+                      {course.category}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-              <h3 className="font-bold text-indigo-800 mb-2">📝 AI 총평</h3>
-              <p className="text-sm text-indigo-700">{result.summary}</p>
-            </div>
+            {/* 총평 */}
+            {result.summary && (
+              <div className="bg-[#EAF1FE] border border-[#D3E3FC] rounded-[14px] p-[18px]">
+                <h3 className="text-[13.5px] font-extrabold text-[#2559C4] mb-2">📝 AI 총평</h3>
+                <p className="text-[13px] text-[#2F4E86] leading-[1.65]">{result.summary}</p>
+              </div>
+            )}
 
-            {/* 수정 버튼 영역 */}
-            <div className="bg-white rounded-xl shadow-sm p-4">
-              <h3 className="font-bold text-gray-800 text-sm mb-3">✏️ 시간표 수정</h3>
+            {/* 시간표 수정 */}
+            <div className={`${CARD} px-4 py-3.5`}>
+              <h3 className="text-[13px] font-extrabold text-[#1E2530] mb-2.5">✏️ 시간표 수정</h3>
 
               {isModifying ? (
-                <div className="flex items-center justify-center gap-2 py-3 text-indigo-600">
-                  <Loader2 className="animate-spin" size={18} />
-                  <span className="text-sm">AI가 시간표를 수정하고 있어요...</span>
+                <div className="flex items-center justify-center gap-2 py-2 text-[#2F6FEB]">
+                  <Loader2 className="animate-spin" size={16} />
+                  <span className="text-[13px] font-semibold">AI가 시간표를 수정하고 있어요...</span>
                 </div>
               ) : showDayPicker ? (
                 /* 요일 선택 */
                 <div>
-                  <p className="text-xs text-gray-500 mb-2">공강 만들 요일을 선택하세요</p>
+                  <div className="flex items-center justify-between mb-2">
+                    <p className={HINT}>공강 만들 요일을 선택하세요</p>
+                    <button onClick={() => setShowDayPicker(false)} className="text-[#8892A4] hover:text-[#5B6472]">
+                      <X size={14} />
+                    </button>
+                  </div>
                   {(() => {
                     const emptyDays = result.empty_days || [];
                     const allEmpty = emptyDays.length >= 4;
                     return (
                       <>
-                        <div className="flex gap-1.5 mb-2">
+                        <div className="grid grid-cols-5 gap-1.5">
                           {['월', '화', '수', '목', '금'].map(day => {
                             const alreadyEmpty = emptyDays.includes(day);
                             const isLastActive = allEmpty && !alreadyEmpty;
                             const disabled = alreadyEmpty || isLastActive;
                             return (
-                              <button key={day} onClick={() => !disabled && handleModify('EMPTY_DAY', { day })}
+                              <button
+                                key={day}
+                                onClick={() => !disabled && handleModify('EMPTY_DAY', { day })}
                                 disabled={disabled}
-                                className={`flex-1 py-2 rounded-lg text-xs font-medium flex flex-col items-center gap-0.5 transition-colors
-                                  ${alreadyEmpty ? 'bg-gray-100 text-gray-400 cursor-not-allowed' :
-                                    isLastActive ? 'bg-orange-50 text-orange-400 cursor-not-allowed' :
-                                    'bg-indigo-100 hover:bg-indigo-200 text-indigo-700'}`}>
+                                className={`py-2 rounded-[8px] text-[12.5px] font-bold flex flex-col items-center transition-colors ${
+                                  alreadyEmpty
+                                    ? 'bg-[#F1F4FA] text-[#B0B7C3] cursor-not-allowed'
+                                    : isLastActive
+                                      ? 'bg-[#FFF8EC] text-[#DDB05E] cursor-not-allowed'
+                                      : 'bg-[#EAF1FE] text-[#2F6FEB] hover:bg-[#DCE8FF]'
+                                }`}
+                              >
                                 {day}
-                                {alreadyEmpty && <span className="text-[9px] leading-none">이미 공강</span>}
+                                {alreadyEmpty && <span className="text-[9px] font-semibold leading-none mt-0.5">이미 공강</span>}
                               </button>
                             );
                           })}
-                          <button onClick={() => setShowDayPicker(false)} className="px-1.5 text-gray-400 hover:text-gray-600">
-                            <X size={16} />
-                          </button>
                         </div>
                         {allEmpty && (
-                          <p className="text-xs text-orange-500">⚠️ 최소 1일은 수업이 있어야 해요</p>
+                          <p className="text-[11.5px] text-[#DDB05E] mt-2">⚠️ 최소 1일은 수업이 있어야 해요</p>
                         )}
                       </>
                     );
@@ -2074,18 +2134,24 @@ export default function RecommendPage() {
                 /* 기본 버튼 */
                 <div className="space-y-2">
                   <div className="flex gap-2">
-                    <button onClick={() => { setShowDayPicker(true); setShowMore(false); }} disabled={isModifying}
-                      className="flex-1 py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium disabled:opacity-50">
+                    <button
+                      onClick={() => { setShowDayPicker(true); setShowMore(false); }}
+                      disabled={isModifying}
+                      className="flex-1 py-2.5 rounded-[9px] bg-[#EAF1FE] text-[#2F6FEB] text-[13px] font-bold hover:bg-[#DCE8FF] disabled:opacity-50 transition-colors"
+                    >
                       🗓️ 공강 만들기
                     </button>
-                    <button onClick={() => { setShowMore(v => !v); setShowDayPicker(false); }} disabled={isModifying}
-                      className="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium disabled:opacity-50">
+                    <button
+                      onClick={() => { setShowMore(v => !v); setShowDayPicker(false); }}
+                      disabled={isModifying}
+                      className="px-4 py-2.5 rounded-[9px] bg-[#EEF1F6] text-[#5B6472] text-[13px] font-bold hover:bg-[#E4E8F0] disabled:opacity-50 transition-colors"
+                    >
                       {showMore ? '접기 ▲' : '더보기 ▼'}
                     </button>
                   </div>
 
                   {showMore && (
-                    <div className="space-y-2 pt-1 border-t border-gray-100">
+                    <div className="space-y-1.5 pt-1.5 border-t border-[#F1F4FA]">
                       {[
                         { type: 'NO_EARLY_MORNING', label: '⏰ 9시 30분 수업 빼줘' },
                         { type: 'ADD_MAJOR',         label: '📚 전공 더 넣어줘' },
@@ -2093,8 +2159,12 @@ export default function RecommendPage() {
                         { type: 'REDUCE_CREDITS',    label: '➖ 학점 줄여줘' },
                         { type: 'INCREASE_CREDITS',  label: '➕ 학점 늘려줘' },
                       ].map(({ type, label }) => (
-                        <button key={type} onClick={() => handleModify(type, {})} disabled={isModifying}
-                          className="w-full py-2.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium disabled:opacity-50 text-left px-4">
+                        <button
+                          key={type}
+                          onClick={() => handleModify(type, {})}
+                          disabled={isModifying}
+                          className="w-full px-4 py-2.5 rounded-[9px] bg-[#EAF1FE] text-[#2F6FEB] text-[13px] font-bold text-left hover:bg-[#DCE8FF] disabled:opacity-50 transition-colors"
+                        >
                           {label}
                         </button>
                       ))}
@@ -2102,9 +2172,12 @@ export default function RecommendPage() {
                   )}
 
                   {history.length > 0 && (
-                    <button onClick={handleUndo}
-                      className="w-full py-2 text-sm text-indigo-500 border border-indigo-200 rounded-lg hover:bg-indigo-50">
-                      ↩ 이전으로 되돌리기 ({history.length}단계)
+                    <button
+                      onClick={handleUndo}
+                      className="w-full py-2 rounded-[9px] border border-[#E4E8F0] text-[12.5px] font-bold text-[#5B6472] hover:bg-[#F7F9FC] flex items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <RotateCcw size={13} />
+                      이전으로 되돌리기 ({history.length}단계)
                     </button>
                   )}
                 </div>
@@ -2114,9 +2187,19 @@ export default function RecommendPage() {
             {logId && <AiFeedback logId={logId} />}
 
             <div className="flex gap-2">
-              <button onClick={() => setStep(1)} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium">다시 만들기</button>
-              <button onClick={handleReplaceSchedule} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-2">
-                <Plus size={18} />이 시간표로 교체
+              <button
+                onClick={() => setStep(1)}
+                className="flex-1 py-3.5 rounded-[10px] border border-[#E4E8F0] bg-white text-[13.5px] font-bold text-[#5B6472] flex items-center justify-center gap-1.5 hover:border-[#C9D3E4] transition-colors"
+              >
+                <RotateCcw size={14} />
+                다시 만들기
+              </button>
+              <button
+                onClick={handleReplaceSchedule}
+                className="flex-[2] py-3.5 rounded-[10px] bg-[#2F6FEB] text-white text-[13.5px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#2559C4] transition-colors"
+              >
+                <Plus size={16} />
+                이 시간표로 교체
               </button>
             </div>
           </div>
@@ -2124,44 +2207,57 @@ export default function RecommendPage() {
 
         {/* 수정 에러 토스트 */}
         {modifyError && (
-          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-red-600 text-white px-4 py-3 rounded-xl shadow-lg flex items-center gap-2 max-w-sm w-full mx-4">
-            <AlertTriangle size={16} className="shrink-0" />
-            <span className="text-sm">{modifyError}</span>
+          <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#1E2530] text-white px-4 py-3 rounded-[12px] shadow-lg flex items-center gap-2 max-w-sm w-full mx-4">
+            <AlertTriangle size={16} className="shrink-0 text-[#FF9BA3]" />
+            <span className="text-[13px]">{modifyError}</span>
           </div>
         )}
 
         {/* 로딩 */}
         {isLoading && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-xl p-6 text-center">
-              <Loader2 className="animate-spin mx-auto mb-3 text-indigo-500" size={40} />
-              <p className="font-medium">AI가 시간표를 만들고 있어요...</p>
-              <p className="text-sm text-gray-500 mt-1">잠시만 기다려주세요 🪄</p>
+          <div className="fixed inset-0 bg-[rgba(20,26,38,.5)] flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl px-8 py-10 flex flex-col items-center gap-3 max-w-[320px] w-full">
+              <div className="w-10 h-10 rounded-full border-[3px] border-[#EAF1FE] border-t-[#2F6FEB] animate-spin" />
+              <h2 className="text-[15px] font-extrabold text-[#1E2530]">AI가 시간표를 만들고 있어요</h2>
+              <p className="text-[12.5px] text-[#8892A4]">시간 충돌과 학점 균형을 확인하는 중이에요</p>
             </div>
           </div>
         )}
 
         {error && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-4">
-            <p className="text-red-700 text-sm">{error}</p>
+          <div className="bg-[#FEF4F4] border border-[#FBD8D8] rounded-[10px] px-3.5 py-3">
+            <p className="text-[13px] text-[#C23A46]">{error}</p>
           </div>
         )}
 
         {/* 네비게이션 버튼 */}
         {step <= 5 && (
-          <div className="flex gap-2 mt-4">
+          <div className="flex gap-2">
             {displayStep > 1 && (
-              <button onClick={handlePrev} className="flex-1 py-3 border border-gray-300 rounded-lg font-medium flex items-center justify-center gap-1">
-                <ChevronLeft size={18} />이전
+              <button
+                onClick={handlePrev}
+                className="flex-1 py-3 rounded-[10px] border border-[#E4E8F0] bg-white text-[13.5px] font-bold text-[#5B6472] flex items-center justify-center gap-1.5 hover:border-[#C9D3E4] transition-colors"
+              >
+                <ChevronLeft size={15} />
+                이전
               </button>
             )}
             {displayStep < stepConfig.totalSteps ? (
-              <button onClick={handleNext} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-1">
-                다음<ChevronRight size={18} />
+              <button
+                onClick={handleNext}
+                className="flex-[2] py-3 rounded-[10px] bg-[#2F6FEB] text-white text-[13.5px] font-bold flex items-center justify-center gap-1.5 hover:bg-[#2559C4] transition-colors"
+              >
+                다음
+                <ChevronRight size={15} />
               </button>
             ) : (
-              <button onClick={handleGenerate} disabled={isLoading} className="flex-1 py-3 bg-indigo-500 text-white rounded-lg font-medium flex items-center justify-center gap-2">
-                <Wand2 size={18} />시간표 생성하기
+              <button
+                onClick={handleGenerate}
+                disabled={isLoading}
+                className="flex-[2] py-3 rounded-[10px] bg-[#1E2530] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 disabled:opacity-60 hover:bg-[#151B24] transition-colors"
+              >
+                <Sparkles size={16} />
+                시간표 생성하기
               </button>
             )}
           </div>

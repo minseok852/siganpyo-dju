@@ -1423,19 +1423,18 @@ def _postprocess_candidate(result: dict, available_courses: dict, locked_require
     }
 
 
-# 마지막 멀티 생성에서 후보들이 실패한 원인 (디버깅/에러 표면화용)
-_LAST_CANDIDATE_ERRORS: list = []
-
-
 async def _generate_candidate(prompt, user_info, available_courses, locked_required_names,
-                              must_take_keys, target_credits, temperature) -> dict:
-    """후보 1개 생성 (실패 시 None)"""
+                              must_take_keys, target_credits, temperature,
+                              errors: list = None) -> dict:
+    """후보 1개 생성 (실패 시 None). errors에 실패 원인을 모아준다."""
+    if errors is None:
+        errors = []
     try:
         result = await _gemini_generate(prompt, temperature=temperature, max_tokens=8192)
     except Exception as e:
         msg = f"생성 실패 (temp={temperature}): {type(e).__name__}: {e}"
         print(f"[MULTI] {msg}")
-        _LAST_CANDIDATE_ERRORS.append(msg)
+        errors.append(msg)
         return None
     try:
         return _postprocess_candidate(result, available_courses, locked_required_names,
@@ -1443,7 +1442,7 @@ async def _generate_candidate(prompt, user_info, available_courses, locked_requi
     except Exception as e:
         msg = f"후처리 실패 (temp={temperature}): {type(e).__name__}: {e}"
         print(f"[MULTI] {msg}")
-        _LAST_CANDIDATE_ERRORS.append(msg)
+        errors.append(msg)
         return None
 
 
@@ -1458,22 +1457,105 @@ def _build_locked_note(locked_required_names: set, must_take: list) -> str:
     return txt
 
 
-def _elective_names(cand: dict) -> list:
-    if not cand:
-        return []
-    return [c.get('course_name') for c in cand['selected_courses']
-            if c.get('category') in ('전공선택', '교양선택', '복전선택')]
+# ===== 후보별 방향 지시문 =====
+# 후보들이 서로의 결과를 기다리지 않도록, 각 후보가 노릴 방향을 미리 정해준다.
+# (이래야 전부 병렬로 생성할 수 있다)
+
+# 후보 B가 추가로 노려볼 공강 요일 (선호도가 높은 순)
+_EXTRA_EMPTY_DAY_PRIORITY = ['금', '월', '목', '화', '수']
+
+# 지시문 공통 꼬리말 - 방향은 어디까지나 선호일 뿐 하드 제약을 깨지 않도록
+_VARIANT_TAIL = "필수과목·⭐반드시 포함 과목·목표 학점·시간 충돌 금지는 그대로 지켜주세요.\n"
 
 
-def _diversity_note(avoid_names: list) -> str:
-    if not avoid_names:
-        return "\n## 🔀 다양성 요청\n이전 후보와 다른 선택과목/분반 조합으로 구성해주세요.\n"
-    joined = ', '.join(avoid_names[:12])
-    return (
-        "\n## 🔀 다양성 요청 (다른 대안 만들기)\n"
-        f"다음 선택과목들은 **가급적 피하고** 다른 전공선택/교양선택/분반 조합으로 구성해주세요: {joined}\n"
-        "단, ⭐반드시 포함 과목과 안 들은 전공필수/교양필수는 그대로 유지하세요.\n"
-    )
+def _blocked_empty_days(available_courses: dict) -> set:
+    """비울 수 없는 요일.
+
+    모든 분반이 같은 요일에만 열리는 필수과목이 있으면 그 요일은 절대 못 비운다.
+    (예: 전공필수 '성인간호학1'이 월요일 분반뿐이면 월요일 공강은 불가능)
+    이걸 모르고 목표 요일을 잡으면 후보 B가 달성 불가능한 지시를 받아
+    결국 A와 비슷한 시간표만 내놓게 된다.
+    """
+    days = ['월', '화', '수', '목', '금']
+    by_course = defaultdict(set)
+    for key in ('general_required', 'major_required', 'double_major_required'):
+        for c in available_courses.get(key, []) or []:
+            raw = c.get('schedule_raw', '') or ''
+            found = {d for d in days if d in raw}
+            if found:
+                by_course[c.get('course_name', '')] |= found
+    return {next(iter(ds)) for ds in by_course.values() if len(ds) == 1}
+
+
+def _pick_extra_empty_day(prefs: dict, available_courses: dict):
+    """후보 B가 노릴 추가 공강 요일 (없으면 None)"""
+    requested = set(prefs.get('empty_days', []) or [])
+    blocked = _blocked_empty_days(available_courses)
+    return next((d for d in _EXTRA_EMPTY_DAY_PRIORITY
+                 if d not in requested and d not in blocked), None)
+
+
+def _variant_note_day_off(prefs: dict, extra_day: str) -> str:
+    """후보 B: 공강 축 - 요청한 공강은 유지하고 하루 더 비우는 방향"""
+    requested = prefs.get('empty_days', []) or []
+    keep = ""
+    if requested:
+        joined = ', '.join(requested)
+        keep = (f"- 학생이 직접 요청한 공강({joined})은 **반드시 그대로 유지**하세요. "
+                f"이걸 깨면서까지 {extra_day}요일을 비우면 안 됩니다.\n")
+    return (f"\n## 🔀 이 후보의 방향: {extra_day}요일 공강 만들기\n"
+            f"이 후보는 **{extra_day}요일 수업이 0개**인 시간표를 목표로 합니다.\n"
+            f"{keep}"
+            f"- {extra_day}요일 과목은 다른 요일 분반으로 바꾸거나 다른 과목으로 대체하세요.\n"
+            f"- 나머지 요일에 수업이 몰리거나 연강이 생겨도 괜찮습니다.\n"
+            f"- {extra_day}요일에만 열리는 필수과목이 있다면 그때만 예외로 포함하세요.\n"
+            + _VARIANT_TAIL)
+
+
+def _variant_note_mix(prefs: dict) -> str:
+    """후보 C: 구성 축 - 과목/분반 조합을 다르게 (num_candidates=3일 때만 사용)"""
+    if prefs.get('skip_general'):
+        body = "전공선택 과목의 조합과 분반(교수)을 다르게 골라주세요."
+    elif prefs.get('preferred_areas'):
+        areas = ', '.join(prefs['preferred_areas'])
+        body = f"선호 영역({areas}) 안에서 다른 과목·분반 조합으로 골라주세요."
+    else:
+        body = "교양선택을 한 영역에 몰지 말고 서로 다른 영역으로 분산해서 골라주세요."
+    return ("\n## 🔀 이 후보의 방향: 다른 과목 구성\n"
+            f"{body}\n" + _VARIANT_TAIL)
+
+
+def _variant_note_max_off(prefs: dict) -> str:
+    """공강을 더 만들 여지가 없을 때 쓰는 대안 지시문"""
+    return ("\n## 🔀 이 후보의 방향: 쉬는 날 최대화\n"
+            "수업을 최대한 적은 요일에 몰아서 공강을 하나라도 더 확보해주세요.\n"
+            + _VARIANT_TAIL)
+
+
+def _build_variants(user_info: dict, available_courses: dict, num_candidates: int) -> list:
+    """후보별 (temperature, 방향 지시문) 목록.
+
+    A는 지시문 없이 순수 최적을 노리고, B/C는 A와 다른 축을 각각 담당한다.
+    어떤 후보도 다른 후보의 결과에 의존하지 않으므로 전부 병렬 생성이 가능하다.
+
+    B는 원래 '공강 하루 더'를 노리지만, 필수과목 때문에 비울 수 있는 요일이
+    하나도 없으면 달성 불가능한 지시가 되어 A와 비슷한 결과만 나온다.
+    그런 경우엔 과목 구성 축으로 방향을 바꾼다.
+    """
+    prefs = user_info.get('preferences', {}) or {}
+    extra_day = _pick_extra_empty_day(prefs, available_courses)
+
+    if extra_day:
+        b_note, c_note = _variant_note_day_off(prefs, extra_day), _variant_note_mix(prefs)
+    else:
+        b_note, c_note = _variant_note_mix(prefs), _variant_note_max_off(prefs)
+
+    variants = [
+        (0.25, ""),        # A: 선호 최적
+        (0.55, b_note),    # B: 공강 축 (불가능하면 과목 구성 축)
+        (0.85, c_note),    # C: 남은 축
+    ]
+    return variants[:max(1, num_candidates)]
 
 
 def _jaccard(a: frozenset, b: frozenset) -> float:
@@ -1519,10 +1601,14 @@ def _rank_and_label(candidates: list) -> list:
     return unique
 
 
-async def recommend_schedules_multi(user_info: dict, available_courses: dict, num_candidates: int = 3) -> dict:
+async def recommend_schedules_multi(user_info: dict, available_courses: dict, num_candidates: int = 2) -> dict:
     """
-    시간표 후보 여러 개(A/B/C)를 생성해 선호 점수로 정렬해 반환.
-    A = 선호 최적, B/C = 제약은 지키되 A와 다른 대안.
+    시간표 후보 여러 개(A/B)를 생성해 선호 점수로 정렬해 반환.
+    A = 선호 최적, B = 공강을 하루 더 확보한 대안.
+
+    후보들은 서로의 결과에 의존하지 않으므로 전부 병렬로 생성한다.
+    (예전에는 A를 끝까지 기다린 뒤 그 결과를 B/C 프롬프트에 넣느라
+     LLM 호출 2번치 시간이 걸렸다)
     """
     double_major = user_info.get('double_major')
     credit_allocation = (user_info.get('preferences', {}) or {}).get('credit_allocation')
@@ -1540,34 +1626,23 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
     base_prompt = build_recommend_prompt(user_info, available_courses)
     locked_note = _build_locked_note(locked_required_names, must_take)
 
-    _LAST_CANDIDATE_ERRORS.clear()
+    errors: list = []
+    variants = _build_variants(user_info, available_courses, num_candidates)
 
-    # 후보 A: 최적 (낮은 temperature)
-    cand_a = await _generate_candidate(
-        base_prompt + locked_note, user_info, available_courses,
-        locked_required_names, must_take_keys, target_credits, temperature=0.25,
-    )
+    # 모든 후보를 동시에 생성 (걸리는 시간 = 가장 느린 후보 1개)
+    results = await asyncio.gather(*[
+        _generate_candidate(
+            base_prompt + locked_note + note, user_info, available_courses,
+            locked_required_names, must_take_keys, target_credits,
+            temperature=temp, errors=errors,
+        )
+        for temp, note in variants
+    ], return_exceptions=True)
 
-    candidates = [cand_a] if cand_a else []
-
-    # 후보 B, C: A와 다른 선택과목 조합 (병렬)
-    variant_note = _diversity_note(_elective_names(cand_a))
-    temps = [0.5, 0.8][:max(0, num_candidates - 1)]
-    if temps:
-        others = await asyncio.gather(*[
-            _generate_candidate(
-                base_prompt + locked_note + variant_note, user_info, available_courses,
-                locked_required_names, must_take_keys, target_credits, temperature=t,
-            )
-            for t in temps
-        ], return_exceptions=True)
-        for o in others:
-            if isinstance(o, dict):
-                candidates.append(o)
-
-    candidates = [c for c in candidates if c]
+    # gather는 순서를 보존하므로 A가 항상 맨 앞 → 중복 제거 시 A가 우선 살아남는다
+    candidates = [r for r in results if isinstance(r, dict)]
     if not candidates:
-        detail = " | ".join(_LAST_CANDIDATE_ERRORS[:3]) or "알 수 없는 원인"
+        detail = " | ".join(errors[:3]) or "알 수 없는 원인"
         return {"success": False, "error": f"시간표 생성에 실패했습니다. ({detail})"}
 
     ranked = _rank_and_label(candidates)
