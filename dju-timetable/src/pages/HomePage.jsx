@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import {
   Plus, Trash2, Share2, Copy, Check,
   Loader2, X, Wand2, Edit3, Files, ChevronDown,
-  Smartphone, Download, CheckCircle, Palette, Megaphone
+  Smartphone, Download, CheckCircle, Palette
 } from 'lucide-react';
 import { THEMES } from '../data/constants';
 import SiteHeader from '../components/SiteHeader';
@@ -382,26 +382,6 @@ export default function HomePage() {
   const [isTransferReceiveOpen, setIsTransferReceiveOpen] = useState(false);
 
 
-  // 2학기 시간표 미확정 안내 팝업
-  const NOTICE_KEY = 'notice-2sem-2026';
-  const [showNotice, setShowNotice] = useState(false);
-
-  useEffect(() => {
-    const todayStr = new Date().toISOString().slice(0, 10);
-    const hiddenToday = localStorage.getItem(NOTICE_KEY) === todayStr;      // "오늘 하루 안 보기"
-    const dismissedSession = sessionStorage.getItem(NOTICE_KEY) === '1';    // "확인" (이번 방문만)
-    if (!hiddenToday && !dismissedSession) setShowNotice(true);
-  }, []);
-
-  const handleCloseNotice = (hideToday) => {
-    if (hideToday) {
-      localStorage.setItem(NOTICE_KEY, new Date().toISOString().slice(0, 10));
-    } else {
-      sessionStorage.setItem(NOTICE_KEY, '1');
-    }
-    setShowNotice(false);
-  };
-
   const {
     schedules, activeId, activeSchedule, addSchedule, duplicateSchedule, deleteSchedule,
     renameSchedule, switchSchedule, maxSchedules,
@@ -639,45 +619,6 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* 2학기 시간표 미확정 안내 팝업 */}
-      {showNotice && (
-        <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4"
-          onClick={() => handleCloseNotice(false)}
-        >
-          <div
-            className="bg-white rounded-2xl w-full max-w-sm p-5 shadow-xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex flex-col items-center text-center">
-              <div className="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-3">
-                <Megaphone className="text-blue-600" size={26} />
-              </div>
-              <h2 className="text-lg font-bold text-gray-800 mb-2">2학기 시간표 준비 중이에요</h2>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                아직 학교에서 <b>2학기 시간표가 확정되지 않았어요.</b><br />
-                지금 보이는 과목은 이전 학기 기준이라<br />
-                실제와 다를 수 있어요.<br />
-                <span className="text-blue-600 font-medium">확정되는 대로 빠르게 업데이트할게요! 🙏</span>
-              </p>
-            </div>
-            <div className="mt-5 flex items-center gap-2">
-              <button
-                onClick={() => handleCloseNotice(true)}
-                className="flex-1 py-2.5 text-sm text-gray-500 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                오늘 하루 안 보기
-              </button>
-              <button
-                onClick={() => handleCloseNotice(false)}
-                className="flex-1 py-2.5 text-sm font-medium bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
-              >
-                확인
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
