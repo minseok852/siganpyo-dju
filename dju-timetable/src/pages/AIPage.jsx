@@ -76,6 +76,14 @@ export default function AIPage() {
     setStep('loading');
     setError(null);
 
+    // 성공/실패 모두 같은 메타데이터로 기록한다 (관리자 페이지 실패 목록용)
+    const logParams = {
+      grade: userInfo.grade,
+      major: userInfo.major,
+      double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
+      course_count: courses.length,
+    };
+
     try {
       const response = await evaluateSchedule(courses, {
         grade: userInfo.grade,
@@ -87,19 +95,16 @@ export default function AIPage() {
         setResult(response);
         setStep('result');
         // 세션 로그 저장 (fire-and-forget)
-        logAiSession('evaluate', {
-          grade: userInfo.grade,
-          major: userInfo.major,
-          double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
-          course_count: courses.length,
-        }, response).then(id => setLogId(id));
+        logAiSession('evaluate', logParams, response).then(id => setLogId(id));
       } else {
         setError(response.error || '평가 중 오류가 발생했습니다');
         setStep('form');
+        logAiSession('evaluate', logParams, response);
       }
     } catch (err) {
       setError(err.message);
       setStep('form');
+      logAiSession('evaluate', logParams, { success: false, error: err.message });
     }
   };
 

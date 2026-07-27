@@ -20,6 +20,7 @@ export async function logAiSession(type, params, result) {
       major: params.major ?? null,
       double_major: params.double_major ?? null,
       success: result.success ?? false,
+      error: result.error ?? null,   // 실패 원인 (관리자 페이지에서 표시)
       thumbs: null,
       feedback_comment: null,
       created_at: serverTimestamp(),

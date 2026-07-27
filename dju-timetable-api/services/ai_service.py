@@ -757,7 +757,9 @@ async def evaluate_schedule(courses: list, user_info: dict) -> dict:
             prompt,
             generation_config=genai.types.GenerationConfig(
                 temperature=0.9,  # 다양한 표현 유도
-                max_output_tokens=8192,
+                # thinking 토큰이 예산을 같이 쓰므로 넉넉히 (8192면 응답이 잘림)
+                max_output_tokens=32768,
+                response_mime_type="application/json",
             )
         )
         

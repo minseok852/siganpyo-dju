@@ -311,12 +311,22 @@ function HealthTab() {
           <div className="space-y-2">
             {failures.map(f => (
               <div key={f.id} className="bg-red-50 border border-red-100 rounded-lg p-3">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-medium text-red-700">
                     {f.type === 'evaluate' ? '평가' : '추천'} · {f.grade && `${f.grade}학년`} {f.major}
                   </span>
-                  <span className="text-xs text-gray-400">{fmtDate(f.created_at)}</span>
+                  <span className="text-xs text-gray-400 shrink-0">{fmtDate(f.created_at)}</span>
                 </div>
+                {f.error && (
+                  <p className="text-xs text-red-600 mt-1 break-all">{f.error}</p>
+                )}
+                {(f.target_credits || f.preferences_summary?.empty_days?.length > 0) && (
+                  <p className="text-xs text-gray-500 mt-1">
+                    {f.target_credits && `목표 ${f.target_credits}학점`}
+                    {f.preferences_summary?.empty_days?.length > 0 &&
+                      ` · 공강 ${f.preferences_summary.empty_days.join(', ')}`}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -548,6 +558,9 @@ function AiLogsTab() {
               )}
               {log.type === 'recommend' && log.result_credits != null && (
                 <p className="text-xs text-gray-500 mt-1">추천 {log.result_credits}학점 ({log.result_course_count}과목)</p>
+              )}
+              {!log.success && log.error && (
+                <p className="text-xs text-red-600 mt-1 break-all">{log.error}</p>
               )}
               {log.feedback_comment && (
                 <div className="mt-2 bg-red-50 rounded-lg px-2.5 py-1.5">

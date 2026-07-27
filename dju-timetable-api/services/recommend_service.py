@@ -7,6 +7,43 @@ import google.generativeai as genai
 
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
+# gemini-flash-latest는 thinking 모델이라 내부 추론 토큰이 이 예산을 같이 쓴다.
+# 실측상 추론에만 3,800~7,600 토큰이 오가서 8192로는 응답이 중간에 잘렸다
+# (finish_reason=MAX_TOKENS → JSONDecodeError로 표면화됨). 넉넉히 잡는다.
+MAX_OUTPUT_TOKENS = 32768
+
+
+def _gen_config(temperature: float, max_tokens: int = None):
+    """JSON 응답용 GenerationConfig (마크다운 코드블록 없이 순수 JSON을 받는다)"""
+    return genai.types.GenerationConfig(
+        temperature=temperature,
+        max_output_tokens=max_tokens or MAX_OUTPUT_TOKENS,
+        response_mime_type="application/json",
+    )
+
+
+def _response_text(response) -> str:
+    """응답 텍스트 추출 + 실패 원인을 알아볼 수 있는 형태로 변환.
+
+    그냥 response.text를 쓰면 잘린 응답이 JSONDecodeError로만 보여서
+    원인(토큰 한도/세이프티/빈 응답)을 알 수 없다.
+    """
+    candidates = getattr(response, "candidates", None) or []
+    reason = int(getattr(candidates[0], "finish_reason", 0) or 0) if candidates else 0
+    names = {1: "STOP", 2: "MAX_TOKENS", 3: "SAFETY", 4: "RECITATION"}
+    label = names.get(reason, f"finish_reason={reason}")
+
+    try:
+        text = response.text
+    except Exception as e:
+        raise RuntimeError(f"응답 텍스트를 읽을 수 없음 ({label}): {type(e).__name__}: {e}")
+
+    if reason == 2:
+        raise RuntimeError(f"응답이 토큰 한도에서 잘림 (MAX_TOKENS, {len(text)}자 수신)")
+    if not text.strip():
+        raise RuntimeError(f"빈 응답 ({label})")
+    return text
+
 
 def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     """시간표 추천 프롬프트 생성 - 학년별 완전 분기 + 복수전공 지원"""
@@ -613,14 +650,8 @@ async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
         response_text = None
         try:
             model = genai.GenerativeModel('gemini-flash-latest')
-            response = model.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
-                    temperature=temperature,
-                    max_output_tokens=8192,
-                )
-            )
-            response_text = response.text
+            response = model.generate_content(prompt, generation_config=_gen_config(temperature))
+            response_text = _response_text(response)
             result = _extract_json(response_text)
 
             # ========== 후처리: course_code 검증 ==========
@@ -765,15 +796,9 @@ async def _call_gemini(prompt: str) -> dict:
     """Gemini API 단일 호출 + JSON 파싱"""
     model = genai.GenerativeModel('gemini-flash-latest')
     
-    response = model.generate_content(
-        prompt,
-        generation_config=genai.types.GenerationConfig(
-            temperature=0.2,
-            max_output_tokens=8192,
-        )
-    )
-    
-    response_text = response.text
+    response = model.generate_content(prompt, generation_config=_gen_config(0.2))
+
+    response_text = _response_text(response)
     
     if "```json" in response_text:
         response_text = response_text.split("```json")[1].split("```")[0]
@@ -1221,19 +1246,13 @@ def calculate_empty_days(courses: list) -> list:
 # ✅ 다중 후보 추천 (A/B/C) - 선호 점수 기반 정렬
 # ============================================================
 
-async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = 8192) -> dict:
+async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = None) -> dict:
     """Gemini 호출을 스레드에서 실행(비동기 병렬화) + JSON 파싱"""
     model = genai.GenerativeModel('gemini-flash-latest')
 
     def _run():
-        resp = model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                temperature=temperature,
-                max_output_tokens=max_tokens,
-            ),
-        )
-        return resp.text
+        resp = model.generate_content(prompt, generation_config=_gen_config(temperature, max_tokens))
+        return _response_text(resp)
 
     text = await asyncio.to_thread(_run)
     return _extract_json(text)
@@ -1430,7 +1449,7 @@ async def _generate_candidate(prompt, user_info, available_courses, locked_requi
     if errors is None:
         errors = []
     try:
-        result = await _gemini_generate(prompt, temperature=temperature, max_tokens=8192)
+        result = await _gemini_generate(prompt, temperature=temperature)
     except Exception as e:
         msg = f"생성 실패 (temp={temperature}): {type(e).__name__}: {e}"
         print(f"[MULTI] {msg}")
@@ -1644,6 +1663,18 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
     if not candidates:
         detail = " | ".join(errors[:3]) or "알 수 없는 원인"
         return {"success": False, "error": f"시간표 생성에 실패했습니다. ({detail})"}
+
+    # 학생이 직접 요청한 공강을 못 지킨 후보는 버린다.
+    # 후보 B는 공강을 '하나 더' 얹으라는 것이지 요청한 공강과 맞바꾸라는 게 아니다.
+    # (지킨 후보가 하나도 없으면 어쩔 수 없이 그대로 둔다)
+    requested_days = set(prefs.get('empty_days', []) or [])
+    if requested_days:
+        kept = [c for c in candidates if requested_days <= set(c.get('empty_days', []) or [])]
+        if kept:
+            dropped = len(candidates) - len(kept)
+            if dropped:
+                print(f"[MULTI] 요청 공강({', '.join(sorted(requested_days))}) 미충족 후보 {dropped}개 제외")
+            candidates = kept
 
     ranked = _rank_and_label(candidates)
     return {"success": True, "schedules": ranked[:num_candidates]}

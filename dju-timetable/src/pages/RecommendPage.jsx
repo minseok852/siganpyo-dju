@@ -803,6 +803,18 @@ export default function RecommendPage() {
     setIsLoading(true);
     setError(null);
 
+    // 성공/실패 모두 같은 메타데이터로 기록한다 (관리자 페이지 실패 목록용)
+    const logParams = {
+      grade: userInfo.grade,
+      major: userInfo.major,
+      double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
+      target_credits: userInfo.targetCredits,
+      preferences_summary: {
+        empty_days: preferences.emptyDays,
+        no_morning: preferences.noMorning,
+      },
+    };
+
     try {
       const availableCourses = await filterAvailableCourses();
       setSavedAvailableCourses(availableCourses);
@@ -879,24 +891,17 @@ export default function RecommendPage() {
         setResult(first);
         setHistory([]);
         setLogId(null);
-        logAiSession('recommend', {
-          grade: userInfo.grade,
-          major: userInfo.major,
-          double_major: userInfo.hasDoubleMajor ? userInfo.doubleMajor : null,
-          target_credits: userInfo.targetCredits,
-          preferences_summary: {
-            empty_days: preferences.emptyDays,
-            no_morning: preferences.noMorning,
-          },
-        }, response).then(id => setLogId(id));
+        logAiSession('recommend', logParams, response).then(id => setLogId(id));
         // 시간 충돌 검사 (선택된 후보 기준)
         setTimeConflicts(first?.selected_courses ? checkTimeConflicts(first.selected_courses) : []);
         setStep(6);  // 결과 화면
       } else {
         setError(response.error);
+        logAiSession('recommend', logParams, response);
       }
     } catch (err) {
       setError(err.message);
+      logAiSession('recommend', logParams, { success: false, error: err.message });
     } finally {
       setIsLoading(false);
     }
