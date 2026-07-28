@@ -18,7 +18,7 @@ import {
 import { useCourses } from '../hooks/useCourses';
 import { useSchedule } from '../hooks/useSchedule';
 import { recommendSchedule, modifySchedule } from '../services/aiService';
-import { logAiSession } from '../services/aiLogService';
+import { logAiSession, logCandidateSelection, logScheduleSaved } from '../services/aiLogService';
 import { COLLEGES, COURSE_COLORS } from '../data/constants';
 import { parseScheduleToTimes } from '../utils/timeUtils';
 import CourseDetail from '../components/schedule/CourseDetail';
@@ -1090,6 +1090,8 @@ export default function RecommendPage() {
     }));
 
     saveToSchedule(newCourses, scheduleId);
+    // 만들어만 보고 버린 추천과 실제로 쓴 추천을 구분한다
+    logScheduleSaved(logId, selectedIndex);
     navigate('/');
   };
 
@@ -1182,6 +1184,8 @@ export default function RecommendPage() {
     setResult(cand);
     setHistory([]);  // 후보 바꾸면 수정 히스토리 초기화
     setTimeConflicts(checkTimeConflicts(cand.selected_courses || []));
+    // 어떤 후보를 고르는지는 👍/👎보다 참여율이 높은 품질 신호다
+    logCandidateSelection(logId, i);
   };
 
   // 이수한 전공선택 추가 (과목명만 저장 - 분반 무관)

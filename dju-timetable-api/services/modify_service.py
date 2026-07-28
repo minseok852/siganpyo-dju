@@ -3,6 +3,9 @@ import os
 import re
 import json
 from services import gemini
+# 표시 필드를 원본으로 덮어쓰는 규칙은 recommend_service와 하나로 유지한다.
+# (예전에 서비스마다 같은 로직을 복사해 두고 한쪽만 고치는 일이 반복됐다)
+from services.recommend_service import apply_catalog_fields
 
 
 
@@ -224,6 +227,12 @@ def _build_prompt(current_courses: list, modify_type: str, modify_params: dict,
 # ──────────────────────────────────────────────
 
 def _enrich(selected: list, available: dict, current_courses: list = None) -> list:
+    """AI가 돌려준 과목을 원본 데이터로 덮어쓴다.
+
+    수정 프롬프트는 모델에게 schedule_raw·credits·professor까지 출력하라고 시킨다.
+    예전에는 그 값들을 아예 보완하지 않아서 **모델이 타이핑한 시간과 학점이
+    그대로 사용자 시간표가 됐다.** 시간이 한 글자 틀리면 충돌 검사도 같이 틀린다.
+    """
     index = {}
     # 이미 시간표에 있는 과목을 먼저 넣는다. available_courses에는 프론트가 조회하는
     # 세 카테고리만 담겨서, 교직·ROTC 과목(category='special')은 여기에 없다.
@@ -234,12 +243,14 @@ def _enrich(selected: list, available: dict, current_courses: list = None) -> li
         for c in courses:
             key = f"{c.get('course_code','')}-{c.get('section','01')}"
             index[key] = c
+
     for course in selected:
         key = f"{course.get('course_code','')}-{course.get('section','01')}"
-        src = index.get(key, {})
-        for field in ('department', 'college', 'room', 'times', 'classification', 'notes'):
-            if not course.get(field):
-                course[field] = src.get(field)
+        src = index.get(key)
+        # 못 찾은 과목은 건드리지 않는다. 여기서 빈 값으로 덮으면 과목명까지
+        # 사라져 화면이 깨진다. 드롭 처리는 fix#2에서 별도로 다룬다.
+        if src is not None:
+            apply_catalog_fields(course, src)
     return selected
 
 

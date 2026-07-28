@@ -31,10 +31,47 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 const TABS = [
   { id: 'health',   label: '서버 상태', icon: Activity },
   { id: 'ailogs',   label: 'AI 로그',   icon: Bot },
+  { id: 'diag',     label: '추천 진단', icon: Bug },
   { id: 'data',     label: '과목 데이터', icon: Database },
   { id: 'feedback', label: '피드백',    icon: MessageCircle },
   { id: 'updates',  label: '업데이트',  icon: Megaphone },
 ];
+
+// ── 추천 진단 신호 ──────────────────────────────────────────────────────────
+// 서버(build_diagnostics)가 계산해 보내는 신호들.
+// 사용자가 신고하지 않아도 '들여다볼 추천'을 걸러내기 위한 것이다.
+const FLAG_META = {
+  no_time_slot: {
+    label: '시간 없음',
+    desc: '시간표에 배치할 수 없는 과목 — 화면엔 온라인으로 표시되고 충돌 검사도 빠져나갑니다',
+    tone: 'bg-red-50 text-red-700 border-red-200',
+  },
+  unmatched: {
+    label: '카탈로그에 없음',
+    desc: 'AI가 과목 목록에 없는 과목을 골랐습니다 (환각 의심)',
+    tone: 'bg-purple-50 text-purple-700 border-purple-200',
+  },
+  must_take_missing: {
+    label: '지정 과목 누락',
+    desc: '사용자가 꼭 듣고 싶다고 한 과목이 결과에 없습니다',
+    tone: 'bg-amber-50 text-amber-700 border-amber-200',
+  },
+  locked_required_missing: {
+    label: '필수 과목 누락',
+    desc: '반드시 포함하기로 한 과목이 빠졌습니다',
+    tone: 'bg-amber-50 text-amber-700 border-amber-200',
+  },
+  removed_conflicts: {
+    label: '충돌 제거',
+    desc: '시간이 겹쳐 과목을 제거했습니다',
+    tone: 'bg-blue-50 text-blue-700 border-blue-200',
+  },
+  credits_off: {
+    label: '학점 어긋남',
+    desc: '목표 학점과 2학점 이상 차이납니다',
+    tone: 'bg-gray-100 text-gray-700 border-gray-200',
+  },
+};
 
 // ── 피드백 상태 스타일 ──────────────────────────────────────────────────────
 const STATUS_STYLES = {
@@ -368,6 +405,360 @@ function SuccessGauge({ rate }) {
 // ══════════════════════════════════════════════════════════════════════════
 // AI LOGS TAB — 세션 로그 + 통계 + 피드백 코멘트
 // ══════════════════════════════════════════════════════════════════════════
+// ── 추천 진단 탭 ────────────────────────────────────────────────────────────
+// 왜 필요한가: 교육심리 건(과목이 온라인으로 잘못 표시됨)은 success=true,
+// 학점 정상, 경고 없음이었다. 기존 AI 로그로는 영영 못 찾았을 버그다.
+// 👍/👎는 참여율이 낮아 대부분의 문제가 신고 없이 지나간다.
+// 그래서 서버가 계산한 진단 신호로 '들여다볼 추천'을 직접 찾아낸다.
+
+function FlagChip({ kind, count }) {
+  const meta = FLAG_META[kind];
+  if (!meta) return null;
+  return (
+    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${meta.tone}`}>
+      {meta.label}{count > 1 ? ` ${count}` : ''}
+    </span>
+  );
+}
+
+function DiagnosticsDetail({ log }) {
+  const candidates = log.candidates || [];
+  return (
+    <div className="mt-3 pt-3 border-t space-y-3">
+      {candidates.map((cand, i) => {
+        const d = cand.diagnostics || {};
+        const noTime = d.no_time_slot || [];
+        const unmatched = d.unmatched || [];
+        const missing = [...(d.must_take_missing || []), ...(d.locked_required_missing || [])];
+        return (
+          <div key={i} className="bg-gray-50 rounded-lg p-3">
+            <div className="flex items-center gap-2 mb-2 flex-wrap">
+              <span className="text-xs font-bold text-gray-700">
+                {['A', 'B', 'C', 'D'][i] || i + 1}안
+              </span>
+              {cand.score != null && (
+                <span className="text-[11px] text-gray-500">{cand.score}점</span>
+              )}
+              <span className="text-[11px] text-gray-500">{cand.total_credits}학점</span>
+              {log.selected_candidate === i && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-700 font-semibold">
+                  사용자 선택
+                </span>
+              )}
+              {log.saved && log.saved_candidate === i && (
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-100 text-green-700 font-semibold">
+                  저장됨
+                </span>
+              )}
+            </div>
+
+            {/* 걸린 신호를 먼저 보여준다 — 이게 이 화면의 본론이다 */}
+            {noTime.length > 0 && (
+              <div className="mb-2">
+                <div className="text-[11px] font-semibold text-red-700 mb-1">
+                  시간 없음 ({noTime.length}개)
+                </div>
+                {noTime.map((c, j) => (
+                  <div key={j} className="text-[11px] text-gray-600 pl-2">
+                    · {c.course_name} [{c.course_code}-{c.section}]
+                    {' — '}
+                    <code className="bg-white px-1 rounded border">
+                      {c.schedule_raw ? `"${c.schedule_raw}"` : '(빈 값)'}
+                    </code>
+                    {c.schedule_raw
+                      ? ' 파싱 실패 (토요일 등 미지원 형식)'
+                      : ' 카탈로그 조회 실패'}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {unmatched.length > 0 && (
+              <div className="mb-2">
+                <div className="text-[11px] font-semibold text-purple-700 mb-1">
+                  카탈로그에 없음 ({unmatched.length}개) — 환각 의심
+                </div>
+                {unmatched.map((c, j) => (
+                  <div key={j} className="text-[11px] text-gray-600 pl-2">
+                    · {c.course_name} [{c.course_code}-{c.section}]
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {missing.length > 0 && (
+              <div className="mb-2">
+                <div className="text-[11px] font-semibold text-amber-700 mb-1">
+                  누락된 지정/필수 과목
+                </div>
+                {missing.map((c, j) => (
+                  <div key={j} className="text-[11px] text-gray-600 pl-2">
+                    · {typeof c === 'string' ? c : c.course_name}
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* 실제로 추천된 과목 전체 */}
+            <details>
+              <summary className="text-[11px] text-gray-500 cursor-pointer hover:text-gray-700">
+                추천된 과목 {cand.courses?.length || 0}개 보기
+              </summary>
+              <div className="mt-1.5 space-y-0.5">
+                {(cand.courses || []).map((c, j) => (
+                  <div key={j} className="text-[11px] text-gray-600 flex gap-2">
+                    <span className="text-gray-400 w-[92px] shrink-0">
+                      {c.course_code}-{c.section}
+                    </span>
+                    <span className="flex-1 truncate">{c.course_name}</span>
+                    <span className="text-gray-400 shrink-0">{c.credits}학점</span>
+                    <span className="text-gray-400 w-[110px] shrink-0 truncate">
+                      {c.schedule_raw || '(시간 없음)'}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </details>
+
+            {(cand.warnings || []).length > 0 && (
+              <div className="mt-2 text-[11px] text-gray-500">
+                {cand.warnings.map((w, j) => <div key={j}>⚠ {w}</div>)}
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function DiagnosticsTab() {
+  const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('flagged');
+  const [expanded, setExpanded] = useState(null);
+
+  const load = async () => {
+    setLoading(true);
+    try {
+      // type 필터를 쿼리에 넣으면 복합 인덱스가 필요하다.
+      // 건수가 크지 않으니 넉넉히 가져와 클라이언트에서 거른다.
+      const snap = await getDocs(
+        query(collection(db, 'ai_logs'), orderBy('created_at', 'desc'), limit(200))
+      );
+      setLogs(
+        snap.docs
+          .map(d => ({ id: d.id, ...d.data() }))
+          .filter(l => l.type === 'recommend')
+      );
+    } catch { /* ignore */ }
+    setLoading(false);
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const withCandidates = logs.filter(l => Array.isArray(l.candidates));
+  const flaggedLogs = withCandidates.filter(l => l.flagged);
+
+  // 신호별 건수
+  const kindCounts = {};
+  for (const l of withCandidates) {
+    for (const k of (l.flag_kinds || [])) {
+      kindCounts[k] = (kindCounts[k] || 0) + 1;
+    }
+  }
+
+  // 후보 선택 분포 — 1순위(A)가 아닌 후보가 계속 선택되면 점수 함수가 틀린 것이다
+  const multiCandidate = withCandidates.filter(l => (l.candidates || []).length > 1);
+  // 탭을 실제로 누른 건만 센다. 기본값(0)까지 세면 "아무것도 안 누름"이
+  // 전부 A안 선택으로 집계돼 A안 비율이 부풀려진다.
+  const switched = multiCandidate.filter(l => l.candidate_switched);
+  const switchedCount = switched.length;
+  const pickCounts = switched.reduce((acc, l) => {
+    const i = l.selected_candidate ?? 0;
+    acc[i] = (acc[i] || 0) + 1;
+    return acc;
+  }, {});
+  const savedCount = withCandidates.filter(l => l.saved).length;
+
+  const filtered =
+    filter === 'all' ? withCandidates :
+    filter === 'flagged' ? flaggedLogs :
+    withCandidates.filter(l => (l.flag_kinds || []).includes(filter));
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-16">
+        <Loader2 className="animate-spin text-gray-400" size={28} />
+      </div>
+    );
+  }
+
+  if (withCandidates.length === 0) {
+    return (
+      <div className="bg-white border rounded-xl p-6 text-center">
+        <Bug className="mx-auto text-gray-300 mb-2" size={32} />
+        <p className="text-sm text-gray-600 font-medium">아직 진단 데이터가 없습니다</p>
+        <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
+          진단 기능이 배포된 이후의 추천부터 기록됩니다.<br />
+          이전 로그에는 후보·진단 정보가 들어 있지 않습니다.
+        </p>
+      </div>
+    );
+  }
+
+  const flagRate = Math.round((flaggedLogs.length / withCandidates.length) * 100);
+
+  return (
+    <div className="space-y-4">
+      {/* 요약 */}
+      <div className="grid grid-cols-3 gap-3">
+        <div className="bg-white border rounded-xl p-4">
+          <div className="text-3xl font-bold text-gray-800">{withCandidates.length}</div>
+          <div className="text-xs text-gray-500 mt-0.5">추천 세션</div>
+        </div>
+        <div className="bg-white border rounded-xl p-4">
+          <div className={`text-3xl font-bold ${flaggedLogs.length ? 'text-red-600' : 'text-green-600'}`}>
+            {flaggedLogs.length}
+          </div>
+          <div className="text-xs text-gray-500 mt-0.5">신호 걸림 ({flagRate}%)</div>
+        </div>
+        <div className="bg-white border rounded-xl p-4">
+          <div className="text-3xl font-bold text-indigo-600">
+            {withCandidates.length ? Math.round((savedCount / withCandidates.length) * 100) : 0}%
+          </div>
+          <div className="text-xs text-gray-500 mt-0.5">시간표 저장률</div>
+        </div>
+      </div>
+
+      {/* 후보 선택 분포 */}
+      {multiCandidate.length > 0 && (
+        <div className="bg-white border rounded-xl p-4">
+          <h3 className="text-sm font-bold text-gray-700 mb-1">🎯 어떤 후보를 고르나</h3>
+          <p className="text-[11px] text-gray-400 mb-3">
+            탭을 직접 눌러 후보를 바꾼 {switchedCount}건 기준 (전체 {multiCandidate.length}건).
+            {' '}A안이 아닌 후보가 자주 선택되면 점수 함수를 손봐야 합니다
+          </p>
+          <div className="flex gap-2">
+            {['A', 'B', 'C', 'D'].map((label, i) => {
+              const cnt = pickCounts[i] || 0;
+              const pct = switchedCount ? Math.round((cnt / switchedCount) * 100) : 0;
+              if (cnt === 0 && i > 2) return null;
+              return (
+                <div key={i} className="flex-1 bg-gray-50 rounded-lg p-2.5 text-center">
+                  <div className="text-lg font-bold text-gray-800">{pct}%</div>
+                  <div className="text-[11px] text-gray-500">{label}안 ({cnt}건)</div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* 신호별 집계 */}
+      {Object.keys(kindCounts).length > 0 && (
+        <div className="bg-white border rounded-xl p-4">
+          <h3 className="text-sm font-bold text-gray-700 mb-3">🚩 걸린 신호</h3>
+          <div className="space-y-2">
+            {Object.entries(kindCounts)
+              .sort((a, b) => b[1] - a[1])
+              .map(([kind, cnt]) => (
+                <div key={kind} className="flex items-start gap-2.5">
+                  <FlagChip kind={kind} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-[11px] text-gray-500 leading-snug">
+                      {FLAG_META[kind]?.desc}
+                    </div>
+                  </div>
+                  <span className="text-sm font-bold text-gray-700 shrink-0">{cnt}건</span>
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
+
+      {/* 필터 */}
+      <div className="flex gap-1.5 flex-wrap">
+        {[
+          { id: 'flagged', label: `신호 걸림 (${flaggedLogs.length})` },
+          { id: 'all', label: `전체 (${withCandidates.length})` },
+          ...Object.entries(kindCounts).map(([k, c]) => ({
+            id: k, label: `${FLAG_META[k]?.label || k} (${c})`,
+          })),
+        ].map(f => (
+          <button
+            key={f.id}
+            onClick={() => setFilter(f.id)}
+            className={`text-xs px-3 py-1.5 rounded-full font-medium transition-colors ${
+              filter === f.id
+                ? 'bg-gray-800 text-white'
+                : 'bg-white border text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+        <button
+          onClick={load}
+          className="text-xs px-3 py-1.5 rounded-full bg-white border text-gray-600 hover:bg-gray-50 flex items-center gap-1 ml-auto"
+        >
+          <RefreshCw size={12} /> 새로고침
+        </button>
+      </div>
+
+      {/* 목록 */}
+      {filtered.length === 0 ? (
+        <div className="bg-white border rounded-xl p-6 text-center">
+          <CheckCircle className="mx-auto text-green-400 mb-2" size={28} />
+          <p className="text-sm text-gray-600">해당하는 추천이 없습니다</p>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          {filtered.map(log => (
+            <div key={log.id} className="bg-white border rounded-xl p-3.5">
+              <button
+                onClick={() => setExpanded(expanded === log.id ? null : log.id)}
+                className="w-full text-left"
+              >
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-xs font-semibold text-gray-700">
+                    {log.grade}학년 · {log.major || '전공 미상'}
+                  </span>
+                  {log.double_major && (
+                    <span className="text-[11px] text-gray-500">복전 {log.double_major}</span>
+                  )}
+                  {(log.flag_kinds || []).map(k => <FlagChip key={k} kind={k} />)}
+                  {log.thumbs === 'down' && (
+                    <span className="text-[11px] text-red-600 font-semibold">👎 신고</span>
+                  )}
+                  <span className="text-[11px] text-gray-400 ml-auto">
+                    {fmtDate(log.created_at)}
+                  </span>
+                  {expanded === log.id
+                    ? <ChevronUp size={14} className="text-gray-400" />
+                    : <ChevronDown size={14} className="text-gray-400" />}
+                </div>
+                <div className="text-[11px] text-gray-500 mt-1">
+                  목표 {log.target_credits}학점 · 후보 {log.candidates?.length || 0}개
+                  {log.saved ? ' · 저장함' : ' · 저장 안 함'}
+                </div>
+              </button>
+
+              {log.feedback_comment && (
+                <div className="mt-2 text-[11px] text-gray-600 bg-red-50 rounded-lg px-2.5 py-1.5">
+                  “{log.feedback_comment}”
+                </div>
+              )}
+
+              {expanded === log.id && <DiagnosticsDetail log={log} />}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function AiLogsTab() {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -1308,6 +1699,7 @@ export default function AdminPage() {
       <main className="max-w-2xl mx-auto px-3 py-4">
         {tab === 'health'   && <HealthTab />}
         {tab === 'ailogs'   && <AiLogsTab />}
+        {tab === 'diag'     && <DiagnosticsTab />}
         {tab === 'data'     && <DataTab />}
         {tab === 'feedback' && <FeedbackTab />}
         {tab === 'updates'  && <UpdateTab />}

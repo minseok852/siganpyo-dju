@@ -698,43 +698,88 @@ def build_lookup_catalog(available_courses: dict, user_info: dict) -> dict:
     return {**available_courses, 'user_picked': extra}
 
 
-def _enrich_courses(selected_courses: list, available_courses: dict) -> list:
-    """course_code 검증 및 추가 정보 보완"""
+# 화면에 보이는 값은 전부 서버 카탈로그가 정답이다. 모델이 같은 필드를
+# 출력하더라도 그 값은 쓰지 않는다. (modify_service도 이 목록을 공유한다)
+CATALOG_FIELDS = ('course_name', 'professor', 'schedule_raw', 'credits',
+                  'department', 'college', 'room', 'times', 'classification', 'notes')
+
+
+def apply_catalog_fields(course: dict, source: dict) -> None:
+    """카탈로그 원본 값으로 표시 필드를 덮어쓴다 (모델이 채운 값은 버린다).
+
+    예전에는 `if not course.get(field)` 조건부로 채웠다. 그래서 모델이
+    schedule_raw나 credits를 지어내 출력하면 그 값이 그대로 살아남았다.
+    프롬프트에 '출력하지 말라'고 적어두긴 했지만 그건 강제가 아니고,
+    분할 호출(복수전공)과 시간표 수정 경로는 아예 모델에게 그 필드들을
+    출력하라고 시킨다.
+
+    시간이 한 글자만 틀려도 충돌 검사가 같이 틀린다. 그러면 실제로는
+    겹치는 시간표가 '문제 없음'으로 사용자에게 나간다.
+
+    카탈로그에 값이 없으면 빈 값으로 덮는다. 원본에 없는 값을 모델이
+    지어낸 것이므로, 그대로 두는 것보다 비우는 편이 정직하다.
+    """
+    for field in CATALOG_FIELDS:
+        value = source.get(field)
+        if field == 'credits':
+            course[field] = value or 0
+        elif field == 'times':
+            course[field] = value or []
+        else:
+            course[field] = '' if value is None else value
+
+
+def _enrich_courses(selected_courses: list, available_courses: dict,
+                    unmatched: list = None) -> list:
+    """course_code 검증 및 추가 정보 보완.
+
+    unmatched: 리스트를 넘기면 카탈로그에서 못 찾은 과목을 여기에 담아준다.
+               (모델이 지어낸 과목을 탐지하는 유일한 신호다 — 진단 로그에 쓰인다)
+    """
     all_courses_map = {}
     for category_courses in available_courses.values():
         for c in category_courses:
             key = f"{c.get('course_code', '')}-{c.get('section', '01')}"
             all_courses_map[key] = c
-    
+
     for course in selected_courses:
         course_code = course.get('course_code', '')
         section = course.get('section', '01')
         key = f"{course_code}-{section}"
-        
-        if key in all_courses_map:
-            matched = all_courses_map[key]
-            # 모델은 course_code/section/course_name/category만 반환한다.
-            # 나머지는 원본 과목 목록에서 채운다 (출력 토큰 절약 + 값 왜곡 방지).
-            for field in ('professor', 'schedule_raw', 'credits',
-                          'department', 'college', 'room', 'course_name'):
-                if not course.get(field):
-                    course[field] = matched.get(field, '' if field != 'credits' else 0)
-        else:
-            # course_code가 틀렸을 때의 폴백: 과목명으로 원본을 찾아 통째로 채운다
-            course_name = course.get('course_name', '')
-            for cat_courses in available_courses.values():
-                for c in cat_courses:
-                    if c.get('course_name') == course_name:
-                        course['course_code'] = c.get('course_code', '')
-                        course['section'] = c.get('section', '01')
-                        for field in ('professor', 'schedule_raw', 'credits',
-                                      'department', 'college', 'room'):
-                            course[field] = c.get(field, '' if field != 'credits' else 0)
-                        break
-                else:
-                    continue
+
+        matched = all_courses_map.get(key)
+        if matched is not None:
+            apply_catalog_fields(course, matched)
+            continue
+
+        # course_code가 틀렸을 때의 폴백: 과목명으로 원본을 찾아 통째로 채운다
+        course_name = course.get('course_name', '')
+        found = None
+        for cat_courses in available_courses.values():
+            for c in cat_courses:
+                if c.get('course_name') == course_name:
+                    found = c
+                    break
+            if found is not None:
                 break
-    
+
+        if found is not None:
+            course['course_code'] = found.get('course_code', '')
+            course['section'] = found.get('section', '01')
+            apply_catalog_fields(course, found)
+            continue
+
+        # 코드로도 이름으로도 못 찾음 = 카탈로그에 없는 과목.
+        # 지금은 그대로 통과시킨다 (드롭은 fix#2에서 별도 판단).
+        # 대신 반드시 기록은 남긴다 — 이게 없으면 환각이 일어나도 알 수 없다.
+        print(f"[UNMATCHED] 카탈로그에 없는 과목: [{course_code}-{section}] {course_name}")
+        if unmatched is not None:
+            unmatched.append({
+                'course_code': course_code,
+                'section': section,
+                'course_name': course_name,
+            })
+
     return selected_courses
 
 
@@ -789,6 +834,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
 
     all_locked = []  # 전체 확정 과목 누적
     all_warnings = []
+    all_unmatched = []  # 카탈로그에 없던 과목 (진단 로그용)
     
     try:
         # ============================================================
@@ -842,7 +888,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
             
             result_major = await _call_gemini(prompt_major)
             major_selected = result_major.get('selected_courses', [])
-            major_selected = _enrich_courses(major_selected, catalog)
+            major_selected = _enrich_courses(major_selected, catalog, unmatched=all_unmatched)
             all_locked.extend(major_selected)
             all_warnings.extend(result_major.get('warnings', []))
             print(f"[SPLIT] 🔵 1단계 완료: {len(major_selected)}개 과목, {sum(c.get('credits',0) for c in major_selected)}학점")
@@ -902,7 +948,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
 
             result_dm = await _call_gemini(prompt_dm)
             dm_selected = result_dm.get('selected_courses', [])
-            dm_selected = _enrich_courses(dm_selected, catalog)
+            dm_selected = _enrich_courses(dm_selected, catalog, unmatched=all_unmatched)
             all_locked.extend(dm_selected)
             all_warnings.extend(result_dm.get('warnings', []))
             print(f"[SPLIT] 🟢 2단계 완료: {len(dm_selected)}개 과목, {sum(c.get('credits',0) for c in dm_selected)}학점")
@@ -962,7 +1008,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
 
             result_gen = await _call_gemini(prompt_gen)
             gen_selected = result_gen.get('selected_courses', [])
-            gen_selected = _enrich_courses(gen_selected, catalog)
+            gen_selected = _enrich_courses(gen_selected, catalog, unmatched=all_unmatched)
             all_locked.extend(gen_selected)
             all_warnings.extend(result_gen.get('warnings', []))
             print(f"[SPLIT] 🟡 3단계 완료: {len(gen_selected)}개 과목, {sum(c.get('credits',0) for c in gen_selected)}학점")
@@ -997,7 +1043,9 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
             "total_credits": total_credits,
             "empty_days": empty_days,
             "warnings": all_warnings,
-            "summary": summary
+            "summary": summary,
+            "_removed": removed_courses,
+            "_unmatched": all_unmatched,
         }
         
     except json.JSONDecodeError as e:
@@ -1292,11 +1340,91 @@ def score_schedule(courses: list, user_info: dict, removed_count: int = 0, targe
     }
 
 
+def build_diagnostics(validated: list, removed: list, unmatched: list,
+                      user_info: dict, target_credits: int,
+                      locked_required_names: set = None) -> dict:
+    """이 시간표에 뭔가 이상한 게 있는지 자동으로 판정한다.
+
+    왜 필요한가:
+      실제 신고("교육심리가 온라인으로 나옵니다")를 받기 전까지 서버는 그 추천을
+      완전한 성공으로 기록하고 있었다. success=True, 학점도 정상, 경고도 없음.
+      즉 기존 로그로는 영영 발견할 수 없는 버그였다.
+
+      👍/👎에 기대는 것도 한계가 있다 — 참여율이 낮아서 대부분의 문제는
+      아무도 신고하지 않은 채 지나간다. 그래서 사용자가 말해주지 않아도
+      서버가 스스로 이상 신호를 남기게 한다.
+
+    각 신호는 '확실한 버그'가 아니라 '들여다볼 이유'다.
+    """
+    locked_required_names = locked_required_names or set()
+    prefs = user_info.get('preferences', {}) or {}
+
+    # 1. 시간표에 배치할 수 없는 과목.
+    #    schedule_raw가 비었거나(카탈로그 조회 실패) 파싱이 안 되는 경우(예: 토요일)
+    #    둘 다 여기 걸린다. 화면에는 '온라인'으로 표시되고 충돌 검사도 빠져나간다.
+    #    schedule_raw 원문을 같이 남겨야 두 원인을 구분할 수 있다.
+    no_time_slot = [
+        {
+            'course_code': c.get('course_code', ''),
+            'section': c.get('section', ''),
+            'course_name': c.get('course_name', ''),
+            'schedule_raw': c.get('schedule_raw', ''),
+            'room': c.get('room', ''),
+        }
+        for c in validated
+        if not parse_schedule_raw(c.get('schedule_raw', ''))
+    ]
+
+    # 2. 사용자가 '꼭 듣고 싶다'고 지정했는데 결과에 없는 과목
+    present_keys = {course_key(c) for c in validated}
+    present_names = {c.get('course_name') for c in validated}
+    must_take_missing = [
+        {
+            'course_code': c.get('course_code', ''),
+            'section': c.get('section', '01'),
+            'course_name': c.get('course_name', ''),
+        }
+        for c in (prefs.get('must_take_courses', []) or [])
+        if course_key(c) not in present_keys
+    ]
+
+    # 3. '반드시 포함' 필수과목 누락
+    locked_missing = sorted(n for n in locked_required_names if n not in present_names)
+
+    total_credits = sum(c.get('credits', 0) for c in validated)
+    credits_delta = (total_credits - target_credits) if target_credits is not None else 0
+
+    diagnostics = {
+        'no_time_slot': no_time_slot,
+        'unmatched': list(unmatched or []),
+        'removed_conflicts': [
+            {'course_name': r.get('course_name', ''),
+             'conflict_with': r.get('conflict_with', ''),
+             'locked': bool(r.get('locked'))}
+            for r in (removed or [])
+        ],
+        'must_take_missing': must_take_missing,
+        'locked_required_missing': locked_missing,
+        'credits_delta': credits_delta,
+        'course_count': len(validated),
+    }
+
+    # 하나라도 걸리면 '들여다볼 추천'으로 표시한다.
+    # 학점은 ±1을 허용 범위로 보므로 그 밖일 때만 신호로 친다.
+    diagnostics['flagged'] = bool(
+        no_time_slot or diagnostics['unmatched'] or must_take_missing
+        or locked_missing or diagnostics['removed_conflicts']
+        or abs(credits_delta) > 1
+    )
+    return diagnostics
+
+
 def _postprocess_candidate(result: dict, available_courses: dict, locked_required_names: set,
                            must_take_keys: set, target_credits: int, user_info: dict) -> dict:
     """LLM 원시 결과 → 검증/보완/채점된 후보 1개"""
     selected = result.get('selected_courses', []) or []
-    selected = _enrich_courses(selected, available_courses)
+    unmatched: list = []
+    selected = _enrich_courses(selected, available_courses, unmatched=unmatched)
     selected = _ensure_locked_required(selected, available_courses, locked_required_names)
 
     # locked 키 = 꼭 듣고 싶은 과목 + locked_required에 해당하는 선택 과목
@@ -1325,6 +1453,10 @@ def _postprocess_candidate(result: dict, available_courses: dict, locked_require
         "warnings": warnings,
         "summary": result.get('summary', ''),
         "score": score,
+        "diagnostics": build_diagnostics(
+            validated, removed, unmatched, user_info, target_credits,
+            locked_required_names,
+        ),
         "_breakdown": breakdown,
     }
 
@@ -1579,7 +1711,13 @@ async def _recommend_multi_split(user_info: dict, available_courses: dict) -> di
 
     target_credits = user_info.get('target_credits')
     selected = res.get('selected_courses', [])
-    score, _ = score_schedule(selected, user_info, removed_count=0, target_credits=target_credits)
+    removed = res.pop('_removed', []) or []
+    unmatched = res.pop('_unmatched', []) or []
+    score, _ = score_schedule(selected, user_info, removed_count=len(removed),
+                              target_credits=target_credits)
+
+    prefs = user_info.get('preferences', {}) or {}
+    locked_required_names = set(prefs.get('locked_required', []) or [])
 
     cand = {
         "selected_courses": selected,
@@ -1588,6 +1726,10 @@ async def _recommend_multi_split(user_info: dict, available_courses: dict) -> di
         "warnings": res.get('warnings', []),
         "summary": res.get('summary', ''),
         "score": score,
+        "diagnostics": build_diagnostics(
+            selected, removed, unmatched, user_info, target_credits,
+            locked_required_names,
+        ),
         "theme_label": '가장 잘 맞아요',
     }
     return {"success": True, "schedules": [cand]}
