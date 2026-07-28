@@ -2,9 +2,8 @@
 import os
 import re
 import json
-import google.generativeai as genai
+from services import gemini
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 
 # ──────────────────────────────────────────────
@@ -248,24 +247,9 @@ async def modify_schedule(current_courses: list, modify_type: str, modify_params
     try:
         prompt = _build_prompt(current_courses, modify_type, modify_params, available_courses, user_info)
 
-        model = genai.GenerativeModel('gemini-flash-latest')
-        response = model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                temperature=0.2,
-                # thinking 토큰이 예산을 같이 쓰므로 넉넉히 (8192면 응답이 잘림)
-                max_output_tokens=32768,
-                response_mime_type="application/json",
-            )
-        )
-
-        text = response.text
-        if '```json' in text:
-            text = text.split('```json')[1].split('```')[0]
-        elif '```' in text:
-            text = text.split('```')[1].split('```')[0]
-
-        result = json.loads(text.strip())
+        # await로 호출한다. 예전에는 async 함수 안에서 동기 호출을 해
+        # 20~30초 동안 이벤트 루프가 멈추고 다른 사용자 요청까지 대기했다.
+        result = await gemini.generate_json(prompt, temperature=0.2)
         selected = result.get('selected_courses', [])
         warnings = result.get('warnings', [])
         summary = result.get('summary', '시간표가 수정되었습니다.')

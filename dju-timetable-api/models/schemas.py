@@ -94,6 +94,9 @@ class RecommendUserInfo(BaseModel):
 class RecommendRequest(BaseModel):
     user_info: RecommendUserInfo
     available_courses: dict[str, list[Course]]
+    # 사용자가 '다시 만들기'를 눌렀을 때만 true.
+    # 같은 조건이라도 새 시간표를 원하는 것이므로 캐시를 건너뛴다.
+    force_refresh: bool = False
 
 class SelectedCourse(BaseModel):
     course_name: str

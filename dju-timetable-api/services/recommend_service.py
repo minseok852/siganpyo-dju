@@ -3,47 +3,10 @@ import os
 import json
 import asyncio
 from collections import defaultdict
-import google.generativeai as genai
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+from services import gemini
 
-# gemini-flash-latest는 thinking 모델이라 내부 추론 토큰이 이 예산을 같이 쓴다.
-# 실측상 추론에만 3,800~7,600 토큰이 오가서 8192로는 응답이 중간에 잘렸다
-# (finish_reason=MAX_TOKENS → JSONDecodeError로 표면화됨). 넉넉히 잡는다.
-MAX_OUTPUT_TOKENS = 32768
-
-
-def _gen_config(temperature: float, max_tokens: int = None):
-    """JSON 응답용 GenerationConfig (마크다운 코드블록 없이 순수 JSON을 받는다)"""
-    return genai.types.GenerationConfig(
-        temperature=temperature,
-        max_output_tokens=max_tokens or MAX_OUTPUT_TOKENS,
-        response_mime_type="application/json",
-    )
-
-
-def _response_text(response) -> str:
-    """응답 텍스트 추출 + 실패 원인을 알아볼 수 있는 형태로 변환.
-
-    그냥 response.text를 쓰면 잘린 응답이 JSONDecodeError로만 보여서
-    원인(토큰 한도/세이프티/빈 응답)을 알 수 없다.
-    """
-    candidates = getattr(response, "candidates", None) or []
-    reason = int(getattr(candidates[0], "finish_reason", 0) or 0) if candidates else 0
-    names = {1: "STOP", 2: "MAX_TOKENS", 3: "SAFETY", 4: "RECITATION"}
-    label = names.get(reason, f"finish_reason={reason}")
-
-    try:
-        text = response.text
-    except Exception as e:
-        raise RuntimeError(f"응답 텍스트를 읽을 수 없음 ({label}): {type(e).__name__}: {e}")
-
-    if reason == 2:
-        raise RuntimeError(f"응답이 토큰 한도에서 잘림 (MAX_TOKENS, {len(text)}자 수신)")
-    if not text.strip():
-        raise RuntimeError(f"빈 응답 ({label})")
-    return text
-
+MAX_OUTPUT_TOKENS = gemini.MAX_OUTPUT_TOKENS
 
 def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
     """시간표 추천 프롬프트 생성 - 학년별 완전 분기 + 복수전공 지원"""
@@ -225,12 +188,6 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 - 공강 원하는 요일에 필수과목이 있으면 → 필수과목 우선 배치!
 - warnings에 충돌 사유 설명 (예: "금요일 공강 불가 - 1학년 전공과목 배치")
 
-### reason 작성 규칙 (정확하게!)
-- 전공필수 과목 → "전공필수"
-- 전공선택 과목 → "전공선택 (1학년 대상)" 또는 "전공선택"
-- 교양필수 과목 → "교양필수"
-- 교양선택 과목 → "교양선택"
-- 절대로 "1학년 전공 필수 과목" 같은 애매한 표현 금지!
 - classification 필드를 그대로 사용할 것"""
     
     elif grade == 4:
@@ -505,21 +462,6 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 - 복수전공({double_major}) 전선 → "복전선택"
 """
 
-    # 복수전공 reason 규칙
-    reason_rule = """### reason 규칙 (정직하게!)
-- 전공필수 → "전공필수"
-- 전공선택인데 1학년 대상 → "전공선택 (1학년 대상)"
-- 전공선택 일반 → "전공선택"
-- 교양필수 → "교양필수"
-- 교양선택 → "교양선택 (N영역)" """
-
-    if double_major:
-        reason_rule += f"""
-- 복전 전필 → "복전필수 ({double_major})"
-- 복전 전선 → "복전선택 ({double_major})"
-"""
-    reason_rule += """- ❌ 금지: "1학년 전공 필수 과목" 같은 애매한 표현"""
-
     response_format = f"""
 ## 📤 응답 형식 (반드시 JSON만 출력!)
 
@@ -530,19 +472,18 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
             "course_name": "과목명",
             "course_code": "학수번호 (위 목록의 [학수번호-분반]에서 학수번호 부분)",
             "section": "분반 (위 목록의 [학수번호-분반]에서 분반 부분)",
-            "professor": "교수명",
-            "schedule_raw": "시간",
-            "credits": 3,
-            "category": "전공필수|전공선택|교양필수|교양선택{"|복전필수|복전선택" if double_major else ""}",
-            "reason": "선택 이유"
+            "category": "전공필수|전공선택|교양필수|교양선택{"|복전필수|복전선택" if double_major else ""}"
         }}
     ],
-    "total_credits": 18,
-    "empty_days": ["금"],
     "warnings": ["주의사항"],
     "summary": "시간표 총평 (2-3문장)"
 }}
 ```
+
+### ⚠️ 위 4개 필드만 출력하세요
+- professor, schedule_raw, credits, total_credits, empty_days는 **출력하지 마세요**.
+  서버가 위 과목 목록에서 직접 채웁니다. 적어봐야 무시됩니다.
+- 과목당 선택 이유도 적지 마세요. 전체 총평(summary) 한 번이면 충분합니다.
 
 ### ⚠️ course_code, section 규칙 (매우 중요!)
 - 위 과목 목록에서 [course_code-section] 형식으로 제공됨
@@ -551,8 +492,6 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 - **반드시 목록에 있는 값을 그대로 사용!** 임의로 만들지 마세요!
 
 {category_rule}
-
-{reason_rule}
 
 ### warnings 규칙
 - 공강 희망 vs 필수과목 충돌 시 → "OO요일 공강 불가 - [과목명] 필수 배치"
@@ -626,94 +565,8 @@ def build_recommend_prompt(user_info: dict, available_courses: dict) -> str:
 
 
 def _extract_json(text: str) -> dict:
-    """Gemini 응답에서 JSON 추출 (코드블록 제거)"""
-    if "```json" in text:
-        text = text.split("```json")[1].split("```")[0]
-    elif "```" in text:
-        text = text.split("```")[1].split("```")[0]
-    return json.loads(text.strip())
-
-
-async def recommend_schedule(user_info: dict, available_courses: dict) -> dict:
-    """Gemini API를 사용해 시간표 추천"""
-
-    double_major = user_info.get('double_major')
-    credit_allocation = user_info.get('preferences', {}).get('credit_allocation')
-
-    if double_major and credit_allocation:
-        return await recommend_schedule_split(user_info, available_courses)
-
-    prompt = build_recommend_prompt(user_info, available_courses)
-
-    last_error = None
-    for attempt, temperature in enumerate([0.3, 0.1]):
-        response_text = None
-        try:
-            model = genai.GenerativeModel('gemini-flash-latest')
-            response = model.generate_content(prompt, generation_config=_gen_config(temperature))
-            response_text = _response_text(response)
-            result = _extract_json(response_text)
-
-            # ========== 후처리: course_code 검증 ==========
-            selected_courses = result.get('selected_courses', [])
-
-            all_courses_map = {}
-            for category_courses in available_courses.values():
-                for c in category_courses:
-                    key = f"{c.get('course_code', '')}-{c.get('section', '01')}"
-                    all_courses_map[key] = c
-
-            for course in selected_courses:
-                course_code = course.get('course_code', '')
-                section = course.get('section', '01')
-                key = f"{course_code}-{section}"
-
-                if key in all_courses_map:
-                    matched = all_courses_map[key]
-                    if not course.get('department'):
-                        course['department'] = matched.get('department', '')
-                    if not course.get('college'):
-                        course['college'] = matched.get('college', '')
-                    if not course.get('room'):
-                        course['room'] = matched.get('room', '')
-                else:
-                    course_name = course.get('course_name', '')
-                    for cat_courses in available_courses.values():
-                        for c in cat_courses:
-                            if c.get('course_name') == course_name:
-                                course['course_code'] = c.get('course_code', '')
-                                course['section'] = c.get('section', '01')
-                                course['department'] = c.get('department', '')
-                                course['college'] = c.get('college', '')
-                                course['room'] = c.get('room', '')
-                                break
-                        else:
-                            continue
-                        break
-
-            # ========== 후처리: 시간 충돌 검사 및 제거 ==========
-            validated_courses, removed_courses = validate_and_remove_conflicts(selected_courses)
-
-            warnings = result.get('warnings', [])
-            if removed_courses:
-                for removed in removed_courses:
-                    warnings.append(f"시간 충돌로 제거됨: {removed['course_name']} ({removed['conflict_with']}과 겹침)")
-
-            result['selected_courses'] = validated_courses
-            result['warnings'] = warnings
-            result['total_credits'] = sum(c.get('credits', 0) for c in validated_courses)
-            result['empty_days'] = calculate_empty_days(validated_courses)
-
-            return {"success": True, **result}
-
-        except json.JSONDecodeError as e:
-            last_error = f"응답 파싱 실패 (시도 {attempt + 1}): {str(e)}"
-            print(f"[WARN] {last_error}")
-            continue
-        except Exception as e:
-            return {"success": False, "error": str(e)}
-
-    return {"success": False, "error": last_error or "알 수 없는 오류"}
+    """Gemini 응답에서 JSON 추출 (하위 호환용 별칭)"""
+    return gemini.extract_json(text)
 
 
 # ============================================================
@@ -793,19 +646,8 @@ def _build_phase_response_format(category_type: str) -> str:
 
 
 async def _call_gemini(prompt: str) -> dict:
-    """Gemini API 단일 호출 + JSON 파싱"""
-    model = genai.GenerativeModel('gemini-flash-latest')
-    
-    response = model.generate_content(prompt, generation_config=_gen_config(0.2))
-
-    response_text = _response_text(response)
-    
-    if "```json" in response_text:
-        response_text = response_text.split("```json")[1].split("```")[0]
-    elif "```" in response_text:
-        response_text = response_text.split("```")[1].split("```")[0]
-    
-    return json.loads(response_text.strip())
+    """Gemini API 단일 호출 + JSON 파싱 (split 경로용)"""
+    return await gemini.generate_json(prompt, temperature=0.2)
 
 
 def _enrich_courses(selected_courses: list, available_courses: dict) -> list:
@@ -823,22 +665,23 @@ def _enrich_courses(selected_courses: list, available_courses: dict) -> list:
         
         if key in all_courses_map:
             matched = all_courses_map[key]
-            if not course.get('department'):
-                course['department'] = matched.get('department', '')
-            if not course.get('college'):
-                course['college'] = matched.get('college', '')
-            if not course.get('room'):
-                course['room'] = matched.get('room', '')
+            # 모델은 course_code/section/course_name/category만 반환한다.
+            # 나머지는 원본 과목 목록에서 채운다 (출력 토큰 절약 + 값 왜곡 방지).
+            for field in ('professor', 'schedule_raw', 'credits',
+                          'department', 'college', 'room', 'course_name'):
+                if not course.get(field):
+                    course[field] = matched.get(field, '' if field != 'credits' else 0)
         else:
+            # course_code가 틀렸을 때의 폴백: 과목명으로 원본을 찾아 통째로 채운다
             course_name = course.get('course_name', '')
             for cat_courses in available_courses.values():
                 for c in cat_courses:
                     if c.get('course_name') == course_name:
                         course['course_code'] = c.get('course_code', '')
                         course['section'] = c.get('section', '01')
-                        course['department'] = c.get('department', '')
-                        course['college'] = c.get('college', '')
-                        course['room'] = c.get('room', '')
+                        for field in ('professor', 'schedule_raw', 'credits',
+                                      'department', 'college', 'room'):
+                            course[field] = c.get(field, '' if field != 'credits' else 0)
                         break
                 else:
                     continue
@@ -1247,15 +1090,8 @@ def calculate_empty_days(courses: list) -> list:
 # ============================================================
 
 async def _gemini_generate(prompt: str, temperature: float = 0.3, max_tokens: int = None) -> dict:
-    """Gemini 호출을 스레드에서 실행(비동기 병렬화) + JSON 파싱"""
-    model = genai.GenerativeModel('gemini-flash-latest')
-
-    def _run():
-        resp = model.generate_content(prompt, generation_config=_gen_config(temperature, max_tokens))
-        return _response_text(resp)
-
-    text = await asyncio.to_thread(_run)
-    return _extract_json(text)
+    """후보 생성용 Gemini 호출 (모델/타임아웃/재시도는 services.gemini가 담당)"""
+    return await gemini.generate_json(prompt, temperature=temperature, max_tokens=max_tokens)
 
 
 def _conflicts_with_any(course: dict, others: list) -> bool:

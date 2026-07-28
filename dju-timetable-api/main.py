@@ -1,5 +1,5 @@
 # main.py
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -14,6 +14,7 @@ if not os.getenv("GEMINI_API_KEY"):
 from models.schemas import EvaluateRequest, RecommendRequest
 from services.ai_service import evaluate_schedule
 from services.recommend_service import recommend_schedules_multi
+from services import rate_limit, result_cache, gemini
 
 app = FastAPI(
     title="대진대 시간표 AI API",
@@ -32,6 +33,28 @@ async def _discord(lines: list[str]) -> None:
             await client.post(webhook_url, json={"content": "\n".join(lines)}, timeout=5)
     except Exception:
         pass
+
+
+# 일일 상한에 근접했을 때 디스코드 알림을 한 번만 보내기 위한 플래그
+_daily_warned = False
+
+
+async def _check_daily_ai_budget() -> None:
+    """AI 호출 일일 상한 확인. 초과 시 503, 80% 도달 시 디스코드 경고 1회."""
+    global _daily_warned
+    rate_limit.check_daily_ai()   # 초과하면 HTTPException(503)
+
+    used = rate_limit.daily_ai_count()
+    limit = rate_limit.DAILY_AI_LIMIT
+    if not _daily_warned and used >= limit * 0.8:
+        _daily_warned = True
+        await _discord([
+            "## ⚠️ AI 일일 사용량 80% 도달",
+            f"**사용:** {used} / {limit}회 (최근 24시간)",
+            "한도를 넘으면 사용자에게 503이 반환됩니다.",
+        ])
+    elif used < limit * 0.5:
+        _daily_warned = False   # 사용량이 내려가면 다시 알릴 수 있게
 
 # CORS 설정 (프론트엔드 연동용)
 app.add_middleware(
@@ -59,13 +82,17 @@ async def health_check():
     api_key_exists = bool(os.getenv("GEMINI_API_KEY"))
     return {
         "status": "healthy",
-        "api_key_configured": api_key_exists
+        "api_key_configured": api_key_exists,
+        "rate_limit": rate_limit.stats(),
+        "result_cache": result_cache.stats(),
+        "model": {"name": gemini.MODEL, "thinking_level": gemini.THINKING_LEVEL or "기본"},
     }
 
 
 @app.post("/api/evaluate")
-async def evaluate_schedule_endpoint(request: EvaluateRequest):
+async def evaluate_schedule_endpoint(request: EvaluateRequest, http_request: Request):
     """시간표 평가 API"""
+    rate_limit.check(http_request, "evaluate")
     if not request.courses:
         raise HTTPException(status_code=400, detail="과목이 없습니다")
     if len(request.courses) > 15:
@@ -74,6 +101,7 @@ async def evaluate_schedule_endpoint(request: EvaluateRequest):
     courses_data = [course.model_dump() for course in request.courses]
     user_info_data = request.user_info.model_dump()
 
+    await _check_daily_ai_budget()
     result = await evaluate_schedule(courses_data, user_info_data)
 
     if not result.get("success"):
@@ -90,8 +118,9 @@ async def evaluate_schedule_endpoint(request: EvaluateRequest):
 
 
 @app.post("/api/recommend")
-async def recommend_schedule_endpoint(request: RecommendRequest):
+async def recommend_schedule_endpoint(request: RecommendRequest, http_request: Request):
     """시간표 추천 API"""
+    rate_limit.check(http_request, "recommend")
     if not request.available_courses:
         raise HTTPException(status_code=400, detail="사용 가능한 과목이 없습니다")
 
@@ -101,7 +130,21 @@ async def recommend_schedule_endpoint(request: RecommendRequest):
         for k, v in request.available_courses.items()
     }
 
-    result = await recommend_schedules_multi(user_info_data, available_courses_data)
+    # 사용자가 기다리다 이탈 후 같은 조건으로 다시 시도하는 경우가 많다.
+    # 이미 만들어둔 결과가 있으면 AI를 다시 부르지 않고, 생성 중이면 그 결과를 같이 받는다.
+    cache_key = result_cache.make_key(user_info_data, available_courses_data)
+
+    async def _generate():
+        await _check_daily_ai_budget()
+        return await recommend_schedules_multi(user_info_data, available_courses_data)
+
+    result, source = await result_cache.get_or_create(
+        cache_key, _generate, force=request.force_refresh
+    )
+
+    if source != "miss":
+        print(f"[CACHE] {source} — AI 호출 없이 응답 "
+              f"({user_info_data.get('grade')}학년 {user_info_data.get('major')})")
 
     if not result.get("success"):
         error_msg = result.get("error", "AI 추천 중 오류가 발생했습니다")
@@ -130,11 +173,13 @@ class ModifyRequest(BaseModel):
 
 
 @app.post("/api/recommend/modify")
-async def modify_schedule_endpoint(request: ModifyRequest):
+async def modify_schedule_endpoint(request: ModifyRequest, http_request: Request):
     """시간표 수정 API"""
+    rate_limit.check(http_request, "modify")
     if not request.current_courses:
         raise HTTPException(status_code=400, detail="현재 시간표가 없습니다")
 
+    await _check_daily_ai_budget()
     result = await _modify_schedule(
         current_courses=request.current_courses,
         modify_type=request.modify_type,
@@ -168,24 +213,25 @@ async def graduation_plan(request: GraduationRequest):
 # ===== 서버 헬스 =====
 
 @app.get("/api/health/ai-ping")
-async def ai_ping():
-    """Gemini AI에 실제 요청을 보내 응답 여부 확인 (관리자용)"""
-    import google.generativeai as genai
-    import time
-    import asyncio
+async def ai_ping(http_request: Request):
+    """Gemini AI에 실제 요청을 보내 응답 여부 확인 (관리자용)
 
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
+    인증이 없는 GET이라 주소만 알면 누구나 Gemini를 호출시킬 수 있다.
+    Firebase Auth 토큰 검증은 백엔드에 firebase-admin이 없어 불가하므로
+    호출 빈도를 강하게 제한하고 일일 상한에도 포함시킨다.
+    """
+    rate_limit.check(http_request, "ai_ping")
+    await _check_daily_ai_budget()
+    import time
+
+    if not os.getenv("GEMINI_API_KEY"):
         return {"success": False, "error": "GEMINI_API_KEY 미설정", "latency_ms": None}
 
     start = time.time()
     try:
-        genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-flash-latest")
-        loop = asyncio.get_event_loop()
-        await loop.run_in_executor(None, model.generate_content, "Say 'ok'")
+        await gemini.ping()
         ms = round((time.time() - start) * 1000)
-        return {"success": True, "latency_ms": ms}
+        return {"success": True, "latency_ms": ms, "model": gemini.MODEL}
     except Exception as e:
         ms = round((time.time() - start) * 1000)
         return {"success": False, "error": str(e)[:120], "latency_ms": ms}
@@ -197,8 +243,9 @@ class AdminVerifyRequest(BaseModel):
     password: str
 
 @app.post("/api/admin/verify")
-async def verify_admin(request: AdminVerifyRequest):
+async def verify_admin(request: AdminVerifyRequest, http_request: Request):
     """관리자 비밀번호 검증 (서버에서만 비밀번호 보유)"""
+    rate_limit.check(http_request, "admin_verify")
     admin_password = os.getenv("ADMIN_PASSWORD")
     if not admin_password:
         raise HTTPException(status_code=500, detail="서버 설정 오류")
@@ -212,8 +259,9 @@ class AiFeedbackNotifyRequest(BaseModel):
     comment: Optional[str] = None
 
 @app.post("/api/ai/feedback-notify")
-async def ai_feedback_notify(request: AiFeedbackNotifyRequest):
+async def ai_feedback_notify(request: AiFeedbackNotifyRequest, http_request: Request):
     """AI 결과에 👎가 눌렸을 때 Discord 알림"""
+    rate_limit.check(http_request, "notify")
     lines = [
         "## 👎 AI 결과 불만족 피드백",
         f"**로그 ID:** {request.log_id}",
@@ -230,8 +278,9 @@ class FeedbackNotifyRequest(BaseModel):
     courseName: Optional[str] = None
 
 @app.post("/api/feedback/notify")
-async def notify_feedback(request: FeedbackNotifyRequest):
+async def notify_feedback(request: FeedbackNotifyRequest, http_request: Request):
     """피드백 제출 시 디스코드로 알림 전송"""
+    rate_limit.check(http_request, "notify")
     webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
     if not webhook_url:
         raise HTTPException(status_code=500, detail="Discord webhook이 설정되지 않았습니다")

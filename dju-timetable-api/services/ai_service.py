@@ -3,10 +3,9 @@ import os
 import json
 import re
 import math
-import google.generativeai as genai
+from services import gemini
 
 # Gemini API 설정
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # 시간표 유형 정의
 SCHEDULE_TYPES = {
@@ -751,27 +750,9 @@ async def evaluate_schedule(courses: list, user_info: dict) -> dict:
     prompt = build_prompt(courses, user_info, analysis, schedule_type, score)
     
     try:
-        model = genai.GenerativeModel('gemini-flash-latest')
-        
-        response = model.generate_content(
-            prompt,
-            generation_config=genai.types.GenerationConfig(
-                temperature=0.9,  # 다양한 표현 유도
-                # thinking 토큰이 예산을 같이 쓰므로 넉넉히 (8192면 응답이 잘림)
-                max_output_tokens=32768,
-                response_mime_type="application/json",
-            )
-        )
-        
-        response_text = response.text
-        
-        # JSON 추출
-        if "```json" in response_text:
-            response_text = response_text.split("```json")[1].split("```")[0]
-        elif "```" in response_text:
-            response_text = response_text.split("```")[1].split("```")[0]
-        
-        result = json.loads(response_text.strip())
+        # await로 호출한다. 예전에는 async 함수 안에서 동기 호출을 해
+        # 20~30초 동안 이벤트 루프가 멈추고 다른 사용자 요청까지 대기했다.
+        result = await gemini.generate_json(prompt, temperature=0.9)  # 다양한 표현 유도
         
         # 백엔드에서 결정한 값 추가
         result['schedule_type'] = SCHEDULE_TYPES[schedule_type]

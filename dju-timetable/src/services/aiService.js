@@ -55,7 +55,7 @@ export async function evaluateSchedule(courses, userInfo) {
 /**
  * 시간표 추천 API 호출
  */
-export async function recommendSchedule(userInfo, availableCourses) {
+export async function recommendSchedule(userInfo, availableCourses, forceRefresh = false) {
   try {
     // 과목을 API 형식으로 변환하는 함수
     const formatCourse = (c) => ({
@@ -122,7 +122,9 @@ export async function recommendSchedule(userInfo, availableCourses) {
           // ✅ 복수전공 과목
           double_major_required: (availableCourses.double_major_required || []).map(formatCourse),
           double_major_elective: (availableCourses.double_major_elective || []).map(formatCourse),
-        }
+        },
+        // 같은 조건이라도 새 시간표를 원할 때(다시 만들기)만 서버 캐시를 건너뛴다
+        force_refresh: forceRefresh,
       }),
     });
 

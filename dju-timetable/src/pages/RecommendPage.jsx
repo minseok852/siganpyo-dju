@@ -1,5 +1,5 @@
 // src/pages/RecommendPage.jsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -320,40 +320,48 @@ function CourseSearchModal({
   matchByName = false  // true면 과목명 기준 체크, false면 분반까지 정확히 체크
 }) {
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedTerm, setDebouncedTerm] = useState('');
   const { searchCourses, loading } = useCourses();
   const [searchResults, setSearchResults] = useState([]);
 
+  // filterOptions는 호출부에서 객체 리터럴로 넘어와 렌더마다 새 객체가 된다.
+  // 그대로 의존성에 쓰면 부모가 리렌더될 때마다 Firestore 쿼리가 다시 나가므로
+  // 내용이 실제로 바뀔 때만 새 객체가 되도록 고정한다.
+  const filterKey = JSON.stringify(filterOptions);
+  const filters = useMemo(() => JSON.parse(filterKey), [filterKey]);
+
+  // 타이핑할 때마다 쿼리하지 않도록 300ms 디바운스
   useEffect(() => {
-    async function doSearch() {
-      if (isOpen) {
-        // 필터 옵션 적용
-        const filters = {
-          ...filterOptions,
-          limit: 50
-        };
+    const t = setTimeout(() => setDebouncedTerm(searchTerm), 300);
+    return () => clearTimeout(t);
+  }, [searchTerm]);
 
-        if (searchTerm.length >= 2) {
-          filters.searchTerm = searchTerm;
-        }
-
-        const results = await searchCourses(filters);
-        setSearchResults(results);
-      } else {
-        setSearchResults([]);
-      }
-    }
-    doSearch();
-  }, [searchTerm, isOpen, searchCourses, filterOptions]);
-
-  // 모달 열릴 때 초기 로드
   useEffect(() => {
-    async function initialLoad() {
-      if (isOpen && filterOptions.category) {
-        const results = await searchCourses({ ...filterOptions, limit: 50 });
-        setSearchResults(results);
-      }
+    if (!isOpen) {
+      setSearchResults([]);
+      return;
     }
-    initialLoad();
+
+    let cancelled = false;
+    (async () => {
+      const query = { ...filters, limit: 50 };
+      if (debouncedTerm.length >= 2) {
+        query.searchTerm = debouncedTerm;
+      }
+      const results = await searchCourses(query);
+      // 응답이 늦게 도착한 이전 요청이 최신 결과를 덮어쓰지 않도록
+      if (!cancelled) setSearchResults(results);
+    })();
+
+    return () => { cancelled = true; };
+  }, [debouncedTerm, isOpen, searchCourses, filters]);
+
+  // 모달을 닫았다 열면 이전 검색어가 남지 않게 초기화
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchTerm('');
+      setDebouncedTerm('');
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -454,6 +462,8 @@ export default function RecommendPage() {
 
   const [step, setStep] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [loadingSeconds, setLoadingSeconds] = useState(0);   // 로딩 경과 초
+  const [hasGenerated, setHasGenerated] = useState(false);   // 결과를 한 번이라도 본 적 있는지
   const [isScheduleSelectOpen, setIsScheduleSelectOpen] = useState(false);  // 시간표 선택 모달
 
   // ========== Step 1: 기본 정보 ==========
@@ -712,6 +722,24 @@ export default function RecommendPage() {
     }
   }, [userInfo.targetCredits, userInfo.hasDoubleMajor]);
 
+  // 로딩 경과 시간 카운터.
+  // 정적 스피너만 보여주면 5초 걸릴지 60초 걸릴지 몰라 사용자가 이탈한다.
+  // 이탈 후 재시도는 AI를 처음부터 다시 돌리게 만들어 비용이 배로 든다.
+  useEffect(() => {
+    if (!isLoading) return;
+    const id = setInterval(() => setLoadingSeconds(s => s + 1), 1000);
+    return () => clearInterval(id);
+  }, [isLoading]);
+
+  // 경과 시간에 따라 지금 무슨 작업 중인지 알려준다 (멈춘 게 아니라는 신호)
+  const loadingStage = (() => {
+    if (loadingSeconds < 6) return '수강 가능한 과목을 추리는 중';
+    if (loadingSeconds < 14) return '시간이 겹치지 않는 조합을 찾는 중';
+    if (loadingSeconds < 24) return '학점과 공강을 맞춰보는 중';
+    if (loadingSeconds < 40) return '거의 다 됐어요, 마무리하는 중';
+    return '조금만 더 기다려주세요';
+  })();
+
   const filteredColleges = COLLEGES.filter(c =>
     c !== '전체' && c !== '융합전공' && c !== '상생교양대학'
   );
@@ -799,8 +827,11 @@ export default function RecommendPage() {
   };
 
   // 시간표 생성
-  const handleGenerate = async () => {
+  // hasGenerated: 이미 한 번 결과를 본 뒤 '다시 만들기'로 온 경우.
+  // 이때는 같은 조건이라도 새 시간표를 원하는 것이므로 서버 캐시를 건너뛴다.
+  const handleGenerate = async (forceRefresh = false) => {
     setIsLoading(true);
+    setLoadingSeconds(0);
     setError(null);
 
     // 성공/실패 모두 같은 메타데이터로 기록한다 (관리자 페이지 실패 목록용)
@@ -879,7 +910,7 @@ export default function RecommendPage() {
           // ⭐ 반드시 포함할 필수과목명
           locked_required: lockedRequired,
         }
-      }, availableCourses);
+      }, availableCourses, forceRefresh);
 
       if (response.success) {
         // 새 응답: schedules 배열 / 구 응답: 단일 객체 → 배열로 정규화
@@ -2193,7 +2224,7 @@ export default function RecommendPage() {
 
             <div className="flex gap-2">
               <button
-                onClick={() => setStep(1)}
+                onClick={() => { setHasGenerated(true); setStep(1); }}
                 className="flex-1 py-3.5 rounded-[10px] border border-[#E4E8F0] bg-white text-[13.5px] font-bold text-[#5B6472] flex items-center justify-center gap-1.5 hover:border-[#C9D3E4] transition-colors"
               >
                 <RotateCcw size={14} />
@@ -2221,10 +2252,39 @@ export default function RecommendPage() {
         {/* 로딩 */}
         {isLoading && (
           <div className="fixed inset-0 bg-[rgba(20,26,38,.5)] flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl px-8 py-10 flex flex-col items-center gap-3 max-w-[320px] w-full">
-              <div className="w-10 h-10 rounded-full border-[3px] border-[#EAF1FE] border-t-[#2F6FEB] animate-spin" />
-              <h2 className="text-[15px] font-extrabold text-[#1E2530]">AI가 시간표를 만들고 있어요</h2>
-              <p className="text-[12.5px] text-[#8892A4]">시간 충돌과 학점 균형을 확인하는 중이에요</p>
+            <div className="bg-white rounded-2xl px-7 py-8 flex flex-col items-center max-w-[340px] w-full">
+              <div className="w-11 h-11 rounded-full border-[3px] border-[#EAF1FE] border-t-[#2F6FEB] animate-spin" />
+
+              <h2 className="mt-4 text-[15.5px] font-extrabold text-[#1E2530]">
+                AI가 시간표를 만들고 있어요
+              </h2>
+
+              {/* 예상 시간을 먼저 알려줘야 기다릴지 판단할 수 있다 */}
+              <p className="mt-1 text-[12.5px] text-[#8892A4]">
+                보통 <b className="text-[#2F6FEB]">20~30초</b> 걸려요
+              </p>
+
+              {/* 경과 시간 + 진행 막대: 멈춘 게 아니라는 신호 */}
+              <div className="w-full mt-5">
+                <div className="flex items-baseline justify-between mb-1.5">
+                  <span className="text-[12px] font-semibold text-[#5B6472]">{loadingStage}</span>
+                  <span className="text-[12px] font-bold text-[#2F6FEB] tabular-nums">
+                    {loadingSeconds}초
+                  </span>
+                </div>
+                <div className="h-1.5 bg-[#EEF1F6] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[#2F6FEB] rounded-full transition-all duration-1000 ease-linear"
+                    style={{ width: `${Math.min(95, loadingSeconds / 30 * 100)}%` }}
+                  />
+                </div>
+              </div>
+
+              <p className="mt-4 text-[11.5px] text-[#B0B7C3] text-center leading-relaxed">
+                {loadingSeconds < 30
+                  ? '창을 닫지 말고 잠시만 기다려주세요'
+                  : '조금 오래 걸리고 있어요. 나갔다 다시 시도하면 처음부터 다시 만들어야 해서 더 느려져요'}
+              </p>
             </div>
           </div>
         )}
@@ -2257,7 +2317,7 @@ export default function RecommendPage() {
               </button>
             ) : (
               <button
-                onClick={handleGenerate}
+                onClick={() => handleGenerate(hasGenerated)}
                 disabled={isLoading}
                 className="flex-[2] py-3 rounded-[10px] bg-[#1E2530] text-white text-[13.5px] font-bold flex items-center justify-center gap-2 disabled:opacity-60 hover:bg-[#151B24] transition-colors"
               >
