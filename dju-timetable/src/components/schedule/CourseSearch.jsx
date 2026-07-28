@@ -80,6 +80,27 @@ export default function CourseSearch({
   const [departments, setDepartments] = useState([]);
   const [selectedCourse, setSelectedCourse] = useState(null);
 
+  // 내 시간표와 시간이 겹치는 과목 숨기기 — 기본은 꺼둔 상태이고 선택은 기기에 저장된다
+  const [hideConflicts, setHideConflicts] = useState(() => {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.HIDE_CONFLICTS) === '1';
+    } catch {
+      return false;
+    }
+  });
+
+  const toggleHideConflicts = () => {
+    setHideConflicts(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem(STORAGE_KEYS.HIDE_CONFLICTS, next ? '1' : '0');
+      } catch {
+        // 저장 실패해도 이번 세션에는 적용되므로 무시
+      }
+      return next;
+    });
+  };
+
   // 검색창 높이 (vh) — 핸들 바를 끌어 조절, localStorage에 유지
   const [sheetHeight, setSheetHeight] = useState(loadSavedHeight);
   const [isDragging, setIsDragging] = useState(false);
@@ -312,7 +333,14 @@ export default function CourseSearch({
     filters.area !== '' ||
     filters.classification !== '';
   
-  const filteredCourses = filterByTime(courses);
+  // 시간대 필터 → 겹침 정보 부착 → (설정 시) 겹치는 과목 제외
+  const timeFiltered = filterByTime(courses);
+  const withConflict = timeFiltered.map(course => ({ course, conflict: getConflictInfo(course) }));
+  const conflictCount = withConflict.filter(d => d.conflict.conflict).length;
+  const filteredCourses = hideConflicts
+    ? withConflict.filter(d => !d.conflict.conflict)
+    : withConflict;
+  const hiddenCount = hideConflicts ? conflictCount : 0;
 
   const isSelectedCourseAdded = selectedCourse 
     ? currentCourses.some(c => c.course_code === selectedCourse.course_code && c.section === selectedCourse.section)
@@ -411,6 +439,32 @@ export default function CourseSearch({
               </button>
             )}
           </div>
+
+          {/* 겹치는 과목 숨기기 — 필터를 접어도 항상 보이게 둔다 */}
+          <button
+            type="button"
+            onClick={toggleHideConflicts}
+            aria-pressed={hideConflicts}
+            className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg border text-sm transition-colors ${
+              hideConflicts
+                ? 'border-blue-300 bg-blue-50 text-blue-700'
+                : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            <span
+              className={`w-8 h-[18px] rounded-full flex items-center px-0.5 transition-colors flex-shrink-0 ${
+                hideConflicts ? 'bg-blue-500 justify-end' : 'bg-gray-300 justify-start'
+              }`}
+            >
+              <span className="w-3.5 h-3.5 rounded-full bg-white" />
+            </span>
+            <span className="font-medium">내 시간표와 겹치는 과목 숨기기</span>
+            {hideConflicts && conflictCount > 0 && (
+              <span className="ml-auto text-xs font-bold bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded flex-shrink-0">
+                {conflictCount}개 숨김
+              </span>
+            )}
+          </button>
 
           {/* 필터 옵션 */}
           {showFilters && (
@@ -604,7 +658,17 @@ export default function CourseSearch({
 
           {!loading && filteredCourses.length === 0 && (
             <div className="text-center py-8 text-gray-500">
-              {isTimeFilterActive && courses.length > 0 ? (
+              {hiddenCount > 0 ? (
+                <>
+                  <p>검색된 {conflictCount}개 과목이 모두 내 시간표와 겹칩니다.</p>
+                  <button
+                    onClick={toggleHideConflicts}
+                    className="mt-2 text-sm text-blue-600 hover:text-blue-700"
+                  >
+                    겹치는 과목도 보기
+                  </button>
+                </>
+              ) : isTimeFilterActive && courses.length > 0 ? (
                 <>
                   <p>해당 시간대에 열리는 과목이 없습니다.</p>
                   <button
@@ -622,17 +686,29 @@ export default function CourseSearch({
 
           {/* 검색 결과 카운트 */}
           {!loading && filteredCourses.length > 0 && (
-            <div className="text-xs text-gray-500 mb-2">
-              {isTimeFilterActive 
-                ? `${courses.length}개 중 ${filteredCourses.length}개 (시간대 필터 적용)`
-                : `${filteredCourses.length}개 과목`
-              }
+            <div className="text-xs text-gray-500 mb-2 flex items-center gap-1.5 flex-wrap">
+              <span>
+                {isTimeFilterActive
+                  ? `${courses.length}개 중 ${filteredCourses.length}개 (시간대 필터 적용)`
+                  : `${filteredCourses.length}개 과목`
+                }
+              </span>
+              {hiddenCount > 0 && (
+                <>
+                  <span className="text-blue-600">· 겹치는 {hiddenCount}개 숨김</span>
+                  <button
+                    onClick={toggleHideConflicts}
+                    className="text-blue-600 hover:text-blue-700 underline underline-offset-2"
+                  >
+                    보기
+                  </button>
+                </>
+              )}
             </div>
           )}
 
           <div className="space-y-2 pb-4">
-            {filteredCourses.map((course) => {
-              const conflict = getConflictInfo(course);
+            {filteredCourses.map(({ course, conflict }) => {
               const isAdded = currentCourses.some(
                 c => c.course_code === course.course_code && c.section === course.section
               );

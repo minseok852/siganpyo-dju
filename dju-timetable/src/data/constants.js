@@ -183,6 +183,7 @@ export const STORAGE_KEYS = {
   BOOKMARKED: 'dju_bookmarked_schedules',
   RECENT_SEARCHES: 'dju_recent_searches',
   SEARCH_PANEL_HEIGHT: 'dju_search_panel_height',  // 과목 검색창 높이 (vh)
+  HIDE_CONFLICTS: 'dju_hide_conflicts',            // 검색 결과에서 시간 겹치는 과목 숨기기
 };
 
 // 과목 검색창 높이 (vh 단위) — 사용자가 핸들을 끌어 조절
