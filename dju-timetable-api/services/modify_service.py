@@ -223,8 +223,13 @@ def _build_prompt(current_courses: list, modify_type: str, modify_params: dict,
 # 과목 정보 보완 (available_courses의 원본 데이터로 채움)
 # ──────────────────────────────────────────────
 
-def _enrich(selected: list, available: dict) -> list:
+def _enrich(selected: list, available: dict, current_courses: list = None) -> list:
     index = {}
+    # 이미 시간표에 있는 과목을 먼저 넣는다. available_courses에는 프론트가 조회하는
+    # 세 카테고리만 담겨서, 교직·ROTC 과목(category='special')은 여기에 없다.
+    # 그 과목을 그대로 유지하는 수정에서도 조회에 실패해 times/room이 비어버린다.
+    for c in (current_courses or []):
+        index[f"{c.get('course_code','')}-{c.get('section','01')}"] = c
     for courses in available.values():
         for c in courses:
             key = f"{c.get('course_code','')}-{c.get('section','01')}"
@@ -254,7 +259,7 @@ async def modify_schedule(current_courses: list, modify_type: str, modify_params
         warnings = result.get('warnings', [])
         summary = result.get('summary', '시간표가 수정되었습니다.')
 
-        selected = _enrich(selected, available_courses)
+        selected = _enrich(selected, available_courses, current_courses)
         validated, removed = _validate_and_remove_conflicts(selected)
         for r in removed:
             warnings.append(f"시간 충돌로 제거됨: {r['course_name']} ({r['conflict_with']}과 겹침)")

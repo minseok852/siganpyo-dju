@@ -1,0 +1,4 @@
+# 개발·테스트 전용. 배포 환경에는 설치하지 않는다.
+#   pip install -r requirements-dev.txt
+-r requirements.txt
+pytest>=7.0

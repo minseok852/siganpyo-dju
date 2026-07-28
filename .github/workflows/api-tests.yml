@@ -1,0 +1,38 @@
+name: API 테스트
+
+# 백엔드 검증층(시간 파싱·충돌 검사·과목 보완)이 깨지지 않았는지 확인한다.
+# AI는 호출하지 않으므로 API 키도 비용도 필요 없다.
+on:
+  push:
+    paths:
+      - 'dju-timetable-api/**'
+      - '.github/workflows/api-tests.yml'
+  pull_request:
+    paths:
+      - 'dju-timetable-api/**'
+      - '.github/workflows/api-tests.yml'
+  workflow_dispatch:   # Actions 탭에서 수동 실행
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dju-timetable-api
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'   # 로컬 venv와 동일
+          cache: pip
+          cache-dependency-path: |
+            dju-timetable-api/requirements.txt
+            dju-timetable-api/requirements-dev.txt
+
+      - name: 의존성 설치
+        run: pip install -r requirements-dev.txt
+
+      - name: 테스트 실행
+        run: pytest

@@ -650,6 +650,54 @@ async def _call_gemini(prompt: str) -> dict:
     return await gemini.generate_json(prompt, temperature=0.2)
 
 
+# 사용자가 직접 고른 과목이 담기는 preferences 키들.
+# 이 과목들은 프롬프트에는 들어가지만 available_courses에는 들어오지 않는다.
+_USER_PICKED_KEYS = ('must_take_courses', 'selected_major_courses',
+                     'selected_double_major_courses')
+
+
+def build_lookup_catalog(available_courses: dict, user_info: dict) -> dict:
+    """조회·보완용 카탈로그 = available_courses + 사용자가 직접 고른 과목.
+
+    프론트는 general_required / major / general_elective 세 카테고리만 조회해
+    available_courses를 만든다. 그래서 교직·ROTC 과목(category='special')은
+    거기에 절대 포함되지 않는다. 사용자가 그런 과목을 '꼭 듣고 싶은 과목'으로
+    넣으면 프롬프트에는 시간까지 찍히지만 카탈로그에는 없는 상태가 된다.
+
+    그 상태로 _enrich_courses를 돌리면 조회에 실패해 schedule_raw와 credits가
+    빈 채로 남는다. 결과적으로:
+      - 시간이 없는 과목 = 온라인으로 표시된다 (실제 신고 사례: 교육심리 911021-01)
+      - validate_and_remove_conflicts가 '시간 미정이라 충돌 없음'으로 통과시켜
+        그 시간대에 다른 과목이 겹쳐 배치된다
+      - credits가 0이라 총 학점이 실제보다 적게 잡힌다
+
+    프롬프트 생성에는 쓰지 않는다. 프롬프트는 원본 available_courses를 그대로 쓴다.
+    (여기 넣은 과목이 프롬프트 목록에도 들어가면 AI가 자발적으로 추천하기 시작해
+     동작이 바뀐다. 이건 조회 실패만 막는 게 목적이다.)
+    """
+    prefs = user_info.get('preferences', {}) or {}
+
+    known = {course_key(c) for courses in available_courses.values() for c in courses}
+
+    extra = []
+    for key in _USER_PICKED_KEYS:
+        for c in prefs.get(key, []) or []:
+            if not isinstance(c, dict):
+                continue
+            k = course_key(c)
+            if k in known:
+                continue
+            known.add(k)
+            extra.append(c)
+
+    if not extra:
+        return available_courses
+
+    print(f"[CATALOG] 사용자 직접 선택 과목 {len(extra)}개를 조회 카탈로그에 추가: "
+          f"{', '.join(c.get('course_name', '?') for c in extra)}")
+    return {**available_courses, 'user_picked': extra}
+
+
 def _enrich_courses(selected_courses: list, available_courses: dict) -> list:
     """course_code 검증 및 추가 정보 보완"""
     all_courses_map = {}
@@ -735,7 +783,10 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
                 avoid_text = f"\n🚫 피할 과목: {', '.join([c.get('course_name', '') for c in avoid_courses])}"
     
     common_rules = _build_common_rules(user_info)
-    
+
+    # 보완용 카탈로그 (프롬프트는 아래에서 원본 available_courses로 만든다)
+    catalog = build_lookup_catalog(available_courses, user_info)
+
     all_locked = []  # 전체 확정 과목 누적
     all_warnings = []
     
@@ -791,7 +842,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
             
             result_major = await _call_gemini(prompt_major)
             major_selected = result_major.get('selected_courses', [])
-            major_selected = _enrich_courses(major_selected, available_courses)
+            major_selected = _enrich_courses(major_selected, catalog)
             all_locked.extend(major_selected)
             all_warnings.extend(result_major.get('warnings', []))
             print(f"[SPLIT] 🔵 1단계 완료: {len(major_selected)}개 과목, {sum(c.get('credits',0) for c in major_selected)}학점")
@@ -851,7 +902,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
 
             result_dm = await _call_gemini(prompt_dm)
             dm_selected = result_dm.get('selected_courses', [])
-            dm_selected = _enrich_courses(dm_selected, available_courses)
+            dm_selected = _enrich_courses(dm_selected, catalog)
             all_locked.extend(dm_selected)
             all_warnings.extend(result_dm.get('warnings', []))
             print(f"[SPLIT] 🟢 2단계 완료: {len(dm_selected)}개 과목, {sum(c.get('credits',0) for c in dm_selected)}학점")
@@ -911,7 +962,7 @@ async def recommend_schedule_split(user_info: dict, available_courses: dict) -> 
 
             result_gen = await _call_gemini(prompt_gen)
             gen_selected = result_gen.get('selected_courses', [])
-            gen_selected = _enrich_courses(gen_selected, available_courses)
+            gen_selected = _enrich_courses(gen_selected, catalog)
             all_locked.extend(gen_selected)
             all_warnings.extend(result_gen.get('warnings', []))
             print(f"[SPLIT] 🟡 3단계 완료: {len(gen_selected)}개 과목, {sum(c.get('credits',0) for c in gen_selected)}학점")
@@ -1478,8 +1529,12 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
     must_take_keys = {course_key(c) for c in must_take}
     target_credits = user_info.get('target_credits')
 
+    # 프롬프트는 원본 available_courses로 만든다 (AI에게 보이는 과목 목록은 그대로).
     base_prompt = build_recommend_prompt(user_info, available_courses)
     locked_note = _build_locked_note(locked_required_names, must_take)
+
+    # 결과 보완·검증에만 쓰는 카탈로그 (사용자가 직접 고른 과목 포함)
+    catalog = build_lookup_catalog(available_courses, user_info)
 
     errors: list = []
     variants = _build_variants(user_info, available_courses, num_candidates)
@@ -1487,7 +1542,7 @@ async def recommend_schedules_multi(user_info: dict, available_courses: dict, nu
     # 모든 후보를 동시에 생성 (걸리는 시간 = 가장 느린 후보 1개)
     results = await asyncio.gather(*[
         _generate_candidate(
-            base_prompt + locked_note + note, user_info, available_courses,
+            base_prompt + locked_note + note, user_info, catalog,
             locked_required_names, must_take_keys, target_credits,
             temperature=temp, errors=errors,
         )
